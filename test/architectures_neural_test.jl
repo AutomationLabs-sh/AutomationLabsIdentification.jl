@@ -7,9 +7,6 @@
 ########################################################
 module ArchitecturesNeuralNetworks
 
-import Pkg
-Pkg.activate("/home/pierre/CleverCloud/identification/test/")
-
 using Test
 using DataFrames
 using Flux
@@ -18,20 +15,20 @@ using MLJFlux
 using DifferentialEquations
 using Distributed
 
-using Identification
+using AutomationLabsIdentification
 
-import Identification: Fnn
-import Identification: Icnn
-import Identification: DenseIcnn
-import Identification: Rbf
-import Identification: ResNet
-import Identification: PolyNet
-import Identification: DenseNet
-import Identification: NeuralNetODE_type1
-import Identification: NeuralNetODE_type2
-import Identification: Rnn 
-import Identification: Lstm 
-import Identification: Gru 
+import AutomationLabsIdentification: Fnn
+import AutomationLabsIdentification: Icnn
+import AutomationLabsIdentification: DenseIcnn
+import AutomationLabsIdentification: Rbf
+import AutomationLabsIdentification: ResNet
+import AutomationLabsIdentification: PolyNet
+import AutomationLabsIdentification: DenseNet
+import AutomationLabsIdentification: NeuralNetODE_type1
+import AutomationLabsIdentification: NeuralNetODE_type2
+import AutomationLabsIdentification: Rnn 
+import AutomationLabsIdentification: Lstm 
+import AutomationLabsIdentification: Gru 
 
 @testset "Fnn" begin
 

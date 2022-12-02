@@ -7,8 +7,6 @@
 ########################################################
 module HyparametersOptimizationTest
 
-import Pkg
-Pkg.activate("/home/pierre/CleverCloud/identification/test/")
 
 using Test
 using MLJ
@@ -17,10 +15,10 @@ using Flux
 using StableRNGs
 using MLJParticleSwarmOptimization
 using Distributed
-using Identification
+using AutomationLabsIdentification
 using CUDA
 
-import Identification: ResNet
+import AutomationLabsIdentification: ResNet
 
 @testset "Test: neuron & layer & epoch & learning rate optimization" begin
 

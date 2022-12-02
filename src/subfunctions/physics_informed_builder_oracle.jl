@@ -57,7 +57,7 @@ function physics_informed_builder(
 
     # Model builder
     model_oracle = MLJFlux.MultitargetNeuralNetworkRegressor(
-        builder = Identification.physics_informed_oracle(
+        builder = physics_informed_oracle(
             f,
             nbr_states,
             nbr_inputs,
@@ -106,7 +106,7 @@ function physics_informed_builder(
 
     # Model builder
     model_oracle = MLJFlux.MultitargetNeuralNetworkRegressor(
-        builder = Identification.physics_informed_oracle(
+        builder = physics_informed_oracle(
             f,
             nbr_states,
             nbr_inputs,
@@ -155,7 +155,7 @@ function physics_informed_builder(
 
     # Model builder
     model_oracle = MLJFlux.MultitargetNeuralNetworkRegressor(
-        builder = Identification.physics_informed_oracle(
+        builder = physics_informed_oracle(
             f,
             nbr_states,
             nbr_inputs,

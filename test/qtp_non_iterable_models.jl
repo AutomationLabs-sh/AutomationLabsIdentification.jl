@@ -1,11 +1,4 @@
-module QTP_LbfgsIdentification
-
-import Pkg
-Pkg.activate("/home/pierre/CleverCloud/identification/test/")
-using Distributed
-
-Pkg.add(path="/home/pierre/CleverCloud/identification")
-Pkg.instantiate()
+module QtpNonIterableModel
 
 using Test
 using MLJ
@@ -14,7 +7,7 @@ using MultivariateStats
 using CSV
 using DataFrames
 using Flux
-using Identification
+using AutomationLabsIdentification
 
 @testset "Linear model Ax + Bu" begin
 

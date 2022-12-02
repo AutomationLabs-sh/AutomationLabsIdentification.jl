@@ -7,9 +7,6 @@
 ########################################################
 module PhysicsInformedAndOracle
 
-import Pkg
-Pkg.activate("/home/pierre/CleverCloud/identification/test/")
-
 using Test
 using DataFrames
 using CSV
@@ -21,11 +18,11 @@ using Zygote
 using Dates
 using Distributed
 
-using Identification
+using AutomationLabsIdentification
 
-import Identification: PhysicsInformed
-import Identification: PhysicsInformedOracle
-import Identification: Fnn
+import AutomationLabsIdentification: PhysicsInformed
+import AutomationLabsIdentification: PhysicsInformedOracle
+import AutomationLabsIdentification: Fnn
 
 @testset "PhysicsInformed" begin
 

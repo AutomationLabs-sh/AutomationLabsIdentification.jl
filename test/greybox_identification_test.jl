@@ -8,12 +8,6 @@
 ########################################################
 module GreyBoxIdentificationTest
 
-using Distributed
-
-@everywhere import Pkg;
-@everywhere Pkg.activate("/home/pierre/CleverCloud/identification");
-@everywhere using Identification;
-
 using Test
 using CSV
 using DataFrames
@@ -21,6 +15,8 @@ using MLJ
 using Flux
 using Dates
 using Distributed
+using AutomationLabsIdentification
+
 
 @testset "Physicsinformed grey box identification " begin
 

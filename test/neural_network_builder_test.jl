@@ -7,9 +7,6 @@
 ########################################################
 module NeulralNetworkBuilderTests
 
-import Pkg
-Pkg.activate("/home/pierre/CleverCloud/identification/test/")
-
 using Test
 using Dates
 using Flux
@@ -18,12 +15,12 @@ using ComputationalResources
 using LineSearches
 using MLJMultivariateStatsInterface
 
-using Identification
+using AutomationLabsIdentification
 
-import Identification: _neural_network_builder
-import Identification: ARCHITECTURE_LIST
-import Identification: PROCESSOR_LIST
-import Identification: ALGORITHM_LIST
+import AutomationLabsIdentification: _neural_network_builder
+import AutomationLabsIdentification: ARCHITECTURE_LIST
+import AutomationLabsIdentification: PROCESSOR_LIST
+import AutomationLabsIdentification: ALGORITHM_LIST
 
 @testset "Neural Network Builder linear modification algorithms" begin
 

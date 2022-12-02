@@ -8,9 +8,6 @@
 
 module PhysicsInformedBuilderTests
 
-import Pkg
-Pkg.activate("/home/pierre/CleverCloud/identification/test/")
-
 using Test
 using Dates
 using Optim
@@ -18,11 +15,11 @@ using LineSearches
 using ComputationalResources
 using Flux
 
-using Identification
+using AutomationLabsIdentification
 
-import Identification: physics_informed_builder
-import Identification: PHYSICS_INFORMED_LIST
-import Identification: ALGORITHM_LIST
+import AutomationLabsIdentification: physics_informed_builder
+import AutomationLabsIdentification: PHYSICS_INFORMED_LIST
+import AutomationLabsIdentification: ALGORITHM_LIST
 
 @testset "Physics informed builder" begin
 

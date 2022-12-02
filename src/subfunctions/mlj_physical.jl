@@ -170,7 +170,7 @@ function physics_informed_oracle(
 
 end
 
-function Base.show(io::IO, l::Identification.PhysicsInformedOracle)
+function Base.show(io::IO, l::PhysicsInformedOracle)
     print(
         io,
         "PhysicsInformed(state: ",

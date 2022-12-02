@@ -7,10 +7,7 @@
 ########################################################
 module BlackBoxIdentificationTest
 
-import Pkg
-Pkg.activate("/home/pierre/CleverCloud/identification/test/")
-
-using Identification
+using AutomationLabsIdentification
 
 using Test
 using CSV

@@ -5,45 +5,38 @@
 # was not distributed with this file,  				   #
 # You can obtain one at https://mozilla.org/MPL/2.0/.  #
 ########################################################
-#module QTP_BackpropIdentification
+module QTP_BackpropIdentification
 
-import Pkg
-Pkg.activate("/home/pierre/CleverCloud/identification/test/")
+
 using Distributed
 
-@everywhere using Distributed
-@everywhere import Pkg
-@everywhere Pkg.add(path="/home/pierre/CleverCloud/identification")
-@everywhere Pkg.instantiate()
+using Test
+using MLJ
+using MLJFlux
+using Flux
+using StableRNGs
+using MLJParticleSwarmOptimization
+using DataFrames
+using CSV
+using Dates
 
+using AutomationLabsIdentification
 
-@everywhere using Test
-@everywhere using MLJ
-@everywhere using MLJFlux
-@everywhere using Flux
-@everywhere using StableRNGs
-@everywhere using MLJParticleSwarmOptimization
-@everywhere using DataFrames
-@everywhere using CSV
-@everywhere using Dates
+import AutomationLabsIdentification: data_formatting_identification
 
-@everywhere using Identification
-
-@everywhere import Identification: data_formatting_identification
-
-@everywhere import Identification: Fnn
-@everywhere import Identification: Icnn
-@everywhere import Identification: DenseIcnn
-@everywhere import Identification: Rbf
-@everywhere import Identification: ResNet
-@everywhere import Identification: DenseNet
-@everywhere import Identification: PolyNet
-@everywhere import Identification: NeuralNetODE_type1
-@everywhere import Identification: NeuralNetODE_type2
-@everywhere import Identification: ExplorationOfNetworks
-@everywhere import Identification: Rnn 
-@everywhere import Identification: Lstm 
-@everywhere import Identification: Gru
+import AutomationLabsIdentification: Fnn
+import AutomationLabsIdentification: Icnn
+import AutomationLabsIdentification: DenseIcnn
+import AutomationLabsIdentification: Rbf
+import AutomationLabsIdentification: ResNet
+import AutomationLabsIdentification: DenseNet
+import AutomationLabsIdentification: PolyNet
+import AutomationLabsIdentification: NeuralNetODE_type1
+import AutomationLabsIdentification: NeuralNetODE_type2
+import AutomationLabsIdentification: ExplorationOfNetworks
+import AutomationLabsIdentification: Rnn 
+import AutomationLabsIdentification: Lstm 
+import AutomationLabsIdentification: Gru
 
 @testset "QTP identification Fnn" begin
 
@@ -1280,4 +1273,4 @@ end
 
 end
 
-#end
+end

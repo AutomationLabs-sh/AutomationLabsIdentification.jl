@@ -54,7 +54,7 @@ function physics_informed_builder(
 
     # f physical definition
     model_f = MLJFlux.MultitargetNeuralNetworkRegressor(
-        builder = Identification.physics_informed(
+        builder = physics_informed(
             f,
             init_t_p,
             nbr_states,
@@ -103,7 +103,7 @@ function physics_informed_builder(
 
     # f physical definition
     model_f = MLJFlux.MultitargetNeuralNetworkRegressor(
-        builder = Identification.physics_informed(
+        builder = physics_informed(
             f,
             init_t_p,
             nbr_states,
@@ -155,7 +155,7 @@ function physics_informed_builder(
 
     # f physical definition
     model_f = MLJFlux.MultitargetNeuralNetworkRegressor(
-        builder = Identification.physics_informed(
+        builder = physics_informed(
             f,
             init_t_p,
             nbr_states,
