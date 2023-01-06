@@ -71,13 +71,29 @@ function _neural_network_builder(
     batch_size =
         get(dict_kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
+    loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
+    loss_fct = LOSS_FUNCTION_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
     #Design the neural network DenseNet
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
         builder = Icnn(neuron = 10, layer = 2, σ = Flux.relu),
         batch_size = batch_size,
         optimiser = Flux.ADAM(),
         epochs = 1000,
-        loss = Flux.Losses.mae,
+        loss = loss_fct,
         acceleration = MLJ.CUDALibs(),
     )
 
@@ -94,7 +110,7 @@ function _neural_network_builder(
             n_particles = Distributed.nworkers(),
         ),
         range = [r1, r2, r3],
-        measure = mae_multi,
+        measure = loss_fct_multi,
         n = Distributed.nworkers(),
         acceleration = MLJ.CPUProcesses(),
     )
@@ -153,13 +169,29 @@ function _neural_network_builder(
     batch_size =
         get(dict_kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
+    loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
+    loss_fct = LOSS_FUNCTION_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
     #Design the neural network DenseNet
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
         builder = Icnn(neuron = 10, layer = 2, σ = Flux.relu),
         batch_size = batch_size,
         optimiser = Flux.RADAM(),
         epochs = 1000,
-        loss = Flux.Losses.mae,
+        loss = loss_fct,
         acceleration = MLJ.CUDALibs(),
     )
 
@@ -176,7 +208,7 @@ function _neural_network_builder(
             n_particles = Distributed.nworkers(),
         ),
         range = [r1, r2, r3],
-        measure = mae_multi,
+        measure = loss_fct_multi,
         n = Distributed.nworkers(),
         acceleration = MLJ.CPUProcesses(),
     )
@@ -235,13 +267,29 @@ function _neural_network_builder(
     batch_size =
         get(dict_kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
+    loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
+    loss_fct = LOSS_FUNCTION_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
     #Design the neural network DenseNet
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
         builder = Icnn(neuron = 10, layer = 2, σ = Flux.relu),
         batch_size = batch_size,
         optimiser = Flux.NADAM(),
         epochs = 1000,
-        loss = Flux.Losses.mae,
+        loss = loss_fct,
         acceleration = MLJ.CUDALibs(),
     )
 
@@ -258,7 +306,7 @@ function _neural_network_builder(
             n_particles = Distributed.nworkers(),
         ),
         range = [r1, r2, r3],
-        measure = mae_multi,
+        measure = loss_fct_multi,
         n = Distributed.nworkers(),
         acceleration = MLJ.CPUProcesses(),
     )
@@ -317,13 +365,29 @@ function _neural_network_builder(
     batch_size =
         get(dict_kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
+    loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
+    loss_fct = LOSS_FUNCTION_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
     #Design the neural network DenseNet
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
         builder = Icnn(neuron = 10, layer = 2, σ = Flux.relu),
         batch_size = batch_size,
         optimiser = Flux.OADAM(),
         epochs = 1000,
-        loss = Flux.Losses.mae,
+        loss = loss_fct,
         acceleration = MLJ.CUDALibs(),
     )
 
@@ -340,7 +404,7 @@ function _neural_network_builder(
             n_particles = Distributed.nworkers(),
         ),
         range = [r1, r2, r3],
-        measure = mae_multi,
+        measure = loss_fct_multi,
         n = Distributed.nworkers(),
         acceleration = MLJ.CPUProcesses(),
     )
@@ -400,13 +464,29 @@ function _neural_network_builder(
     batch_size =
         get(dict_kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
+    loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
+    loss_fct = LOSS_FUNCTION_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
     #Design the neural network Icnn
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
         builder = Icnn(neuron = 10, layer = 2, σ = Flux.relu),
         batch_size = batch_size,
         optimiser = Optim.LBFGS(),
         epochs = 1000,
-        loss = Flux.Losses.mae,
+        loss = loss_fct,
     )
 
     #Hyperparameters range
@@ -422,7 +502,7 @@ function _neural_network_builder(
             n_particles = Distributed.nworkers(),
         ),
         range = [r1, r2, r3],
-        measure = mae_multi,
+        measure = loss_fct_multi,
         n = Distributed.nworkers(),
         acceleration = MLJ.CPUProcesses(),
     )
@@ -481,13 +561,29 @@ function _neural_network_builder(
     batch_size =
         get(dict_kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
+    loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
+    loss_fct = LOSS_FUNCTION_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
     #Design the neural network Icnn
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
         builder = Icnn(neuron = 10, layer = 2, σ = Flux.relu),
         batch_size = batch_size,
         optimiser = Optim.ParticleSwarm(),
         epochs = 1000,
-        loss = Flux.Losses.mae,
+        loss = loss_fct,
     )
 
     #Hyperparameters range
@@ -503,7 +599,7 @@ function _neural_network_builder(
             n_particles = Distributed.nworkers(),
         ),
         range = [r1, r2, r3],
-        measure = mae_multi,
+        measure = loss_fct_multi,
         n = Distributed.nworkers(),
         acceleration = MLJ.CPUProcesses(),
     )
@@ -562,13 +658,29 @@ function _neural_network_builder(
     batch_size =
         get(dict_kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
+    loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
+    loss_fct = LOSS_FUNCTION_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
     #Design the neural network Icnn
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
         builder = Icnn(neuron = 10, layer = 2, σ = Flux.relu),
         batch_size = batch_size,
         optimiser = Optim.OACCEL(),
         epochs = 1000,
-        loss = Flux.Losses.mae,
+        loss = loss_fct,
     )
 
     #Hyperparameters range
@@ -584,7 +696,7 @@ function _neural_network_builder(
             n_particles = Distributed.nworkers(),
         ),
         range = [r1, r2, r3],
-        measure = mae_multi,
+        measure = loss_fct_multi,
         n = Distributed.nworkers(),
         acceleration = MLJ.CPUProcesses(),
     )
@@ -645,13 +757,29 @@ function _neural_network_builder(
     batch_size =
         get(dict_kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
+    loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
+    loss_fct = LOSS_FUNCTION_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
     #Design the neural network DenseNet
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
         builder = Icnn(neuron = 10, layer = 2, σ = Flux.relu),
         batch_size = batch_size,
         optimiser = Flux.ADAM(),
         epochs = 1000,
-        loss = Flux.Losses.mae,
+        loss = loss_fct,
         acceleration = MLJ.CUDALibs(),
     )
 
@@ -668,7 +796,7 @@ function _neural_network_builder(
             n_particles = Threads.nthreads(),
         ),
         range = [r1, r2, r3],
-        measure = mae_multi,
+        measure = loss_fct_multi,
         n = Threads.nthreads(),
         acceleration = MLJ.CPUThreads(),
     )
@@ -727,13 +855,29 @@ function _neural_network_builder(
     batch_size =
         get(dict_kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
+    loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
+    loss_fct = LOSS_FUNCTION_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
     #Design the neural network DenseNet
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
         builder = Icnn(neuron = 10, layer = 2, σ = Flux.relu),
         batch_size = batch_size,
         optimiser = Flux.RADAM(),
         epochs = 1000,
-        loss = Flux.Losses.mae,
+        loss = loss_fct,
         acceleration = MLJ.CUDALibs(),
     )
 
@@ -750,7 +894,7 @@ function _neural_network_builder(
             n_particles = Threads.nthreads(),
         ),
         range = [r1, r2, r3],
-        measure = mae_multi,
+        measure = loss_fct_multi,
         n = Threads.nthreads(),
         acceleration = MLJ.CPUThreads(),
     )
@@ -809,13 +953,29 @@ function _neural_network_builder(
     batch_size =
         get(dict_kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
+    loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
+    loss_fct = LOSS_FUNCTION_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
     #Design the neural network DenseNet
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
         builder = Icnn(neuron = 10, layer = 2, σ = Flux.relu),
         batch_size = batch_size,
         optimiser = Flux.NADAM(),
         epochs = 1000,
-        loss = Flux.Losses.mae,
+        loss = loss_fct,
         acceleration = MLJ.CUDALibs(),
     )
 
@@ -832,7 +992,7 @@ function _neural_network_builder(
             n_particles = Threads.nthreads(),
         ),
         range = [r1, r2, r3],
-        measure = mae_multi,
+        measure = loss_fct_multi,
         n = Threads.nthreads(),
         acceleration = MLJ.CPUThreads(),
     )
@@ -891,13 +1051,29 @@ function _neural_network_builder(
     batch_size =
         get(dict_kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
+    loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
+    loss_fct = LOSS_FUNCTION_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
     #Design the neural network DenseNet
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
         builder = Icnn(neuron = 10, layer = 2, σ = Flux.relu),
         batch_size = batch_size,
         optimiser = Flux.OADAM(),
         epochs = 1000,
-        loss = Flux.Losses.mae,
+        loss = loss_fct,
         acceleration = MLJ.CUDALibs(),
     )
 
@@ -914,7 +1090,7 @@ function _neural_network_builder(
             n_particles = Threads.nthreads(),
         ),
         range = [r1, r2, r3],
-        measure = mae_multi,
+        measure = loss_fct_multi,
         n = Threads.nthreads(),
         acceleration = MLJ.CPUThreads(),
     )
@@ -974,13 +1150,29 @@ function _neural_network_builder(
     batch_size =
         get(dict_kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
+    loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
+    loss_fct = LOSS_FUNCTION_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
     #Design the neural network Icnn
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
         builder = Icnn(neuron = 10, layer = 2, σ = Flux.relu),
         batch_size = batch_size,
         optimiser = Optim.LBFGS(),
         epochs = 1000,
-        loss = Flux.Losses.mae,
+        loss = loss_fct,
     )
 
     #Hyperparameters range
@@ -996,7 +1188,7 @@ function _neural_network_builder(
             n_particles = Threads.nthreads(),
         ),
         range = [r1, r2, r3],
-        measure = mae_multi,
+        measure = loss_fct_multi,
         n = Threads.nthreads(),
         acceleration = MLJ.CPUThreads(),
     )
@@ -1055,13 +1247,29 @@ function _neural_network_builder(
     batch_size =
         get(dict_kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
+    loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
+    loss_fct = LOSS_FUNCTION_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
     #Design the neural network Icnn
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
         builder = Icnn(neuron = 10, layer = 2, σ = Flux.relu),
         batch_size = batch_size,
         optimiser = Optim.ParticleSwarm(),
         epochs = 1000,
-        loss = Flux.Losses.mae,
+        loss = loss_fct,
     )
 
     #Hyperparameters range
@@ -1077,7 +1285,7 @@ function _neural_network_builder(
             n_particles = Threads.nthreads(),
         ),
         range = [r1, r2, r3],
-        measure = mae_multi,
+        measure = loss_fct_multi,
         n = Threads.nthreads(),
         acceleration = MLJ.CPUThreads(),
     )
@@ -1136,13 +1344,29 @@ function _neural_network_builder(
     batch_size =
         get(dict_kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
+    loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
+    loss_fct = LOSS_FUNCTION_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
     #Design the neural network Icnn
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
         builder = Icnn(neuron = 10, layer = 2, σ = Flux.relu),
         batch_size = batch_size,
         optimiser = Optim.OACCEL(),
         epochs = 1000,
-        loss = Flux.Losses.mae,
+        loss = loss_fct,
     )
 
     #Hyperparameters range
@@ -1158,7 +1382,7 @@ function _neural_network_builder(
             n_particles = Threads.nthreads(),
         ),
         range = [r1, r2, r3],
-        measure = mae_multi,
+        measure = loss_fct_multi,
         n = Threads.nthreads(),
         acceleration = MLJ.CPUThreads(),
     )
@@ -1176,8 +1400,6 @@ end
 
 
 ### CPU 1 ###
-
-
 function _neural_network_builder(
     nn::icnn,
     processor::MLJ.CPU1,
@@ -1221,13 +1443,29 @@ function _neural_network_builder(
     batch_size =
         get(dict_kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
+    loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
+    loss_fct = LOSS_FUNCTION_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
     #Design the neural network DenseNet
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
         builder = Icnn(neuron = 10, layer = 2, σ = Flux.relu),
         batch_size = batch_size,
         optimiser = Flux.ADAM(),
         epochs = 1000,
-        loss = Flux.Losses.mae,
+        loss = loss_fct,
         acceleration = MLJ.CUDALibs(),
     )
 
@@ -1244,7 +1482,7 @@ function _neural_network_builder(
             n_particles = 3,
         ),
         range = [r1, r2, r3],
-        measure = mae_multi,
+        measure = loss_fct_multi,
         n = 3,
         acceleration = MLJ.CPU1(),
     )
@@ -1303,13 +1541,29 @@ function _neural_network_builder(
     batch_size =
         get(dict_kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
+    loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
+    loss_fct = LOSS_FUNCTION_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
     #Design the neural network DenseNet
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
         builder = Icnn(neuron = 10, layer = 2, σ = Flux.relu),
         batch_size = batch_size,
         optimiser = Flux.RADAM(),
         epochs = 1000,
-        loss = Flux.Losses.mae,
+        loss = loss_fct,
         acceleration = MLJ.CUDALibs(),
     )
 
@@ -1326,7 +1580,7 @@ function _neural_network_builder(
             n_particles = 3,
         ),
         range = [r1, r2, r3],
-        measure = mae_multi,
+        measure = loss_fct_multi,
         n = 3,
         acceleration = MLJ.CPU1(),
     )
@@ -1385,13 +1639,29 @@ function _neural_network_builder(
     batch_size =
         get(dict_kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
+    loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
+    loss_fct = LOSS_FUNCTION_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
     #Design the neural network DenseNet
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
         builder = Icnn(neuron = 10, layer = 2, σ = Flux.relu),
         batch_size = batch_size,
         optimiser = Flux.NADAM(),
         epochs = 1000,
-        loss = Flux.Losses.mae,
+        loss = loss_fct,
         acceleration = MLJ.CUDALibs(),
     )
 
@@ -1408,7 +1678,7 @@ function _neural_network_builder(
             n_particles = 3,
         ),
         range = [r1, r2, r3],
-        measure = mae_multi,
+        measure = loss_fct_multi,
         n = 3,
         acceleration = MLJ.CPU1(),
     )
@@ -1467,13 +1737,29 @@ function _neural_network_builder(
     batch_size =
         get(dict_kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
+    loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
+    loss_fct = LOSS_FUNCTION_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
     #Design the neural network DenseNet
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
         builder = Icnn(neuron = 10, layer = 2, σ = Flux.relu),
         batch_size = batch_size,
         optimiser = Flux.OADAM(),
         epochs = 1000,
-        loss = Flux.Losses.mae,
+        loss = loss_fct,
         acceleration = MLJ.CUDALibs(),
     )
 
@@ -1490,7 +1776,7 @@ function _neural_network_builder(
             n_particles = 3,
         ),
         range = [r1, r2, r3],
-        measure = mae_multi,
+        measure = loss_fct_multi,
         n = 3,
         acceleration = MLJ.CPU1(),
     )
@@ -1550,13 +1836,29 @@ function _neural_network_builder(
     batch_size =
         get(dict_kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
+    loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
+    loss_fct = LOSS_FUNCTION_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
     #Design the neural network Icnn
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
         builder = Icnn(neuron = 10, layer = 2, σ = Flux.relu),
         batch_size = batch_size,
         optimiser = Optim.LBFGS(),
         epochs = 1000,
-        loss = Flux.Losses.mae,
+        loss = loss_fct,
     )
 
     #Hyperparameters range
@@ -1572,7 +1874,7 @@ function _neural_network_builder(
             n_particles = 3,
         ),
         range = [r1, r2, r3],
-        measure = mae_multi,
+        measure = loss_fct_multi,
         n = 3,
         acceleration = MLJ.CPU1(),
     )
@@ -1631,13 +1933,29 @@ function _neural_network_builder(
     batch_size =
         get(dict_kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
+    loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
+    loss_fct = LOSS_FUNCTION_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
     #Design the neural network Icnn
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
         builder = Icnn(neuron = 10, layer = 2, σ = Flux.relu),
         batch_size = batch_size,
         optimiser = Optim.ParticleSwarm(),
         epochs = 1000,
-        loss = Flux.Losses.mae,
+        loss = loss_fct,
     )
 
     #Hyperparameters range
@@ -1653,7 +1971,7 @@ function _neural_network_builder(
             n_particles = 3,
         ),
         range = [r1, r2, r3],
-        measure = mae_multi,
+        measure = loss_fct_multi,
         n = 3,
         acceleration = MLJ.CPU1(),
     )
@@ -1712,13 +2030,29 @@ function _neural_network_builder(
     batch_size =
         get(dict_kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
+    loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
+    loss_fct = LOSS_FUNCTION_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
     #Design the neural network Icnn
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
         builder = Icnn(neuron = 10, layer = 2, σ = Flux.relu),
         batch_size = batch_size,
         optimiser = Optim.OACCEL(),
         epochs = 1000,
-        loss = Flux.Losses.mae,
+        loss = loss_fct,
     )
 
     #Hyperparameters range
@@ -1734,7 +2068,7 @@ function _neural_network_builder(
             n_particles = 3,
         ),
         range = [r1, r2, r3],
-        measure = mae_multi,
+        measure = loss_fct_multi,
         n = 3,
         acceleration = MLJ.CPU1(),
     )

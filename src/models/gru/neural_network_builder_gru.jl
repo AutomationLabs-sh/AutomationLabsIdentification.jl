@@ -84,13 +84,29 @@ function _neural_network_builder(
         @error "fraction_train is mandatory with recurrent neural networks"
     end
 
+    loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
+    loss_fct = LOSS_FUNCTION_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
     #Design the neural network Gru
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
         builder = Gru(neuron = 10, layer = 2, σ = activation_function),
         batch_size = batch_size,
         optimiser = Flux.ADAM(),
         epochs = 1000,
-        loss = Flux.Losses.mae,
+        loss = loss_fct,
         acceleration = MLJ.CUDALibs(),
     )
 
@@ -108,7 +124,7 @@ function _neural_network_builder(
         ),
         resampling = MLJ.Holdout(; fraction_train = f_t, shuffle = nothing, rng = nothing),
         range = [r1, r2, r3],
-        measure = mae_multi,
+        measure = loss_fct_multi,
         n = Distributed.nworkers(),
         acceleration = MLJ.CPUProcesses(),
     )
@@ -180,13 +196,29 @@ function _neural_network_builder(
         @error "fraction_train is mandatory with recurrent neural networks"
     end
 
+    loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
+    loss_fct = LOSS_FUNCTION_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
     #Design the neural network Gru
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
         builder = Gru(neuron = 10, layer = 2, σ = activation_function),
         batch_size = batch_size,
         optimiser = Flux.RADAM(),
         epochs = 1000,
-        loss = Flux.Losses.mae,
+        loss = loss_fct,
         acceleration = MLJ.CUDALibs(),
     )
 
@@ -204,7 +236,7 @@ function _neural_network_builder(
         ),
         resampling = MLJ.Holdout(; fraction_train = f_t, shuffle = nothing, rng = nothing),
         range = [r1, r2, r3],
-        measure = mae_multi,
+        measure = loss_fct_multi,
         n = Distributed.nworkers(),
         acceleration = MLJ.CPUProcesses(),
     )
@@ -276,13 +308,29 @@ function _neural_network_builder(
         @error "fraction_train is mandatory with recurrent neural networks"
     end
 
+    loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
+    loss_fct = LOSS_FUNCTION_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
     #Design the neural network Gru
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
         builder = Gru(neuron = 10, layer = 2, σ = activation_function),
         batch_size = batch_size,
         optimiser = Flux.NADAM(),
         epochs = 1000,
-        loss = Flux.Losses.mae,
+        loss = loss_fct,
         acceleration = MLJ.CUDALibs(),
     )
 
@@ -300,7 +348,7 @@ function _neural_network_builder(
         ),
         resampling = MLJ.Holdout(; fraction_train = f_t, shuffle = nothing, rng = nothing),
         range = [r1, r2, r3],
-        measure = mae_multi,
+        measure = loss_fct_multi,
         n = Distributed.nworkers(),
         acceleration = MLJ.CPUProcesses(),
     )
@@ -372,13 +420,29 @@ function _neural_network_builder(
         @error "fraction_train is mandatory with recurrent neural networks"
     end
 
+    loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
+    loss_fct = LOSS_FUNCTION_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
     #Design the neural network Gru
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
         builder = Gru(neuron = 10, layer = 2, σ = activation_function),
         batch_size = batch_size,
         optimiser = Flux.OADAM(),
         epochs = 1000,
-        loss = Flux.Losses.mae,
+        loss = loss_fct,
         acceleration = MLJ.CUDALibs(),
     )
 
@@ -396,7 +460,7 @@ function _neural_network_builder(
         ),
         resampling = MLJ.Holdout(; fraction_train = f_t, shuffle = nothing, rng = nothing),
         range = [r1, r2, r3],
-        measure = mae_multi,
+        measure = loss_fct_multi,
         n = Distributed.nworkers(),
         acceleration = MLJ.CPUProcesses(),
     )
@@ -469,13 +533,29 @@ function _neural_network_builder(
         @error "fraction_train is mandatory with recurrent neural networks"
     end
 
+    loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
+    loss_fct = LOSS_FUNCTION_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
     #Design the neural network Gru
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
         builder = Gru(neuron = 10, layer = 2, σ = activation_function),
         batch_size = batch_size,
         optimiser = Optim.ParticleSwarm(),
         epochs = 1000,
-        loss = Flux.Losses.mae,
+        loss = loss_fct,
     )
 
     #Hyperparameters range
@@ -492,7 +572,7 @@ function _neural_network_builder(
         ),
         resampling = MLJ.Holdout(; fraction_train = f_t, shuffle = nothing, rng = nothing),
         range = [r1, r2, r3],
-        measure = mae_multi,
+        measure = loss_fct_multi,
         n = Distributed.nworkers(),
         acceleration = MLJ.CPUProcesses(),
     )
@@ -564,13 +644,29 @@ function _neural_network_builder(
         @error "fraction_train is mandatory with recurrent neural networks"
     end
 
+    loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
+    loss_fct = LOSS_FUNCTION_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
     #Design the neural network Gru
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
         builder = Gru(neuron = 10, layer = 2, σ = activation_function),
         batch_size = batch_size,
         optimiser = Optim.OACCEL(),
         epochs = 1000,
-        loss = Flux.Losses.mae,
+        loss = loss_fct,
     )
 
     #Hyperparameters range
@@ -587,7 +683,7 @@ function _neural_network_builder(
         ),
         resampling = MLJ.Holdout(; fraction_train = f_t, shuffle = nothing, rng = nothing),
         range = [r1, r2, r3],
-        measure = mae_multi,
+        measure = loss_fct_multi,
         n = Distributed.nworkers(),
         acceleration = MLJ.CPUProcesses(),
     )
@@ -659,13 +755,29 @@ function _neural_network_builder(
         @error "fraction_train is mandatory with recurrent neural networks"
     end
 
+    loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
+    loss_fct = LOSS_FUNCTION_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
     #Design the neural network Gru
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
         builder = Gru(neuron = 10, layer = 2, σ = activation_function),
         batch_size = batch_size,
         optimiser = Optim.LBFGS(),
         epochs = 1000,
-        loss = Flux.Losses.mae,
+        loss = loss_fct,
     )
 
     #Hyperparameters range
@@ -682,7 +794,7 @@ function _neural_network_builder(
         ),
         resampling = MLJ.Holdout(; fraction_train = f_t, shuffle = nothing, rng = nothing),
         range = [r1, r2, r3],
-        measure = mae_multi,
+        measure = loss_fct_multi,
         n = Distributed.nworkers(),# Distributed.nworkers(),
         acceleration = MLJ.CPUProcesses(),#MLJ.CPUProcesses(),
     )
@@ -756,13 +868,29 @@ function _neural_network_builder(
         @error "fraction_train is mandatory with recurrent neural networks"
     end
 
+    loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
+    loss_fct = LOSS_FUNCTION_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
     #Design the neural network Gru
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
         builder = Gru(neuron = 10, layer = 2, σ = activation_function),
         batch_size = batch_size,
         optimiser = Flux.ADAM(),
         epochs = 1000,
-        loss = Flux.Losses.mae,
+        loss = loss_fct,
         acceleration = MLJ.CUDALibs(),
     )
 
@@ -780,7 +908,7 @@ function _neural_network_builder(
         ),
         resampling = MLJ.Holdout(; fraction_train = f_t, shuffle = nothing, rng = nothing),
         range = [r1, r2, r3],
-        measure = mae_multi,
+        measure = loss_fct_multi,
         n = Threads.nthreads(),
         acceleration = MLJ.CPUThreads(),
     )
@@ -852,13 +980,29 @@ function _neural_network_builder(
         @error "fraction_train is mandatory with recurrent neural networks"
     end
 
+    loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
+    loss_fct = LOSS_FUNCTION_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
     #Design the neural network Gru
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
         builder = Gru(neuron = 10, layer = 2, σ = activation_function),
         batch_size = batch_size,
         optimiser = Flux.RADAM(),
         epochs = 1000,
-        loss = Flux.Losses.mae,
+        loss = loss_fct,
         acceleration = MLJ.CUDALibs(),
     )
 
@@ -876,7 +1020,7 @@ function _neural_network_builder(
         ),
         resampling = MLJ.Holdout(; fraction_train = f_t, shuffle = nothing, rng = nothing),
         range = [r1, r2, r3],
-        measure = mae_multi,
+        measure = loss_fct_multi,
         n = Threads.nthreads(),
         acceleration = MLJ.CPUThreads(),
     )
@@ -948,13 +1092,29 @@ function _neural_network_builder(
         @error "fraction_train is mandatory with recurrent neural networks"
     end
 
+    loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
+    loss_fct = LOSS_FUNCTION_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
     #Design the neural network Gru
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
         builder = Gru(neuron = 10, layer = 2, σ = activation_function),
         batch_size = batch_size,
         optimiser = Flux.NADAM(),
         epochs = 1000,
-        loss = Flux.Losses.mae,
+        loss = loss_fct,
         acceleration = MLJ.CUDALibs(),
     )
 
@@ -972,7 +1132,7 @@ function _neural_network_builder(
         ),
         resampling = MLJ.Holdout(; fraction_train = f_t, shuffle = nothing, rng = nothing),
         range = [r1, r2, r3],
-        measure = mae_multi,
+        measure = loss_fct_multi,
         n = Threads.nthreads(),
         acceleration = MLJ.CPUThreads(),
     )
@@ -1044,13 +1204,29 @@ function _neural_network_builder(
         @error "fraction_train is mandatory with recurrent neural networks"
     end
 
+    loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
+    loss_fct = LOSS_FUNCTION_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
     #Design the neural network Gru
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
         builder = Gru(neuron = 10, layer = 2, σ = activation_function),
         batch_size = batch_size,
         optimiser = Flux.OADAM(),
         epochs = 1000,
-        loss = Flux.Losses.mae,
+        loss = loss_fct,
         acceleration = MLJ.CUDALibs(),
     )
 
@@ -1068,7 +1244,7 @@ function _neural_network_builder(
         ),
         resampling = MLJ.Holdout(; fraction_train = f_t, shuffle = nothing, rng = nothing),
         range = [r1, r2, r3],
-        measure = mae_multi,
+        measure = loss_fct_multi,
         n = Threads.nthreads(),
         acceleration = MLJ.CPUThreads(),
     )
@@ -1141,13 +1317,29 @@ function _neural_network_builder(
         @error "fraction_train is mandatory with recurrent neural networks"
     end
 
+    loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
+    loss_fct = LOSS_FUNCTION_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
     #Design the neural network Gru
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
         builder = Gru(neuron = 10, layer = 2, σ = activation_function),
         batch_size = batch_size,
         optimiser = Optim.ParticleSwarm(),
         epochs = 1000,
-        loss = Flux.Losses.mae,
+        loss = loss_fct,
     )
 
     #Hyperparameters range
@@ -1164,7 +1356,7 @@ function _neural_network_builder(
         ),
         resampling = MLJ.Holdout(; fraction_train = f_t, shuffle = nothing, rng = nothing),
         range = [r1, r2, r3],
-        measure = mae_multi,
+        measure = loss_fct_multi,
         n = Threads.nthreads(),
         acceleration = MLJ.CPUThreads(),
     )
@@ -1236,13 +1428,29 @@ function _neural_network_builder(
         @error "fraction_train is mandatory with recurrent neural networks"
     end
 
+    loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
+    loss_fct = LOSS_FUNCTION_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
     #Design the neural network Gru
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
         builder = Gru(neuron = 10, layer = 2, σ = activation_function),
         batch_size = batch_size,
         optimiser = Optim.OACCEL(),
         epochs = 1000,
-        loss = Flux.Losses.mae,
+        loss = loss_fct,
     )
 
     #Hyperparameters range
@@ -1259,7 +1467,7 @@ function _neural_network_builder(
         ),
         resampling = MLJ.Holdout(; fraction_train = f_t, shuffle = nothing, rng = nothing),
         range = [r1, r2, r3],
-        measure = mae_multi,
+        measure = loss_fct_multi,
         n = Threads.nthreads(),
         acceleration = MLJ.CPUThreads(),
     )
@@ -1331,13 +1539,29 @@ function _neural_network_builder(
         @error "fraction_train is mandatory with recurrent neural networks"
     end
 
+    loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
+    loss_fct = LOSS_FUNCTION_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
     #Design the neural network Gru
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
         builder = Gru(neuron = 10, layer = 2, σ = activation_function),
         batch_size = batch_size,
         optimiser = Optim.LBFGS(),
         epochs = 1000,
-        loss = Flux.Losses.mae,
+        loss = loss_fct,
     )
 
     #Hyperparameters range
@@ -1354,7 +1578,7 @@ function _neural_network_builder(
         ),
         resampling = MLJ.Holdout(; fraction_train = f_t, shuffle = nothing, rng = nothing),
         range = [r1, r2, r3],
-        measure = mae_multi,
+        measure = loss_fct_multi,
         n = Threads.nthreads(),# Threads.nthreads(),
         acceleration = MLJ.CPUThreads(),#MLJ.CPUThreads(),
     )
@@ -1430,13 +1654,29 @@ function _neural_network_builder(
         @error "fraction_train is mandatory with recurrent neural networks"
     end
 
+    loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
+    loss_fct = LOSS_FUNCTION_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
     #Design the neural network Gru
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
         builder = Gru(neuron = 10, layer = 2, σ = activation_function),
         batch_size = batch_size,
         optimiser = Flux.ADAM(),
         epochs = 1000,
-        loss = Flux.Losses.mae,
+        loss = loss_fct,
         acceleration = MLJ.CUDALibs(),
     )
 
@@ -1454,7 +1694,7 @@ function _neural_network_builder(
         ),
         resampling = MLJ.Holdout(; fraction_train = f_t, shuffle = nothing, rng = nothing),
         range = [r1, r2, r3],
-        measure = mae_multi,
+        measure = loss_fct_multi,
         n = 3,
         acceleration = MLJ.CPU1(),
     )
@@ -1526,13 +1766,29 @@ function _neural_network_builder(
         @error "fraction_train is mandatory with recurrent neural networks"
     end
 
+    loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
+    loss_fct = LOSS_FUNCTION_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
     #Design the neural network Gru
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
         builder = Gru(neuron = 10, layer = 2, σ = activation_function),
         batch_size = batch_size,
         optimiser = Flux.RADAM(),
         epochs = 1000,
-        loss = Flux.Losses.mae,
+        loss = loss_fct,
         acceleration = MLJ.CUDALibs(),
     )
 
@@ -1550,7 +1806,7 @@ function _neural_network_builder(
         ),
         resampling = MLJ.Holdout(; fraction_train = f_t, shuffle = nothing, rng = nothing),
         range = [r1, r2, r3],
-        measure = mae_multi,
+        measure = loss_fct_multi,
         n = 3,
         acceleration = MLJ.CPU1(),
     )
@@ -1622,13 +1878,29 @@ function _neural_network_builder(
         @error "fraction_train is mandatory with recurrent neural networks"
     end
 
+    loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
+    loss_fct = LOSS_FUNCTION_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
     #Design the neural network Gru
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
         builder = Gru(neuron = 10, layer = 2, σ = activation_function),
         batch_size = batch_size,
         optimiser = Flux.NADAM(),
         epochs = 1000,
-        loss = Flux.Losses.mae,
+        loss = loss_fct,
         acceleration = MLJ.CUDALibs(),
     )
 
@@ -1646,7 +1918,7 @@ function _neural_network_builder(
         ),
         resampling = MLJ.Holdout(; fraction_train = f_t, shuffle = nothing, rng = nothing),
         range = [r1, r2, r3],
-        measure = mae_multi,
+        measure = loss_fct_multi,
         n = 3,
         acceleration = MLJ.CPU1(),
     )
@@ -1718,13 +1990,29 @@ function _neural_network_builder(
         @error "fraction_train is mandatory with recurrent neural networks"
     end
 
+    loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
+    loss_fct = LOSS_FUNCTION_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
     #Design the neural network Gru
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
         builder = Gru(neuron = 10, layer = 2, σ = activation_function),
         batch_size = batch_size,
         optimiser = Flux.OADAM(),
         epochs = 1000,
-        loss = Flux.Losses.mae,
+        loss = loss_fct,
         acceleration = MLJ.CUDALibs(),
     )
 
@@ -1742,7 +2030,7 @@ function _neural_network_builder(
         ),
         resampling = MLJ.Holdout(; fraction_train = f_t, shuffle = nothing, rng = nothing),
         range = [r1, r2, r3],
-        measure = mae_multi,
+        measure = loss_fct_multi,
         n = 3,
         acceleration = MLJ.CPU1(),
     )
@@ -1815,13 +2103,29 @@ function _neural_network_builder(
         @error "fraction_train is mandatory with recurrent neural networks"
     end
 
+    loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
+    loss_fct = LOSS_FUNCTION_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
     #Design the neural network Gru
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
         builder = Gru(neuron = 10, layer = 2, σ = activation_function),
         batch_size = batch_size,
         optimiser = Optim.ParticleSwarm(),
         epochs = 1000,
-        loss = Flux.Losses.mae,
+        loss = loss_fct,
     )
 
     #Hyperparameters range
@@ -1838,7 +2142,7 @@ function _neural_network_builder(
         ),
         resampling = MLJ.Holdout(; fraction_train = f_t, shuffle = nothing, rng = nothing),
         range = [r1, r2, r3],
-        measure = mae_multi,
+        measure = loss_fct_multi,
         n = 3,
         acceleration = MLJ.CPU1(),
     )
@@ -1910,13 +2214,29 @@ function _neural_network_builder(
         @error "fraction_train is mandatory with recurrent neural networks"
     end
 
+    loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
+    loss_fct = LOSS_FUNCTION_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
     #Design the neural network Gru
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
         builder = Gru(neuron = 10, layer = 2, σ = activation_function),
         batch_size = batch_size,
         optimiser = Optim.OACCEL(),
         epochs = 1000,
-        loss = Flux.Losses.mae,
+        loss = loss_fct,
     )
 
     #Hyperparameters range
@@ -1933,7 +2253,7 @@ function _neural_network_builder(
         ),
         resampling = MLJ.Holdout(; fraction_train = f_t, shuffle = nothing, rng = nothing),
         range = [r1, r2, r3],
-        measure = mae_multi,
+        measure = loss_fct_multi,
         n = 3,
         acceleration = MLJ.CPU1(),
     )
@@ -2005,13 +2325,29 @@ function _neural_network_builder(
         @error "fraction_train is mandatory with recurrent neural networks"
     end
 
+    loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
+    loss_fct = LOSS_FUNCTION_LIST[Symbol(
+        get(
+            dict_kws,
+            :neuralnet_loss_function,
+            NEURALNET_DEFAULT_PARAMETERS.loss_function,
+        ),
+    )]
+
     #Design the neural network Gru
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
         builder = Gru(neuron = 10, layer = 2, σ = activation_function),
         batch_size = batch_size,
         optimiser = Optim.LBFGS(),
         epochs = 1000,
-        loss = Flux.Losses.mae,
+        loss = loss_fct,
     )
 
     #Hyperparameters range
@@ -2028,7 +2364,7 @@ function _neural_network_builder(
         ),
         resampling = MLJ.Holdout(; fraction_train = f_t, shuffle = nothing, rng = nothing),
         range = [r1, r2, r3],
-        measure = mae_multi,
+        measure = loss_fct_multi,
         n = 3,# 3,
         acceleration = MLJ.CPU1(),#MLJ.CPU1(),
     )

@@ -316,18 +316,86 @@ const NEURALNET_DEFAULT_PARAMETERS = (
     maximum_neuron = 10,
     batch_size = 512,
     activation_function = "relu",
+    loss_function = "mae",
 )
 
 const PROCESSOR_COMPUTATION_DEFAULT = (processor = "cpu_1",)
 
-### MAE loss for multi outputs MLJ
-
-#MAE loss function with multiple neural outputs 
+### MAE loss
 mae_multi = function (yhat, y)
-    return Statistics.mean(abs.(Matrix(hcat(yhat...)) .- Matrix(y)))
+    #return Statistics.mean(abs.(Matrix(hcat(yhat...)) .- Matrix(y)))
+    return Flux.Losses.mae(Matrix(hcat(yhat...)) , Matrix(y))
 end
 
+mae_losses = function (x, y)
+    return Flux.Losses.mae(x, y)
+end
+#=
 mae_losses_recurrent = function (x, y)
     Flux.reset!(chain)
-    Flux.Losses.mae(chain(x), y)
+    return Flux.Losses.mae(chain(x), y)
+end=#
+
+### MSE loss 
+mse_multi = function (yhat, y)
+    return Flux.Losses.mse(Matrix(hcat(yhat...)), Matrix(y))
 end
+
+mse_losses = function (x, y)
+    return Flux.Losses.mse(x, y)
+end
+#=
+mse_losses_recurrent = function (x, y)
+    Flux.reset!(chain)
+    return Flux.Losses.mse(chain(x), y)
+end=#
+
+### RMSE loss 
+rmse_multi = function (yhat, y)
+    return sqrt(Flux.Losses.mse(Matrix(hcat(yhat...)), Matrix(y)))
+end
+
+rmse_losses = function (x, y)
+    return sqrt(Flux.Losses.mse(x, y))
+end
+#=
+rmse_losses_recurrent = function (x, y)
+    Flux.reset!(chain)
+    return sqrt(Flux.Losses.mse(chain(x), y))
+end=#
+
+### MAPE loss
+mape_multi = function (yhat, y)
+    return Statistics.mean(abs.( (Matrix(hcat(yhat...)) .- Matrix(y)) ./ Matrix(y)))
+end
+
+mape_losses = function (x, y)
+    return Statistics.mean(abs.( (x .- y) ./ y))
+end
+#=
+mape_losses_recurrent = function (x, y)
+    Flux.reset!(chain)
+    return Statistics.mean(abs.( (chain(x) .- y) ./ y))
+end=#
+
+const LOSS_FUNCTION_MULTI_LIST = (
+    mae = mae_multi,
+    mse = mse_multi,
+    rmse = rmse_multi,
+    mape = mape_multi,
+)
+
+const LOSS_FUNCTION_LIST = (
+    mae = mae_losses,
+    mse = mse_losses,
+    rmse = rmse_losses,
+    mape = mape_losses,
+)
+#=
+const LOSS_FUNCTION_RECURRENT_LIST = (
+    mae = mae_losses_recurrent,
+    mse = mse_losses_recurrent,
+    rmse = rmse_losses_recurrent,
+    mape = mape_losses_recurrent,
+)
+=#

@@ -19,6 +19,7 @@ using MLJParticleSwarmOptimization
 using DataFrames
 using CSV
 using Dates
+using CUDA
 
 using AutomationLabsIdentification
 
@@ -79,7 +80,7 @@ import AutomationLabsIdentification: Gru
     #fnn definition
     model_fnn = MLJFlux.MultitargetNeuralNetworkRegressor(
         builder = Fnn(neuron = 10, layer = 2, σ = NNlib.relu),
-        batch_size = 512,
+        batch_size = 2048,
         optimiser = Flux.RADAM(),
         epochs = 1000,
         loss = Flux.Losses.mae,
@@ -966,8 +967,8 @@ end
 @testset "QTP identification rnn" begin
 
     # load the inputs and outputs data
-    dfout = DataFrame(CSV.File("./data_QTP/data_outputs.csv"))[1:1550000, :]
-    dfin = DataFrame(CSV.File("./data_QTP/data_inputs_m3h.csv"))[1:1550000, :]
+    dfout = DataFrame(CSV.File("./data_QTP/data_outputs.csv"))
+    dfin = DataFrame(CSV.File("./data_QTP/data_inputs_m3h.csv"))
 
     n_sequence = 64
     normalisation = false
@@ -1074,8 +1075,8 @@ end
 @testset "QTP identification lstm" begin
 
     # load the inputs and outputs data
-    dfout = DataFrame(CSV.File("./data_QTP/data_outputs.csv"))[1:1550000, :]
-    dfin = DataFrame(CSV.File("./data_QTP/data_inputs_m3h.csv"))[1:1550000, :]
+    dfout = DataFrame(CSV.File("./data_QTP/data_outputs.csv"))
+    dfin = DataFrame(CSV.File("./data_QTP/data_inputs_m3h.csv"))
 
     n_sequence = 64
     normalisation = false
@@ -1175,8 +1176,8 @@ end
 @testset "QTP identification gru" begin
 
     # load the inputs and outputs data
-    dfout = DataFrame(CSV.File("./data_QTP/data_outputs.csv"))[1:1550000, :]
-    dfin = DataFrame(CSV.File("./data_QTP/data_inputs_m3h.csv"))[1:1550000, :]
+    dfout = DataFrame(CSV.File("./data_QTP/data_outputs.csv"))
+    dfin = DataFrame(CSV.File("./data_QTP/data_inputs_m3h.csv"))
 
     n_sequence = 64
     normalisation = false
