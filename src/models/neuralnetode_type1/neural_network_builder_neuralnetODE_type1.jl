@@ -103,7 +103,7 @@ function _neural_network_builder(
         optimiser = Flux.ADAM(),
         epochs = 1000,
         loss = loss_fct,
-        acceleration = MLJ.CUDALibs(),
+        #acceleration = MLJ.CUDALibs(),  #without due to issue with DiffEqArray_to_Array
     )
 
     #Hyperparameters range
@@ -210,7 +210,7 @@ function _neural_network_builder(
         optimiser = Flux.RADAM(),
         epochs = 1000,
         loss = loss_fct,
-        acceleration = MLJ.CUDALibs(),
+        #acceleration = MLJ.CUDALibs(),  ##without due to issue with DiffEqArray_to_Array,
     )
 
     #Hyperparameters range
@@ -317,7 +317,7 @@ function _neural_network_builder(
         optimiser = Flux.NADAM(),
         epochs = 1000,
         loss = loss_fct,
-        acceleration = MLJ.CUDALibs(),
+        #acceleration = MLJ.CUDALibs(),  #without due to issue with DiffEqArray_to_Array,
     )
 
     #Hyperparameters range
@@ -424,7 +424,7 @@ function _neural_network_builder(
         optimiser = Flux.OADAM(),
         epochs = 1000,
         loss = loss_fct,
-        acceleration = MLJ.CUDALibs(),
+        #acceleration = MLJ.CUDALibs(),  #without due to issue with DiffEqArray_to_Array,
     )
 
     #Hyperparameters range
@@ -852,7 +852,7 @@ function _neural_network_builder(
         optimiser = Flux.ADAM(),
         epochs = 1000,
         loss = loss_fct,
-        acceleration = MLJ.CUDALibs(),
+        #acceleration = MLJ.CUDALibs(),  #without due to issue with DiffEqArray_to_Array,
     )
 
     #Hyperparameters range
@@ -959,7 +959,7 @@ function _neural_network_builder(
         optimiser = Flux.RADAM(),
         epochs = 1000,
         loss = loss_fct,
-        acceleration = MLJ.CUDALibs(),
+        #acceleration = MLJ.CUDALibs(),  #without due to issue with DiffEqArray_to_Array,
     )
 
     #Hyperparameters range
@@ -1066,7 +1066,7 @@ function _neural_network_builder(
         optimiser = Flux.NADAM(),
         epochs = 1000,
         loss = loss_fct,
-        acceleration = MLJ.CUDALibs(),
+        #acceleration = MLJ.CUDALibs(),  #without due to issue with DiffEqArray_to_Array,
     )
 
     #Hyperparameters range
@@ -1173,7 +1173,7 @@ function _neural_network_builder(
         optimiser = Flux.OADAM(),
         epochs = 1000,
         loss = loss_fct,
-        acceleration = MLJ.CUDALibs(),
+        #acceleration = MLJ.CUDALibs(),  #without due to issue with DiffEqArray_to_Array,
     )
 
     #Hyperparameters range
@@ -1601,7 +1601,7 @@ function _neural_network_builder(
         optimiser = Flux.ADAM(),
         epochs = 1000,
         loss = loss_fct,
-        acceleration = MLJ.CUDALibs(),
+        #acceleration = MLJ.CUDALibs(),  #without due to issue with DiffEqArray_to_Array_gpu and gpu
     )
 
     #Hyperparameters range
@@ -1708,7 +1708,7 @@ function _neural_network_builder(
         optimiser = Flux.RADAM(),
         epochs = 1000,
         loss = loss_fct,
-        acceleration = MLJ.CUDALibs(),
+        #acceleration = MLJ.CUDALibs(),  #without due to issue with DiffEqArray_to_Array,
     )
 
     #Hyperparameters range
@@ -1815,7 +1815,7 @@ function _neural_network_builder(
         optimiser = Flux.NADAM(),
         epochs = 1000,
         loss = loss_fct,
-        acceleration = MLJ.CUDALibs(),
+        #acceleration = MLJ.CUDALibs(),  #without due to issue with DiffEqArray_to_Array,
     )
 
     #Hyperparameters range
@@ -1922,7 +1922,7 @@ function _neural_network_builder(
         optimiser = Flux.OADAM(),
         epochs = 1000,
         loss = loss_fct,
-        acceleration = MLJ.CUDALibs(),
+        #acceleration = MLJ.CUDALibs(),  #without due to issue with DiffEqArray_to_Array,
     )
 
     #Hyperparameters range

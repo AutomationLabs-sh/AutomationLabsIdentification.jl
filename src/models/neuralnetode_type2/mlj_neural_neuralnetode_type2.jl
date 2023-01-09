@@ -49,23 +49,23 @@ function MLJFlux.build(nn::NeuralNetODE_type2, rng, n_in, n_out)
         inner_nn[i, 1] = Flux.Dense(nn.neuron, nn.neuron, nn.σ) #, init = init)
     end
 
-    global inner_layer = Flux.Chain(
+    inner_layer = Flux.Chain(
         Flux.Dense(n_in, nn.neuron, bias = false, init = init),
         Flux.Chain(inner_nn...),
         Flux.Dense(nn.neuron, n_in, bias = false, init = init),
     )
 
     #Then discretised the Fnn at the sample time
-    tspan = (0, nn.sample_time)# (0.0f0, Float32.(sample_time))
+    tspan = (0.0f0, Float32.(nn.sample_time)) #(0, nn.sample_time)# (0.0f0, Float32.(nn.sample_time))
 
-    function DiffEqArray_to_Array(x)
-        xarr = Array(x)# gpu(x)#Array(x) #to do deal with gpu
+    function DiffEqArray_to_Array_cpu(x)
+        xarr = Array(x)# gpu(x)#Array(x) #to do deal with cpu
         rslt = reshape(xarr, size(xarr)[1:2])
         return rslt[1:n_out, :]
     end
 
     inner_ode = DiffEqFlux.NeuralODE(
-        inner_layer,#Flux.Chain(inner_layer...),
+        inner_layer,
         tspan,
         DifferentialEquations.BS3(),
         save_everystep = false,
@@ -74,5 +74,6 @@ function MLJFlux.build(nn::NeuralNetODE_type2, rng, n_in, n_out)
         save_start = false,
     )
     #to do mettre un guard if NaN
-    return Flux.Chain(inner_ode, DiffEqArray_to_Array)
+    return Flux.Chain(inner_ode, DiffEqArray_to_Array_cpu)
+
 end

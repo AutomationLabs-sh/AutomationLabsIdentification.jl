@@ -43,16 +43,16 @@ function MLJFlux.build(nn::NeuralNetODE_type1, rng, n_in, n_out)
         nn.layer,
         1,
     )
-
+    
     for i = 1:1:nn.layer
-        inner_layer[i, 1] = Flux.Dense(nn.neuron, nn.neuron, nn.σ, init = init)
+        inner_layer[i, 1] = Flux.Dense(nn.neuron, nn.neuron, nn.σ, init = init) 
     end
 
-    function DiffEqArray_to_Array(x)
-        xarr = Array(x)# gpu(x)#Array(x) #to do deal with gpu
+    function DiffEqArray_to_Array_cpu(x)
+        xarr = Array(x)# gpu(x)#Array(x) #to do deal with cpu
         return reshape(xarr, size(xarr)[1:2])
     end
-
+    
     inner_ode = DiffEqFlux.NeuralODE(
         Flux.Chain(inner_layer...),
         (0.0f0, 1.0f0),
@@ -61,12 +61,14 @@ function MLJFlux.build(nn::NeuralNetODE_type1, rng, n_in, n_out)
         reltol = 1e-6,
         abstol = 1e-6,
         save_start = false,
-    )
+    ) 
     #to do mettre un guard if NaN
     return Flux.Chain(
-        Flux.Dense(n_in, nn.neuron, bias = false, init = init),
+        Flux.Dense(n_in, nn.neuron, bias = false, init = init), 
         inner_ode,
-        DiffEqArray_to_Array,
-        Flux.Dense(nn.neuron, n_out, bias = false, init = init),
-    )
+        DiffEqArray_to_Array_cpu,
+        Flux.Dense(nn.neuron, n_out, bias = false, init = init), 
+    ) 
 end
+
+

@@ -82,7 +82,7 @@ function _neural_network_builder(
         get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
     if haskey(kws, :sample_time) == true
-        sample_time = dict_kws[:sample_time]
+        sample_time = kws[:sample_time]
     else
         @error "sample time is mandatory with NeuralNetODE_type2"
         @info "sample time is set to 1.0s"
@@ -117,7 +117,7 @@ function _neural_network_builder(
         optimiser = Flux.ADAM(),
         epochs = 1000,
         loss = loss_fct,
-        acceleration = MLJ.CUDALibs(),
+        #acceleration = MLJ.CUDALibs(),
     )
 
     #Hyperparameters range
@@ -202,7 +202,7 @@ function _neural_network_builder(
         get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
     if haskey(kws, :sample_time) == true
-        sample_time = dict_kws[:sample_time]
+        sample_time = kws[:sample_time]
     else
         @error "sample time is mandatory with NeuralNetODE_type2"
         @info "sample time is set to 1.0s"
@@ -237,7 +237,7 @@ function _neural_network_builder(
         optimiser = Flux.RADAM(),
         epochs = 1000,
         loss = loss_fct,
-        acceleration = MLJ.CUDALibs(),
+        #acceleration = MLJ.CUDALibs(),
     )
 
     #Hyperparameters range
@@ -322,7 +322,7 @@ function _neural_network_builder(
         get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
     if haskey(kws, :sample_time) == true
-        sample_time = dict_kws[:sample_time]
+        sample_time = kws[:sample_time]
     else
         @error "sample time is mandatory with NeuralNetODE_type2"
         @info "sample time is set to 1.0s"
@@ -357,7 +357,7 @@ function _neural_network_builder(
         optimiser = Flux.NADAM(),
         epochs = 1000,
         loss = loss_fct,
-        acceleration = MLJ.CUDALibs(),
+        #acceleration = MLJ.CUDALibs(),
     )
 
     #Hyperparameters range
@@ -442,7 +442,7 @@ function _neural_network_builder(
         get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
     if haskey(kws, :sample_time) == true
-        sample_time = dict_kws[:sample_time]
+        sample_time = kws[:sample_time]
     else
         @error "sample time is mandatory with NeuralNetODE_type2"
         @info "sample time is set to 1.0s"
@@ -477,7 +477,7 @@ function _neural_network_builder(
         optimiser = Flux.OADAM(),
         epochs = 1000,
         loss = loss_fct,
-        acceleration = MLJ.CUDALibs(),
+        #acceleration = MLJ.CUDALibs(),
     )
 
     #Hyperparameters range
@@ -563,7 +563,7 @@ function _neural_network_builder(
         get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
     if haskey(kws, :sample_time) == true
-        sample_time = dict_kws[:sample_time]
+        sample_time = kws[:sample_time]
     else
         @error "sample time is mandatory with NeuralNetODE_type2"
         @info "sample time is set to 1.0s"
@@ -682,7 +682,7 @@ function _neural_network_builder(
         get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
     if haskey(kws, :sample_time) == true
-        sample_time = dict_kws[:sample_time]
+        sample_time = kws[:sample_time]
     else
         @error "sample time is mandatory with NeuralNetODE_type2"
         @info "sample time is set to 1.0s"
@@ -801,7 +801,7 @@ function _neural_network_builder(
         get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
     if haskey(kws, :sample_time) == true
-        sample_time = dict_kws[:sample_time]
+        sample_time = kws[:sample_time]
     else
         @error "sample time is mandatory with NeuralNetODE_type2"
         @info "sample time is set to 1.0s"
@@ -921,7 +921,7 @@ function _neural_network_builder(
         get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
     if haskey(kws, :sample_time) == true
-        sample_time = dict_kws[:sample_time]
+        sample_time = kws[:sample_time]
     else
         @error "sample time is mandatory with NeuralNetODE_type2"
         @info "sample time is set to 1.0s"
@@ -956,7 +956,7 @@ function _neural_network_builder(
         optimiser = Flux.ADAM(),
         epochs = 1000,
         loss = loss_fct,
-        acceleration = MLJ.CUDALibs(),
+        #acceleration = MLJ.CUDALibs(),
     )
 
     #Hyperparameters range
@@ -1041,7 +1041,7 @@ function _neural_network_builder(
         get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
     if haskey(kws, :sample_time) == true
-        sample_time = dict_kws[:sample_time]
+        sample_time = kws[:sample_time]
     else
         @error "sample time is mandatory with NeuralNetODE_type2"
         @info "sample time is set to 1.0s"
@@ -1076,7 +1076,7 @@ function _neural_network_builder(
         optimiser = Flux.RADAM(),
         epochs = 1000,
         loss = loss_fct,
-        acceleration = MLJ.CUDALibs(),
+        #acceleration = MLJ.CUDALibs(),
     )
 
     #Hyperparameters range
@@ -1161,7 +1161,7 @@ function _neural_network_builder(
         get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
     if haskey(kws, :sample_time) == true
-        sample_time = dict_kws[:sample_time]
+        sample_time = kws[:sample_time]
     else
         @error "sample time is mandatory with NeuralNetODE_type2"
         @info "sample time is set to 1.0s"
@@ -1196,7 +1196,7 @@ function _neural_network_builder(
         optimiser = Flux.NADAM(),
         epochs = 1000,
         loss = loss_fct,
-        acceleration = MLJ.CUDALibs(),
+        #acceleration = MLJ.CUDALibs(),
     )
 
     #Hyperparameters range
@@ -1281,7 +1281,7 @@ function _neural_network_builder(
         get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
     if haskey(kws, :sample_time) == true
-        sample_time = dict_kws[:sample_time]
+        sample_time = kws[:sample_time]
     else
         @error "sample time is mandatory with NeuralNetODE_type2"
         @info "sample time is set to 1.0s"
@@ -1316,7 +1316,7 @@ function _neural_network_builder(
         optimiser = Flux.OADAM(),
         epochs = 1000,
         loss = loss_fct,
-        acceleration = MLJ.CUDALibs(),
+        #acceleration = MLJ.CUDALibs(),
     )
 
     #Hyperparameters range
@@ -1402,7 +1402,7 @@ function _neural_network_builder(
         get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
     if haskey(kws, :sample_time) == true
-        sample_time = dict_kws[:sample_time]
+        sample_time = kws[:sample_time]
     else
         @error "sample time is mandatory with NeuralNetODE_type2"
         @info "sample time is set to 1.0s"
@@ -1521,7 +1521,7 @@ function _neural_network_builder(
         get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
     if haskey(kws, :sample_time) == true
-        sample_time = dict_kws[:sample_time]
+        sample_time = kws[:sample_time]
     else
         @error "sample time is mandatory with NeuralNetODE_type2"
         @info "sample time is set to 1.0s"
@@ -1640,7 +1640,7 @@ function _neural_network_builder(
         get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
     if haskey(kws, :sample_time) == true
-        sample_time = dict_kws[:sample_time]
+        sample_time = kws[:sample_time]
     else
         @error "sample time is mandatory with NeuralNetODE_type2"
         @info "sample time is set to 1.0s"
@@ -1759,7 +1759,7 @@ function _neural_network_builder(
         get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
     if haskey(kws, :sample_time) == true
-        sample_time = dict_kws[:sample_time]
+        sample_time = kws[:sample_time]
     else
         @error "sample time is mandatory with NeuralNetODE_type2"
         @info "sample time is set to 1.0s"
@@ -1794,7 +1794,7 @@ function _neural_network_builder(
         optimiser = Flux.ADAM(),
         epochs = 1000,
         loss = loss_fct,
-        acceleration = MLJ.CUDALibs(),
+        #acceleration = MLJ.CUDALibs(),
     )
 
     #Hyperparameters range
@@ -1879,7 +1879,7 @@ function _neural_network_builder(
         get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
     if haskey(kws, :sample_time) == true
-        sample_time = dict_kws[:sample_time]
+        sample_time = kws[:sample_time]
     else
         @error "sample time is mandatory with NeuralNetODE_type2"
         @info "sample time is set to 1.0s"
@@ -1914,7 +1914,7 @@ function _neural_network_builder(
         optimiser = Flux.RADAM(),
         epochs = 1000,
         loss = loss_fct,
-        acceleration = MLJ.CUDALibs(),
+        #acceleration = MLJ.CUDALibs(),
     )
 
     #Hyperparameters range
@@ -1999,7 +1999,7 @@ function _neural_network_builder(
         get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
     if haskey(kws, :sample_time) == true
-        sample_time = dict_kws[:sample_time]
+        sample_time = kws[:sample_time]
     else
         @error "sample time is mandatory with NeuralNetODE_type2"
         @info "sample time is set to 1.0s"
@@ -2034,7 +2034,7 @@ function _neural_network_builder(
         optimiser = Flux.NADAM(),
         epochs = 1000,
         loss = loss_fct,
-        acceleration = MLJ.CUDALibs(),
+        #acceleration = MLJ.CUDALibs(),
     )
 
     #Hyperparameters range
@@ -2119,7 +2119,7 @@ function _neural_network_builder(
         get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
     if haskey(kws, :sample_time) == true
-        sample_time = dict_kws[:sample_time]
+        sample_time = kws[:sample_time]
     else
         @error "sample time is mandatory with NeuralNetODE_type2"
         @info "sample time is set to 1.0s"
@@ -2154,7 +2154,7 @@ function _neural_network_builder(
         optimiser = Flux.OADAM(),
         epochs = 1000,
         loss = loss_fct,
-        acceleration = MLJ.CUDALibs(),
+        #acceleration = MLJ.CUDALibs(),
     )
 
     #Hyperparameters range
@@ -2240,7 +2240,7 @@ function _neural_network_builder(
         get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
     if haskey(kws, :sample_time) == true
-        sample_time = dict_kws[:sample_time]
+        sample_time = kws[:sample_time]
     else
         @error "sample time is mandatory with NeuralNetODE_type2"
         @info "sample time is set to 1.0s"
@@ -2359,7 +2359,7 @@ function _neural_network_builder(
         get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
     if haskey(kws, :sample_time) == true
-        sample_time = dict_kws[:sample_time]
+        sample_time = kws[:sample_time]
     else
         @error "sample time is mandatory with NeuralNetODE_type2"
         @info "sample time is set to 1.0s"
@@ -2478,7 +2478,7 @@ function _neural_network_builder(
         get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
     if haskey(kws, :sample_time) == true
-        sample_time = dict_kws[:sample_time]
+        sample_time = kws[:sample_time]
     else
         @error "sample time is mandatory with NeuralNetODE_type2"
         @info "sample time is set to 1.0s"

@@ -663,7 +663,7 @@ end
         optimiser = Flux.RADAM(),
         epochs = 100,
         loss = Flux.Losses.mae,
-        acceleration = CUDALibs(),
+       # acceleration = CUDALibs(),
     )
 
     r1 = range(model_neural_netODE, :(builder.neuron), lower = 5, upper = 15)
@@ -673,7 +673,7 @@ end
     tuned_model_neural_netODE = MLJ.TunedModel(
         model = model_neural_netODE,
         tuning = AdaptiveParticleSwarm(rng = StableRNG(0)),
-        resampling = CV(nfolds = 6, rng = StableRNG(1)),
+        #resampling = CV(nfolds = 6, rng = StableRNG(1)),
         range = [r1, r2, r3],
         measure = my_loss,
         n = 5,
@@ -683,7 +683,7 @@ end
     iterated_model_neural_netODE = IteratedModel(
         model = tuned_model_neural_netODE,
         resampling = nothing,
-        control = [Step(n = 1), TimeLimit(t = Minute(60))],
+        control = [Step(n = 1), TimeLimit(t = Minute(30))],
     )
 
     mach_neural_netODE = MLJ.machine(iterated_model_neural_netODE, in_data, out_data)
@@ -792,7 +792,7 @@ end
     tuned_model_neural_netODE = MLJ.TunedModel(
         model = model_neural_netODE,
         tuning = AdaptiveParticleSwarm(rng = StableRNG(0)),
-        resampling = CV(nfolds = 6, rng = StableRNG(1)),
+        #resampling = CV(nfolds = 6, rng = StableRNG(1)),
         range = [r1, r2, r3],
         measure = my_loss,
         n = 5,
@@ -802,7 +802,7 @@ end
     iterated_model_neural_netODE = IteratedModel(
         model = tuned_model_neural_netODE,
         resampling = nothing,
-        control = [Step(n = 1), TimeLimit(t = Minute(20))],
+        control = [Step(n = 1), TimeLimit(t = Minute(30))],
     )
 
     mach_neural_netODE = MLJ.machine(iterated_model_neural_netODE, in_data, out_data)
