@@ -80,24 +80,6 @@ function blackbox_identification(
     kws = get(dict_kws, :kws, kws_)
 
     # Get parameters from kws for neural networks
-    activation_function = get(
-        kws,
-        :neuralnet_activation_function,
-        NEURALNET_DEFAULT_PARAMETERS.activation_function,
-    )
-    minimum_epochs =
-        get(kws, :neuralnet_minimum_epochs, NEURALNET_DEFAULT_PARAMETERS.minimum_epochs)
-    maximum_epochs =
-        get(kws, :neuralnet_maximum_epochs, NEURALNET_DEFAULT_PARAMETERS.maximum_epochs)
-    minimum_layers =
-        get(kws, :neuralnet_minimum_layers, NEURALNET_DEFAULT_PARAMETERS.minimum_layers)
-    maximum_layers =
-        get(kws, :neuralnet_maximum_layers, NEURALNET_DEFAULT_PARAMETERS.maximum_layers)
-    minimum_neuron =
-        get(kws, :neuralnet_minimum_neuron, NEURALNET_DEFAULT_PARAMETERS.minimum_neuron)
-    maximum_neuron =
-        get(kws, :neuralnet_maximum_neuron, NEURALNET_DEFAULT_PARAMETERS.maximum_neuron)
-    batch_size = get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
     processor = get(kws, :computation_processor, PROCESSOR_COMPUTATION_DEFAULT.processor)
 
     # Get parameters from kws for computation informations
@@ -109,20 +91,13 @@ function blackbox_identification(
         PROCESSOR_LIST[Symbol(processor)],
         ALGORITHM_LIST[Symbol(algorithm)],
         maximum_time;
-        neuralnet_activation_function = activation_function,
-        neuralnet_minimum_epochs = minimum_epochs,
-        neuralnet_maximum_epochs = maximum_epochs,
-        neuralnet_minimum_layers = minimum_layers,
-        neuralnet_maximum_layers = maximum_layers,
-        neuralnet_minimum_neuron = minimum_neuron,
-        neuralnet_maximum_neuron = maximum_neuron,
-        neuralnet_batch_size = batch_size,
+        kws,
     ) #dispatched function
 
-    #mach the model with the data
+    # Mach the model with the data
     mach_nn = MLJ.machine(tuned_model, train_dfin, train_dfout)
 
-    #train the neural network
+    # Train the neural network
     MLJ.fit!(mach_nn, verbosity = verbosity)
 
     return mach_nn
@@ -323,18 +298,12 @@ const PROCESSOR_COMPUTATION_DEFAULT = (processor = "cpu_1",)
 
 ### MAE loss
 mae_multi = function (yhat, y)
-    #return Statistics.mean(abs.(Matrix(hcat(yhat...)) .- Matrix(y)))
     return Flux.Losses.mae(Matrix(hcat(yhat...)) , Matrix(y))
 end
 
 mae_losses = function (x, y)
     return Flux.Losses.mae(x, y)
 end
-#=
-mae_losses_recurrent = function (x, y)
-    Flux.reset!(chain)
-    return Flux.Losses.mae(chain(x), y)
-end=#
 
 ### MSE loss 
 mse_multi = function (yhat, y)
@@ -344,11 +313,6 @@ end
 mse_losses = function (x, y)
     return Flux.Losses.mse(x, y)
 end
-#=
-mse_losses_recurrent = function (x, y)
-    Flux.reset!(chain)
-    return Flux.Losses.mse(chain(x), y)
-end=#
 
 ### RMSE loss 
 rmse_multi = function (yhat, y)
@@ -358,11 +322,6 @@ end
 rmse_losses = function (x, y)
     return sqrt(Flux.Losses.mse(x, y))
 end
-#=
-rmse_losses_recurrent = function (x, y)
-    Flux.reset!(chain)
-    return sqrt(Flux.Losses.mse(chain(x), y))
-end=#
 
 ### MAPE loss
 mape_multi = function (yhat, y)
@@ -372,11 +331,6 @@ end
 mape_losses = function (x, y)
     return Statistics.mean(abs.( (x .- y) ./ y))
 end
-#=
-mape_losses_recurrent = function (x, y)
-    Flux.reset!(chain)
-    return Statistics.mean(abs.( (chain(x) .- y) ./ y))
-end=#
 
 const LOSS_FUNCTION_MULTI_LIST = (
     mae = mae_multi,
@@ -391,11 +345,3 @@ const LOSS_FUNCTION_LIST = (
     rmse = rmse_losses,
     mape = mape_losses,
 )
-#=
-const LOSS_FUNCTION_RECURRENT_LIST = (
-    mae = mae_losses_recurrent,
-    mse = mse_losses_recurrent,
-    rmse = rmse_losses_recurrent,
-    mape = mape_losses_recurrent,
-)
-=#

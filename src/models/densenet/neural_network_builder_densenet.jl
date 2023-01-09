@@ -13,7 +13,7 @@
     processor::cpu,
     algorithm::Adam,
     max_time::Dates.TimePeriod;
-    kws...
+    kws_...
 )
 An artificial neural network builder with hyperparameters optimization, it returns a tuned model wich can be match with data and trained.
 The function is multiple dispatched according to args type.
@@ -25,7 +25,7 @@ The following variables are mendatories:
 * `max_time` : a maximum time for training.
 
 The following variables are optinals:
-* `kws...`: optional variables.
+* `kws_...`: optional variables.
 
 """
 function _neural_network_builder(
@@ -33,54 +33,56 @@ function _neural_network_builder(
     processor::MLJ.CPUProcesses,
     algorithm::Adam,
     max_time::Dates.TimePeriod;
-    kws...,
+    kws_...,
 )
 
     # Get parameters from kwagrs for neural networks hyperparameters
-    dict_kws = Dict{Symbol,Any}(kws)
+    dict_kws = Dict{Symbol,Any}(kws_)
+    kws = get(dict_kws, :kws, kws_)
+
     activation_function = ACTIVATION_FUNCTION_LIST[Symbol(
         get(
-            dict_kws,
+            kws,
             :neuralnet_activation_function,
             NEURALNET_DEFAULT_PARAMETERS.activation_function,
         ),
     )]
     minimum_epochs = get(
-        dict_kws,
+        kws,
         :neuralnet_minimum_epochs,
         NEURALNET_DEFAULT_PARAMETERS.minimum_epochs,
     )
     maximum_epochs = get(
-        dict_kws,
+        kws,
         :neuralnet_maximum_epochs,
         NEURALNET_DEFAULT_PARAMETERS.maximum_epochs,
     )
     minimum_layers = get(
-        dict_kws,
+        kws,
         :neuralnet_minimum_layers,
         NEURALNET_DEFAULT_PARAMETERS.minimum_layers,
     )
     maximum_layers = get(
-        dict_kws,
+        kws,
         :neuralnet_maximum_layers,
         NEURALNET_DEFAULT_PARAMETERS.maximum_layers,
     )
     minimum_neuron = get(
-        dict_kws,
+        kws,
         :neuralnet_minimum_neuron,
         NEURALNET_DEFAULT_PARAMETERS.minimum_neuron,
     )
     maximum_neuron = get(
-        dict_kws,
+        kws,
         :neuralnet_maximum_neuron,
         NEURALNET_DEFAULT_PARAMETERS.maximum_neuron,
     )
     batch_size =
-        get(dict_kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
+        get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
     loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
         get(
-            dict_kws,
+            kws,
             :neuralnet_loss_function,
             NEURALNET_DEFAULT_PARAMETERS.loss_function,
         ),
@@ -88,7 +90,7 @@ function _neural_network_builder(
 
     loss_fct = LOSS_FUNCTION_LIST[Symbol(
         get(
-            dict_kws,
+            kws,
             :neuralnet_loss_function,
             NEURALNET_DEFAULT_PARAMETERS.loss_function,
         ),
@@ -138,54 +140,56 @@ function _neural_network_builder(
     processor::MLJ.CPUProcesses,
     algorithm::Radam,
     max_time::Dates.TimePeriod;
-    kws...,
+    kws_...,
 )
 
     # Get parameters from kwagrs for neural networks hyperparameters
-    dict_kws = Dict{Symbol,Any}(kws)
+    dict_kws = Dict{Symbol,Any}(kws_)
+    kws = get(dict_kws, :kws, kws_)
+
     activation_function = ACTIVATION_FUNCTION_LIST[Symbol(
         get(
-            dict_kws,
+            kws,
             :neuralnet_activation_function,
             NEURALNET_DEFAULT_PARAMETERS.activation_function,
         ),
     )]
     minimum_epochs = get(
-        dict_kws,
+        kws,
         :neuralnet_minimum_epochs,
         NEURALNET_DEFAULT_PARAMETERS.minimum_epochs,
     )
     maximum_epochs = get(
-        dict_kws,
+        kws,
         :neuralnet_maximum_epochs,
         NEURALNET_DEFAULT_PARAMETERS.maximum_epochs,
     )
     minimum_layers = get(
-        dict_kws,
+        kws,
         :neuralnet_minimum_layers,
         NEURALNET_DEFAULT_PARAMETERS.minimum_layers,
     )
     maximum_layers = get(
-        dict_kws,
+        kws,
         :neuralnet_maximum_layers,
         NEURALNET_DEFAULT_PARAMETERS.maximum_layers,
     )
     minimum_neuron = get(
-        dict_kws,
+        kws,
         :neuralnet_minimum_neuron,
         NEURALNET_DEFAULT_PARAMETERS.minimum_neuron,
     )
     maximum_neuron = get(
-        dict_kws,
+        kws,
         :neuralnet_maximum_neuron,
         NEURALNET_DEFAULT_PARAMETERS.maximum_neuron,
     )
     batch_size =
-        get(dict_kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
+        get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
     loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
         get(
-            dict_kws,
+            kws,
             :neuralnet_loss_function,
             NEURALNET_DEFAULT_PARAMETERS.loss_function,
         ),
@@ -193,7 +197,7 @@ function _neural_network_builder(
 
     loss_fct = LOSS_FUNCTION_LIST[Symbol(
         get(
-            dict_kws,
+            kws,
             :neuralnet_loss_function,
             NEURALNET_DEFAULT_PARAMETERS.loss_function,
         ),
@@ -243,54 +247,56 @@ function _neural_network_builder(
     processor::MLJ.CPUProcesses,
     algorithm::Nadam,
     max_time::Dates.TimePeriod;
-    kws...,
+    kws_...,
 )
 
     # Get parameters from kwagrs for neural networks hyperparameters
-    dict_kws = Dict{Symbol,Any}(kws)
+    dict_kws = Dict{Symbol,Any}(kws_)
+    kws = get(dict_kws, :kws, kws_)
+
     activation_function = ACTIVATION_FUNCTION_LIST[Symbol(
         get(
-            dict_kws,
+            kws,
             :neuralnet_activation_function,
             NEURALNET_DEFAULT_PARAMETERS.activation_function,
         ),
     )]
     minimum_epochs = get(
-        dict_kws,
+        kws,
         :neuralnet_minimum_epochs,
         NEURALNET_DEFAULT_PARAMETERS.minimum_epochs,
     )
     maximum_epochs = get(
-        dict_kws,
+        kws,
         :neuralnet_maximum_epochs,
         NEURALNET_DEFAULT_PARAMETERS.maximum_epochs,
     )
     minimum_layers = get(
-        dict_kws,
+        kws,
         :neuralnet_minimum_layers,
         NEURALNET_DEFAULT_PARAMETERS.minimum_layers,
     )
     maximum_layers = get(
-        dict_kws,
+        kws,
         :neuralnet_maximum_layers,
         NEURALNET_DEFAULT_PARAMETERS.maximum_layers,
     )
     minimum_neuron = get(
-        dict_kws,
+        kws,
         :neuralnet_minimum_neuron,
         NEURALNET_DEFAULT_PARAMETERS.minimum_neuron,
     )
     maximum_neuron = get(
-        dict_kws,
+        kws,
         :neuralnet_maximum_neuron,
         NEURALNET_DEFAULT_PARAMETERS.maximum_neuron,
     )
     batch_size =
-        get(dict_kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
+        get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
     loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
         get(
-            dict_kws,
+            kws,
             :neuralnet_loss_function,
             NEURALNET_DEFAULT_PARAMETERS.loss_function,
         ),
@@ -298,7 +304,7 @@ function _neural_network_builder(
 
     loss_fct = LOSS_FUNCTION_LIST[Symbol(
         get(
-            dict_kws,
+            kws,
             :neuralnet_loss_function,
             NEURALNET_DEFAULT_PARAMETERS.loss_function,
         ),
@@ -348,54 +354,56 @@ function _neural_network_builder(
     processor::MLJ.CPUProcesses,
     algorithm::Oadam,
     max_time::Dates.TimePeriod;
-    kws...,
+    kws_...,
 )
 
     # Get parameters from kwagrs for neural networks hyperparameters
-    dict_kws = Dict{Symbol,Any}(kws)
+    dict_kws = Dict{Symbol,Any}(kws_)
+    kws = get(dict_kws, :kws, kws_)
+
     activation_function = ACTIVATION_FUNCTION_LIST[Symbol(
         get(
-            dict_kws,
+            kws,
             :neuralnet_activation_function,
             NEURALNET_DEFAULT_PARAMETERS.activation_function,
         ),
     )]
     minimum_epochs = get(
-        dict_kws,
+        kws,
         :neuralnet_minimum_epochs,
         NEURALNET_DEFAULT_PARAMETERS.minimum_epochs,
     )
     maximum_epochs = get(
-        dict_kws,
+        kws,
         :neuralnet_maximum_epochs,
         NEURALNET_DEFAULT_PARAMETERS.maximum_epochs,
     )
     minimum_layers = get(
-        dict_kws,
+        kws,
         :neuralnet_minimum_layers,
         NEURALNET_DEFAULT_PARAMETERS.minimum_layers,
     )
     maximum_layers = get(
-        dict_kws,
+        kws,
         :neuralnet_maximum_layers,
         NEURALNET_DEFAULT_PARAMETERS.maximum_layers,
     )
     minimum_neuron = get(
-        dict_kws,
+        kws,
         :neuralnet_minimum_neuron,
         NEURALNET_DEFAULT_PARAMETERS.minimum_neuron,
     )
     maximum_neuron = get(
-        dict_kws,
+        kws,
         :neuralnet_maximum_neuron,
         NEURALNET_DEFAULT_PARAMETERS.maximum_neuron,
     )
     batch_size =
-        get(dict_kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
+        get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
     loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
         get(
-            dict_kws,
+            kws,
             :neuralnet_loss_function,
             NEURALNET_DEFAULT_PARAMETERS.loss_function,
         ),
@@ -403,7 +411,7 @@ function _neural_network_builder(
 
     loss_fct = LOSS_FUNCTION_LIST[Symbol(
         get(
-            dict_kws,
+            kws,
             :neuralnet_loss_function,
             NEURALNET_DEFAULT_PARAMETERS.loss_function,
         ),
@@ -454,54 +462,56 @@ function _neural_network_builder(
     processor::MLJ.CPUProcesses,
     algorithm::Lbfgs,
     max_time::Dates.TimePeriod;
-    kws...,
+    kws_...,
 )
 
     # Get parameters from kwagrs for neural networks hyperparameters
-    dict_kws = Dict{Symbol,Any}(kws)
+    dict_kws = Dict{Symbol,Any}(kws_)
+    kws = get(dict_kws, :kws, kws_)
+
     activation_function = ACTIVATION_FUNCTION_LIST[Symbol(
         get(
-            dict_kws,
+            kws,
             :neuralnet_activation_function,
             NEURALNET_DEFAULT_PARAMETERS.activation_function,
         ),
     )]
     minimum_epochs = get(
-        dict_kws,
+        kws,
         :neuralnet_minimum_epochs,
         NEURALNET_DEFAULT_PARAMETERS.minimum_epochs,
     )
     maximum_epochs = get(
-        dict_kws,
+        kws,
         :neuralnet_maximum_epochs,
         NEURALNET_DEFAULT_PARAMETERS.maximum_epochs,
     )
     minimum_layers = get(
-        dict_kws,
+        kws,
         :neuralnet_minimum_layers,
         NEURALNET_DEFAULT_PARAMETERS.minimum_layers,
     )
     maximum_layers = get(
-        dict_kws,
+        kws,
         :neuralnet_maximum_layers,
         NEURALNET_DEFAULT_PARAMETERS.maximum_layers,
     )
     minimum_neuron = get(
-        dict_kws,
+        kws,
         :neuralnet_minimum_neuron,
         NEURALNET_DEFAULT_PARAMETERS.minimum_neuron,
     )
     maximum_neuron = get(
-        dict_kws,
+        kws,
         :neuralnet_maximum_neuron,
         NEURALNET_DEFAULT_PARAMETERS.maximum_neuron,
     )
     batch_size =
-        get(dict_kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
+        get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
     loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
         get(
-            dict_kws,
+            kws,
             :neuralnet_loss_function,
             NEURALNET_DEFAULT_PARAMETERS.loss_function,
         ),
@@ -509,7 +519,7 @@ function _neural_network_builder(
 
     loss_fct = LOSS_FUNCTION_LIST[Symbol(
         get(
-            dict_kws,
+            kws,
             :neuralnet_loss_function,
             NEURALNET_DEFAULT_PARAMETERS.loss_function,
         ),
@@ -558,54 +568,56 @@ function _neural_network_builder(
     processor::MLJ.CPUProcesses,
     algorithm::Pso,
     max_time::Dates.TimePeriod;
-    kws...,
+    kws_...,
 )
 
     # Get parameters from kwagrs for neural networks hyperparameters
-    dict_kws = Dict{Symbol,Any}(kws)
+    dict_kws = Dict{Symbol,Any}(kws_)
+    kws = get(dict_kws, :kws, kws_)
+
     activation_function = ACTIVATION_FUNCTION_LIST[Symbol(
         get(
-            dict_kws,
+            kws,
             :neuralnet_activation_function,
             NEURALNET_DEFAULT_PARAMETERS.activation_function,
         ),
     )]
     minimum_epochs = get(
-        dict_kws,
+        kws,
         :neuralnet_minimum_epochs,
         NEURALNET_DEFAULT_PARAMETERS.minimum_epochs,
     )
     maximum_epochs = get(
-        dict_kws,
+        kws,
         :neuralnet_maximum_epochs,
         NEURALNET_DEFAULT_PARAMETERS.maximum_epochs,
     )
     minimum_layers = get(
-        dict_kws,
+        kws,
         :neuralnet_minimum_layers,
         NEURALNET_DEFAULT_PARAMETERS.minimum_layers,
     )
     maximum_layers = get(
-        dict_kws,
+        kws,
         :neuralnet_maximum_layers,
         NEURALNET_DEFAULT_PARAMETERS.maximum_layers,
     )
     minimum_neuron = get(
-        dict_kws,
+        kws,
         :neuralnet_minimum_neuron,
         NEURALNET_DEFAULT_PARAMETERS.minimum_neuron,
     )
     maximum_neuron = get(
-        dict_kws,
+        kws,
         :neuralnet_maximum_neuron,
         NEURALNET_DEFAULT_PARAMETERS.maximum_neuron,
     )
     batch_size =
-        get(dict_kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
+        get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
     loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
         get(
-            dict_kws,
+            kws,
             :neuralnet_loss_function,
             NEURALNET_DEFAULT_PARAMETERS.loss_function,
         ),
@@ -613,7 +625,7 @@ function _neural_network_builder(
 
     loss_fct = LOSS_FUNCTION_LIST[Symbol(
         get(
-            dict_kws,
+            kws,
             :neuralnet_loss_function,
             NEURALNET_DEFAULT_PARAMETERS.loss_function,
         ),
@@ -662,54 +674,56 @@ function _neural_network_builder(
     processor::MLJ.CPUProcesses,
     algorithm::Oaccel,
     max_time::Dates.TimePeriod;
-    kws...,
+    kws_...,
 )
 
     # Get parameters from kwagrs for neural networks hyperparameters
-    dict_kws = Dict{Symbol,Any}(kws)
+    dict_kws = Dict{Symbol,Any}(kws_)
+    kws = get(dict_kws, :kws, kws_)
+
     activation_function = ACTIVATION_FUNCTION_LIST[Symbol(
         get(
-            dict_kws,
+            kws,
             :neuralnet_activation_function,
             NEURALNET_DEFAULT_PARAMETERS.activation_function,
         ),
     )]
     minimum_epochs = get(
-        dict_kws,
+        kws,
         :neuralnet_minimum_epochs,
         NEURALNET_DEFAULT_PARAMETERS.minimum_epochs,
     )
     maximum_epochs = get(
-        dict_kws,
+        kws,
         :neuralnet_maximum_epochs,
         NEURALNET_DEFAULT_PARAMETERS.maximum_epochs,
     )
     minimum_layers = get(
-        dict_kws,
+        kws,
         :neuralnet_minimum_layers,
         NEURALNET_DEFAULT_PARAMETERS.minimum_layers,
     )
     maximum_layers = get(
-        dict_kws,
+        kws,
         :neuralnet_maximum_layers,
         NEURALNET_DEFAULT_PARAMETERS.maximum_layers,
     )
     minimum_neuron = get(
-        dict_kws,
+        kws,
         :neuralnet_minimum_neuron,
         NEURALNET_DEFAULT_PARAMETERS.minimum_neuron,
     )
     maximum_neuron = get(
-        dict_kws,
+        kws,
         :neuralnet_maximum_neuron,
         NEURALNET_DEFAULT_PARAMETERS.maximum_neuron,
     )
     batch_size =
-        get(dict_kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
+        get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
     loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
         get(
-            dict_kws,
+            kws,
             :neuralnet_loss_function,
             NEURALNET_DEFAULT_PARAMETERS.loss_function,
         ),
@@ -717,7 +731,7 @@ function _neural_network_builder(
 
     loss_fct = LOSS_FUNCTION_LIST[Symbol(
         get(
-            dict_kws,
+            kws,
             :neuralnet_loss_function,
             NEURALNET_DEFAULT_PARAMETERS.loss_function,
         ),
@@ -771,54 +785,56 @@ function _neural_network_builder(
     processor::MLJ.CPUThreads,
     algorithm::Adam,
     max_time::Dates.TimePeriod;
-    kws...,
+    kws_...,
 )
 
     # Get parameters from kwagrs for neural networks hyperparameters
-    dict_kws = Dict{Symbol,Any}(kws)
+    dict_kws = Dict{Symbol,Any}(kws_)
+    kws = get(dict_kws, :kws, kws_)
+
     activation_function = ACTIVATION_FUNCTION_LIST[Symbol(
         get(
-            dict_kws,
+            kws,
             :neuralnet_activation_function,
             NEURALNET_DEFAULT_PARAMETERS.activation_function,
         ),
     )]
     minimum_epochs = get(
-        dict_kws,
+        kws,
         :neuralnet_minimum_epochs,
         NEURALNET_DEFAULT_PARAMETERS.minimum_epochs,
     )
     maximum_epochs = get(
-        dict_kws,
+        kws,
         :neuralnet_maximum_epochs,
         NEURALNET_DEFAULT_PARAMETERS.maximum_epochs,
     )
     minimum_layers = get(
-        dict_kws,
+        kws,
         :neuralnet_minimum_layers,
         NEURALNET_DEFAULT_PARAMETERS.minimum_layers,
     )
     maximum_layers = get(
-        dict_kws,
+        kws,
         :neuralnet_maximum_layers,
         NEURALNET_DEFAULT_PARAMETERS.maximum_layers,
     )
     minimum_neuron = get(
-        dict_kws,
+        kws,
         :neuralnet_minimum_neuron,
         NEURALNET_DEFAULT_PARAMETERS.minimum_neuron,
     )
     maximum_neuron = get(
-        dict_kws,
+        kws,
         :neuralnet_maximum_neuron,
         NEURALNET_DEFAULT_PARAMETERS.maximum_neuron,
     )
     batch_size =
-        get(dict_kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
+        get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
     loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
         get(
-            dict_kws,
+            kws,
             :neuralnet_loss_function,
             NEURALNET_DEFAULT_PARAMETERS.loss_function,
         ),
@@ -826,7 +842,7 @@ function _neural_network_builder(
 
     loss_fct = LOSS_FUNCTION_LIST[Symbol(
         get(
-            dict_kws,
+            kws,
             :neuralnet_loss_function,
             NEURALNET_DEFAULT_PARAMETERS.loss_function,
         ),
@@ -876,54 +892,56 @@ function _neural_network_builder(
     processor::MLJ.CPUThreads,
     algorithm::Radam,
     max_time::Dates.TimePeriod;
-    kws...,
+    kws_...,
 )
 
     # Get parameters from kwagrs for neural networks hyperparameters
-    dict_kws = Dict{Symbol,Any}(kws)
+    dict_kws = Dict{Symbol,Any}(kws_)
+    kws = get(dict_kws, :kws, kws_)
+
     activation_function = ACTIVATION_FUNCTION_LIST[Symbol(
         get(
-            dict_kws,
+            kws,
             :neuralnet_activation_function,
             NEURALNET_DEFAULT_PARAMETERS.activation_function,
         ),
     )]
     minimum_epochs = get(
-        dict_kws,
+        kws,
         :neuralnet_minimum_epochs,
         NEURALNET_DEFAULT_PARAMETERS.minimum_epochs,
     )
     maximum_epochs = get(
-        dict_kws,
+        kws,
         :neuralnet_maximum_epochs,
         NEURALNET_DEFAULT_PARAMETERS.maximum_epochs,
     )
     minimum_layers = get(
-        dict_kws,
+        kws,
         :neuralnet_minimum_layers,
         NEURALNET_DEFAULT_PARAMETERS.minimum_layers,
     )
     maximum_layers = get(
-        dict_kws,
+        kws,
         :neuralnet_maximum_layers,
         NEURALNET_DEFAULT_PARAMETERS.maximum_layers,
     )
     minimum_neuron = get(
-        dict_kws,
+        kws,
         :neuralnet_minimum_neuron,
         NEURALNET_DEFAULT_PARAMETERS.minimum_neuron,
     )
     maximum_neuron = get(
-        dict_kws,
+        kws,
         :neuralnet_maximum_neuron,
         NEURALNET_DEFAULT_PARAMETERS.maximum_neuron,
     )
     batch_size =
-        get(dict_kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
+        get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
     loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
         get(
-            dict_kws,
+            kws,
             :neuralnet_loss_function,
             NEURALNET_DEFAULT_PARAMETERS.loss_function,
         ),
@@ -931,7 +949,7 @@ function _neural_network_builder(
 
     loss_fct = LOSS_FUNCTION_LIST[Symbol(
         get(
-            dict_kws,
+            kws,
             :neuralnet_loss_function,
             NEURALNET_DEFAULT_PARAMETERS.loss_function,
         ),
@@ -981,54 +999,56 @@ function _neural_network_builder(
     processor::MLJ.CPUThreads,
     algorithm::Nadam,
     max_time::Dates.TimePeriod;
-    kws...,
+    kws_...,
 )
 
     # Get parameters from kwagrs for neural networks hyperparameters
-    dict_kws = Dict{Symbol,Any}(kws)
+    dict_kws = Dict{Symbol,Any}(kws_)
+    kws = get(dict_kws, :kws, kws_)
+
     activation_function = ACTIVATION_FUNCTION_LIST[Symbol(
         get(
-            dict_kws,
+            kws,
             :neuralnet_activation_function,
             NEURALNET_DEFAULT_PARAMETERS.activation_function,
         ),
     )]
     minimum_epochs = get(
-        dict_kws,
+        kws,
         :neuralnet_minimum_epochs,
         NEURALNET_DEFAULT_PARAMETERS.minimum_epochs,
     )
     maximum_epochs = get(
-        dict_kws,
+        kws,
         :neuralnet_maximum_epochs,
         NEURALNET_DEFAULT_PARAMETERS.maximum_epochs,
     )
     minimum_layers = get(
-        dict_kws,
+        kws,
         :neuralnet_minimum_layers,
         NEURALNET_DEFAULT_PARAMETERS.minimum_layers,
     )
     maximum_layers = get(
-        dict_kws,
+        kws,
         :neuralnet_maximum_layers,
         NEURALNET_DEFAULT_PARAMETERS.maximum_layers,
     )
     minimum_neuron = get(
-        dict_kws,
+        kws,
         :neuralnet_minimum_neuron,
         NEURALNET_DEFAULT_PARAMETERS.minimum_neuron,
     )
     maximum_neuron = get(
-        dict_kws,
+        kws,
         :neuralnet_maximum_neuron,
         NEURALNET_DEFAULT_PARAMETERS.maximum_neuron,
     )
     batch_size =
-        get(dict_kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
+        get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
     loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
         get(
-            dict_kws,
+            kws,
             :neuralnet_loss_function,
             NEURALNET_DEFAULT_PARAMETERS.loss_function,
         ),
@@ -1036,7 +1056,7 @@ function _neural_network_builder(
 
     loss_fct = LOSS_FUNCTION_LIST[Symbol(
         get(
-            dict_kws,
+            kws,
             :neuralnet_loss_function,
             NEURALNET_DEFAULT_PARAMETERS.loss_function,
         ),
@@ -1086,54 +1106,56 @@ function _neural_network_builder(
     processor::MLJ.CPUThreads,
     algorithm::Oadam,
     max_time::Dates.TimePeriod;
-    kws...,
+    kws_...,
 )
 
     # Get parameters from kwagrs for neural networks hyperparameters
-    dict_kws = Dict{Symbol,Any}(kws)
+    dict_kws = Dict{Symbol,Any}(kws_)
+    kws = get(dict_kws, :kws, kws_)
+
     activation_function = ACTIVATION_FUNCTION_LIST[Symbol(
         get(
-            dict_kws,
+            kws,
             :neuralnet_activation_function,
             NEURALNET_DEFAULT_PARAMETERS.activation_function,
         ),
     )]
     minimum_epochs = get(
-        dict_kws,
+        kws,
         :neuralnet_minimum_epochs,
         NEURALNET_DEFAULT_PARAMETERS.minimum_epochs,
     )
     maximum_epochs = get(
-        dict_kws,
+        kws,
         :neuralnet_maximum_epochs,
         NEURALNET_DEFAULT_PARAMETERS.maximum_epochs,
     )
     minimum_layers = get(
-        dict_kws,
+        kws,
         :neuralnet_minimum_layers,
         NEURALNET_DEFAULT_PARAMETERS.minimum_layers,
     )
     maximum_layers = get(
-        dict_kws,
+        kws,
         :neuralnet_maximum_layers,
         NEURALNET_DEFAULT_PARAMETERS.maximum_layers,
     )
     minimum_neuron = get(
-        dict_kws,
+        kws,
         :neuralnet_minimum_neuron,
         NEURALNET_DEFAULT_PARAMETERS.minimum_neuron,
     )
     maximum_neuron = get(
-        dict_kws,
+        kws,
         :neuralnet_maximum_neuron,
         NEURALNET_DEFAULT_PARAMETERS.maximum_neuron,
     )
     batch_size =
-        get(dict_kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
+        get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
     loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
         get(
-            dict_kws,
+            kws,
             :neuralnet_loss_function,
             NEURALNET_DEFAULT_PARAMETERS.loss_function,
         ),
@@ -1141,7 +1163,7 @@ function _neural_network_builder(
 
     loss_fct = LOSS_FUNCTION_LIST[Symbol(
         get(
-            dict_kws,
+            kws,
             :neuralnet_loss_function,
             NEURALNET_DEFAULT_PARAMETERS.loss_function,
         ),
@@ -1192,54 +1214,56 @@ function _neural_network_builder(
     processor::MLJ.CPUThreads,
     algorithm::Lbfgs,
     max_time::Dates.TimePeriod;
-    kws...,
+    kws_...,
 )
 
     # Get parameters from kwagrs for neural networks hyperparameters
-    dict_kws = Dict{Symbol,Any}(kws)
+    dict_kws = Dict{Symbol,Any}(kws_)
+    kws = get(dict_kws, :kws, kws_)
+
     activation_function = ACTIVATION_FUNCTION_LIST[Symbol(
         get(
-            dict_kws,
+            kws,
             :neuralnet_activation_function,
             NEURALNET_DEFAULT_PARAMETERS.activation_function,
         ),
     )]
     minimum_epochs = get(
-        dict_kws,
+        kws,
         :neuralnet_minimum_epochs,
         NEURALNET_DEFAULT_PARAMETERS.minimum_epochs,
     )
     maximum_epochs = get(
-        dict_kws,
+        kws,
         :neuralnet_maximum_epochs,
         NEURALNET_DEFAULT_PARAMETERS.maximum_epochs,
     )
     minimum_layers = get(
-        dict_kws,
+        kws,
         :neuralnet_minimum_layers,
         NEURALNET_DEFAULT_PARAMETERS.minimum_layers,
     )
     maximum_layers = get(
-        dict_kws,
+        kws,
         :neuralnet_maximum_layers,
         NEURALNET_DEFAULT_PARAMETERS.maximum_layers,
     )
     minimum_neuron = get(
-        dict_kws,
+        kws,
         :neuralnet_minimum_neuron,
         NEURALNET_DEFAULT_PARAMETERS.minimum_neuron,
     )
     maximum_neuron = get(
-        dict_kws,
+        kws,
         :neuralnet_maximum_neuron,
         NEURALNET_DEFAULT_PARAMETERS.maximum_neuron,
     )
     batch_size =
-        get(dict_kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
+        get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
     loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
         get(
-            dict_kws,
+            kws,
             :neuralnet_loss_function,
             NEURALNET_DEFAULT_PARAMETERS.loss_function,
         ),
@@ -1247,7 +1271,7 @@ function _neural_network_builder(
 
     loss_fct = LOSS_FUNCTION_LIST[Symbol(
         get(
-            dict_kws,
+            kws,
             :neuralnet_loss_function,
             NEURALNET_DEFAULT_PARAMETERS.loss_function,
         ),
@@ -1296,54 +1320,56 @@ function _neural_network_builder(
     processor::MLJ.CPUThreads,
     algorithm::Pso,
     max_time::Dates.TimePeriod;
-    kws...,
+    kws_...,
 )
 
     # Get parameters from kwagrs for neural networks hyperparameters
-    dict_kws = Dict{Symbol,Any}(kws)
+    dict_kws = Dict{Symbol,Any}(kws_)
+    kws = get(dict_kws, :kws, kws_)
+
     activation_function = ACTIVATION_FUNCTION_LIST[Symbol(
         get(
-            dict_kws,
+            kws,
             :neuralnet_activation_function,
             NEURALNET_DEFAULT_PARAMETERS.activation_function,
         ),
     )]
     minimum_epochs = get(
-        dict_kws,
+        kws,
         :neuralnet_minimum_epochs,
         NEURALNET_DEFAULT_PARAMETERS.minimum_epochs,
     )
     maximum_epochs = get(
-        dict_kws,
+        kws,
         :neuralnet_maximum_epochs,
         NEURALNET_DEFAULT_PARAMETERS.maximum_epochs,
     )
     minimum_layers = get(
-        dict_kws,
+        kws,
         :neuralnet_minimum_layers,
         NEURALNET_DEFAULT_PARAMETERS.minimum_layers,
     )
     maximum_layers = get(
-        dict_kws,
+        kws,
         :neuralnet_maximum_layers,
         NEURALNET_DEFAULT_PARAMETERS.maximum_layers,
     )
     minimum_neuron = get(
-        dict_kws,
+        kws,
         :neuralnet_minimum_neuron,
         NEURALNET_DEFAULT_PARAMETERS.minimum_neuron,
     )
     maximum_neuron = get(
-        dict_kws,
+        kws,
         :neuralnet_maximum_neuron,
         NEURALNET_DEFAULT_PARAMETERS.maximum_neuron,
     )
     batch_size =
-        get(dict_kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
+        get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
     loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
         get(
-            dict_kws,
+            kws,
             :neuralnet_loss_function,
             NEURALNET_DEFAULT_PARAMETERS.loss_function,
         ),
@@ -1351,7 +1377,7 @@ function _neural_network_builder(
 
     loss_fct = LOSS_FUNCTION_LIST[Symbol(
         get(
-            dict_kws,
+            kws,
             :neuralnet_loss_function,
             NEURALNET_DEFAULT_PARAMETERS.loss_function,
         ),
@@ -1400,54 +1426,56 @@ function _neural_network_builder(
     processor::MLJ.CPUThreads,
     algorithm::Oaccel,
     max_time::Dates.TimePeriod;
-    kws...,
+    kws_...,
 )
 
     # Get parameters from kwagrs for neural networks hyperparameters
-    dict_kws = Dict{Symbol,Any}(kws)
+    dict_kws = Dict{Symbol,Any}(kws_)
+    kws = get(dict_kws, :kws, kws_)
+
     activation_function = ACTIVATION_FUNCTION_LIST[Symbol(
         get(
-            dict_kws,
+            kws,
             :neuralnet_activation_function,
             NEURALNET_DEFAULT_PARAMETERS.activation_function,
         ),
     )]
     minimum_epochs = get(
-        dict_kws,
+        kws,
         :neuralnet_minimum_epochs,
         NEURALNET_DEFAULT_PARAMETERS.minimum_epochs,
     )
     maximum_epochs = get(
-        dict_kws,
+        kws,
         :neuralnet_maximum_epochs,
         NEURALNET_DEFAULT_PARAMETERS.maximum_epochs,
     )
     minimum_layers = get(
-        dict_kws,
+        kws,
         :neuralnet_minimum_layers,
         NEURALNET_DEFAULT_PARAMETERS.minimum_layers,
     )
     maximum_layers = get(
-        dict_kws,
+        kws,
         :neuralnet_maximum_layers,
         NEURALNET_DEFAULT_PARAMETERS.maximum_layers,
     )
     minimum_neuron = get(
-        dict_kws,
+        kws,
         :neuralnet_minimum_neuron,
         NEURALNET_DEFAULT_PARAMETERS.minimum_neuron,
     )
     maximum_neuron = get(
-        dict_kws,
+        kws,
         :neuralnet_maximum_neuron,
         NEURALNET_DEFAULT_PARAMETERS.maximum_neuron,
     )
     batch_size =
-        get(dict_kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
+        get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
     loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
         get(
-            dict_kws,
+            kws,
             :neuralnet_loss_function,
             NEURALNET_DEFAULT_PARAMETERS.loss_function,
         ),
@@ -1455,7 +1483,7 @@ function _neural_network_builder(
 
     loss_fct = LOSS_FUNCTION_LIST[Symbol(
         get(
-            dict_kws,
+            kws,
             :neuralnet_loss_function,
             NEURALNET_DEFAULT_PARAMETERS.loss_function,
         ),
@@ -1507,54 +1535,56 @@ function _neural_network_builder(
     processor::MLJ.CPU1,
     algorithm::Adam,
     max_time::Dates.TimePeriod;
-    kws...,
+    kws_...,
 )
 
     # Get parameters from kwagrs for neural networks hyperparameters
-    dict_kws = Dict{Symbol,Any}(kws)
+    dict_kws = Dict{Symbol,Any}(kws_)
+    kws = get(dict_kws, :kws, kws_)
+
     activation_function = ACTIVATION_FUNCTION_LIST[Symbol(
         get(
-            dict_kws,
+            kws,
             :neuralnet_activation_function,
             NEURALNET_DEFAULT_PARAMETERS.activation_function,
         ),
     )]
     minimum_epochs = get(
-        dict_kws,
+        kws,
         :neuralnet_minimum_epochs,
         NEURALNET_DEFAULT_PARAMETERS.minimum_epochs,
     )
     maximum_epochs = get(
-        dict_kws,
+        kws,
         :neuralnet_maximum_epochs,
         NEURALNET_DEFAULT_PARAMETERS.maximum_epochs,
     )
     minimum_layers = get(
-        dict_kws,
+        kws,
         :neuralnet_minimum_layers,
         NEURALNET_DEFAULT_PARAMETERS.minimum_layers,
     )
     maximum_layers = get(
-        dict_kws,
+        kws,
         :neuralnet_maximum_layers,
         NEURALNET_DEFAULT_PARAMETERS.maximum_layers,
     )
     minimum_neuron = get(
-        dict_kws,
+        kws,
         :neuralnet_minimum_neuron,
         NEURALNET_DEFAULT_PARAMETERS.minimum_neuron,
     )
     maximum_neuron = get(
-        dict_kws,
+        kws,
         :neuralnet_maximum_neuron,
         NEURALNET_DEFAULT_PARAMETERS.maximum_neuron,
     )
     batch_size =
-        get(dict_kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
+        get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
     loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
         get(
-            dict_kws,
+            kws,
             :neuralnet_loss_function,
             NEURALNET_DEFAULT_PARAMETERS.loss_function,
         ),
@@ -1562,7 +1592,7 @@ function _neural_network_builder(
 
     loss_fct = LOSS_FUNCTION_LIST[Symbol(
         get(
-            dict_kws,
+            kws,
             :neuralnet_loss_function,
             NEURALNET_DEFAULT_PARAMETERS.loss_function,
         ),
@@ -1612,54 +1642,56 @@ function _neural_network_builder(
     processor::MLJ.CPU1,
     algorithm::Radam,
     max_time::Dates.TimePeriod;
-    kws...,
+    kws_...,
 )
 
     # Get parameters from kwagrs for neural networks hyperparameters
-    dict_kws = Dict{Symbol,Any}(kws)
+    dict_kws = Dict{Symbol,Any}(kws_)
+    kws = get(dict_kws, :kws, kws_)
+
     activation_function = ACTIVATION_FUNCTION_LIST[Symbol(
         get(
-            dict_kws,
+            kws,
             :neuralnet_activation_function,
             NEURALNET_DEFAULT_PARAMETERS.activation_function,
         ),
     )]
     minimum_epochs = get(
-        dict_kws,
+        kws,
         :neuralnet_minimum_epochs,
         NEURALNET_DEFAULT_PARAMETERS.minimum_epochs,
     )
     maximum_epochs = get(
-        dict_kws,
+        kws,
         :neuralnet_maximum_epochs,
         NEURALNET_DEFAULT_PARAMETERS.maximum_epochs,
     )
     minimum_layers = get(
-        dict_kws,
+        kws,
         :neuralnet_minimum_layers,
         NEURALNET_DEFAULT_PARAMETERS.minimum_layers,
     )
     maximum_layers = get(
-        dict_kws,
+        kws,
         :neuralnet_maximum_layers,
         NEURALNET_DEFAULT_PARAMETERS.maximum_layers,
     )
     minimum_neuron = get(
-        dict_kws,
+        kws,
         :neuralnet_minimum_neuron,
         NEURALNET_DEFAULT_PARAMETERS.minimum_neuron,
     )
     maximum_neuron = get(
-        dict_kws,
+        kws,
         :neuralnet_maximum_neuron,
         NEURALNET_DEFAULT_PARAMETERS.maximum_neuron,
     )
     batch_size =
-        get(dict_kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
+        get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
     loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
         get(
-            dict_kws,
+            kws,
             :neuralnet_loss_function,
             NEURALNET_DEFAULT_PARAMETERS.loss_function,
         ),
@@ -1667,7 +1699,7 @@ function _neural_network_builder(
 
     loss_fct = LOSS_FUNCTION_LIST[Symbol(
         get(
-            dict_kws,
+            kws,
             :neuralnet_loss_function,
             NEURALNET_DEFAULT_PARAMETERS.loss_function,
         ),
@@ -1717,54 +1749,56 @@ function _neural_network_builder(
     processor::MLJ.CPU1,
     algorithm::Nadam,
     max_time::Dates.TimePeriod;
-    kws...,
+    kws_...,
 )
 
     # Get parameters from kwagrs for neural networks hyperparameters
-    dict_kws = Dict{Symbol,Any}(kws)
+    dict_kws = Dict{Symbol,Any}(kws_)
+    kws = get(dict_kws, :kws, kws_)
+
     activation_function = ACTIVATION_FUNCTION_LIST[Symbol(
         get(
-            dict_kws,
+            kws,
             :neuralnet_activation_function,
             NEURALNET_DEFAULT_PARAMETERS.activation_function,
         ),
     )]
     minimum_epochs = get(
-        dict_kws,
+        kws,
         :neuralnet_minimum_epochs,
         NEURALNET_DEFAULT_PARAMETERS.minimum_epochs,
     )
     maximum_epochs = get(
-        dict_kws,
+        kws,
         :neuralnet_maximum_epochs,
         NEURALNET_DEFAULT_PARAMETERS.maximum_epochs,
     )
     minimum_layers = get(
-        dict_kws,
+        kws,
         :neuralnet_minimum_layers,
         NEURALNET_DEFAULT_PARAMETERS.minimum_layers,
     )
     maximum_layers = get(
-        dict_kws,
+        kws,
         :neuralnet_maximum_layers,
         NEURALNET_DEFAULT_PARAMETERS.maximum_layers,
     )
     minimum_neuron = get(
-        dict_kws,
+        kws,
         :neuralnet_minimum_neuron,
         NEURALNET_DEFAULT_PARAMETERS.minimum_neuron,
     )
     maximum_neuron = get(
-        dict_kws,
+        kws,
         :neuralnet_maximum_neuron,
         NEURALNET_DEFAULT_PARAMETERS.maximum_neuron,
     )
     batch_size =
-        get(dict_kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
+        get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
     loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
         get(
-            dict_kws,
+            kws,
             :neuralnet_loss_function,
             NEURALNET_DEFAULT_PARAMETERS.loss_function,
         ),
@@ -1772,7 +1806,7 @@ function _neural_network_builder(
 
     loss_fct = LOSS_FUNCTION_LIST[Symbol(
         get(
-            dict_kws,
+            kws,
             :neuralnet_loss_function,
             NEURALNET_DEFAULT_PARAMETERS.loss_function,
         ),
@@ -1822,54 +1856,56 @@ function _neural_network_builder(
     processor::MLJ.CPU1,
     algorithm::Oadam,
     max_time::Dates.TimePeriod;
-    kws...,
+    kws_...,
 )
 
     # Get parameters from kwagrs for neural networks hyperparameters
-    dict_kws = Dict{Symbol,Any}(kws)
+    dict_kws = Dict{Symbol,Any}(kws_)
+    kws = get(dict_kws, :kws, kws_)
+
     activation_function = ACTIVATION_FUNCTION_LIST[Symbol(
         get(
-            dict_kws,
+            kws,
             :neuralnet_activation_function,
             NEURALNET_DEFAULT_PARAMETERS.activation_function,
         ),
     )]
     minimum_epochs = get(
-        dict_kws,
+        kws,
         :neuralnet_minimum_epochs,
         NEURALNET_DEFAULT_PARAMETERS.minimum_epochs,
     )
     maximum_epochs = get(
-        dict_kws,
+        kws,
         :neuralnet_maximum_epochs,
         NEURALNET_DEFAULT_PARAMETERS.maximum_epochs,
     )
     minimum_layers = get(
-        dict_kws,
+        kws,
         :neuralnet_minimum_layers,
         NEURALNET_DEFAULT_PARAMETERS.minimum_layers,
     )
     maximum_layers = get(
-        dict_kws,
+        kws,
         :neuralnet_maximum_layers,
         NEURALNET_DEFAULT_PARAMETERS.maximum_layers,
     )
     minimum_neuron = get(
-        dict_kws,
+        kws,
         :neuralnet_minimum_neuron,
         NEURALNET_DEFAULT_PARAMETERS.minimum_neuron,
     )
     maximum_neuron = get(
-        dict_kws,
+        kws,
         :neuralnet_maximum_neuron,
         NEURALNET_DEFAULT_PARAMETERS.maximum_neuron,
     )
     batch_size =
-        get(dict_kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
+        get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
     loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
         get(
-            dict_kws,
+            kws,
             :neuralnet_loss_function,
             NEURALNET_DEFAULT_PARAMETERS.loss_function,
         ),
@@ -1877,7 +1913,7 @@ function _neural_network_builder(
 
     loss_fct = LOSS_FUNCTION_LIST[Symbol(
         get(
-            dict_kws,
+            kws,
             :neuralnet_loss_function,
             NEURALNET_DEFAULT_PARAMETERS.loss_function,
         ),
@@ -1928,54 +1964,56 @@ function _neural_network_builder(
     processor::MLJ.CPU1,
     algorithm::Lbfgs,
     max_time::Dates.TimePeriod;
-    kws...,
+    kws_...,
 )
 
     # Get parameters from kwagrs for neural networks hyperparameters
-    dict_kws = Dict{Symbol,Any}(kws)
+    dict_kws = Dict{Symbol,Any}(kws_)
+    kws = get(dict_kws, :kws, kws_)
+
     activation_function = ACTIVATION_FUNCTION_LIST[Symbol(
         get(
-            dict_kws,
+            kws,
             :neuralnet_activation_function,
             NEURALNET_DEFAULT_PARAMETERS.activation_function,
         ),
     )]
     minimum_epochs = get(
-        dict_kws,
+        kws,
         :neuralnet_minimum_epochs,
         NEURALNET_DEFAULT_PARAMETERS.minimum_epochs,
     )
     maximum_epochs = get(
-        dict_kws,
+        kws,
         :neuralnet_maximum_epochs,
         NEURALNET_DEFAULT_PARAMETERS.maximum_epochs,
     )
     minimum_layers = get(
-        dict_kws,
+        kws,
         :neuralnet_minimum_layers,
         NEURALNET_DEFAULT_PARAMETERS.minimum_layers,
     )
     maximum_layers = get(
-        dict_kws,
+        kws,
         :neuralnet_maximum_layers,
         NEURALNET_DEFAULT_PARAMETERS.maximum_layers,
     )
     minimum_neuron = get(
-        dict_kws,
+        kws,
         :neuralnet_minimum_neuron,
         NEURALNET_DEFAULT_PARAMETERS.minimum_neuron,
     )
     maximum_neuron = get(
-        dict_kws,
+        kws,
         :neuralnet_maximum_neuron,
         NEURALNET_DEFAULT_PARAMETERS.maximum_neuron,
     )
     batch_size =
-        get(dict_kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
+        get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
     loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
         get(
-            dict_kws,
+            kws,
             :neuralnet_loss_function,
             NEURALNET_DEFAULT_PARAMETERS.loss_function,
         ),
@@ -1983,7 +2021,7 @@ function _neural_network_builder(
 
     loss_fct = LOSS_FUNCTION_LIST[Symbol(
         get(
-            dict_kws,
+            kws,
             :neuralnet_loss_function,
             NEURALNET_DEFAULT_PARAMETERS.loss_function,
         ),
@@ -2032,54 +2070,56 @@ function _neural_network_builder(
     processor::MLJ.CPU1,
     algorithm::Pso,
     max_time::Dates.TimePeriod;
-    kws...,
+    kws_...,
 )
 
     # Get parameters from kwagrs for neural networks hyperparameters
-    dict_kws = Dict{Symbol,Any}(kws)
+    dict_kws = Dict{Symbol,Any}(kws_)
+    kws = get(dict_kws, :kws, kws_)
+
     activation_function = ACTIVATION_FUNCTION_LIST[Symbol(
         get(
-            dict_kws,
+            kws,
             :neuralnet_activation_function,
             NEURALNET_DEFAULT_PARAMETERS.activation_function,
         ),
     )]
     minimum_epochs = get(
-        dict_kws,
+        kws,
         :neuralnet_minimum_epochs,
         NEURALNET_DEFAULT_PARAMETERS.minimum_epochs,
     )
     maximum_epochs = get(
-        dict_kws,
+        kws,
         :neuralnet_maximum_epochs,
         NEURALNET_DEFAULT_PARAMETERS.maximum_epochs,
     )
     minimum_layers = get(
-        dict_kws,
+        kws,
         :neuralnet_minimum_layers,
         NEURALNET_DEFAULT_PARAMETERS.minimum_layers,
     )
     maximum_layers = get(
-        dict_kws,
+        kws,
         :neuralnet_maximum_layers,
         NEURALNET_DEFAULT_PARAMETERS.maximum_layers,
     )
     minimum_neuron = get(
-        dict_kws,
+        kws,
         :neuralnet_minimum_neuron,
         NEURALNET_DEFAULT_PARAMETERS.minimum_neuron,
     )
     maximum_neuron = get(
-        dict_kws,
+        kws,
         :neuralnet_maximum_neuron,
         NEURALNET_DEFAULT_PARAMETERS.maximum_neuron,
     )
     batch_size =
-        get(dict_kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
+        get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
     loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
         get(
-            dict_kws,
+            kws,
             :neuralnet_loss_function,
             NEURALNET_DEFAULT_PARAMETERS.loss_function,
         ),
@@ -2087,7 +2127,7 @@ function _neural_network_builder(
 
     loss_fct = LOSS_FUNCTION_LIST[Symbol(
         get(
-            dict_kws,
+            kws,
             :neuralnet_loss_function,
             NEURALNET_DEFAULT_PARAMETERS.loss_function,
         ),
@@ -2136,54 +2176,56 @@ function _neural_network_builder(
     processor::MLJ.CPU1,
     algorithm::Oaccel,
     max_time::Dates.TimePeriod;
-    kws...,
+    kws_...,
 )
 
     # Get parameters from kwagrs for neural networks hyperparameters
-    dict_kws = Dict{Symbol,Any}(kws)
+    dict_kws = Dict{Symbol,Any}(kws_)
+    kws = get(dict_kws, :kws, kws_)
+    
     activation_function = ACTIVATION_FUNCTION_LIST[Symbol(
         get(
-            dict_kws,
+            kws,
             :neuralnet_activation_function,
             NEURALNET_DEFAULT_PARAMETERS.activation_function,
         ),
     )]
     minimum_epochs = get(
-        dict_kws,
+        kws,
         :neuralnet_minimum_epochs,
         NEURALNET_DEFAULT_PARAMETERS.minimum_epochs,
     )
     maximum_epochs = get(
-        dict_kws,
+        kws,
         :neuralnet_maximum_epochs,
         NEURALNET_DEFAULT_PARAMETERS.maximum_epochs,
     )
     minimum_layers = get(
-        dict_kws,
+        kws,
         :neuralnet_minimum_layers,
         NEURALNET_DEFAULT_PARAMETERS.minimum_layers,
     )
     maximum_layers = get(
-        dict_kws,
+        kws,
         :neuralnet_maximum_layers,
         NEURALNET_DEFAULT_PARAMETERS.maximum_layers,
     )
     minimum_neuron = get(
-        dict_kws,
+        kws,
         :neuralnet_minimum_neuron,
         NEURALNET_DEFAULT_PARAMETERS.minimum_neuron,
     )
     maximum_neuron = get(
-        dict_kws,
+        kws,
         :neuralnet_maximum_neuron,
         NEURALNET_DEFAULT_PARAMETERS.maximum_neuron,
     )
     batch_size =
-        get(dict_kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
+        get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
     loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
         get(
-            dict_kws,
+            kws,
             :neuralnet_loss_function,
             NEURALNET_DEFAULT_PARAMETERS.loss_function,
         ),
@@ -2191,7 +2233,7 @@ function _neural_network_builder(
 
     loss_fct = LOSS_FUNCTION_LIST[Symbol(
         get(
-            dict_kws,
+            kws,
             :neuralnet_loss_function,
             NEURALNET_DEFAULT_PARAMETERS.loss_function,
         ),

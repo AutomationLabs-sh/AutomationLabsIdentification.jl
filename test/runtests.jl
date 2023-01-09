@@ -29,6 +29,10 @@ print("Testing Hyperparameters Optimization...")
 took_seconds = @elapsed include("./hyperparameters_optimization_test.jl");
 println("done (took ", took_seconds, " seconds)")
 
+print("Testing losses functions...")
+took_seconds = @elapsed include("./losses_functions_test.jl");
+println("done (took ", took_seconds, " seconds)")
+
 # QTP identification with linear model
 print("Testing QTP identification with linear model and lls algorithm...")
 took_seconds = @elapsed include("./qtp_non_iterable_models.jl");

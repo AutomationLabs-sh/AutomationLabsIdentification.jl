@@ -65,7 +65,7 @@ end
 
     nbr_neuron = 5
     # test neural convexity
-    import Identification: DenseIcnn
+    import AutomationLabsIdentification: DenseIcnn
 
     inner_icnn = DenseIcnn(nbr_neuron, nbr_neuron)
     @test (inner_icnn.weight .>= 0.0) == ones(Bool, nbr_neuron, nbr_neuron)
