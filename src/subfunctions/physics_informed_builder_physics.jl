@@ -44,13 +44,18 @@ function physics_informed_builder(
     nbr_states::Int,
     sample_time::Float64,
     maximum_time::Union{Float64,Dates.TimePeriod};
-    kws...,
+    kws_...,
 )
 
     # Get optional parameters
-    dict_kws = Dict{Symbol,Any}(kws)
-    lower_params = get(dict_kws, :lower_params, [-Inf])
-    upper_params = get(dict_kws, :upper_params, [Inf])
+    dict_kws = Dict{Symbol,Any}(kws_)
+    kws = get(dict_kws, :kws, kws_)
+    
+    lower_params = get(kws, :lower_params, [-Inf])
+    upper_params = get(kws, :upper_params, [Inf])
+
+    batch_size =
+    get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
     # f physical definition
     model_f = MLJFlux.MultitargetNeuralNetworkRegressor(
@@ -63,7 +68,7 @@ function physics_informed_builder(
             lower_p = lower_params,
             upper_p = upper_params,
         ),
-        batch_size = 512,
+        batch_size = batch_size,
         optimiser = Optim.LBFGS(),
         epochs = 50,
         loss = Flux.Losses.mae,
@@ -92,14 +97,19 @@ function physics_informed_builder(
     nbr_inputs::Int,
     nbr_states::Int,
     sample_time::Float64,
-    maximum_time::Union{Float64,Dates.TimePeriod};
-    kws...,
+    maximum_time::Dates.TimePeriod;
+    kws_...,
 )
 
     # Get optional parameters
-    dict_kws = Dict{Symbol,Any}(kws)
-    lower_params = get(dict_kws, :lower_params, [-Inf])
-    upper_params = get(dict_kws, :upper_params, [Inf])
+    dict_kws = Dict{Symbol,Any}(kws_)
+    kws = get(dict_kws, :kws, kws_)
+
+    lower_params = get(kws, :lower_params, [-Inf])
+    upper_params = get(kws, :upper_params, [Inf])
+
+    batch_size =
+        get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
     # f physical definition
     model_f = MLJFlux.MultitargetNeuralNetworkRegressor(
@@ -112,7 +122,7 @@ function physics_informed_builder(
             lower_p = lower_params,
             upper_p = upper_params,
         ),
-        batch_size = 512,
+        batch_size = batch_size,
         optimiser = Optim.ParticleSwarm(),
         epochs = 50,
         loss = Flux.Losses.mae,
@@ -133,13 +143,13 @@ function physics_informed_builder(
     return iterated_model
 end
 
-#=
-#ooaccel solver cannot have constraint on trainable parameters
 
+#ooaccel solver cannot have constraint on trainable parameters
+#=
 function physics_informed_builder(
     architecture::physicsinformed,
     f::Function,
-    solver::oaccel,
+    solver::Oaccel,
     init_t_p::Vector,
     nbr_inputs::Int,
     nbr_states::Int,
@@ -179,5 +189,6 @@ function physics_informed_builder(
 
     return iterated_model
 end
-
 =#
+
+

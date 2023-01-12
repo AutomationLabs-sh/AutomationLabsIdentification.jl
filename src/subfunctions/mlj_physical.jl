@@ -74,7 +74,9 @@ end
 function (m::PhysicsInformed)(in::AbstractVecOrMat)
 
     function prob_func(prob, i, repeat)
-        DifferentialEquations.remake(prob, u0 = in[:, i])
+       #return  DifferentialEquations.remake(prob, u0 = in[:, i])
+       @. prob.u0 = in[:, i] #+ prob.u0#[:, i] #remake does not work any more, which cause mutable array and Zygote issues ERROR: "No matching function wrapper was found!"
+       return prob
     end
 
     ensemble_prob = DifferentialEquations.EnsembleProblem(m.prob, prob_func = prob_func)
@@ -88,14 +90,10 @@ function (m::PhysicsInformed)(in::AbstractVecOrMat)
 
     sol_element = map(p -> p.u, sol)
 
-    return reshape(
-        reduce(hcat, reduce(hcat, sol_element)')',
-        (m.nbr_state + m.nbr_input),
-        :,
-    )[
-        1:m.nbr_state,
-        :,
-    ]
+    #return reshape(reduce(hcat, reduce(hcat, sol_element)')', (m.nbr_state + m.nbr_input), :)[1:m.nbr_state,:]
+    #return reshape(reduce(vcat,reduce(vcat, sol_element)), (m.nbr_state + m.nbr_input) ,:)[1:m.nbr_state,:]
+    return  hcat(reduce(vcat, sol_element)...)[1:m.nbr_state,:]
+
 end
 
 

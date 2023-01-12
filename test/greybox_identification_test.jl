@@ -21,8 +21,33 @@ using AutomationLabsIdentification
 @testset "Physicsinformed grey box identification " begin
 
     # load the inputs and outputs data
-    dfout = DataFrame(CSV.File("./data_QTP/data_outputs.csv"))[1:2500, :]
-    dfin = DataFrame(CSV.File("./data_QTP/data_inputs_m3h.csv"))[1:2500, :]
+    dfout = DataFrame(CSV.File("./data_QTP/data_outputs.csv"))
+    dfin = DataFrame(CSV.File("./data_QTP/data_inputs_m3h.csv"))
+
+    n_sequence = 64
+    normalisation = false
+
+    lower_in = [0.2 0.2 0.2 0.2 0 0]
+    upper_in = [1.2 1.2 1.2 1.2 Inf Inf]
+
+    lower_out = [0.2 0.2 0.2 0.2]
+    upper_out = [1.2 1.2 1.2 1.2]
+
+    # Separate data between test and train data
+    DataTrainTest = data_formatting_identification(
+        dfin,
+        dfout,
+        n_sequence = n_sequence,
+        normalisation = normalisation,
+        data_type = Float32,
+        data_lower_input = lower_in,
+        data_upper_input = upper_in,
+        data_lower_output = lower_out,
+        data_upper_output = upper_out,
+    )
+
+    in_data = (DataTrainTest.TrainDataIn)
+    out_data = (DataTrainTest.TrainDataOut)
 
     function QTP(du, u, p, t)
         #constant parameters
@@ -60,7 +85,7 @@ using AutomationLabsIdentification
     end
 
 
-    #kwargs
+    #arguments and constraints on parameters
     lower_in = [0.2 0.2 0.2 0.2 -Inf -Inf]
     upper_in = [1.32 1.32 1.32 1.32 Inf Inf]
 
@@ -75,12 +100,10 @@ using AutomationLabsIdentification
     sample_time = 5.0
 
     grey_box_model_1 = proceed_identification(
-        QTP,
-        dfin,
-        dfout,
-        "LBFGS",
-        "PhysicsInformed",
-        "CPU",
+        in_data,
+        out_data,
+        "lbfgs",
+        "physics_informed",
         Minute(1);
         #option parameters
         f = QTP,
@@ -92,7 +115,8 @@ using AutomationLabsIdentification
         data_upper_output = upper_out,
         lower_params = lower_params,
         upper_params = upper_params,
-        computation_verbosity = 0,
+        computation_verbosity = 5,
+        neuralnet_batch_size = n_sequence,
     )
 
     grey_box_model_3 = greybox_identification(
@@ -117,10 +141,15 @@ using AutomationLabsIdentification
 
     #Get best models
     greybox_best_model_chain_1 =
-        fitted_params(fitted_params(grey_box_model_1[1]).machine).chain
+        fitted_params(fitted_params(grey_box_model_1).machine).chain
 
     greybox_best_model_chain_3 =
         fitted_params(fitted_params(grey_box_model_3[1]).machine).chain
+
+    mae_Train_greybox_model_1 = Flux.mae(
+        greybox_best_model_chain_1(Matrix(in_data)'),
+        Matrix(out_data)',
+    )
 
     mae_Train_greybox_model_1 = Flux.mae(
             greybox_best_model_chain_1(Matrix(grey_box_model_1[2].TrainDataIn)'),

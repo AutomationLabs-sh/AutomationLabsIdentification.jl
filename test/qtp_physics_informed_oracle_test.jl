@@ -20,8 +20,8 @@ using Distributed
 
 using AutomationLabsIdentification
 
-import AutomationLabsIdentification: PhysicsInformed
-import AutomationLabsIdentification: PhysicsInformedOracle
+import AutomationLabsIdentification: physics_informed
+import AutomationLabsIdentification: physics_informed_oracle
 import AutomationLabsIdentification: Fnn
 
 @testset "PhysicsInformed" begin
@@ -40,7 +40,7 @@ import AutomationLabsIdentification: Fnn
     lower_out = [0.2 0.2 0.2 0.2]
     upper_out = [1.32 1.32 1.32 1.32]
 
-    DataTrainTest = Identification.data_formatting_identification(
+    DataTrainTest = data_formatting_identification(
         dfin,
         dfout;
         n_delay = n_delay,
@@ -100,7 +100,7 @@ import AutomationLabsIdentification: Fnn
 
     # QTP physical definition
     model_qtp = MLJFlux.MultitargetNeuralNetworkRegressor(
-        builder = Identification.physics_informed(
+        builder = physics_informed(
             QTP,
             init_t_p,
             nbr_states,
@@ -223,7 +223,7 @@ end
 
     # QTP physical definition
     model_qtp_oracle = MLJFlux.MultitargetNeuralNetworkRegressor(
-        builder = Identification.physics_informed_oracle(
+        builder = physics_informed_oracle(
             QTP,
             nbr_states,
             nbr_inputs,

@@ -291,7 +291,7 @@ end
     #test neural Ode
     @test size.(Flux.params(model_neural_ode_trained)) == [(70,)]
     @test size.(Flux.params(inner_chain)) == [(5, 1), (5, 5), (5,), (5, 5), (5,), (1, 5)]
-    @test model_neural_ode_trained[1].tspan == (0, 0.001)
+    @test model_neural_ode_trained[1].tspan == (0.0f0, 0.001f0)
     @test model_neural_ode_trained[1].args == (DifferentialEquations.BS3(),)
     @test values(model_neural_ode_trained[1].kwargs) ==
           (save_everystep = false, reltol = 1e-6, abstol = 1e-6, save_start = false)

@@ -176,7 +176,7 @@ function greybox_identification(
     verbosity = get(kws, :computation_verbosity, 0)
 
     # df all size
-    n_inputs = size(train_dfin, 2)
+    n_inputs = size(train_dfin, 2) - size(train_dfout, 2)
     n_outputs = size(train_dfout, 2)
 
     # Architecture selection, fnn, physics_informed_builder, densenet, icnn
