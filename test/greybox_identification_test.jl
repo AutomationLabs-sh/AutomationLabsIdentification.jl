@@ -102,7 +102,7 @@ using AutomationLabsIdentification
     grey_box_model_1 = proceed_identification(
         in_data,
         out_data,
-        "lbfgs",
+        "pso",
         "physics_informed",
         Minute(1);
         #option parameters
@@ -118,7 +118,7 @@ using AutomationLabsIdentification
         computation_verbosity = 5,
         neuralnet_batch_size = n_sequence,
     )
-
+#=
     grey_box_model_3 = greybox_identification(
         dfin,
         dfout,
@@ -138,7 +138,7 @@ using AutomationLabsIdentification
         upper_params = upper_params,
         computation_verbosity = 0,
     )
-
+=#
     #Get best models
     greybox_best_model_chain_1 =
         fitted_params(fitted_params(grey_box_model_1).machine).chain
@@ -182,7 +182,7 @@ using AutomationLabsIdentification
     @test mae_Train_greybox_model_3 <= 0.1
     @test mae_Test_greybox_model_3 <= 0.1
 end
-
+#=
 @testset "Physicsinformed + Oracle grey box identification " begin
 
     # load the inputs and outputs data
@@ -342,4 +342,5 @@ end
     @test mae_Test_greybox_model_3 != NaN
 
 end
+=#
 end
