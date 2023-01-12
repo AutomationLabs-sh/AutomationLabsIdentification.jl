@@ -1,5 +1,8 @@
 # AutomationLabsIdentification Changelog
 
+## v0.2.2
+* Tests improvement
+
 ## v0.2.1
 * Removing GPU acceleration of neuralnetode_type1 and neuralnetode_type2
 
