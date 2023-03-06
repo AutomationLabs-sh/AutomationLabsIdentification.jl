@@ -1,7 +1,7 @@
 name = "AutomationLabsIdentification"
 uuid = "48ff5a6f-d08b-4053-9585-6a9e3e078386"
 authors = ["Pierre Blaud and contributors"]
-version = "0.2.2"
+version = "0.2.3"
 
 [deps]
 CUDA = "052768ef-5323-5732-b1bb-66c8b64840ba"
@@ -26,7 +26,7 @@ StatsBase = "2913bbd2-ae8a-5f71-8c99-4fb6c76f3a91"
 Zygote = "e88e6eb3-aa80-5325-afca-941959d7151f"
 
 [compat]
-CUDA = "3"
+CUDA = "4"
 DataFrames = "1"
 DiffEqFlux = "1"
 DifferentialEquations = "7"
@@ -36,13 +36,12 @@ MLJ = "0.19"
 MLJFlux = "0.2"
 MLJMultivariateStatsInterface = "0.5"
 MLJParticleSwarmOptimization = "0.1"
-MLUtils = "0.3"
+MLUtils = "0.4"
 MultivariateStats = "0.10"
 Optim = "1.7"
 ProgressMeter = "1.7"
 StableRNGs = "1"
 StatsBase = "0.33"
-#Zygote = "< 0.6.39"
 Zygote = "0.6"
 julia = "1"
 

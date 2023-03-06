@@ -5,7 +5,7 @@
 # was not distributed with this file,  				   #
 # You can obtain one at https://mozilla.org/MPL/2.0/.  #
 ########################################################
-module QTP_BackpropIdentification
+#module QTP_BackpropIdentification
 
 
 using Distributed
@@ -35,8 +35,8 @@ import AutomationLabsIdentification: PolyNet
 import AutomationLabsIdentification: NeuralNetODE_type1
 import AutomationLabsIdentification: NeuralNetODE_type2
 import AutomationLabsIdentification: ExplorationOfNetworks
-import AutomationLabsIdentification: Rnn 
-import AutomationLabsIdentification: Lstm 
+import AutomationLabsIdentification: Rnn
+import AutomationLabsIdentification: Lstm
 import AutomationLabsIdentification: Gru
 
 @testset "QTP identification Fnn" begin
@@ -84,7 +84,7 @@ import AutomationLabsIdentification: Gru
         optimiser = Flux.RADAM(),
         epochs = 1000,
         loss = Flux.Losses.mae,
-        acceleration = CUDALibs(),
+        #acceleration = CUDALibs(),
     )
 
     r1 = range(model_fnn, :(builder.neuron), lower = 5, upper = 15)
@@ -98,7 +98,7 @@ import AutomationLabsIdentification: Gru
         range = [r1, r2, r3],
         measure = my_loss,
         n = 5,
-       # acceleration = MLJ.CPUProcesses(),
+        # acceleration = MLJ.CPUProcesses(),
     )
 
     iterated_model_fnn = IteratedModel(
@@ -199,7 +199,7 @@ end
         optimiser = Flux.RADAM(),
         epochs = 100,
         loss = Flux.Losses.mae,
-        acceleration = CUDALibs(),
+        #acceleration = CUDALibs(),
     )
 
     r1 = range(model_resnet, :(builder.neuron), lower = 5, upper = 15)
@@ -316,7 +316,7 @@ end
         optimiser = Flux.RADAM(),
         epochs = 100,
         loss = Flux.Losses.mae,
-        acceleration = CUDALibs(),
+        #acceleration = CUDALibs(),
     )
 
     r1 = range(model_polynet, :(builder.neuron), lower = 5, upper = 15)
@@ -433,7 +433,7 @@ end
         optimiser = Flux.RADAM(),
         epochs = 1000,
         loss = Flux.Losses.mae,
-        acceleration = CUDALibs(),
+        #acceleration = CUDALibs(),
     )
 
     r1 = range(model_densenet, :(builder.neuron), lower = 5, upper = 15)
@@ -549,7 +549,7 @@ end
         optimiser = Flux.RADAM(),
         epochs = 5000,
         loss = Flux.Losses.mae,
-        acceleration = CUDALibs(),
+        #acceleration = CUDALibs(),
     )
 
     r1 = range(model_icnn, :(builder.neuron), lower = 5, upper = 15)
@@ -663,7 +663,7 @@ end
         optimiser = Flux.RADAM(),
         epochs = 100,
         loss = Flux.Losses.mae,
-       # acceleration = CUDALibs(),
+        # acceleration = CUDALibs(),
     )
 
     r1 = range(model_neural_netODE, :(builder.neuron), lower = 5, upper = 15)
@@ -777,7 +777,12 @@ end
 
     # NeuralNetODE_type2 definition
     model_neural_netODE = MLJFlux.MultitargetNeuralNetworkRegressor(
-        builder = NeuralNetODE_type2(neuron = 5, layer = 2, σ = NNlib.relu, sample_time = sample_time),
+        builder = NeuralNetODE_type2(
+            neuron = 5,
+            layer = 2,
+            σ = NNlib.relu,
+            sample_time = sample_time,
+        ),
         batch_size = 4096,
         optimiser = Flux.RADAM(),
         epochs = 100,
@@ -899,7 +904,7 @@ end
         optimiser = Flux.RADAM(),
         epochs = 100,
         loss = Flux.Losses.mae,
-        acceleration = CUDALibs(),
+        #acceleration = CUDALibs(),
     )
 
     r1 = range(model_rbf, :(builder.neuron), lower = 5, upper = 25)
@@ -918,7 +923,7 @@ end
     iterated_model_rbf = IteratedModel(
         model = tuned_model_rbf,
         resampling = nothing,
-        control = [Step(n = 1), TimeLimit(t = Minute(60))],
+        control = [Step(n = 1), TimeLimit(t = Minute(120))],
     )
 
     mach_rbf = MLJ.machine(iterated_model_rbf, in_data, out_data)
@@ -995,7 +1000,7 @@ end
     in_data = (DataTrainTest.TrainDataIn)
     out_data = (DataTrainTest.TrainDataOut)
 
-    f_t = 1 - (1/ (size(in_data, 1) / n_sequence))
+    f_t = 1 - (1 / (size(in_data, 1) / n_sequence))
     # The test data is set to be equal to only one batch
 
     # Customs loss function for multiple neural outputs
@@ -1011,7 +1016,7 @@ end
         optimiser = Flux.RADAM(),
         epochs = 1000,
         loss = Flux.Losses.mae,
-        acceleration = CUDALibs(),
+        #acceleration = CUDALibs(),
     )
 
     r1 = range(model_rnn, :(builder.neuron), lower = 5, upper = 15)
@@ -1021,17 +1026,17 @@ end
     tuned_model_rnn = MLJ.TunedModel(
         model = model_rnn,
         tuning = AdaptiveParticleSwarm(rng = StableRNG(0)),
-        resampling = Holdout(; fraction_train=f_t, shuffle=nothing, rng=nothing),
+        resampling = Holdout(; fraction_train = f_t, shuffle = nothing, rng = nothing),
         range = [r1, r2, r3],
         measure = my_loss,
         n = 5,
-       # acceleration = MLJ.CPUProcesses(),
+        # acceleration = MLJ.CPUProcesses(),
     )
 
     iterated_model_rnn = IteratedModel(
         model = tuned_model_rnn,
         resampling = nothing,
-        control = [Step(n = 1), TimeLimit(t = Minute(10))],
+        control = [Step(n = 1), TimeLimit(t = Minute(60))],
         iteration_parameter = :(n),
     )
 
@@ -1066,9 +1071,9 @@ end
 
     # Chain rnn
     rnn_chain_best_model_chain =
-    fitted_params(fitted_params(mach_rnn).machine).best_fitted_params.chain
+        fitted_params(fitted_params(mach_rnn).machine).best_fitted_params.chain
 
-    rnn_chain_best_model_chain(rand(Float32,6))
+    rnn_chain_best_model_chain(rand(Float32, 6))
 
 end
 
@@ -1103,7 +1108,7 @@ end
     in_data = (DataTrainTest.TrainDataIn)
     out_data = (DataTrainTest.TrainDataOut)
 
-    f_t = 1 - (1/ (size(in_data, 1) / n_sequence))
+    f_t = 1 - (1 / (size(in_data, 1) / n_sequence))
 
     #Customs loss function for multiple neural outputs
     my_loss = function (yhat, y)
@@ -1118,7 +1123,7 @@ end
         optimiser = Flux.RADAM(),
         epochs = 1000,
         loss = Flux.Losses.mae,
-        acceleration = CUDALibs(),
+        #acceleration = CUDALibs(),
     )
 
     r1 = range(model_lstm, :(builder.neuron), lower = 5, upper = 15)
@@ -1128,11 +1133,11 @@ end
     tuned_model_lstm = MLJ.TunedModel(
         model = model_lstm,
         tuning = AdaptiveParticleSwarm(rng = StableRNG(0)),
-        resampling = Holdout(; fraction_train=f_t, shuffle=nothing, rng=nothing),
+        resampling = Holdout(; fraction_train = f_t, shuffle = nothing, rng = nothing),
         range = [r1, r2, r3],
         measure = my_loss,
         n = 5,
-       # acceleration = MLJ.CPUProcesses(),
+        # acceleration = MLJ.CPUProcesses(),
     )
 
     iterated_model_lstm = IteratedModel(
@@ -1204,7 +1209,7 @@ end
     in_data = (DataTrainTest.TrainDataIn)
     out_data = (DataTrainTest.TrainDataOut)
 
-    f_t = 1 - (1/ (size(in_data, 1) / n_sequence))
+    f_t = 1 - (1 / (size(in_data, 1) / n_sequence))
 
     #Customs loss function for multiple neural outputs
     my_loss = function (yhat, y)
@@ -1219,7 +1224,7 @@ end
         optimiser = Flux.RADAM(),
         epochs = 1000,
         loss = Flux.Losses.mae,
-        acceleration = CUDALibs(),
+        #acceleration = CUDALibs(),
     )
 
     r1 = range(model_gru, :(builder.neuron), lower = 5, upper = 15)
@@ -1229,11 +1234,11 @@ end
     tuned_model_gru = MLJ.TunedModel(
         model = model_gru,
         tuning = AdaptiveParticleSwarm(rng = StableRNG(0)),
-        resampling = Holdout(; fraction_train=f_t, shuffle=nothing, rng=nothing),
+        resampling = Holdout(; fraction_train = f_t, shuffle = nothing, rng = nothing),
         range = [r1, r2, r3],
         measure = my_loss,
         n = 5,
-       # acceleration = MLJ.CPUProcesses(),
+        # acceleration = MLJ.CPUProcesses(),
     )
 
     iterated_model_gru = IteratedModel(
@@ -1274,4 +1279,4 @@ end
 
 end
 
-end
+#end

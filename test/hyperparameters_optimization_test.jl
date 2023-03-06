@@ -35,7 +35,7 @@ import AutomationLabsIdentification: ResNet
         optimiser = Flux.RADAM(),
         epochs = 100,
         loss = Flux.Losses.mae,
-        acceleration = CUDALibs(),
+        #acceleration = CUDALibs(),
     )
 
     r1 = range(model_resnet, :(builder.neuron), lower = 5, upper = 15)

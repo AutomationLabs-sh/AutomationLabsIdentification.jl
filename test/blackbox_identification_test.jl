@@ -42,15 +42,15 @@ using Distributed
         data_lower_output = lower_out,
         data_upper_output = upper_out,
     )
-    
+
     in_data = (DataTrainTest.TrainDataIn)
     out_data = (DataTrainTest.TrainDataOut)
 
     m_linear_1 = proceed_identification(
-        in_data, 
-        out_data, 
-        "lls", 
-        "linear", 
+        in_data,
+        out_data,
+        "lls",
+        "linear",
         max_time,
         data_lower_input = lower_in,
         data_upper_input = upper_in,
@@ -108,7 +108,7 @@ end
         data_lower_output = lower_out,
         data_upper_output = upper_out,
     )
-    
+
     in_data = (DataTrainTest.TrainDataIn)
     out_data = (DataTrainTest.TrainDataOut)
 
@@ -730,7 +730,7 @@ end
         data_lower_output = lower_out,
         data_upper_output = upper_out,
     )
-    
+
     in_data = (DataTrainTest.TrainDataIn)
     out_data = (DataTrainTest.TrainDataOut)
 
@@ -1352,7 +1352,7 @@ end
         data_lower_output = lower_out,
         data_upper_output = upper_out,
     )
-    
+
     in_data = (DataTrainTest.TrainDataIn)
     out_data = (DataTrainTest.TrainDataOut)
 
@@ -1974,7 +1974,7 @@ end
         data_lower_output = lower_out,
         data_upper_output = upper_out,
     )
-    
+
     in_data = (DataTrainTest.TrainDataIn)
     out_data = (DataTrainTest.TrainDataOut)
 
@@ -2596,7 +2596,7 @@ end
         data_lower_output = lower_out,
         data_upper_output = upper_out,
     )
-    
+
     in_data = (DataTrainTest.TrainDataIn)
     out_data = (DataTrainTest.TrainDataOut)
 
@@ -3218,7 +3218,7 @@ end
         data_lower_output = lower_out,
         data_upper_output = upper_out,
     )
-    
+
     in_data = (DataTrainTest.TrainDataIn)
     out_data = (DataTrainTest.TrainDataOut)
 
@@ -3840,7 +3840,7 @@ end
         data_lower_output = lower_out,
         data_upper_output = upper_out,
     )
-    
+
     in_data = (DataTrainTest.TrainDataIn)
     out_data = (DataTrainTest.TrainDataOut)
 
@@ -4462,7 +4462,7 @@ end
         data_lower_output = lower_out,
         data_upper_output = upper_out,
     )
-    
+
     in_data = (DataTrainTest.TrainDataIn)
     out_data = (DataTrainTest.TrainDataOut)
     m_neuralnet_0 = proceed_identification(
@@ -5105,7 +5105,7 @@ end
         data_lower_output = lower_out,
         data_upper_output = upper_out,
     )
-    
+
     in_data = (DataTrainTest.TrainDataIn)
     out_data = (DataTrainTest.TrainDataOut)
 
@@ -5330,7 +5330,7 @@ end
         model_exploration = ["fnn", "resnet", "densenet"],
         computation_processor = "cpu_processes",
     )
-    
+
     m_exploration_15 = proceed_identification(
         in_data,
         out_data,
@@ -5345,7 +5345,7 @@ end
         model_exploration = ["fnn", "resnet", "densenet"],
         computation_processor = "cpu_processes",
     )
-    
+
     m_exploration_16 = proceed_identification(
         in_data,
         out_data,
@@ -5360,7 +5360,7 @@ end
         model_exploration = ["fnn", "resnet", "densenet"],
         computation_processor = "cpu_processes",
     )
-    
+
     m_exploration_17 = proceed_identification(
         in_data,
         out_data,
@@ -5375,7 +5375,7 @@ end
         model_exploration = ["fnn", "resnet", "densenet"],
         computation_processor = "cpu_processes",
     )
-    
+
     m_exploration_18 = proceed_identification(
         in_data,
         out_data,
@@ -5390,7 +5390,7 @@ end
         model_exploration = ["fnn", "resnet", "densenet"],
         computation_processor = "cpu_processes",
     )
-    
+
     m_exploration_19 = proceed_identification(
         in_data,
         out_data,
@@ -5405,7 +5405,7 @@ end
         model_exploration = ["fnn", "resnet", "densenet"],
         computation_processor = "cpu_processes",
     )
-    
+
     m_exploration_20 = proceed_identification(
         in_data,
         out_data,
@@ -5421,308 +5421,308 @@ end
         computation_processor = "cpu_processes",
     )
 
-   #Get best models
-exploration_0_chain_best_model_chain =
-fitted_params(fitted_params(m_exploration_0[1]).machine).best_fitted_params.chain
-exploration_1_chain_best_model_chain =
-fitted_params(fitted_params(m_exploration_1[1]).machine).best_fitted_params.chain
-exploration_2_chain_best_model_chain =
-fitted_params(fitted_params(m_exploration_2[1]).machine).best_fitted_params.chain
-exploration_3_chain_best_model_chain =
-fitted_params(fitted_params(m_exploration_3[1]).machine).best_fitted_params.chain
-exploration_4_chain_best_model_chain =
-fitted_params(fitted_params(m_exploration_4[1]).machine).best_fitted_params.chain
-exploration_5_chain_best_model_chain =
-fitted_params(fitted_params(m_exploration_5[1]).machine).best_fitted_params.chain
-exploration_6_chain_best_model_chain =
-fitted_params(fitted_params(m_exploration_6[1]).machine).best_fitted_params.chain
-exploration_7_chain_best_model_chain =
-fitted_params(fitted_params(m_exploration_7[1]).machine).best_fitted_params.chain
-exploration_8_chain_best_model_chain =
-fitted_params(fitted_params(m_exploration_8[1]).machine).best_fitted_params.chain
-exploration_9_chain_best_model_chain =
-fitted_params(fitted_params(m_exploration_9[1]).machine).best_fitted_params.chain
-exploration_10_chain_best_model_chain =
-fitted_params(fitted_params(m_exploration_10[1]).machine).best_fitted_params.chain
-exploration_11_chain_best_model_chain =
-fitted_params(fitted_params(m_exploration_11[1]).machine).best_fitted_params.chain
-exploration_12_chain_best_model_chain =
-fitted_params(fitted_params(m_exploration_12[1]).machine).best_fitted_params.chain
-exploration_13_chain_best_model_chain =
-fitted_params(fitted_params(m_exploration_13[1]).machine).best_fitted_params.chain
-exploration_14_chain_best_model_chain =
-fitted_params(fitted_params(m_exploration_14[1]).machine).best_fitted_params.chain
-exploration_15_chain_best_model_chain =
-fitted_params(fitted_params(m_exploration_15[1]).machine).best_fitted_params.chain
-exploration_16_chain_best_model_chain =
-fitted_params(fitted_params(m_exploration_16[1]).machine).best_fitted_params.chain
-exploration_17_chain_best_model_chain =
-fitted_params(fitted_params(m_exploration_17[1]).machine).best_fitted_params.chain
-exploration_18_chain_best_model_chain =
-fitted_params(fitted_params(m_exploration_18[1]).machine).best_fitted_params.chain
-exploration_19_chain_best_model_chain =
-fitted_params(fitted_params(m_exploration_19[1]).machine).best_fitted_params.chain
-exploration_20_chain_best_model_chain =
-fitted_params(fitted_params(m_exploration_20[1]).machine).best_fitted_params.chain
+    #Get best models
+    exploration_0_chain_best_model_chain =
+        fitted_params(fitted_params(m_exploration_0[1]).machine).best_fitted_params.chain
+    exploration_1_chain_best_model_chain =
+        fitted_params(fitted_params(m_exploration_1[1]).machine).best_fitted_params.chain
+    exploration_2_chain_best_model_chain =
+        fitted_params(fitted_params(m_exploration_2[1]).machine).best_fitted_params.chain
+    exploration_3_chain_best_model_chain =
+        fitted_params(fitted_params(m_exploration_3[1]).machine).best_fitted_params.chain
+    exploration_4_chain_best_model_chain =
+        fitted_params(fitted_params(m_exploration_4[1]).machine).best_fitted_params.chain
+    exploration_5_chain_best_model_chain =
+        fitted_params(fitted_params(m_exploration_5[1]).machine).best_fitted_params.chain
+    exploration_6_chain_best_model_chain =
+        fitted_params(fitted_params(m_exploration_6[1]).machine).best_fitted_params.chain
+    exploration_7_chain_best_model_chain =
+        fitted_params(fitted_params(m_exploration_7[1]).machine).best_fitted_params.chain
+    exploration_8_chain_best_model_chain =
+        fitted_params(fitted_params(m_exploration_8[1]).machine).best_fitted_params.chain
+    exploration_9_chain_best_model_chain =
+        fitted_params(fitted_params(m_exploration_9[1]).machine).best_fitted_params.chain
+    exploration_10_chain_best_model_chain =
+        fitted_params(fitted_params(m_exploration_10[1]).machine).best_fitted_params.chain
+    exploration_11_chain_best_model_chain =
+        fitted_params(fitted_params(m_exploration_11[1]).machine).best_fitted_params.chain
+    exploration_12_chain_best_model_chain =
+        fitted_params(fitted_params(m_exploration_12[1]).machine).best_fitted_params.chain
+    exploration_13_chain_best_model_chain =
+        fitted_params(fitted_params(m_exploration_13[1]).machine).best_fitted_params.chain
+    exploration_14_chain_best_model_chain =
+        fitted_params(fitted_params(m_exploration_14[1]).machine).best_fitted_params.chain
+    exploration_15_chain_best_model_chain =
+        fitted_params(fitted_params(m_exploration_15[1]).machine).best_fitted_params.chain
+    exploration_16_chain_best_model_chain =
+        fitted_params(fitted_params(m_exploration_16[1]).machine).best_fitted_params.chain
+    exploration_17_chain_best_model_chain =
+        fitted_params(fitted_params(m_exploration_17[1]).machine).best_fitted_params.chain
+    exploration_18_chain_best_model_chain =
+        fitted_params(fitted_params(m_exploration_18[1]).machine).best_fitted_params.chain
+    exploration_19_chain_best_model_chain =
+        fitted_params(fitted_params(m_exploration_19[1]).machine).best_fitted_params.chain
+    exploration_20_chain_best_model_chain =
+        fitted_params(fitted_params(m_exploration_20[1]).machine).best_fitted_params.chain
 
-# MAE with train and test data
-mae_Train_exploration_0 = Flux.mae(
-exploration_0_chain_best_model_chain(Matrix(m_exploration_0[2].TrainDataIn)'),
-Matrix(m_exploration_0[2].TrainDataOut)',
-)
-mae_Train_exploration_1 = Flux.mae(
-exploration_1_chain_best_model_chain(Matrix(m_exploration_1[2].TrainDataIn)'),
-Matrix(m_exploration_1[2].TrainDataOut)',
-)
-mae_Train_exploration_2 = Flux.mae(
-exploration_2_chain_best_model_chain(Matrix(m_exploration_2[2].TrainDataIn)'),
-Matrix(m_exploration_2[2].TrainDataOut)',
-)
-mae_Train_exploration_3 = Flux.mae(
-exploration_3_chain_best_model_chain(Matrix(m_exploration_3[2].TrainDataIn)'),
-Matrix(m_exploration_3[2].TrainDataOut)',
-)
-mae_Train_exploration_4 = Flux.mae(
-exploration_4_chain_best_model_chain(Matrix(m_exploration_4[2].TrainDataIn)'),
-Matrix(m_exploration_4[2].TrainDataOut)',
-)
-mae_Train_exploration_5 = Flux.mae(
-exploration_5_chain_best_model_chain(Matrix(m_exploration_5[2].TrainDataIn)'),
-Matrix(m_exploration_5[2].TrainDataOut)',
-)
-mae_Train_exploration_6 = Flux.mae(
-exploration_6_chain_best_model_chain(Matrix(m_exploration_6[2].TrainDataIn)'),
-Matrix(m_exploration_6[2].TrainDataOut)',
-)
-mae_Train_exploration_7 = Flux.mae(
-exploration_7_chain_best_model_chain(Matrix(m_exploration_7[2].TrainDataIn)'),
-Matrix(m_exploration_7[2].TrainDataOut)',
-)
-mae_Train_exploration_8 = Flux.mae(
-exploration_8_chain_best_model_chain(Matrix(m_exploration_8[2].TrainDataIn)'),
-Matrix(m_exploration_8[2].TrainDataOut)',
-)
-mae_Train_exploration_9 = Flux.mae(
-exploration_9_chain_best_model_chain(Matrix(m_exploration_9[2].TrainDataIn)'),
-Matrix(m_exploration_9[2].TrainDataOut)',
-)
-mae_Train_exploration_10 = Flux.mae(
-exploration_10_chain_best_model_chain(Matrix(m_exploration_10[2].TrainDataIn)'),
-Matrix(m_exploration_10[2].TrainDataOut)',
-)
-mae_Train_exploration_11 = Flux.mae(
-exploration_11_chain_best_model_chain(Matrix(m_exploration_11[2].TrainDataIn)'),
-Matrix(m_exploration_11[2].TrainDataOut)',
-)
-mae_Train_exploration_12 = Flux.mae(
-exploration_12_chain_best_model_chain(Matrix(m_exploration_12[2].TrainDataIn)'),
-Matrix(m_exploration_12[2].TrainDataOut)',
-)
-mae_Train_exploration_13 = Flux.mae(
-exploration_13_chain_best_model_chain(Matrix(m_exploration_13[2].TrainDataIn)'),
-Matrix(m_exploration_13[2].TrainDataOut)',
-)
-mae_Train_exploration_14 = Flux.mae(
-exploration_14_chain_best_model_chain(Matrix(m_exploration_14[2].TrainDataIn)'),
-Matrix(m_exploration_14[2].TrainDataOut)',
-)
-mae_Train_exploration_15 = Flux.mae(
-exploration_15_chain_best_model_chain(Matrix(m_exploration_15[2].TrainDataIn)'),
-Matrix(m_exploration_15[2].TrainDataOut)',
-)
-mae_Train_exploration_16 = Flux.mae(
-exploration_16_chain_best_model_chain(Matrix(m_exploration_16[2].TrainDataIn)'),
-Matrix(m_exploration_16[2].TrainDataOut)',
-)
-mae_Train_exploration_17 = Flux.mae(
-exploration_17_chain_best_model_chain(Matrix(m_exploration_17[2].TrainDataIn)'),
-Matrix(m_exploration_17[2].TrainDataOut)',
-)
-mae_Train_exploration_18 = Flux.mae(
-exploration_18_chain_best_model_chain(Matrix(m_exploration_18[2].TrainDataIn)'),
-Matrix(m_exploration_18[2].TrainDataOut)',
-)
-mae_Train_exploration_19 = Flux.mae(
-exploration_19_chain_best_model_chain(Matrix(m_exploration_19[2].TrainDataIn)'),
-Matrix(m_exploration_19[2].TrainDataOut)',
-)
-mae_Train_exploration_20 = Flux.mae(
-exploration_20_chain_best_model_chain(Matrix(m_exploration_20[2].TrainDataIn)'),
-Matrix(m_exploration_20[2].TrainDataOut)',
-)
+    # MAE with train and test data
+    mae_Train_exploration_0 = Flux.mae(
+        exploration_0_chain_best_model_chain(Matrix(m_exploration_0[2].TrainDataIn)'),
+        Matrix(m_exploration_0[2].TrainDataOut)',
+    )
+    mae_Train_exploration_1 = Flux.mae(
+        exploration_1_chain_best_model_chain(Matrix(m_exploration_1[2].TrainDataIn)'),
+        Matrix(m_exploration_1[2].TrainDataOut)',
+    )
+    mae_Train_exploration_2 = Flux.mae(
+        exploration_2_chain_best_model_chain(Matrix(m_exploration_2[2].TrainDataIn)'),
+        Matrix(m_exploration_2[2].TrainDataOut)',
+    )
+    mae_Train_exploration_3 = Flux.mae(
+        exploration_3_chain_best_model_chain(Matrix(m_exploration_3[2].TrainDataIn)'),
+        Matrix(m_exploration_3[2].TrainDataOut)',
+    )
+    mae_Train_exploration_4 = Flux.mae(
+        exploration_4_chain_best_model_chain(Matrix(m_exploration_4[2].TrainDataIn)'),
+        Matrix(m_exploration_4[2].TrainDataOut)',
+    )
+    mae_Train_exploration_5 = Flux.mae(
+        exploration_5_chain_best_model_chain(Matrix(m_exploration_5[2].TrainDataIn)'),
+        Matrix(m_exploration_5[2].TrainDataOut)',
+    )
+    mae_Train_exploration_6 = Flux.mae(
+        exploration_6_chain_best_model_chain(Matrix(m_exploration_6[2].TrainDataIn)'),
+        Matrix(m_exploration_6[2].TrainDataOut)',
+    )
+    mae_Train_exploration_7 = Flux.mae(
+        exploration_7_chain_best_model_chain(Matrix(m_exploration_7[2].TrainDataIn)'),
+        Matrix(m_exploration_7[2].TrainDataOut)',
+    )
+    mae_Train_exploration_8 = Flux.mae(
+        exploration_8_chain_best_model_chain(Matrix(m_exploration_8[2].TrainDataIn)'),
+        Matrix(m_exploration_8[2].TrainDataOut)',
+    )
+    mae_Train_exploration_9 = Flux.mae(
+        exploration_9_chain_best_model_chain(Matrix(m_exploration_9[2].TrainDataIn)'),
+        Matrix(m_exploration_9[2].TrainDataOut)',
+    )
+    mae_Train_exploration_10 = Flux.mae(
+        exploration_10_chain_best_model_chain(Matrix(m_exploration_10[2].TrainDataIn)'),
+        Matrix(m_exploration_10[2].TrainDataOut)',
+    )
+    mae_Train_exploration_11 = Flux.mae(
+        exploration_11_chain_best_model_chain(Matrix(m_exploration_11[2].TrainDataIn)'),
+        Matrix(m_exploration_11[2].TrainDataOut)',
+    )
+    mae_Train_exploration_12 = Flux.mae(
+        exploration_12_chain_best_model_chain(Matrix(m_exploration_12[2].TrainDataIn)'),
+        Matrix(m_exploration_12[2].TrainDataOut)',
+    )
+    mae_Train_exploration_13 = Flux.mae(
+        exploration_13_chain_best_model_chain(Matrix(m_exploration_13[2].TrainDataIn)'),
+        Matrix(m_exploration_13[2].TrainDataOut)',
+    )
+    mae_Train_exploration_14 = Flux.mae(
+        exploration_14_chain_best_model_chain(Matrix(m_exploration_14[2].TrainDataIn)'),
+        Matrix(m_exploration_14[2].TrainDataOut)',
+    )
+    mae_Train_exploration_15 = Flux.mae(
+        exploration_15_chain_best_model_chain(Matrix(m_exploration_15[2].TrainDataIn)'),
+        Matrix(m_exploration_15[2].TrainDataOut)',
+    )
+    mae_Train_exploration_16 = Flux.mae(
+        exploration_16_chain_best_model_chain(Matrix(m_exploration_16[2].TrainDataIn)'),
+        Matrix(m_exploration_16[2].TrainDataOut)',
+    )
+    mae_Train_exploration_17 = Flux.mae(
+        exploration_17_chain_best_model_chain(Matrix(m_exploration_17[2].TrainDataIn)'),
+        Matrix(m_exploration_17[2].TrainDataOut)',
+    )
+    mae_Train_exploration_18 = Flux.mae(
+        exploration_18_chain_best_model_chain(Matrix(m_exploration_18[2].TrainDataIn)'),
+        Matrix(m_exploration_18[2].TrainDataOut)',
+    )
+    mae_Train_exploration_19 = Flux.mae(
+        exploration_19_chain_best_model_chain(Matrix(m_exploration_19[2].TrainDataIn)'),
+        Matrix(m_exploration_19[2].TrainDataOut)',
+    )
+    mae_Train_exploration_20 = Flux.mae(
+        exploration_20_chain_best_model_chain(Matrix(m_exploration_20[2].TrainDataIn)'),
+        Matrix(m_exploration_20[2].TrainDataOut)',
+    )
 
-mae_Test_exploration_0 = Flux.mae(
-exploration_0_chain_best_model_chain(Matrix(m_exploration_0[2].TestDataIn)'),
-Matrix(m_exploration_0[2].TestDataOut)',
-)
-mae_Test_exploration_1 = Flux.mae(
-exploration_1_chain_best_model_chain(Matrix(m_exploration_1[2].TestDataIn)'),
-Matrix(m_exploration_1[2].TestDataOut)',
-)
-mae_Test_exploration_2 = Flux.mae(
-exploration_2_chain_best_model_chain(Matrix(m_exploration_2[2].TestDataIn)'),
-Matrix(m_exploration_2[2].TestDataOut)',
-)
-mae_Test_exploration_3 = Flux.mae(
-exploration_3_chain_best_model_chain(Matrix(m_exploration_3[2].TestDataIn)'),
-Matrix(m_exploration_3[2].TestDataOut)',
-)
-mae_Test_exploration_4 = Flux.mae(
-exploration_4_chain_best_model_chain(Matrix(m_exploration_4[2].TestDataIn)'),
-Matrix(m_exploration_4[2].TestDataOut)',
-)
-mae_Test_exploration_5 = Flux.mae(
-exploration_5_chain_best_model_chain(Matrix(m_exploration_5[2].TestDataIn)'),
-Matrix(m_exploration_5[2].TestDataOut)',
-)
-mae_Test_exploration_6 = Flux.mae(
-exploration_6_chain_best_model_chain(Matrix(m_exploration_6[2].TestDataIn)'),
-Matrix(m_exploration_6[2].TestDataOut)',
-)
-mae_Test_exploration_7 = Flux.mae(
-exploration_7_chain_best_model_chain(Matrix(m_exploration_7[2].TestDataIn)'),
-Matrix(m_exploration_7[2].TestDataOut)',
-)
-mae_Test_exploration_8 = Flux.mae(
-exploration_8_chain_best_model_chain(Matrix(m_exploration_8[2].TestDataIn)'),
-Matrix(m_exploration_8[2].TestDataOut)',
-)
-mae_Test_exploration_9 = Flux.mae(
-exploration_9_chain_best_model_chain(Matrix(m_exploration_9[2].TestDataIn)'),
-Matrix(m_exploration_9[2].TestDataOut)',
-)
-mae_Test_exploration_10 = Flux.mae(
-exploration_10_chain_best_model_chain(Matrix(m_exploration_10[2].TestDataIn)'),
-Matrix(m_exploration_10[2].TestDataOut)',
-)
-mae_Test_exploration_11 = Flux.mae(
-exploration_11_chain_best_model_chain(Matrix(m_exploration_11[2].TestDataIn)'),
-Matrix(m_exploration_11[2].TestDataOut)',
-)
-mae_Test_exploration_12 = Flux.mae(
-exploration_12_chain_best_model_chain(Matrix(m_exploration_12[2].TestDataIn)'),
-Matrix(m_exploration_12[2].TestDataOut)',
-)
-mae_Test_exploration_13 = Flux.mae(
-exploration_13_chain_best_model_chain(Matrix(m_exploration_13[2].TestDataIn)'),
-Matrix(m_exploration_13[2].TestDataOut)',
-)
-mae_Test_exploration_14 = Flux.mae(
-exploration_14_chain_best_model_chain(Matrix(m_exploration_14[2].TestDataIn)'),
-Matrix(m_exploration_14[2].TestDataOut)',
-)
-mae_Test_exploration_15 = Flux.mae(
-exploration_15_chain_best_model_chain(Matrix(m_exploration_15[2].TestDataIn)'),
-Matrix(m_exploration_15[2].TestDataOut)',
-)
-mae_Test_exploration_16 = Flux.mae(
-exploration_16_chain_best_model_chain(Matrix(m_exploration_16[2].TestDataIn)'),
-Matrix(m_exploration_16[2].TestDataOut)',
-)
-mae_Test_exploration_17 = Flux.mae(
-exploration_17_chain_best_model_chain(Matrix(m_exploration_17[2].TestDataIn)'),
-Matrix(m_exploration_17[2].TestDataOut)',
-)
-mae_Test_exploration_18 = Flux.mae(
-exploration_18_chain_best_model_chain(Matrix(m_exploration_18[2].TestDataIn)'),
-Matrix(m_exploration_18[2].TestDataOut)',
-)
-mae_Test_exploration_19 = Flux.mae(
-exploration_19_chain_best_model_chain(Matrix(m_exploration_19[2].TestDataIn)'),
-Matrix(m_exploration_19[2].TestDataOut)',
-)
-mae_Test_exploration_20 = Flux.mae(
-exploration_20_chain_best_model_chain(Matrix(m_exploration_20[2].TestDataIn)'),
-Matrix(m_exploration_20[2].TestDataOut)',
-)
+    mae_Test_exploration_0 = Flux.mae(
+        exploration_0_chain_best_model_chain(Matrix(m_exploration_0[2].TestDataIn)'),
+        Matrix(m_exploration_0[2].TestDataOut)',
+    )
+    mae_Test_exploration_1 = Flux.mae(
+        exploration_1_chain_best_model_chain(Matrix(m_exploration_1[2].TestDataIn)'),
+        Matrix(m_exploration_1[2].TestDataOut)',
+    )
+    mae_Test_exploration_2 = Flux.mae(
+        exploration_2_chain_best_model_chain(Matrix(m_exploration_2[2].TestDataIn)'),
+        Matrix(m_exploration_2[2].TestDataOut)',
+    )
+    mae_Test_exploration_3 = Flux.mae(
+        exploration_3_chain_best_model_chain(Matrix(m_exploration_3[2].TestDataIn)'),
+        Matrix(m_exploration_3[2].TestDataOut)',
+    )
+    mae_Test_exploration_4 = Flux.mae(
+        exploration_4_chain_best_model_chain(Matrix(m_exploration_4[2].TestDataIn)'),
+        Matrix(m_exploration_4[2].TestDataOut)',
+    )
+    mae_Test_exploration_5 = Flux.mae(
+        exploration_5_chain_best_model_chain(Matrix(m_exploration_5[2].TestDataIn)'),
+        Matrix(m_exploration_5[2].TestDataOut)',
+    )
+    mae_Test_exploration_6 = Flux.mae(
+        exploration_6_chain_best_model_chain(Matrix(m_exploration_6[2].TestDataIn)'),
+        Matrix(m_exploration_6[2].TestDataOut)',
+    )
+    mae_Test_exploration_7 = Flux.mae(
+        exploration_7_chain_best_model_chain(Matrix(m_exploration_7[2].TestDataIn)'),
+        Matrix(m_exploration_7[2].TestDataOut)',
+    )
+    mae_Test_exploration_8 = Flux.mae(
+        exploration_8_chain_best_model_chain(Matrix(m_exploration_8[2].TestDataIn)'),
+        Matrix(m_exploration_8[2].TestDataOut)',
+    )
+    mae_Test_exploration_9 = Flux.mae(
+        exploration_9_chain_best_model_chain(Matrix(m_exploration_9[2].TestDataIn)'),
+        Matrix(m_exploration_9[2].TestDataOut)',
+    )
+    mae_Test_exploration_10 = Flux.mae(
+        exploration_10_chain_best_model_chain(Matrix(m_exploration_10[2].TestDataIn)'),
+        Matrix(m_exploration_10[2].TestDataOut)',
+    )
+    mae_Test_exploration_11 = Flux.mae(
+        exploration_11_chain_best_model_chain(Matrix(m_exploration_11[2].TestDataIn)'),
+        Matrix(m_exploration_11[2].TestDataOut)',
+    )
+    mae_Test_exploration_12 = Flux.mae(
+        exploration_12_chain_best_model_chain(Matrix(m_exploration_12[2].TestDataIn)'),
+        Matrix(m_exploration_12[2].TestDataOut)',
+    )
+    mae_Test_exploration_13 = Flux.mae(
+        exploration_13_chain_best_model_chain(Matrix(m_exploration_13[2].TestDataIn)'),
+        Matrix(m_exploration_13[2].TestDataOut)',
+    )
+    mae_Test_exploration_14 = Flux.mae(
+        exploration_14_chain_best_model_chain(Matrix(m_exploration_14[2].TestDataIn)'),
+        Matrix(m_exploration_14[2].TestDataOut)',
+    )
+    mae_Test_exploration_15 = Flux.mae(
+        exploration_15_chain_best_model_chain(Matrix(m_exploration_15[2].TestDataIn)'),
+        Matrix(m_exploration_15[2].TestDataOut)',
+    )
+    mae_Test_exploration_16 = Flux.mae(
+        exploration_16_chain_best_model_chain(Matrix(m_exploration_16[2].TestDataIn)'),
+        Matrix(m_exploration_16[2].TestDataOut)',
+    )
+    mae_Test_exploration_17 = Flux.mae(
+        exploration_17_chain_best_model_chain(Matrix(m_exploration_17[2].TestDataIn)'),
+        Matrix(m_exploration_17[2].TestDataOut)',
+    )
+    mae_Test_exploration_18 = Flux.mae(
+        exploration_18_chain_best_model_chain(Matrix(m_exploration_18[2].TestDataIn)'),
+        Matrix(m_exploration_18[2].TestDataOut)',
+    )
+    mae_Test_exploration_19 = Flux.mae(
+        exploration_19_chain_best_model_chain(Matrix(m_exploration_19[2].TestDataIn)'),
+        Matrix(m_exploration_19[2].TestDataOut)',
+    )
+    mae_Test_exploration_20 = Flux.mae(
+        exploration_20_chain_best_model_chain(Matrix(m_exploration_20[2].TestDataIn)'),
+        Matrix(m_exploration_20[2].TestDataOut)',
+    )
 
-println("mae_Train_exploration_0 $mae_Train_exploration_0")
-println("mae_Train_exploration_1 $mae_Train_exploration_1")
-println("mae_Train_exploration_2 $mae_Train_exploration_2")
-println("mae_Train_exploration_3 $mae_Train_exploration_3")
-println("mae_Train_exploration_4 $mae_Train_exploration_4")
-println("mae_Train_exploration_5 $mae_Train_exploration_5")
-println("mae_Train_exploration_6 $mae_Train_exploration_6")
-println("mae_Train_exploration_7 $mae_Train_exploration_7")
-println("mae_Train_exploration_8 $mae_Train_exploration_8")
-println("mae_Train_exploration_9 $mae_Train_exploration_9")
-println("mae_Train_exploration_10 $mae_Train_exploration_10")
-println("mae_Train_exploration_11 $mae_Train_exploration_11")
-println("mae_Train_exploration_12 $mae_Train_exploration_12")
-println("mae_Train_exploration_13 $mae_Train_exploration_13")
-println("mae_Train_exploration_14 $mae_Train_exploration_14")
-println("mae_Train_exploration_15 $mae_Train_exploration_15")
-println("mae_Train_exploration_16 $mae_Train_exploration_16")
-println("mae_Train_exploration_17 $mae_Train_exploration_17")
-println("mae_Train_exploration_18 $mae_Train_exploration_18")
-println("mae_Train_exploration_19 $mae_Train_exploration_19")
-println("mae_Train_exploration_20 $mae_Train_exploration_20")
+    println("mae_Train_exploration_0 $mae_Train_exploration_0")
+    println("mae_Train_exploration_1 $mae_Train_exploration_1")
+    println("mae_Train_exploration_2 $mae_Train_exploration_2")
+    println("mae_Train_exploration_3 $mae_Train_exploration_3")
+    println("mae_Train_exploration_4 $mae_Train_exploration_4")
+    println("mae_Train_exploration_5 $mae_Train_exploration_5")
+    println("mae_Train_exploration_6 $mae_Train_exploration_6")
+    println("mae_Train_exploration_7 $mae_Train_exploration_7")
+    println("mae_Train_exploration_8 $mae_Train_exploration_8")
+    println("mae_Train_exploration_9 $mae_Train_exploration_9")
+    println("mae_Train_exploration_10 $mae_Train_exploration_10")
+    println("mae_Train_exploration_11 $mae_Train_exploration_11")
+    println("mae_Train_exploration_12 $mae_Train_exploration_12")
+    println("mae_Train_exploration_13 $mae_Train_exploration_13")
+    println("mae_Train_exploration_14 $mae_Train_exploration_14")
+    println("mae_Train_exploration_15 $mae_Train_exploration_15")
+    println("mae_Train_exploration_16 $mae_Train_exploration_16")
+    println("mae_Train_exploration_17 $mae_Train_exploration_17")
+    println("mae_Train_exploration_18 $mae_Train_exploration_18")
+    println("mae_Train_exploration_19 $mae_Train_exploration_19")
+    println("mae_Train_exploration_20 $mae_Train_exploration_20")
 
-println("mae_Test_exploration_0 $mae_Test_exploration_0")
-println("mae_Test_exploration_1 $mae_Test_exploration_1")
-println("mae_Test_exploration_2 $mae_Test_exploration_2")
-println("mae_Test_exploration_3 $mae_Test_exploration_3")
-println("mae_Test_exploration_4 $mae_Test_exploration_4")
-println("mae_Test_exploration_5 $mae_Test_exploration_5")
-println("mae_Test_exploration_6 $mae_Test_exploration_6")
-println("mae_Test_exploration_7 $mae_Test_exploration_7")
-println("mae_Test_exploration_8 $mae_Test_exploration_8")
-println("mae_Test_exploration_9 $mae_Test_exploration_9")
-println("mae_Test_exploration_10 $mae_Test_exploration_10")
-println("mae_Test_exploration_11 $mae_Test_exploration_11")
-println("mae_Test_exploration_12 $mae_Test_exploration_12")
-println("mae_Test_exploration_13 $mae_Test_exploration_13")
-println("mae_Test_exploration_14 $mae_Test_exploration_14")
-println("mae_Test_exploration_15 $mae_Test_exploration_15")
-println("mae_Test_exploration_16 $mae_Test_exploration_16")
-println("mae_Test_exploration_17 $mae_Test_exploration_17")
-println("mae_Test_exploration_18 $mae_Test_exploration_18")
-println("mae_Test_exploration_19 $mae_Test_exploration_19")
-println("mae_Test_exploration_20 $mae_Test_exploration_20")
+    println("mae_Test_exploration_0 $mae_Test_exploration_0")
+    println("mae_Test_exploration_1 $mae_Test_exploration_1")
+    println("mae_Test_exploration_2 $mae_Test_exploration_2")
+    println("mae_Test_exploration_3 $mae_Test_exploration_3")
+    println("mae_Test_exploration_4 $mae_Test_exploration_4")
+    println("mae_Test_exploration_5 $mae_Test_exploration_5")
+    println("mae_Test_exploration_6 $mae_Test_exploration_6")
+    println("mae_Test_exploration_7 $mae_Test_exploration_7")
+    println("mae_Test_exploration_8 $mae_Test_exploration_8")
+    println("mae_Test_exploration_9 $mae_Test_exploration_9")
+    println("mae_Test_exploration_10 $mae_Test_exploration_10")
+    println("mae_Test_exploration_11 $mae_Test_exploration_11")
+    println("mae_Test_exploration_12 $mae_Test_exploration_12")
+    println("mae_Test_exploration_13 $mae_Test_exploration_13")
+    println("mae_Test_exploration_14 $mae_Test_exploration_14")
+    println("mae_Test_exploration_15 $mae_Test_exploration_15")
+    println("mae_Test_exploration_16 $mae_Test_exploration_16")
+    println("mae_Test_exploration_17 $mae_Test_exploration_17")
+    println("mae_Test_exploration_18 $mae_Test_exploration_18")
+    println("mae_Test_exploration_19 $mae_Test_exploration_19")
+    println("mae_Test_exploration_20 $mae_Test_exploration_20")
 
-@test mae_Train_exploration_0 <= 10
-@test mae_Train_exploration_1 <= 10
-@test mae_Train_exploration_2 <= 10
-@test mae_Train_exploration_3 <= 10
-@test mae_Train_exploration_4 <= 10
-@test mae_Train_exploration_5 <= 10
-@test mae_Train_exploration_6 != NaN
-@test mae_Train_exploration_7 <= 10
-@test mae_Train_exploration_8 <= 10
-@test mae_Train_exploration_9 <= 10
-@test mae_Train_exploration_10 <= 10
-@test mae_Train_exploration_11 <= 10
-@test mae_Train_exploration_12 <= 10
-@test mae_Train_exploration_13 != NaN
-@test mae_Train_exploration_14 <= 10
-@test mae_Train_exploration_15 <= 10
-@test mae_Train_exploration_16 <= 10
-@test mae_Train_exploration_17 <= 10
-@test mae_Train_exploration_18 <= 10
-@test mae_Train_exploration_19 <= 10
-@test mae_Train_exploration_20 != NaN
+    @test mae_Train_exploration_0 <= 10
+    @test mae_Train_exploration_1 <= 10
+    @test mae_Train_exploration_2 <= 10
+    @test mae_Train_exploration_3 <= 10
+    @test mae_Train_exploration_4 <= 10
+    @test mae_Train_exploration_5 <= 10
+    @test mae_Train_exploration_6 != NaN
+    @test mae_Train_exploration_7 <= 10
+    @test mae_Train_exploration_8 <= 10
+    @test mae_Train_exploration_9 <= 10
+    @test mae_Train_exploration_10 <= 10
+    @test mae_Train_exploration_11 <= 10
+    @test mae_Train_exploration_12 <= 10
+    @test mae_Train_exploration_13 != NaN
+    @test mae_Train_exploration_14 <= 10
+    @test mae_Train_exploration_15 <= 10
+    @test mae_Train_exploration_16 <= 10
+    @test mae_Train_exploration_17 <= 10
+    @test mae_Train_exploration_18 <= 10
+    @test mae_Train_exploration_19 <= 10
+    @test mae_Train_exploration_20 != NaN
 
-@test mae_Test_exploration_0 <= 10
-@test mae_Test_exploration_1 <= 10
-@test mae_Test_exploration_2 <= 10
-@test mae_Test_exploration_3 <= 10
-@test mae_Test_exploration_4 <= 10
-@test mae_Test_exploration_5 <= 10
-@test mae_Test_exploration_6 != NaN
-@test mae_Test_exploration_7 <= 10
-@test mae_Test_exploration_8 <= 10
-@test mae_Test_exploration_9 <= 10
-@test mae_Test_exploration_10 <= 10
-@test mae_Test_exploration_11 <= 10
-@test mae_Test_exploration_12 <= 10
-@test mae_Test_exploration_13 != NaN
-@test mae_Test_exploration_14 <= 10
-@test mae_Test_exploration_15 <= 10
-@test mae_Test_exploration_16 <= 10
-@test mae_Test_exploration_17 <= 10
-@test mae_Test_exploration_18 <= 10
-@test mae_Test_exploration_19 <= 10
-@test mae_Test_exploration_20 != NaN
+    @test mae_Test_exploration_0 <= 10
+    @test mae_Test_exploration_1 <= 10
+    @test mae_Test_exploration_2 <= 10
+    @test mae_Test_exploration_3 <= 10
+    @test mae_Test_exploration_4 <= 10
+    @test mae_Test_exploration_5 <= 10
+    @test mae_Test_exploration_6 != NaN
+    @test mae_Test_exploration_7 <= 10
+    @test mae_Test_exploration_8 <= 10
+    @test mae_Test_exploration_9 <= 10
+    @test mae_Test_exploration_10 <= 10
+    @test mae_Test_exploration_11 <= 10
+    @test mae_Test_exploration_12 <= 10
+    @test mae_Test_exploration_13 != NaN
+    @test mae_Test_exploration_14 <= 10
+    @test mae_Test_exploration_15 <= 10
+    @test mae_Test_exploration_16 <= 10
+    @test mae_Test_exploration_17 <= 10
+    @test mae_Test_exploration_18 <= 10
+    @test mae_Test_exploration_19 <= 10
+    @test mae_Test_exploration_20 != NaN
 
 end
 

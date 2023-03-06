@@ -47,59 +47,32 @@ function _neural_network_builder(
             NEURALNET_DEFAULT_PARAMETERS.activation_function,
         ),
     )]
-    minimum_epochs = get(
-        kws,
-        :neuralnet_minimum_epochs,
-        NEURALNET_DEFAULT_PARAMETERS.minimum_epochs,
-    )
-    maximum_epochs = get(
-        kws,
-        :neuralnet_maximum_epochs,
-        NEURALNET_DEFAULT_PARAMETERS.maximum_epochs,
-    )
-    minimum_layers = get(
-        kws,
-        :neuralnet_minimum_layers,
-        NEURALNET_DEFAULT_PARAMETERS.minimum_layers,
-    )
-    maximum_layers = get(
-        kws,
-        :neuralnet_maximum_layers,
-        NEURALNET_DEFAULT_PARAMETERS.maximum_layers,
-    )
-    minimum_neuron = get(
-        kws,
-        :neuralnet_minimum_neuron,
-        NEURALNET_DEFAULT_PARAMETERS.minimum_neuron,
-    )
-    maximum_neuron = get(
-        kws,
-        :neuralnet_maximum_neuron,
-        NEURALNET_DEFAULT_PARAMETERS.maximum_neuron,
-    )
-    batch_size =
-        get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
+    minimum_epochs =
+        get(kws, :neuralnet_minimum_epochs, NEURALNET_DEFAULT_PARAMETERS.minimum_epochs)
+    maximum_epochs =
+        get(kws, :neuralnet_maximum_epochs, NEURALNET_DEFAULT_PARAMETERS.maximum_epochs)
+    minimum_layers =
+        get(kws, :neuralnet_minimum_layers, NEURALNET_DEFAULT_PARAMETERS.minimum_layers)
+    maximum_layers =
+        get(kws, :neuralnet_maximum_layers, NEURALNET_DEFAULT_PARAMETERS.maximum_layers)
+    minimum_neuron =
+        get(kws, :neuralnet_minimum_neuron, NEURALNET_DEFAULT_PARAMETERS.minimum_neuron)
+    maximum_neuron =
+        get(kws, :neuralnet_maximum_neuron, NEURALNET_DEFAULT_PARAMETERS.maximum_neuron)
+    batch_size = get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
     if haskey(kws, :fraction_train) == true
-        f_t = dict_kws[:fraction_train]
+        f_t = kws[:fraction_train]
     else
         @error "fraction_train is mandatory with recurrent neural networks"
     end
 
     loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
-        get(
-            kws,
-            :neuralnet_loss_function,
-            NEURALNET_DEFAULT_PARAMETERS.loss_function,
-        ),
+        get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
 
     loss_fct = LOSS_FUNCTION_LIST[Symbol(
-        get(
-            kws,
-            :neuralnet_loss_function,
-            NEURALNET_DEFAULT_PARAMETERS.loss_function,
-        ),
+        get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
 
     #Design the neural network Lstm
@@ -161,59 +134,32 @@ function _neural_network_builder(
             NEURALNET_DEFAULT_PARAMETERS.activation_function,
         ),
     )]
-    minimum_epochs = get(
-        kws,
-        :neuralnet_minimum_epochs,
-        NEURALNET_DEFAULT_PARAMETERS.minimum_epochs,
-    )
-    maximum_epochs = get(
-        kws,
-        :neuralnet_maximum_epochs,
-        NEURALNET_DEFAULT_PARAMETERS.maximum_epochs,
-    )
-    minimum_layers = get(
-        kws,
-        :neuralnet_minimum_layers,
-        NEURALNET_DEFAULT_PARAMETERS.minimum_layers,
-    )
-    maximum_layers = get(
-        kws,
-        :neuralnet_maximum_layers,
-        NEURALNET_DEFAULT_PARAMETERS.maximum_layers,
-    )
-    minimum_neuron = get(
-        kws,
-        :neuralnet_minimum_neuron,
-        NEURALNET_DEFAULT_PARAMETERS.minimum_neuron,
-    )
-    maximum_neuron = get(
-        kws,
-        :neuralnet_maximum_neuron,
-        NEURALNET_DEFAULT_PARAMETERS.maximum_neuron,
-    )
-    batch_size =
-        get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
+    minimum_epochs =
+        get(kws, :neuralnet_minimum_epochs, NEURALNET_DEFAULT_PARAMETERS.minimum_epochs)
+    maximum_epochs =
+        get(kws, :neuralnet_maximum_epochs, NEURALNET_DEFAULT_PARAMETERS.maximum_epochs)
+    minimum_layers =
+        get(kws, :neuralnet_minimum_layers, NEURALNET_DEFAULT_PARAMETERS.minimum_layers)
+    maximum_layers =
+        get(kws, :neuralnet_maximum_layers, NEURALNET_DEFAULT_PARAMETERS.maximum_layers)
+    minimum_neuron =
+        get(kws, :neuralnet_minimum_neuron, NEURALNET_DEFAULT_PARAMETERS.minimum_neuron)
+    maximum_neuron =
+        get(kws, :neuralnet_maximum_neuron, NEURALNET_DEFAULT_PARAMETERS.maximum_neuron)
+    batch_size = get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
     if haskey(kws, :fraction_train) == true
-        f_t = dict_kws[:fraction_train]
+        f_t = kws[:fraction_train]
     else
         @error "fraction_train is mandatory with recurrent neural networks"
     end
 
     loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
-        get(
-            kws,
-            :neuralnet_loss_function,
-            NEURALNET_DEFAULT_PARAMETERS.loss_function,
-        ),
+        get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
 
     loss_fct = LOSS_FUNCTION_LIST[Symbol(
-        get(
-            kws,
-            :neuralnet_loss_function,
-            NEURALNET_DEFAULT_PARAMETERS.loss_function,
-        ),
+        get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
 
     #Design the neural network Lstm
@@ -276,59 +222,32 @@ function _neural_network_builder(
             NEURALNET_DEFAULT_PARAMETERS.activation_function,
         ),
     )]
-    minimum_epochs = get(
-        kws,
-        :neuralnet_minimum_epochs,
-        NEURALNET_DEFAULT_PARAMETERS.minimum_epochs,
-    )
-    maximum_epochs = get(
-        kws,
-        :neuralnet_maximum_epochs,
-        NEURALNET_DEFAULT_PARAMETERS.maximum_epochs,
-    )
-    minimum_layers = get(
-        kws,
-        :neuralnet_minimum_layers,
-        NEURALNET_DEFAULT_PARAMETERS.minimum_layers,
-    )
-    maximum_layers = get(
-        kws,
-        :neuralnet_maximum_layers,
-        NEURALNET_DEFAULT_PARAMETERS.maximum_layers,
-    )
-    minimum_neuron = get(
-        kws,
-        :neuralnet_minimum_neuron,
-        NEURALNET_DEFAULT_PARAMETERS.minimum_neuron,
-    )
-    maximum_neuron = get(
-        kws,
-        :neuralnet_maximum_neuron,
-        NEURALNET_DEFAULT_PARAMETERS.maximum_neuron,
-    )
-    batch_size =
-        get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
+    minimum_epochs =
+        get(kws, :neuralnet_minimum_epochs, NEURALNET_DEFAULT_PARAMETERS.minimum_epochs)
+    maximum_epochs =
+        get(kws, :neuralnet_maximum_epochs, NEURALNET_DEFAULT_PARAMETERS.maximum_epochs)
+    minimum_layers =
+        get(kws, :neuralnet_minimum_layers, NEURALNET_DEFAULT_PARAMETERS.minimum_layers)
+    maximum_layers =
+        get(kws, :neuralnet_maximum_layers, NEURALNET_DEFAULT_PARAMETERS.maximum_layers)
+    minimum_neuron =
+        get(kws, :neuralnet_minimum_neuron, NEURALNET_DEFAULT_PARAMETERS.minimum_neuron)
+    maximum_neuron =
+        get(kws, :neuralnet_maximum_neuron, NEURALNET_DEFAULT_PARAMETERS.maximum_neuron)
+    batch_size = get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
     if haskey(kws, :fraction_train) == true
-        f_t = dict_kws[:fraction_train]
+        f_t = kws[:fraction_train]
     else
         @error "fraction_train is mandatory with recurrent neural networks"
     end
 
     loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
-        get(
-            kws,
-            :neuralnet_loss_function,
-            NEURALNET_DEFAULT_PARAMETERS.loss_function,
-        ),
+        get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
 
     loss_fct = LOSS_FUNCTION_LIST[Symbol(
-        get(
-            kws,
-            :neuralnet_loss_function,
-            NEURALNET_DEFAULT_PARAMETERS.loss_function,
-        ),
+        get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
 
     #Design the neural network Lstm
@@ -390,59 +309,32 @@ function _neural_network_builder(
             NEURALNET_DEFAULT_PARAMETERS.activation_function,
         ),
     )]
-    minimum_epochs = get(
-        kws,
-        :neuralnet_minimum_epochs,
-        NEURALNET_DEFAULT_PARAMETERS.minimum_epochs,
-    )
-    maximum_epochs = get(
-        kws,
-        :neuralnet_maximum_epochs,
-        NEURALNET_DEFAULT_PARAMETERS.maximum_epochs,
-    )
-    minimum_layers = get(
-        kws,
-        :neuralnet_minimum_layers,
-        NEURALNET_DEFAULT_PARAMETERS.minimum_layers,
-    )
-    maximum_layers = get(
-        kws,
-        :neuralnet_maximum_layers,
-        NEURALNET_DEFAULT_PARAMETERS.maximum_layers,
-    )
-    minimum_neuron = get(
-        kws,
-        :neuralnet_minimum_neuron,
-        NEURALNET_DEFAULT_PARAMETERS.minimum_neuron,
-    )
-    maximum_neuron = get(
-        kws,
-        :neuralnet_maximum_neuron,
-        NEURALNET_DEFAULT_PARAMETERS.maximum_neuron,
-    )
-    batch_size =
-        get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
+    minimum_epochs =
+        get(kws, :neuralnet_minimum_epochs, NEURALNET_DEFAULT_PARAMETERS.minimum_epochs)
+    maximum_epochs =
+        get(kws, :neuralnet_maximum_epochs, NEURALNET_DEFAULT_PARAMETERS.maximum_epochs)
+    minimum_layers =
+        get(kws, :neuralnet_minimum_layers, NEURALNET_DEFAULT_PARAMETERS.minimum_layers)
+    maximum_layers =
+        get(kws, :neuralnet_maximum_layers, NEURALNET_DEFAULT_PARAMETERS.maximum_layers)
+    minimum_neuron =
+        get(kws, :neuralnet_minimum_neuron, NEURALNET_DEFAULT_PARAMETERS.minimum_neuron)
+    maximum_neuron =
+        get(kws, :neuralnet_maximum_neuron, NEURALNET_DEFAULT_PARAMETERS.maximum_neuron)
+    batch_size = get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
     if haskey(kws, :fraction_train) == true
-        f_t = dict_kws[:fraction_train]
+        f_t = kws[:fraction_train]
     else
         @error "fraction_train is mandatory with recurrent neural networks"
     end
 
     loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
-        get(
-            kws,
-            :neuralnet_loss_function,
-            NEURALNET_DEFAULT_PARAMETERS.loss_function,
-        ),
+        get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
 
     loss_fct = LOSS_FUNCTION_LIST[Symbol(
-        get(
-            kws,
-            :neuralnet_loss_function,
-            NEURALNET_DEFAULT_PARAMETERS.loss_function,
-        ),
+        get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
 
     #Design the neural network Lstm
@@ -505,59 +397,32 @@ function _neural_network_builder(
             NEURALNET_DEFAULT_PARAMETERS.activation_function,
         ),
     )]
-    minimum_epochs = get(
-        kws,
-        :neuralnet_minimum_epochs,
-        NEURALNET_DEFAULT_PARAMETERS.minimum_epochs,
-    )
-    maximum_epochs = get(
-        kws,
-        :neuralnet_maximum_epochs,
-        NEURALNET_DEFAULT_PARAMETERS.maximum_epochs,
-    )
-    minimum_layers = get(
-        kws,
-        :neuralnet_minimum_layers,
-        NEURALNET_DEFAULT_PARAMETERS.minimum_layers,
-    )
-    maximum_layers = get(
-        kws,
-        :neuralnet_maximum_layers,
-        NEURALNET_DEFAULT_PARAMETERS.maximum_layers,
-    )
-    minimum_neuron = get(
-        kws,
-        :neuralnet_minimum_neuron,
-        NEURALNET_DEFAULT_PARAMETERS.minimum_neuron,
-    )
-    maximum_neuron = get(
-        kws,
-        :neuralnet_maximum_neuron,
-        NEURALNET_DEFAULT_PARAMETERS.maximum_neuron,
-    )
-    batch_size =
-        get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
+    minimum_epochs =
+        get(kws, :neuralnet_minimum_epochs, NEURALNET_DEFAULT_PARAMETERS.minimum_epochs)
+    maximum_epochs =
+        get(kws, :neuralnet_maximum_epochs, NEURALNET_DEFAULT_PARAMETERS.maximum_epochs)
+    minimum_layers =
+        get(kws, :neuralnet_minimum_layers, NEURALNET_DEFAULT_PARAMETERS.minimum_layers)
+    maximum_layers =
+        get(kws, :neuralnet_maximum_layers, NEURALNET_DEFAULT_PARAMETERS.maximum_layers)
+    minimum_neuron =
+        get(kws, :neuralnet_minimum_neuron, NEURALNET_DEFAULT_PARAMETERS.minimum_neuron)
+    maximum_neuron =
+        get(kws, :neuralnet_maximum_neuron, NEURALNET_DEFAULT_PARAMETERS.maximum_neuron)
+    batch_size = get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
     if haskey(kws, :fraction_train) == true
-        f_t = dict_kws[:fraction_train]
+        f_t = kws[:fraction_train]
     else
         @error "fraction_train is mandatory with recurrent neural networks"
     end
 
     loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
-        get(
-            kws,
-            :neuralnet_loss_function,
-            NEURALNET_DEFAULT_PARAMETERS.loss_function,
-        ),
+        get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
 
     loss_fct = LOSS_FUNCTION_LIST[Symbol(
-        get(
-            kws,
-            :neuralnet_loss_function,
-            NEURALNET_DEFAULT_PARAMETERS.loss_function,
-        ),
+        get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
 
     #Design the neural network Lstm
@@ -618,59 +483,32 @@ function _neural_network_builder(
             NEURALNET_DEFAULT_PARAMETERS.activation_function,
         ),
     )]
-    minimum_epochs = get(
-        kws,
-        :neuralnet_minimum_epochs,
-        NEURALNET_DEFAULT_PARAMETERS.minimum_epochs,
-    )
-    maximum_epochs = get(
-        kws,
-        :neuralnet_maximum_epochs,
-        NEURALNET_DEFAULT_PARAMETERS.maximum_epochs,
-    )
-    minimum_layers = get(
-        kws,
-        :neuralnet_minimum_layers,
-        NEURALNET_DEFAULT_PARAMETERS.minimum_layers,
-    )
-    maximum_layers = get(
-        kws,
-        :neuralnet_maximum_layers,
-        NEURALNET_DEFAULT_PARAMETERS.maximum_layers,
-    )
-    minimum_neuron = get(
-        kws,
-        :neuralnet_minimum_neuron,
-        NEURALNET_DEFAULT_PARAMETERS.minimum_neuron,
-    )
-    maximum_neuron = get(
-        kws,
-        :neuralnet_maximum_neuron,
-        NEURALNET_DEFAULT_PARAMETERS.maximum_neuron,
-    )
-    batch_size =
-        get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
+    minimum_epochs =
+        get(kws, :neuralnet_minimum_epochs, NEURALNET_DEFAULT_PARAMETERS.minimum_epochs)
+    maximum_epochs =
+        get(kws, :neuralnet_maximum_epochs, NEURALNET_DEFAULT_PARAMETERS.maximum_epochs)
+    minimum_layers =
+        get(kws, :neuralnet_minimum_layers, NEURALNET_DEFAULT_PARAMETERS.minimum_layers)
+    maximum_layers =
+        get(kws, :neuralnet_maximum_layers, NEURALNET_DEFAULT_PARAMETERS.maximum_layers)
+    minimum_neuron =
+        get(kws, :neuralnet_minimum_neuron, NEURALNET_DEFAULT_PARAMETERS.minimum_neuron)
+    maximum_neuron =
+        get(kws, :neuralnet_maximum_neuron, NEURALNET_DEFAULT_PARAMETERS.maximum_neuron)
+    batch_size = get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
     if haskey(kws, :fraction_train) == true
-        f_t = dict_kws[:fraction_train]
+        f_t = kws[:fraction_train]
     else
         @error "fraction_train is mandatory with recurrent neural networks"
     end
 
     loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
-        get(
-            kws,
-            :neuralnet_loss_function,
-            NEURALNET_DEFAULT_PARAMETERS.loss_function,
-        ),
+        get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
 
     loss_fct = LOSS_FUNCTION_LIST[Symbol(
-        get(
-            kws,
-            :neuralnet_loss_function,
-            NEURALNET_DEFAULT_PARAMETERS.loss_function,
-        ),
+        get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
 
     #Design the neural network Lstm
@@ -731,59 +569,32 @@ function _neural_network_builder(
             NEURALNET_DEFAULT_PARAMETERS.activation_function,
         ),
     )]
-    minimum_epochs = get(
-        kws,
-        :neuralnet_minimum_epochs,
-        NEURALNET_DEFAULT_PARAMETERS.minimum_epochs,
-    )
-    maximum_epochs = get(
-        kws,
-        :neuralnet_maximum_epochs,
-        NEURALNET_DEFAULT_PARAMETERS.maximum_epochs,
-    )
-    minimum_layers = get(
-        kws,
-        :neuralnet_minimum_layers,
-        NEURALNET_DEFAULT_PARAMETERS.minimum_layers,
-    )
-    maximum_layers = get(
-        kws,
-        :neuralnet_maximum_layers,
-        NEURALNET_DEFAULT_PARAMETERS.maximum_layers,
-    )
-    minimum_neuron = get(
-        kws,
-        :neuralnet_minimum_neuron,
-        NEURALNET_DEFAULT_PARAMETERS.minimum_neuron,
-    )
-    maximum_neuron = get(
-        kws,
-        :neuralnet_maximum_neuron,
-        NEURALNET_DEFAULT_PARAMETERS.maximum_neuron,
-    )
-    batch_size =
-        get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
+    minimum_epochs =
+        get(kws, :neuralnet_minimum_epochs, NEURALNET_DEFAULT_PARAMETERS.minimum_epochs)
+    maximum_epochs =
+        get(kws, :neuralnet_maximum_epochs, NEURALNET_DEFAULT_PARAMETERS.maximum_epochs)
+    minimum_layers =
+        get(kws, :neuralnet_minimum_layers, NEURALNET_DEFAULT_PARAMETERS.minimum_layers)
+    maximum_layers =
+        get(kws, :neuralnet_maximum_layers, NEURALNET_DEFAULT_PARAMETERS.maximum_layers)
+    minimum_neuron =
+        get(kws, :neuralnet_minimum_neuron, NEURALNET_DEFAULT_PARAMETERS.minimum_neuron)
+    maximum_neuron =
+        get(kws, :neuralnet_maximum_neuron, NEURALNET_DEFAULT_PARAMETERS.maximum_neuron)
+    batch_size = get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
     if haskey(kws, :fraction_train) == true
-        f_t = dict_kws[:fraction_train]
+        f_t = kws[:fraction_train]
     else
         @error "fraction_train is mandatory with recurrent neural networks"
     end
 
     loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
-        get(
-            kws,
-            :neuralnet_loss_function,
-            NEURALNET_DEFAULT_PARAMETERS.loss_function,
-        ),
+        get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
 
     loss_fct = LOSS_FUNCTION_LIST[Symbol(
-        get(
-            kws,
-            :neuralnet_loss_function,
-            NEURALNET_DEFAULT_PARAMETERS.loss_function,
-        ),
+        get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
 
     #Design the neural network Lstm
@@ -846,59 +657,32 @@ function _neural_network_builder(
             NEURALNET_DEFAULT_PARAMETERS.activation_function,
         ),
     )]
-    minimum_epochs = get(
-        kws,
-        :neuralnet_minimum_epochs,
-        NEURALNET_DEFAULT_PARAMETERS.minimum_epochs,
-    )
-    maximum_epochs = get(
-        kws,
-        :neuralnet_maximum_epochs,
-        NEURALNET_DEFAULT_PARAMETERS.maximum_epochs,
-    )
-    minimum_layers = get(
-        kws,
-        :neuralnet_minimum_layers,
-        NEURALNET_DEFAULT_PARAMETERS.minimum_layers,
-    )
-    maximum_layers = get(
-        kws,
-        :neuralnet_maximum_layers,
-        NEURALNET_DEFAULT_PARAMETERS.maximum_layers,
-    )
-    minimum_neuron = get(
-        kws,
-        :neuralnet_minimum_neuron,
-        NEURALNET_DEFAULT_PARAMETERS.minimum_neuron,
-    )
-    maximum_neuron = get(
-        kws,
-        :neuralnet_maximum_neuron,
-        NEURALNET_DEFAULT_PARAMETERS.maximum_neuron,
-    )
-    batch_size =
-        get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
+    minimum_epochs =
+        get(kws, :neuralnet_minimum_epochs, NEURALNET_DEFAULT_PARAMETERS.minimum_epochs)
+    maximum_epochs =
+        get(kws, :neuralnet_maximum_epochs, NEURALNET_DEFAULT_PARAMETERS.maximum_epochs)
+    minimum_layers =
+        get(kws, :neuralnet_minimum_layers, NEURALNET_DEFAULT_PARAMETERS.minimum_layers)
+    maximum_layers =
+        get(kws, :neuralnet_maximum_layers, NEURALNET_DEFAULT_PARAMETERS.maximum_layers)
+    minimum_neuron =
+        get(kws, :neuralnet_minimum_neuron, NEURALNET_DEFAULT_PARAMETERS.minimum_neuron)
+    maximum_neuron =
+        get(kws, :neuralnet_maximum_neuron, NEURALNET_DEFAULT_PARAMETERS.maximum_neuron)
+    batch_size = get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
     if haskey(kws, :fraction_train) == true
-        f_t = dict_kws[:fraction_train]
+        f_t = kws[:fraction_train]
     else
         @error "fraction_train is mandatory with recurrent neural networks"
     end
 
     loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
-        get(
-            kws,
-            :neuralnet_loss_function,
-            NEURALNET_DEFAULT_PARAMETERS.loss_function,
-        ),
+        get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
 
     loss_fct = LOSS_FUNCTION_LIST[Symbol(
-        get(
-            kws,
-            :neuralnet_loss_function,
-            NEURALNET_DEFAULT_PARAMETERS.loss_function,
-        ),
+        get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
 
     #Design the neural network Lstm
@@ -960,59 +744,32 @@ function _neural_network_builder(
             NEURALNET_DEFAULT_PARAMETERS.activation_function,
         ),
     )]
-    minimum_epochs = get(
-        kws,
-        :neuralnet_minimum_epochs,
-        NEURALNET_DEFAULT_PARAMETERS.minimum_epochs,
-    )
-    maximum_epochs = get(
-        kws,
-        :neuralnet_maximum_epochs,
-        NEURALNET_DEFAULT_PARAMETERS.maximum_epochs,
-    )
-    minimum_layers = get(
-        kws,
-        :neuralnet_minimum_layers,
-        NEURALNET_DEFAULT_PARAMETERS.minimum_layers,
-    )
-    maximum_layers = get(
-        kws,
-        :neuralnet_maximum_layers,
-        NEURALNET_DEFAULT_PARAMETERS.maximum_layers,
-    )
-    minimum_neuron = get(
-        kws,
-        :neuralnet_minimum_neuron,
-        NEURALNET_DEFAULT_PARAMETERS.minimum_neuron,
-    )
-    maximum_neuron = get(
-        kws,
-        :neuralnet_maximum_neuron,
-        NEURALNET_DEFAULT_PARAMETERS.maximum_neuron,
-    )
-    batch_size =
-        get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
+    minimum_epochs =
+        get(kws, :neuralnet_minimum_epochs, NEURALNET_DEFAULT_PARAMETERS.minimum_epochs)
+    maximum_epochs =
+        get(kws, :neuralnet_maximum_epochs, NEURALNET_DEFAULT_PARAMETERS.maximum_epochs)
+    minimum_layers =
+        get(kws, :neuralnet_minimum_layers, NEURALNET_DEFAULT_PARAMETERS.minimum_layers)
+    maximum_layers =
+        get(kws, :neuralnet_maximum_layers, NEURALNET_DEFAULT_PARAMETERS.maximum_layers)
+    minimum_neuron =
+        get(kws, :neuralnet_minimum_neuron, NEURALNET_DEFAULT_PARAMETERS.minimum_neuron)
+    maximum_neuron =
+        get(kws, :neuralnet_maximum_neuron, NEURALNET_DEFAULT_PARAMETERS.maximum_neuron)
+    batch_size = get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
     if haskey(kws, :fraction_train) == true
-        f_t = dict_kws[:fraction_train]
+        f_t = kws[:fraction_train]
     else
         @error "fraction_train is mandatory with recurrent neural networks"
     end
 
     loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
-        get(
-            kws,
-            :neuralnet_loss_function,
-            NEURALNET_DEFAULT_PARAMETERS.loss_function,
-        ),
+        get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
 
     loss_fct = LOSS_FUNCTION_LIST[Symbol(
-        get(
-            kws,
-            :neuralnet_loss_function,
-            NEURALNET_DEFAULT_PARAMETERS.loss_function,
-        ),
+        get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
 
     #Design the neural network Lstm
@@ -1075,59 +832,32 @@ function _neural_network_builder(
             NEURALNET_DEFAULT_PARAMETERS.activation_function,
         ),
     )]
-    minimum_epochs = get(
-        kws,
-        :neuralnet_minimum_epochs,
-        NEURALNET_DEFAULT_PARAMETERS.minimum_epochs,
-    )
-    maximum_epochs = get(
-        kws,
-        :neuralnet_maximum_epochs,
-        NEURALNET_DEFAULT_PARAMETERS.maximum_epochs,
-    )
-    minimum_layers = get(
-        kws,
-        :neuralnet_minimum_layers,
-        NEURALNET_DEFAULT_PARAMETERS.minimum_layers,
-    )
-    maximum_layers = get(
-        kws,
-        :neuralnet_maximum_layers,
-        NEURALNET_DEFAULT_PARAMETERS.maximum_layers,
-    )
-    minimum_neuron = get(
-        kws,
-        :neuralnet_minimum_neuron,
-        NEURALNET_DEFAULT_PARAMETERS.minimum_neuron,
-    )
-    maximum_neuron = get(
-        kws,
-        :neuralnet_maximum_neuron,
-        NEURALNET_DEFAULT_PARAMETERS.maximum_neuron,
-    )
-    batch_size =
-        get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
+    minimum_epochs =
+        get(kws, :neuralnet_minimum_epochs, NEURALNET_DEFAULT_PARAMETERS.minimum_epochs)
+    maximum_epochs =
+        get(kws, :neuralnet_maximum_epochs, NEURALNET_DEFAULT_PARAMETERS.maximum_epochs)
+    minimum_layers =
+        get(kws, :neuralnet_minimum_layers, NEURALNET_DEFAULT_PARAMETERS.minimum_layers)
+    maximum_layers =
+        get(kws, :neuralnet_maximum_layers, NEURALNET_DEFAULT_PARAMETERS.maximum_layers)
+    minimum_neuron =
+        get(kws, :neuralnet_minimum_neuron, NEURALNET_DEFAULT_PARAMETERS.minimum_neuron)
+    maximum_neuron =
+        get(kws, :neuralnet_maximum_neuron, NEURALNET_DEFAULT_PARAMETERS.maximum_neuron)
+    batch_size = get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
     if haskey(kws, :fraction_train) == true
-        f_t = dict_kws[:fraction_train]
+        f_t = kws[:fraction_train]
     else
         @error "fraction_train is mandatory with recurrent neural networks"
     end
 
     loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
-        get(
-            kws,
-            :neuralnet_loss_function,
-            NEURALNET_DEFAULT_PARAMETERS.loss_function,
-        ),
+        get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
 
     loss_fct = LOSS_FUNCTION_LIST[Symbol(
-        get(
-            kws,
-            :neuralnet_loss_function,
-            NEURALNET_DEFAULT_PARAMETERS.loss_function,
-        ),
+        get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
 
     #Design the neural network Lstm
@@ -1189,59 +919,32 @@ function _neural_network_builder(
             NEURALNET_DEFAULT_PARAMETERS.activation_function,
         ),
     )]
-    minimum_epochs = get(
-        kws,
-        :neuralnet_minimum_epochs,
-        NEURALNET_DEFAULT_PARAMETERS.minimum_epochs,
-    )
-    maximum_epochs = get(
-        kws,
-        :neuralnet_maximum_epochs,
-        NEURALNET_DEFAULT_PARAMETERS.maximum_epochs,
-    )
-    minimum_layers = get(
-        kws,
-        :neuralnet_minimum_layers,
-        NEURALNET_DEFAULT_PARAMETERS.minimum_layers,
-    )
-    maximum_layers = get(
-        kws,
-        :neuralnet_maximum_layers,
-        NEURALNET_DEFAULT_PARAMETERS.maximum_layers,
-    )
-    minimum_neuron = get(
-        kws,
-        :neuralnet_minimum_neuron,
-        NEURALNET_DEFAULT_PARAMETERS.minimum_neuron,
-    )
-    maximum_neuron = get(
-        kws,
-        :neuralnet_maximum_neuron,
-        NEURALNET_DEFAULT_PARAMETERS.maximum_neuron,
-    )
-    batch_size =
-        get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
+    minimum_epochs =
+        get(kws, :neuralnet_minimum_epochs, NEURALNET_DEFAULT_PARAMETERS.minimum_epochs)
+    maximum_epochs =
+        get(kws, :neuralnet_maximum_epochs, NEURALNET_DEFAULT_PARAMETERS.maximum_epochs)
+    minimum_layers =
+        get(kws, :neuralnet_minimum_layers, NEURALNET_DEFAULT_PARAMETERS.minimum_layers)
+    maximum_layers =
+        get(kws, :neuralnet_maximum_layers, NEURALNET_DEFAULT_PARAMETERS.maximum_layers)
+    minimum_neuron =
+        get(kws, :neuralnet_minimum_neuron, NEURALNET_DEFAULT_PARAMETERS.minimum_neuron)
+    maximum_neuron =
+        get(kws, :neuralnet_maximum_neuron, NEURALNET_DEFAULT_PARAMETERS.maximum_neuron)
+    batch_size = get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
     if haskey(kws, :fraction_train) == true
-        f_t = dict_kws[:fraction_train]
+        f_t = kws[:fraction_train]
     else
         @error "fraction_train is mandatory with recurrent neural networks"
     end
 
     loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
-        get(
-            kws,
-            :neuralnet_loss_function,
-            NEURALNET_DEFAULT_PARAMETERS.loss_function,
-        ),
+        get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
 
     loss_fct = LOSS_FUNCTION_LIST[Symbol(
-        get(
-            kws,
-            :neuralnet_loss_function,
-            NEURALNET_DEFAULT_PARAMETERS.loss_function,
-        ),
+        get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
 
     #Design the neural network Lstm
@@ -1304,59 +1007,32 @@ function _neural_network_builder(
             NEURALNET_DEFAULT_PARAMETERS.activation_function,
         ),
     )]
-    minimum_epochs = get(
-        kws,
-        :neuralnet_minimum_epochs,
-        NEURALNET_DEFAULT_PARAMETERS.minimum_epochs,
-    )
-    maximum_epochs = get(
-        kws,
-        :neuralnet_maximum_epochs,
-        NEURALNET_DEFAULT_PARAMETERS.maximum_epochs,
-    )
-    minimum_layers = get(
-        kws,
-        :neuralnet_minimum_layers,
-        NEURALNET_DEFAULT_PARAMETERS.minimum_layers,
-    )
-    maximum_layers = get(
-        kws,
-        :neuralnet_maximum_layers,
-        NEURALNET_DEFAULT_PARAMETERS.maximum_layers,
-    )
-    minimum_neuron = get(
-        kws,
-        :neuralnet_minimum_neuron,
-        NEURALNET_DEFAULT_PARAMETERS.minimum_neuron,
-    )
-    maximum_neuron = get(
-        kws,
-        :neuralnet_maximum_neuron,
-        NEURALNET_DEFAULT_PARAMETERS.maximum_neuron,
-    )
-    batch_size =
-        get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
+    minimum_epochs =
+        get(kws, :neuralnet_minimum_epochs, NEURALNET_DEFAULT_PARAMETERS.minimum_epochs)
+    maximum_epochs =
+        get(kws, :neuralnet_maximum_epochs, NEURALNET_DEFAULT_PARAMETERS.maximum_epochs)
+    minimum_layers =
+        get(kws, :neuralnet_minimum_layers, NEURALNET_DEFAULT_PARAMETERS.minimum_layers)
+    maximum_layers =
+        get(kws, :neuralnet_maximum_layers, NEURALNET_DEFAULT_PARAMETERS.maximum_layers)
+    minimum_neuron =
+        get(kws, :neuralnet_minimum_neuron, NEURALNET_DEFAULT_PARAMETERS.minimum_neuron)
+    maximum_neuron =
+        get(kws, :neuralnet_maximum_neuron, NEURALNET_DEFAULT_PARAMETERS.maximum_neuron)
+    batch_size = get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
     if haskey(kws, :fraction_train) == true
-        f_t = dict_kws[:fraction_train]
+        f_t = kws[:fraction_train]
     else
         @error "fraction_train is mandatory with recurrent neural networks"
     end
 
     loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
-        get(
-            kws,
-            :neuralnet_loss_function,
-            NEURALNET_DEFAULT_PARAMETERS.loss_function,
-        ),
+        get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
 
     loss_fct = LOSS_FUNCTION_LIST[Symbol(
-        get(
-            kws,
-            :neuralnet_loss_function,
-            NEURALNET_DEFAULT_PARAMETERS.loss_function,
-        ),
+        get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
 
     #Design the neural network Lstm
@@ -1417,59 +1093,32 @@ function _neural_network_builder(
             NEURALNET_DEFAULT_PARAMETERS.activation_function,
         ),
     )]
-    minimum_epochs = get(
-        kws,
-        :neuralnet_minimum_epochs,
-        NEURALNET_DEFAULT_PARAMETERS.minimum_epochs,
-    )
-    maximum_epochs = get(
-        kws,
-        :neuralnet_maximum_epochs,
-        NEURALNET_DEFAULT_PARAMETERS.maximum_epochs,
-    )
-    minimum_layers = get(
-        kws,
-        :neuralnet_minimum_layers,
-        NEURALNET_DEFAULT_PARAMETERS.minimum_layers,
-    )
-    maximum_layers = get(
-        kws,
-        :neuralnet_maximum_layers,
-        NEURALNET_DEFAULT_PARAMETERS.maximum_layers,
-    )
-    minimum_neuron = get(
-        kws,
-        :neuralnet_minimum_neuron,
-        NEURALNET_DEFAULT_PARAMETERS.minimum_neuron,
-    )
-    maximum_neuron = get(
-        kws,
-        :neuralnet_maximum_neuron,
-        NEURALNET_DEFAULT_PARAMETERS.maximum_neuron,
-    )
-    batch_size =
-        get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
+    minimum_epochs =
+        get(kws, :neuralnet_minimum_epochs, NEURALNET_DEFAULT_PARAMETERS.minimum_epochs)
+    maximum_epochs =
+        get(kws, :neuralnet_maximum_epochs, NEURALNET_DEFAULT_PARAMETERS.maximum_epochs)
+    minimum_layers =
+        get(kws, :neuralnet_minimum_layers, NEURALNET_DEFAULT_PARAMETERS.minimum_layers)
+    maximum_layers =
+        get(kws, :neuralnet_maximum_layers, NEURALNET_DEFAULT_PARAMETERS.maximum_layers)
+    minimum_neuron =
+        get(kws, :neuralnet_minimum_neuron, NEURALNET_DEFAULT_PARAMETERS.minimum_neuron)
+    maximum_neuron =
+        get(kws, :neuralnet_maximum_neuron, NEURALNET_DEFAULT_PARAMETERS.maximum_neuron)
+    batch_size = get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
     if haskey(kws, :fraction_train) == true
-        f_t = dict_kws[:fraction_train]
+        f_t = kws[:fraction_train]
     else
         @error "fraction_train is mandatory with recurrent neural networks"
     end
 
     loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
-        get(
-            kws,
-            :neuralnet_loss_function,
-            NEURALNET_DEFAULT_PARAMETERS.loss_function,
-        ),
+        get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
 
     loss_fct = LOSS_FUNCTION_LIST[Symbol(
-        get(
-            kws,
-            :neuralnet_loss_function,
-            NEURALNET_DEFAULT_PARAMETERS.loss_function,
-        ),
+        get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
 
     #Design the neural network Lstm
@@ -1530,59 +1179,32 @@ function _neural_network_builder(
             NEURALNET_DEFAULT_PARAMETERS.activation_function,
         ),
     )]
-    minimum_epochs = get(
-        kws,
-        :neuralnet_minimum_epochs,
-        NEURALNET_DEFAULT_PARAMETERS.minimum_epochs,
-    )
-    maximum_epochs = get(
-        kws,
-        :neuralnet_maximum_epochs,
-        NEURALNET_DEFAULT_PARAMETERS.maximum_epochs,
-    )
-    minimum_layers = get(
-        kws,
-        :neuralnet_minimum_layers,
-        NEURALNET_DEFAULT_PARAMETERS.minimum_layers,
-    )
-    maximum_layers = get(
-        kws,
-        :neuralnet_maximum_layers,
-        NEURALNET_DEFAULT_PARAMETERS.maximum_layers,
-    )
-    minimum_neuron = get(
-        kws,
-        :neuralnet_minimum_neuron,
-        NEURALNET_DEFAULT_PARAMETERS.minimum_neuron,
-    )
-    maximum_neuron = get(
-        kws,
-        :neuralnet_maximum_neuron,
-        NEURALNET_DEFAULT_PARAMETERS.maximum_neuron,
-    )
-    batch_size =
-        get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
+    minimum_epochs =
+        get(kws, :neuralnet_minimum_epochs, NEURALNET_DEFAULT_PARAMETERS.minimum_epochs)
+    maximum_epochs =
+        get(kws, :neuralnet_maximum_epochs, NEURALNET_DEFAULT_PARAMETERS.maximum_epochs)
+    minimum_layers =
+        get(kws, :neuralnet_minimum_layers, NEURALNET_DEFAULT_PARAMETERS.minimum_layers)
+    maximum_layers =
+        get(kws, :neuralnet_maximum_layers, NEURALNET_DEFAULT_PARAMETERS.maximum_layers)
+    minimum_neuron =
+        get(kws, :neuralnet_minimum_neuron, NEURALNET_DEFAULT_PARAMETERS.minimum_neuron)
+    maximum_neuron =
+        get(kws, :neuralnet_maximum_neuron, NEURALNET_DEFAULT_PARAMETERS.maximum_neuron)
+    batch_size = get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
     if haskey(kws, :fraction_train) == true
-        f_t = dict_kws[:fraction_train]
+        f_t = kws[:fraction_train]
     else
         @error "fraction_train is mandatory with recurrent neural networks"
     end
 
     loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
-        get(
-            kws,
-            :neuralnet_loss_function,
-            NEURALNET_DEFAULT_PARAMETERS.loss_function,
-        ),
+        get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
 
     loss_fct = LOSS_FUNCTION_LIST[Symbol(
-        get(
-            kws,
-            :neuralnet_loss_function,
-            NEURALNET_DEFAULT_PARAMETERS.loss_function,
-        ),
+        get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
 
     #Design the neural network Lstm
@@ -1645,59 +1267,32 @@ function _neural_network_builder(
             NEURALNET_DEFAULT_PARAMETERS.activation_function,
         ),
     )]
-    minimum_epochs = get(
-        kws,
-        :neuralnet_minimum_epochs,
-        NEURALNET_DEFAULT_PARAMETERS.minimum_epochs,
-    )
-    maximum_epochs = get(
-        kws,
-        :neuralnet_maximum_epochs,
-        NEURALNET_DEFAULT_PARAMETERS.maximum_epochs,
-    )
-    minimum_layers = get(
-        kws,
-        :neuralnet_minimum_layers,
-        NEURALNET_DEFAULT_PARAMETERS.minimum_layers,
-    )
-    maximum_layers = get(
-        kws,
-        :neuralnet_maximum_layers,
-        NEURALNET_DEFAULT_PARAMETERS.maximum_layers,
-    )
-    minimum_neuron = get(
-        kws,
-        :neuralnet_minimum_neuron,
-        NEURALNET_DEFAULT_PARAMETERS.minimum_neuron,
-    )
-    maximum_neuron = get(
-        kws,
-        :neuralnet_maximum_neuron,
-        NEURALNET_DEFAULT_PARAMETERS.maximum_neuron,
-    )
-    batch_size =
-        get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
+    minimum_epochs =
+        get(kws, :neuralnet_minimum_epochs, NEURALNET_DEFAULT_PARAMETERS.minimum_epochs)
+    maximum_epochs =
+        get(kws, :neuralnet_maximum_epochs, NEURALNET_DEFAULT_PARAMETERS.maximum_epochs)
+    minimum_layers =
+        get(kws, :neuralnet_minimum_layers, NEURALNET_DEFAULT_PARAMETERS.minimum_layers)
+    maximum_layers =
+        get(kws, :neuralnet_maximum_layers, NEURALNET_DEFAULT_PARAMETERS.maximum_layers)
+    minimum_neuron =
+        get(kws, :neuralnet_minimum_neuron, NEURALNET_DEFAULT_PARAMETERS.minimum_neuron)
+    maximum_neuron =
+        get(kws, :neuralnet_maximum_neuron, NEURALNET_DEFAULT_PARAMETERS.maximum_neuron)
+    batch_size = get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
     if haskey(kws, :fraction_train) == true
-        f_t = dict_kws[:fraction_train]
+        f_t = kws[:fraction_train]
     else
         @error "fraction_train is mandatory with recurrent neural networks"
     end
 
     loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
-        get(
-            kws,
-            :neuralnet_loss_function,
-            NEURALNET_DEFAULT_PARAMETERS.loss_function,
-        ),
+        get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
 
     loss_fct = LOSS_FUNCTION_LIST[Symbol(
-        get(
-            kws,
-            :neuralnet_loss_function,
-            NEURALNET_DEFAULT_PARAMETERS.loss_function,
-        ),
+        get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
 
     #Design the neural network Lstm
@@ -1759,59 +1354,32 @@ function _neural_network_builder(
             NEURALNET_DEFAULT_PARAMETERS.activation_function,
         ),
     )]
-    minimum_epochs = get(
-        kws,
-        :neuralnet_minimum_epochs,
-        NEURALNET_DEFAULT_PARAMETERS.minimum_epochs,
-    )
-    maximum_epochs = get(
-        kws,
-        :neuralnet_maximum_epochs,
-        NEURALNET_DEFAULT_PARAMETERS.maximum_epochs,
-    )
-    minimum_layers = get(
-        kws,
-        :neuralnet_minimum_layers,
-        NEURALNET_DEFAULT_PARAMETERS.minimum_layers,
-    )
-    maximum_layers = get(
-        kws,
-        :neuralnet_maximum_layers,
-        NEURALNET_DEFAULT_PARAMETERS.maximum_layers,
-    )
-    minimum_neuron = get(
-        kws,
-        :neuralnet_minimum_neuron,
-        NEURALNET_DEFAULT_PARAMETERS.minimum_neuron,
-    )
-    maximum_neuron = get(
-        kws,
-        :neuralnet_maximum_neuron,
-        NEURALNET_DEFAULT_PARAMETERS.maximum_neuron,
-    )
-    batch_size =
-        get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
+    minimum_epochs =
+        get(kws, :neuralnet_minimum_epochs, NEURALNET_DEFAULT_PARAMETERS.minimum_epochs)
+    maximum_epochs =
+        get(kws, :neuralnet_maximum_epochs, NEURALNET_DEFAULT_PARAMETERS.maximum_epochs)
+    minimum_layers =
+        get(kws, :neuralnet_minimum_layers, NEURALNET_DEFAULT_PARAMETERS.minimum_layers)
+    maximum_layers =
+        get(kws, :neuralnet_maximum_layers, NEURALNET_DEFAULT_PARAMETERS.maximum_layers)
+    minimum_neuron =
+        get(kws, :neuralnet_minimum_neuron, NEURALNET_DEFAULT_PARAMETERS.minimum_neuron)
+    maximum_neuron =
+        get(kws, :neuralnet_maximum_neuron, NEURALNET_DEFAULT_PARAMETERS.maximum_neuron)
+    batch_size = get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
     if haskey(kws, :fraction_train) == true
-        f_t = dict_kws[:fraction_train]
+        f_t = kws[:fraction_train]
     else
         @error "fraction_train is mandatory with recurrent neural networks"
     end
 
     loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
-        get(
-            kws,
-            :neuralnet_loss_function,
-            NEURALNET_DEFAULT_PARAMETERS.loss_function,
-        ),
+        get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
 
     loss_fct = LOSS_FUNCTION_LIST[Symbol(
-        get(
-            kws,
-            :neuralnet_loss_function,
-            NEURALNET_DEFAULT_PARAMETERS.loss_function,
-        ),
+        get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
 
     #Design the neural network Lstm
@@ -1874,59 +1442,32 @@ function _neural_network_builder(
             NEURALNET_DEFAULT_PARAMETERS.activation_function,
         ),
     )]
-    minimum_epochs = get(
-        kws,
-        :neuralnet_minimum_epochs,
-        NEURALNET_DEFAULT_PARAMETERS.minimum_epochs,
-    )
-    maximum_epochs = get(
-        kws,
-        :neuralnet_maximum_epochs,
-        NEURALNET_DEFAULT_PARAMETERS.maximum_epochs,
-    )
-    minimum_layers = get(
-        kws,
-        :neuralnet_minimum_layers,
-        NEURALNET_DEFAULT_PARAMETERS.minimum_layers,
-    )
-    maximum_layers = get(
-        kws,
-        :neuralnet_maximum_layers,
-        NEURALNET_DEFAULT_PARAMETERS.maximum_layers,
-    )
-    minimum_neuron = get(
-        kws,
-        :neuralnet_minimum_neuron,
-        NEURALNET_DEFAULT_PARAMETERS.minimum_neuron,
-    )
-    maximum_neuron = get(
-        kws,
-        :neuralnet_maximum_neuron,
-        NEURALNET_DEFAULT_PARAMETERS.maximum_neuron,
-    )
-    batch_size =
-        get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
+    minimum_epochs =
+        get(kws, :neuralnet_minimum_epochs, NEURALNET_DEFAULT_PARAMETERS.minimum_epochs)
+    maximum_epochs =
+        get(kws, :neuralnet_maximum_epochs, NEURALNET_DEFAULT_PARAMETERS.maximum_epochs)
+    minimum_layers =
+        get(kws, :neuralnet_minimum_layers, NEURALNET_DEFAULT_PARAMETERS.minimum_layers)
+    maximum_layers =
+        get(kws, :neuralnet_maximum_layers, NEURALNET_DEFAULT_PARAMETERS.maximum_layers)
+    minimum_neuron =
+        get(kws, :neuralnet_minimum_neuron, NEURALNET_DEFAULT_PARAMETERS.minimum_neuron)
+    maximum_neuron =
+        get(kws, :neuralnet_maximum_neuron, NEURALNET_DEFAULT_PARAMETERS.maximum_neuron)
+    batch_size = get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
     if haskey(kws, :fraction_train) == true
-        f_t = dict_kws[:fraction_train]
+        f_t = kws[:fraction_train]
     else
         @error "fraction_train is mandatory with recurrent neural networks"
     end
 
     loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
-        get(
-            kws,
-            :neuralnet_loss_function,
-            NEURALNET_DEFAULT_PARAMETERS.loss_function,
-        ),
+        get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
 
     loss_fct = LOSS_FUNCTION_LIST[Symbol(
-        get(
-            kws,
-            :neuralnet_loss_function,
-            NEURALNET_DEFAULT_PARAMETERS.loss_function,
-        ),
+        get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
 
     #Design the neural network Lstm
@@ -1988,59 +1529,32 @@ function _neural_network_builder(
             NEURALNET_DEFAULT_PARAMETERS.activation_function,
         ),
     )]
-    minimum_epochs = get(
-        kws,
-        :neuralnet_minimum_epochs,
-        NEURALNET_DEFAULT_PARAMETERS.minimum_epochs,
-    )
-    maximum_epochs = get(
-        kws,
-        :neuralnet_maximum_epochs,
-        NEURALNET_DEFAULT_PARAMETERS.maximum_epochs,
-    )
-    minimum_layers = get(
-        kws,
-        :neuralnet_minimum_layers,
-        NEURALNET_DEFAULT_PARAMETERS.minimum_layers,
-    )
-    maximum_layers = get(
-        kws,
-        :neuralnet_maximum_layers,
-        NEURALNET_DEFAULT_PARAMETERS.maximum_layers,
-    )
-    minimum_neuron = get(
-        kws,
-        :neuralnet_minimum_neuron,
-        NEURALNET_DEFAULT_PARAMETERS.minimum_neuron,
-    )
-    maximum_neuron = get(
-        kws,
-        :neuralnet_maximum_neuron,
-        NEURALNET_DEFAULT_PARAMETERS.maximum_neuron,
-    )
-    batch_size =
-        get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
+    minimum_epochs =
+        get(kws, :neuralnet_minimum_epochs, NEURALNET_DEFAULT_PARAMETERS.minimum_epochs)
+    maximum_epochs =
+        get(kws, :neuralnet_maximum_epochs, NEURALNET_DEFAULT_PARAMETERS.maximum_epochs)
+    minimum_layers =
+        get(kws, :neuralnet_minimum_layers, NEURALNET_DEFAULT_PARAMETERS.minimum_layers)
+    maximum_layers =
+        get(kws, :neuralnet_maximum_layers, NEURALNET_DEFAULT_PARAMETERS.maximum_layers)
+    minimum_neuron =
+        get(kws, :neuralnet_minimum_neuron, NEURALNET_DEFAULT_PARAMETERS.minimum_neuron)
+    maximum_neuron =
+        get(kws, :neuralnet_maximum_neuron, NEURALNET_DEFAULT_PARAMETERS.maximum_neuron)
+    batch_size = get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
     if haskey(kws, :fraction_train) == true
-        f_t = dict_kws[:fraction_train]
+        f_t = kws[:fraction_train]
     else
         @error "fraction_train is mandatory with recurrent neural networks"
     end
 
     loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
-        get(
-            kws,
-            :neuralnet_loss_function,
-            NEURALNET_DEFAULT_PARAMETERS.loss_function,
-        ),
+        get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
 
     loss_fct = LOSS_FUNCTION_LIST[Symbol(
-        get(
-            kws,
-            :neuralnet_loss_function,
-            NEURALNET_DEFAULT_PARAMETERS.loss_function,
-        ),
+        get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
 
     #Design the neural network Lstm
@@ -2103,59 +1617,32 @@ function _neural_network_builder(
             NEURALNET_DEFAULT_PARAMETERS.activation_function,
         ),
     )]
-    minimum_epochs = get(
-        kws,
-        :neuralnet_minimum_epochs,
-        NEURALNET_DEFAULT_PARAMETERS.minimum_epochs,
-    )
-    maximum_epochs = get(
-        kws,
-        :neuralnet_maximum_epochs,
-        NEURALNET_DEFAULT_PARAMETERS.maximum_epochs,
-    )
-    minimum_layers = get(
-        kws,
-        :neuralnet_minimum_layers,
-        NEURALNET_DEFAULT_PARAMETERS.minimum_layers,
-    )
-    maximum_layers = get(
-        kws,
-        :neuralnet_maximum_layers,
-        NEURALNET_DEFAULT_PARAMETERS.maximum_layers,
-    )
-    minimum_neuron = get(
-        kws,
-        :neuralnet_minimum_neuron,
-        NEURALNET_DEFAULT_PARAMETERS.minimum_neuron,
-    )
-    maximum_neuron = get(
-        kws,
-        :neuralnet_maximum_neuron,
-        NEURALNET_DEFAULT_PARAMETERS.maximum_neuron,
-    )
-    batch_size =
-        get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
+    minimum_epochs =
+        get(kws, :neuralnet_minimum_epochs, NEURALNET_DEFAULT_PARAMETERS.minimum_epochs)
+    maximum_epochs =
+        get(kws, :neuralnet_maximum_epochs, NEURALNET_DEFAULT_PARAMETERS.maximum_epochs)
+    minimum_layers =
+        get(kws, :neuralnet_minimum_layers, NEURALNET_DEFAULT_PARAMETERS.minimum_layers)
+    maximum_layers =
+        get(kws, :neuralnet_maximum_layers, NEURALNET_DEFAULT_PARAMETERS.maximum_layers)
+    minimum_neuron =
+        get(kws, :neuralnet_minimum_neuron, NEURALNET_DEFAULT_PARAMETERS.minimum_neuron)
+    maximum_neuron =
+        get(kws, :neuralnet_maximum_neuron, NEURALNET_DEFAULT_PARAMETERS.maximum_neuron)
+    batch_size = get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
     if haskey(kws, :fraction_train) == true
-        f_t = dict_kws[:fraction_train]
+        f_t = kws[:fraction_train]
     else
         @error "fraction_train is mandatory with recurrent neural networks"
     end
 
     loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
-        get(
-            kws,
-            :neuralnet_loss_function,
-            NEURALNET_DEFAULT_PARAMETERS.loss_function,
-        ),
+        get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
 
     loss_fct = LOSS_FUNCTION_LIST[Symbol(
-        get(
-            kws,
-            :neuralnet_loss_function,
-            NEURALNET_DEFAULT_PARAMETERS.loss_function,
-        ),
+        get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
 
     #Design the neural network Lstm
@@ -2216,59 +1703,32 @@ function _neural_network_builder(
             NEURALNET_DEFAULT_PARAMETERS.activation_function,
         ),
     )]
-    minimum_epochs = get(
-        kws,
-        :neuralnet_minimum_epochs,
-        NEURALNET_DEFAULT_PARAMETERS.minimum_epochs,
-    )
-    maximum_epochs = get(
-        kws,
-        :neuralnet_maximum_epochs,
-        NEURALNET_DEFAULT_PARAMETERS.maximum_epochs,
-    )
-    minimum_layers = get(
-        kws,
-        :neuralnet_minimum_layers,
-        NEURALNET_DEFAULT_PARAMETERS.minimum_layers,
-    )
-    maximum_layers = get(
-        kws,
-        :neuralnet_maximum_layers,
-        NEURALNET_DEFAULT_PARAMETERS.maximum_layers,
-    )
-    minimum_neuron = get(
-        kws,
-        :neuralnet_minimum_neuron,
-        NEURALNET_DEFAULT_PARAMETERS.minimum_neuron,
-    )
-    maximum_neuron = get(
-        kws,
-        :neuralnet_maximum_neuron,
-        NEURALNET_DEFAULT_PARAMETERS.maximum_neuron,
-    )
-    batch_size =
-        get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
+    minimum_epochs =
+        get(kws, :neuralnet_minimum_epochs, NEURALNET_DEFAULT_PARAMETERS.minimum_epochs)
+    maximum_epochs =
+        get(kws, :neuralnet_maximum_epochs, NEURALNET_DEFAULT_PARAMETERS.maximum_epochs)
+    minimum_layers =
+        get(kws, :neuralnet_minimum_layers, NEURALNET_DEFAULT_PARAMETERS.minimum_layers)
+    maximum_layers =
+        get(kws, :neuralnet_maximum_layers, NEURALNET_DEFAULT_PARAMETERS.maximum_layers)
+    minimum_neuron =
+        get(kws, :neuralnet_minimum_neuron, NEURALNET_DEFAULT_PARAMETERS.minimum_neuron)
+    maximum_neuron =
+        get(kws, :neuralnet_maximum_neuron, NEURALNET_DEFAULT_PARAMETERS.maximum_neuron)
+    batch_size = get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
     if haskey(kws, :fraction_train) == true
-        f_t = dict_kws[:fraction_train]
+        f_t = kws[:fraction_train]
     else
         @error "fraction_train is mandatory with recurrent neural networks"
     end
 
     loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
-        get(
-            kws,
-            :neuralnet_loss_function,
-            NEURALNET_DEFAULT_PARAMETERS.loss_function,
-        ),
+        get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
 
     loss_fct = LOSS_FUNCTION_LIST[Symbol(
-        get(
-            kws,
-            :neuralnet_loss_function,
-            NEURALNET_DEFAULT_PARAMETERS.loss_function,
-        ),
+        get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
 
     #Design the neural network Lstm
@@ -2321,7 +1781,7 @@ function _neural_network_builder(
     # Get parameters from kwagrs for neural networks hyperparameters
     dict_kws = Dict{Symbol,Any}(kws_)
     kws = get(dict_kws, :kws, kws_)
-    
+
     activation_function = ACTIVATION_FUNCTION_LIST[Symbol(
         get(
             kws,
@@ -2329,59 +1789,32 @@ function _neural_network_builder(
             NEURALNET_DEFAULT_PARAMETERS.activation_function,
         ),
     )]
-    minimum_epochs = get(
-        kws,
-        :neuralnet_minimum_epochs,
-        NEURALNET_DEFAULT_PARAMETERS.minimum_epochs,
-    )
-    maximum_epochs = get(
-        kws,
-        :neuralnet_maximum_epochs,
-        NEURALNET_DEFAULT_PARAMETERS.maximum_epochs,
-    )
-    minimum_layers = get(
-        kws,
-        :neuralnet_minimum_layers,
-        NEURALNET_DEFAULT_PARAMETERS.minimum_layers,
-    )
-    maximum_layers = get(
-        kws,
-        :neuralnet_maximum_layers,
-        NEURALNET_DEFAULT_PARAMETERS.maximum_layers,
-    )
-    minimum_neuron = get(
-        kws,
-        :neuralnet_minimum_neuron,
-        NEURALNET_DEFAULT_PARAMETERS.minimum_neuron,
-    )
-    maximum_neuron = get(
-        kws,
-        :neuralnet_maximum_neuron,
-        NEURALNET_DEFAULT_PARAMETERS.maximum_neuron,
-    )
-    batch_size =
-        get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
+    minimum_epochs =
+        get(kws, :neuralnet_minimum_epochs, NEURALNET_DEFAULT_PARAMETERS.minimum_epochs)
+    maximum_epochs =
+        get(kws, :neuralnet_maximum_epochs, NEURALNET_DEFAULT_PARAMETERS.maximum_epochs)
+    minimum_layers =
+        get(kws, :neuralnet_minimum_layers, NEURALNET_DEFAULT_PARAMETERS.minimum_layers)
+    maximum_layers =
+        get(kws, :neuralnet_maximum_layers, NEURALNET_DEFAULT_PARAMETERS.maximum_layers)
+    minimum_neuron =
+        get(kws, :neuralnet_minimum_neuron, NEURALNET_DEFAULT_PARAMETERS.minimum_neuron)
+    maximum_neuron =
+        get(kws, :neuralnet_maximum_neuron, NEURALNET_DEFAULT_PARAMETERS.maximum_neuron)
+    batch_size = get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
     if haskey(kws, :fraction_train) == true
-        f_t = dict_kws[:fraction_train]
+        f_t = kws[:fraction_train]
     else
         @error "fraction_train is mandatory with recurrent neural networks"
     end
 
     loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
-        get(
-            kws,
-            :neuralnet_loss_function,
-            NEURALNET_DEFAULT_PARAMETERS.loss_function,
-        ),
+        get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
 
     loss_fct = LOSS_FUNCTION_LIST[Symbol(
-        get(
-            kws,
-            :neuralnet_loss_function,
-            NEURALNET_DEFAULT_PARAMETERS.loss_function,
-        ),
+        get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
 
     #Design the neural network Lstm

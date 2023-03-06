@@ -146,13 +146,8 @@ data_type = Float64
 
 data_table_df = hcat(data_in, data_out)
 
-in, out = input_output_formatting(
-    Matrix(data_table_df),
-    n_input,
-    n_output,
-    n_delay,
-    data_type,
-)
+in, out =
+    input_output_formatting(Matrix(data_table_df), n_input, n_output, n_delay, data_type)
 
 
 function input_output_formatting_recurrrent(
@@ -173,13 +168,12 @@ function input_output_formatting_recurrrent(
 
     # Memory allocation
     nbr_sequence = trunc(Int, size(DataInputs, 1) / n_seq)
-    data_neural_input =
-        zeros(data_type, n_seq, n_input + n_output, nbr_sequence - 1)
+    data_neural_input = zeros(data_type, n_seq, n_input + n_output, nbr_sequence - 1)
     data_neural_output = zeros(data_type, n_seq, n_output, nbr_sequence - 1)
 
     # Data separation, neural input and neural output
     j_seq = nbr_sequence - 1
-    Threads.@threads for i = size(DataPredict, 1): -n_seq :n_seq 
+    Threads.@threads for i = size(DataPredict, 1):-n_seq:n_seq
         data_neural_input[:, :, j_seq] =
             hcat(DataOutputs[i-n_seq+1:i, :], DataInputs[i-n_seq+1:i, :])
         data_neural_output[:, :, j_seq] = DataPredict[i-n_seq+1:i, :]  #[i:i, :]
@@ -189,7 +183,3 @@ function input_output_formatting_recurrrent(
     return data_neural_input, data_neural_output
 
 end
-
-
-
-

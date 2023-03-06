@@ -118,27 +118,27 @@ using AutomationLabsIdentification
         computation_verbosity = 5,
         neuralnet_batch_size = n_sequence,
     )
-#=
-    grey_box_model_3 = greybox_identification(
-        dfin,
-        dfout,
-        "PSO",
-        "PhysicsInformed",
-        "CPU",
-        Minute(5);
-        #option parameters
-        f = QTP,
-        trainable_parameters_init = init_t_p,
-        sample_time = sample_time,
-        data_lower_input = lower_in,
-        data_upper_input = upper_in,
-        data_lower_output = lower_out,
-        data_upper_output = upper_out,
-        lower_params = lower_params,
-        upper_params = upper_params,
-        computation_verbosity = 0,
-    )
-=#
+    #=
+        grey_box_model_3 = greybox_identification(
+            dfin,
+            dfout,
+            "PSO",
+            "PhysicsInformed",
+            "CPU",
+            Minute(5);
+            #option parameters
+            f = QTP,
+            trainable_parameters_init = init_t_p,
+            sample_time = sample_time,
+            data_lower_input = lower_in,
+            data_upper_input = upper_in,
+            data_lower_output = lower_out,
+            data_upper_output = upper_out,
+            lower_params = lower_params,
+            upper_params = upper_params,
+            computation_verbosity = 0,
+        )
+    =#
     #Get best models
     greybox_best_model_chain_1 =
         fitted_params(fitted_params(grey_box_model_1).machine).chain
@@ -146,30 +146,28 @@ using AutomationLabsIdentification
     greybox_best_model_chain_3 =
         fitted_params(fitted_params(grey_box_model_3[1]).machine).chain
 
+    mae_Train_greybox_model_1 =
+        Flux.mae(greybox_best_model_chain_1(Matrix(in_data)'), Matrix(out_data)')
+
     mae_Train_greybox_model_1 = Flux.mae(
-        greybox_best_model_chain_1(Matrix(in_data)'),
-        Matrix(out_data)',
+        greybox_best_model_chain_1(Matrix(grey_box_model_1[2].TrainDataIn)'),
+        Matrix(grey_box_model_1[2].TrainDataOut)',
     )
 
-    mae_Train_greybox_model_1 = Flux.mae(
-            greybox_best_model_chain_1(Matrix(grey_box_model_1[2].TrainDataIn)'),
-            Matrix(grey_box_model_1[2].TrainDataOut)',
-        )
-
     mae_Train_greybox_model_3 = Flux.mae(
-            greybox_best_model_chain_3(Matrix(grey_box_model_3[2].TrainDataIn)'),
-            Matrix(grey_box_model_3[2].TrainDataOut)',
-        )
+        greybox_best_model_chain_3(Matrix(grey_box_model_3[2].TrainDataIn)'),
+        Matrix(grey_box_model_3[2].TrainDataOut)',
+    )
 
     mae_Test_greybox_model_1 = Flux.mae(
-            greybox_best_model_chain_1(Matrix(grey_box_model_1[2].TestDataIn)'),
-            Matrix(grey_box_model_1[2].TestDataOut)',
-        )
+        greybox_best_model_chain_1(Matrix(grey_box_model_1[2].TestDataIn)'),
+        Matrix(grey_box_model_1[2].TestDataOut)',
+    )
 
     mae_Test_greybox_model_3 = Flux.mae(
-            greybox_best_model_chain_3(Matrix(grey_box_model_3[2].TestDataIn)'),
-            Matrix(grey_box_model_3[2].TestDataOut)',
-        )
+        greybox_best_model_chain_3(Matrix(grey_box_model_3[2].TestDataIn)'),
+        Matrix(grey_box_model_3[2].TestDataOut)',
+    )
 
     println("mae_Train_greybox_model_1 $mae_Train_greybox_model_1")
     println("mae_Train_greybox_model_3 $mae_Train_greybox_model_3")

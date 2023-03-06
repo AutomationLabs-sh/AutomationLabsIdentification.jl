@@ -88,10 +88,16 @@ import AutomationLabsIdentification: ALGORITHM_LIST
     ) #dispatched function
 
     # Algorithm verification
-    @test typeof(tuned_model_physics.model.optimiser) == LBFGS{Nothing, LineSearches.InitialStatic{Float64}, LineSearches.HagerZhang{Float64, Base.RefValue{Bool}}, Optim.var"#19#21"}
+    @test typeof(tuned_model_physics.model.optimiser) == LBFGS{
+        Nothing,
+        LineSearches.InitialStatic{Float64},
+        LineSearches.HagerZhang{Float64,Base.RefValue{Bool}},
+        Optim.var"#19#21",
+    }
 
     # Processors verification
-    @test tuned_model_physics.model.acceleration == ComputationalResources.CPU1{Nothing}(nothing)
+    @test tuned_model_physics.model.acceleration ==
+          ComputationalResources.CPU1{Nothing}(nothing)
 
     # Parameters initialization
     @test tuned_model_physics.model.builder.t_p == init_t_p
@@ -162,19 +168,25 @@ end
         nbr_inputs,
         nbr_states,
         sample_time,
-        maximum_time
+        maximum_time,
     ) #dispatched function
 
     # Algorithm verification
-    @test typeof(tuned_model_physics_oracle.model.optimiser) == LBFGS{Nothing, LineSearches.InitialStatic{Float64}, LineSearches.HagerZhang{Float64, Base.RefValue{Bool}}, Optim.var"#19#21"}
+    @test typeof(tuned_model_physics_oracle.model.optimiser) == LBFGS{
+        Nothing,
+        LineSearches.InitialStatic{Float64},
+        LineSearches.HagerZhang{Float64,Base.RefValue{Bool}},
+        Optim.var"#19#21",
+    }
 
     # Processors verification
-    @test tuned_model_physics_oracle.model.acceleration == ComputationalResources.CPU1{Nothing}(nothing)
+    @test tuned_model_physics_oracle.model.acceleration ==
+          ComputationalResources.CPU1{Nothing}(nothing)
 
     # nbr states and inputs 
     @test tuned_model_physics_oracle.model.builder.physical.nbr_state == nbr_states
     @test tuned_model_physics_oracle.model.builder.physical.nbr_input == nbr_inputs
- 
+
     # Sample time
     @test tuned_model_physics_oracle.model.builder.physical.prob.tspan == (0.0, 5.0)
 

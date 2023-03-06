@@ -223,5 +223,7 @@ An physics informed oracle architecture type for dynamical system identification
 struct physicsinformedoracle <: AbstractNeuralArchitecture end
 
 #NamedTuple definition
-PHYSICS_INFORMED_LIST =
-    (physics_informed = physicsinformed(), physics_informed_oracle = physicsinformedoracle())
+PHYSICS_INFORMED_LIST = (
+    physics_informed = physicsinformed(),
+    physics_informed_oracle = physicsinformedoracle(),
+)

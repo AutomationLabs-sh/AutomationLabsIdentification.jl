@@ -298,7 +298,7 @@ const PROCESSOR_COMPUTATION_DEFAULT = (processor = "cpu_1",)
 
 ### MAE loss
 mae_multi = function (yhat, y)
-    return Flux.Losses.mae(Matrix(hcat(yhat...)) , Matrix(y))
+    return Flux.Losses.mae(Matrix(hcat(yhat...)), Matrix(y))
 end
 
 mae_losses = function (x, y)
@@ -325,23 +325,15 @@ end
 
 ### MAPE loss
 mape_multi = function (yhat, y)
-    return Statistics.mean(abs.( (Matrix(hcat(yhat...)) .- Matrix(y)) ./ Matrix(y)))
+    return Statistics.mean(abs.((Matrix(hcat(yhat...)) .- Matrix(y)) ./ Matrix(y)))
 end
 
 mape_losses = function (x, y)
-    return Statistics.mean(abs.( (x .- y) ./ y))
+    return Statistics.mean(abs.((x .- y) ./ y))
 end
 
-const LOSS_FUNCTION_MULTI_LIST = (
-    mae = mae_multi,
-    mse = mse_multi,
-    rmse = rmse_multi,
-    mape = mape_multi,
-)
+const LOSS_FUNCTION_MULTI_LIST =
+    (mae = mae_multi, mse = mse_multi, rmse = rmse_multi, mape = mape_multi)
 
-const LOSS_FUNCTION_LIST = (
-    mae = mae_losses,
-    mse = mse_losses,
-    rmse = rmse_losses,
-    mape = mape_losses,
-)
+const LOSS_FUNCTION_LIST =
+    (mae = mae_losses, mse = mse_losses, rmse = rmse_losses, mape = mape_losses)

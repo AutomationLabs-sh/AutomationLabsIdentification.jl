@@ -18,21 +18,21 @@ using MLJParticleSwarmOptimization
 using Optim
 using Distributed
 
-@everywhere import Pkg
-@everywhere Pkg.activate("/home/pierre/CleverCloud/identification")
-@everywhere using Identification
+using AutomationLabsIdentification
 
-@everywhere import Identification: Fnn
-@everywhere import Identification: Icnn
-@everywhere import Identification: DenseIcnn
-@everywhere import Identification: Rbf
-@everywhere import Identification: ResNet
-@everywhere import Identification: DenseNet
-@everywhere import Identification: NeuralNetODE
-@everywhere import Identification: ExplorationOfNetworks #meta-model 
-@everywhere import Identification: Rnn 
-@everywhere import Identification: Lstm 
-@everywhere import Identification: Gru
+import AutomationLabsIdentification: Fnn
+import AutomationLabsIdentification: Icnn
+import AutomationLabsIdentification: DenseIcnn
+import AutomationLabsIdentification: Rbf
+import AutomationLabsIdentification: ResNet
+import AutomationLabsIdentification: DenseNet
+import AutomationLabsIdentification: PolyNet
+import AutomationLabsIdentification: NeuralNetODE_type1
+import AutomationLabsIdentification: NeuralNetODE_type2
+import AutomationLabsIdentification: ExplorationOfNetworks
+import AutomationLabsIdentification: Rnn
+import AutomationLabsIdentification: Lstm
+import AutomationLabsIdentification: Gru
 
 @testset "QTP identification Fnn" begin
 
@@ -541,6 +541,110 @@ end
 
 end
 
+
+@testset "QTP identification polynet" begin
+
+    dfout = DataFrame(CSV.File("./data_QTP/data_outputs.csv"))[1:50000, :]
+    dfin = DataFrame(CSV.File("./data_QTP/data_inputs_m3h.csv"))[1:50000, :]
+
+    n_delay = 1
+    normalisation = false
+
+    lower_in = [0.2 0.2 0.2 0.2 0 0]
+    upper_in = [1.2 1.2 1.2 1.2 Inf Inf]
+
+    lower_out = [0.2 0.2 0.2 0.2]
+    upper_out = [1.2 1.2 1.2 1.2]
+
+    # Separate data between test and train data
+    DataTrainTest = data_formatting_identification(
+        dfin,
+        dfout,
+        n_delay = n_delay,
+        normalisation = normalisation,
+        data_type = Float32,
+        data_lower_input = lower_in,
+        data_upper_input = upper_in,
+        data_lower_output = lower_out,
+        data_upper_output = upper_out,
+    )
+
+    in_data = (DataTrainTest.TrainDataIn)
+    out_data = (DataTrainTest.TrainDataOut)
+
+    #Customs loss function for multiple neural outputs
+    my_loss = function (yhat, y)
+        loss = mean(abs.(Matrix(hcat(yhat[1], yhat[2], yhat[3], yhat[4])) .- Matrix(y)))
+        return loss
+    end
+
+    ### polynet ### 
+    model_polynet = MLJFlux.MultitargetNeuralNetworkRegressor(
+        builder = PolyNet(neuron = 5, layer = 2, σ = NNlib.relu),
+        batch_size = 2048,
+        optimiser = Optim.LBFGS(),
+        epochs = 1000,
+        loss = Flux.Losses.mae,
+    )
+
+    r1 = range(model_polynet, :(builder.neuron), lower = 5, upper = 15)
+    r2 = range(model_polynet, :(builder.layer), lower = 1, upper = 5)
+    r3 = range(model_polynet, :epochs, lower = 100, upper = 1000)
+
+    tuned_model_polynet = MLJ.TunedModel(
+        model = model_polynet,
+        tuning = AdaptiveParticleSwarm(rng = StableRNG(0)),
+        resampling = CV(nfolds = 6, rng = StableRNG(1)),
+        range = [r1, r2, r3],
+        measure = my_loss,
+        n = 1,
+        #acceleration = MLJ.CPUProcesses(),
+    )
+
+    mach_polynet = MLJ.machine(tuned_model_polynet, in_data, out_data)
+
+    MLJ.fit!(mach_polynet, verbosity = 1)
+
+    @test fitted_params(mach_polynet).best_model != 0
+    @test report(mach_polynet).best_history_entry != 0
+    @test report(mach_polynet).history != 0
+
+    polynet_param_best_model = fitted_params(mach_polynet).best_model
+
+    @test polynet_param_best_model.builder.neuron < 16
+    @test polynet_param_best_model.builder.neuron > 4
+
+    @test polynet_param_best_model.builder.layer < 6
+    @test polynet_param_best_model.builder.layer >= 1
+
+    @test polynet_param_best_model.epochs <= 1000
+    @test polynet_param_best_model.epochs >= 100
+
+    # MAE with train and test data
+    Train_in_data = (DataTrainTest.TrainDataIn)
+    Train_out_data = (DataTrainTest.TrainDataOut)
+    Test_in_data = (DataTrainTest.TestDataIn)
+    Test_out_data = (DataTrainTest.TestDataOut)
+
+    polynet_chain_best_model_chain = fitted_params(mach_polynet).best_fitted_params.chain
+
+    mae_Train_polynet = Flux.mae(
+        polynet_chain_best_model_chain(Matrix(Train_in_data)'),
+        Matrix(Train_out_data)',
+    )
+    mae_Test_polynet = Flux.mae(
+        polynet_chain_best_model_chain(Matrix(Test_in_data)'),
+        Matrix(Test_out_data)',
+    )
+
+    println("mae_Train_polynet $mae_Train_polynet")
+    println("mae_Test_polynet $mae_Test_polynet")
+
+    @test mae_Train_polynet <= 1
+    @test mae_Test_polynet <= 1
+
+end
+
 @testset "QTP identification NeuralNetODE type 1" begin
 
     dfout = DataFrame(CSV.File("./data_QTP/data_outputs.csv"))[1:50000, :]
@@ -685,9 +789,14 @@ end
 
     ### NeuralNetODE ### 
     model_NeuralNetODE = MLJFlux.MultitargetNeuralNetworkRegressor(
-        builder = NeuralNetODE_type2(neuron = 5, layer = 2, σ = NNlib.relu, sample_time = sample_time),
+        builder = NeuralNetODE_type2(
+            neuron = 5,
+            layer = 2,
+            σ = NNlib.relu,
+            sample_time = sample_time,
+        ),
         batch_size = 512,
-        optimiser = Optim.LBFGS(),
+        optimiser = Optim.LBFGS(),# Flux.RADAM(), #Optim.LBFGS(),
         epochs = 1000,
         loss = Flux.Losses.mae,
     )
@@ -782,7 +891,7 @@ end
     in_data = (DataTrainTest.TrainDataIn)
     out_data = (DataTrainTest.TrainDataOut)
 
-    f_t = 1 - (1/ (size(in_data, 1) / n_sequence))
+    f_t = 1 - (1 / (size(in_data, 1) / n_sequence))
     # The test data is set to be equal to only one batch
 
     # Customs loss function for multiple neural outputs
@@ -798,7 +907,6 @@ end
         optimiser = Optim.LBFGS(),
         epochs = 1000,
         loss = Flux.Losses.mae,
-        acceleration = CUDALibs(),
     )
 
     r1 = range(model_rnn, :(builder.neuron), lower = 5, upper = 15)
@@ -808,11 +916,11 @@ end
     tuned_model_rnn = MLJ.TunedModel(
         model = model_rnn,
         tuning = AdaptiveParticleSwarm(rng = StableRNG(0)),
-        resampling = Holdout(; fraction_train=f_t, shuffle=nothing, rng=nothing),
+        resampling = Holdout(; fraction_train = f_t, shuffle = nothing, rng = nothing),
         range = [r1, r2, r3],
         measure = my_loss,
         n = 5,
-       # acceleration = MLJ.CPUProcesses(),
+        # acceleration = MLJ.CPUProcesses(),
     )
 
     iterated_model_rnn = IteratedModel(
@@ -825,9 +933,6 @@ end
     mach_rnn = MLJ.machine(iterated_model_rnn, in_data, out_data)
 
     MLJ.fit!(mach_rnn)
-
-    #save the train model
-    MLJ.save("./models_saved/rnn_train_result.jls", mach_rnn)
 
     @test fitted_params(fitted_params(mach_rnn).machine).best_model != 0
     @test report(fitted_params(mach_rnn).machine).best_history_entry != 0
@@ -884,7 +989,7 @@ end
     in_data = (DataTrainTest.TrainDataIn)
     out_data = (DataTrainTest.TrainDataOut)
 
-    f_t = 1 - (1/ (size(in_data, 1) / n_sequence))
+    f_t = 1 - (1 / (size(in_data, 1) / n_sequence))
 
     #Customs loss function for multiple neural outputs
     my_loss = function (yhat, y)
@@ -899,7 +1004,6 @@ end
         optimiser = Optim.LBFGS(),
         epochs = 1000,
         loss = Flux.Losses.mae,
-        acceleration = CUDALibs(),
     )
 
     r1 = range(model_lstm, :(builder.neuron), lower = 5, upper = 15)
@@ -909,11 +1013,11 @@ end
     tuned_model_lstm = MLJ.TunedModel(
         model = model_lstm,
         tuning = AdaptiveParticleSwarm(rng = StableRNG(0)),
-        resampling = Holdout(; fraction_train=f_t, shuffle=nothing, rng=nothing),
+        resampling = Holdout(; fraction_train = f_t, shuffle = nothing, rng = nothing),
         range = [r1, r2, r3],
         measure = my_loss,
         n = 5,
-       # acceleration = MLJ.CPUProcesses(),
+        # acceleration = MLJ.CPUProcesses(),
     )
 
     iterated_model_lstm = IteratedModel(
@@ -926,9 +1030,6 @@ end
     mach_lstm = MLJ.machine(iterated_model_lstm, in_data, out_data)
 
     MLJ.fit!(mach_lstm)
-
-    #save the train model
-    MLJ.save("./models_saved/lstm_train_result.jls", mach_lstm)
 
     @test fitted_params(fitted_params(mach_lstm).machine).best_model != 0
     @test report(fitted_params(mach_lstm).machine).best_history_entry != 0
@@ -985,7 +1086,7 @@ end
     in_data = (DataTrainTest.TrainDataIn)
     out_data = (DataTrainTest.TrainDataOut)
 
-    f_t = 1 - (1/ (size(in_data, 1) / n_sequence))
+    f_t = 1 - (1 / (size(in_data, 1) / n_sequence))
 
     #Customs loss function for multiple neural outputs
     my_loss = function (yhat, y)
@@ -1000,7 +1101,6 @@ end
         optimiser = Optim.LBFGS(),
         epochs = 1000,
         loss = Flux.Losses.mae,
-        acceleration = CUDALibs(),
     )
 
     r1 = range(model_gru, :(builder.neuron), lower = 5, upper = 15)
@@ -1010,11 +1110,11 @@ end
     tuned_model_gru = MLJ.TunedModel(
         model = model_gru,
         tuning = AdaptiveParticleSwarm(rng = StableRNG(0)),
-        resampling = Holdout(; fraction_train=f_t, shuffle=nothing, rng=nothing),
+        resampling = Holdout(; fraction_train = f_t, shuffle = nothing, rng = nothing),
         range = [r1, r2, r3],
         measure = my_loss,
         n = 5,
-       # acceleration = MLJ.CPUProcesses(),
+        # acceleration = MLJ.CPUProcesses(),
     )
 
     iterated_model_gru = IteratedModel(
@@ -1027,9 +1127,6 @@ end
     mach_gru = MLJ.machine(iterated_model_gru, in_data, out_data)
 
     MLJ.fit!(mach_gru)
-
-    #save the train model
-    MLJ.save("./models_saved/gru_train_result.jls", mach_gru)
 
     @test fitted_params(fitted_params(mach_gru).machine).best_model != 0
     @test report(fitted_params(mach_gru).machine).best_history_entry != 0

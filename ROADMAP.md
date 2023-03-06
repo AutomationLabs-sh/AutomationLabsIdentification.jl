@@ -18,7 +18,7 @@ II/ Add dynamical system identification models:
 III/ A reflexion on a quadratic cost function to add instead of MAE.
 
 IV/ Add algorithms to tune the identification models (need JuMP):
-* MILP to tune neural networks with relu activation function
+* MILP to tune neural networks with relu activation function -> not possible
 * Non linear solver such as Ipopt
 * Commercial solvers
 

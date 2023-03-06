@@ -50,12 +50,11 @@ function physics_informed_builder(
     # Get optional parameters
     dict_kws = Dict{Symbol,Any}(kws_)
     kws = get(dict_kws, :kws, kws_)
-    
+
     lower_params = get(kws, :lower_params, [-Inf])
     upper_params = get(kws, :upper_params, [Inf])
 
-    batch_size =
-    get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
+    batch_size = get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
     # f physical definition
     model_f = MLJFlux.MultitargetNeuralNetworkRegressor(
@@ -108,8 +107,7 @@ function physics_informed_builder(
     lower_params = get(kws, :lower_params, [-Inf])
     upper_params = get(kws, :upper_params, [Inf])
 
-    batch_size =
-        get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
+    batch_size = get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
     # f physical definition
     model_f = MLJFlux.MultitargetNeuralNetworkRegressor(
@@ -190,5 +188,3 @@ function physics_informed_builder(
     return iterated_model
 end
 =#
-
-

@@ -26,9 +26,9 @@ import AutomationLabsIdentification: PolyNet
 import AutomationLabsIdentification: DenseNet
 import AutomationLabsIdentification: NeuralNetODE_type1
 import AutomationLabsIdentification: NeuralNetODE_type2
-import AutomationLabsIdentification: Rnn 
-import AutomationLabsIdentification: Lstm 
-import AutomationLabsIdentification: Gru 
+import AutomationLabsIdentification: Rnn
+import AutomationLabsIdentification: Lstm
+import AutomationLabsIdentification: Gru
 
 @testset "Fnn" begin
 
@@ -265,23 +265,28 @@ end
 @testset "NeuralNetODE_type2" begin
 
     #data
-    in_ = repeat(1:0.001:10, 1)[:, :];
-    in1 = MLJ.table(in_);
+    in_ = repeat(1:0.001:10, 1)[:, :]
+    in1 = MLJ.table(in_)
 
-    out1 = vec(sin.(in_));
+    out1 = vec(sin.(in_))
 
-    sample_time = 0.001;
+    sample_time = 0.001
 
     #neural ode definition
 
     model_neural_ode = MLJFlux.NeuralNetworkRegressor(
-        builder = NeuralNetODE_type2(neuron = 5, layer = 2, σ = Flux.relu, sample_time = sample_time),
+        builder = NeuralNetODE_type2(
+            neuron = 5,
+            layer = 2,
+            σ = Flux.relu,
+            sample_time = sample_time,
+        ),
         batch_size = 1024,
         optimiser = Flux.ADAM(),
         epochs = 100,
-   );
+    )
 
-    mach_neural_ode = MLJ.machine(model_neural_ode, in1, out1);
+    mach_neural_ode = MLJ.machine(model_neural_ode, in1, out1)
 
     MLJ.fit!(mach_neural_ode)
 
@@ -291,17 +296,17 @@ end
     #test neural Ode
     @test size.(Flux.params(model_neural_ode_trained)) == [(70,)]
     @test size.(Flux.params(inner_chain)) == [(5, 1), (5, 5), (5,), (5, 5), (5,), (1, 5)]
-    @test model_neural_ode_trained[1].tspan == (0.0f0, 0.001f0)
+    @test model_neural_ode_trained[1].tspan == (0, 0.001)# (0.0f0, 0.001f0)
     @test model_neural_ode_trained[1].args == (DifferentialEquations.BS3(),)
     @test values(model_neural_ode_trained[1].kwargs) ==
           (save_everystep = false, reltol = 1e-6, abstol = 1e-6, save_start = false)
-          
+
 end
 
 @testset "Rnn" begin
 
     #data
-    in_ = Float32.(repeat(1:0.001:10, 1)[:, :])[1:140*64,:]
+    in_ = Float32.(repeat(1:0.001:10, 1)[:, :])[1:140*64, :]
     in1 = MLJ.table(in_)
 
     out1 = vec(sin.(in_))
@@ -332,7 +337,7 @@ end
 @testset "Lstm" begin
 
     #data
-    in_ = Float32.(repeat(1:0.001:10, 1)[:, :])[1:140*64,:]
+    in_ = Float32.(repeat(1:0.001:10, 1)[:, :])[1:140*64, :]
     in1 = MLJ.table(in_)
 
     out1 = vec(sin.(in_))
@@ -352,8 +357,20 @@ end
     model_lstm_trained = fitted_params(mach_lstm).chain
 
     #test lstm
-    @test size.(Flux.params(model_lstm_trained)) ==
-        [(5, 1), (20, 5), (20, 5), (20,), (5, 1), (5, 1), (20, 5), (20, 5), (20,), (5, 1), (5, 1), (1, 5)]
+    @test size.(Flux.params(model_lstm_trained)) == [
+        (5, 1),
+        (20, 5),
+        (20, 5),
+        (20,),
+        (5, 1),
+        (5, 1),
+        (20, 5),
+        (20, 5),
+        (20,),
+        (5, 1),
+        (5, 1),
+        (1, 5),
+    ]
     @test model_lstm_trained[1].σ == identity
     @test model_lstm_trained[3].σ == identity
 end
@@ -362,7 +379,7 @@ end
 @testset "Gru" begin
 
     #data
-    in_ = Float32.(repeat(1:0.001:10, 1)[:, :])[1:140*64,:]
+    in_ = Float32.(repeat(1:0.001:10, 1)[:, :])[1:140*64, :]
     in1 = MLJ.table(in_)
 
     out1 = vec(sin.(in_))
@@ -383,8 +400,8 @@ end
 
     #test gru
     @test size.(Flux.params(model_gru_trained)) ==
-        [ (5, 1), (15, 5), (15, 5), (15,), (5, 1), (15, 5), (15, 5), (15,), (5, 1), (1, 5)]
-   
+          [(5, 1), (15, 5), (15, 5), (15,), (5, 1), (15, 5), (15, 5), (15,), (5, 1), (1, 5)]
+
     @test model_gru_trained[1].σ == identity
     @test model_gru_trained[3].σ == identity
 end

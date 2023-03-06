@@ -118,7 +118,12 @@ import AutomationLabsIdentification: Fnn
     iterated_model_qtp = IteratedModel(
         model = model_qtp,
         resampling = nothing,
-        control = [Step(n = 1), TimeLimit(t = Minute(5)), MLJ.NumberSinceBest(n=50), MLJ.Patience(n=5)],
+        control = [
+            Step(n = 1),
+            TimeLimit(t = Minute(5)),
+            MLJ.NumberSinceBest(n = 50),
+            MLJ.Patience(n = 5),
+        ],
     )
 
     mach_qtp = MLJ.machine(model_qtp, in_data, out_data)
@@ -239,7 +244,12 @@ end
     iterated_model_qtp_oracle = IteratedModel(
         model = model_qtp_oracle,
         resampling = nothing,
-        control = [Step(n = 1), TimeLimit(t = Minute(5)), MLJ.NumberSinceBest(n=50), MLJ.Patience(n=5)],
+        control = [
+            Step(n = 1),
+            TimeLimit(t = Minute(5)),
+            MLJ.NumberSinceBest(n = 50),
+            MLJ.Patience(n = 5),
+        ],
     )
 
     mach_qtp_oracle = MLJ.machine(model_qtp_oracle, in_data, out_data)
