@@ -43,377 +43,6 @@ import AutomationLabsIdentification: Rknn2
 import AutomationLabsIdentification: Rknn4
 
 
-@testset "QTP identification Rknn1" begin
-
-    # load the inputs and outputs data
-    dfout = DataFrame(CSV.File("./data_QTP/data_outputs.csv"))[1:10000, :]
-    dfin = DataFrame(CSV.File("./data_QTP/data_inputs_m3h.csv"))[1:10000, :]
-
-    n_delay = 1
-    normalisation = false
-
-    lower_in = [0.2 0.2 0.2 0.2 0 0]
-    upper_in = [1.2 1.2 1.2 1.2 Inf Inf]
-
-    lower_out = [0.2 0.2 0.2 0.2]
-    upper_out = [1.2 1.2 1.2 1.2]
-
-
-    # Separate data between test and train data
-    DataTrainTest = data_formatting_identification(
-        dfin,
-        dfout,
-        n_delay = n_delay,
-        normalisation = normalisation,
-        data_type = Float32,
-        data_lower_input = lower_in,
-        data_upper_input = upper_in,
-        data_lower_output = lower_out,
-        data_upper_output = upper_out,
-    )
-
-    in_data = (DataTrainTest.TrainDataIn)
-    out_data = (DataTrainTest.TrainDataOut)
-
-    #Customs loss function for multiple neural outputs
-    my_loss = function (yhat, y)
-        loss = mean(abs.(Matrix(hcat(yhat[1], yhat[2], yhat[3], yhat[4])) .- Matrix(y)))
-        return loss
-    end
-
-    sample_time = 5.0
-    nbr_states = 4
-    nbr_inputs = 2
-
-    #fnn definition
-    model_fnn = MLJFlux.MultitargetNeuralNetworkRegressor(
-        builder = Rknn1(neuron = 10, layer = 2, σ = NNlib.relu, sample_time = sample_time),
-        batch_size = 2048,
-        optimiser = Flux.RADAM(),
-        epochs = 10000,
-        loss = Flux.Losses.mae,
-        #acceleration = CUDALibs(),
-    )
-
-    r1 = range(model_fnn, :(builder.neuron), lower = 5, upper = 15)
-    r2 = range(model_fnn, :(builder.layer), lower = 1, upper = 5)
-    r3 = range(model_fnn, :epochs, lower = 100, upper = 500)
-
-    tuned_model_fnn = MLJ.TunedModel(
-        model = model_fnn,
-        tuning = AdaptiveParticleSwarm(rng = StableRNG(0)),
-        #resampling=CV(nfolds=6, rng=StableRNG(1)),
-        range = [r1, r2, r3],
-        measure = my_loss,
-        n = 5,
-        # acceleration = MLJ.CPUProcesses(),
-    )
-
-    iterated_model_fnn = IteratedModel(
-        model = tuned_model_fnn,
-        resampling = nothing,
-        control = [Step(n = 1), TimeLimit(t = Minute(60))],
-        iteration_parameter = :(n),
-    )
-
-    mach_fnn = MLJ.machine(model_fnn, in_data, out_data)
-
-    MLJ.fit!(mach_fnn)
-
-    fnn_chain_best_model_chain = fitted_params(mach_fnn)[1]
-
-
-
-    #save the train model
-    MLJ.save("./models_saved/fnn_train_result.jls", mach_fnn)
-
-    @test fitted_params(fitted_params(mach_fnn).machine).best_model != 0
-    @test report(fitted_params(mach_fnn).machine).best_history_entry != 0
-    @test report(fitted_params(mach_fnn).machine).history != 0
-
-    fnn_param_best_model = fitted_params(fitted_params(mach_fnn).machine).best_model
-
-    @test fnn_param_best_model.builder.neuron < 16
-    @test fnn_param_best_model.builder.neuron > 4
-
-    @test fnn_param_best_model.builder.layer < 6
-    @test fnn_param_best_model.builder.layer >= 1
-
-    @test fnn_param_best_model.epochs <= 500
-    @test fnn_param_best_model.epochs >= 100
-
-    # MAE with train and test data
-    Train_in_data = (DataTrainTest.TrainDataIn)
-    Train_out_data = (DataTrainTest.TrainDataOut)
-    Test_in_data = (DataTrainTest.TestDataIn)
-    Test_out_data = (DataTrainTest.TestDataOut)
-
-    fnn_chain_best_model_chain =
-        fitted_params(fitted_params(mach_fnn).machine).best_fitted_params.chain
-
-    mae_Train_fnn = Flux.mae(
-        fnn_chain_best_model_chain(Matrix(Train_in_data)'),
-        Matrix(Train_out_data)',
-    )
-    mae_Test_fnn =
-        Flux.mae(fnn_chain_best_model_chain(Matrix(Test_in_data)'), Matrix(Test_out_data)')
-
-    println("mae_Train_fnn $mae_Train_fnn")
-    println("mae_Test_fnn $mae_Test_fnn")
-
-    @test mae_Train_fnn <= 1
-    @test mae_Test_fnn <= 1
-
-end
-
-
-@testset "QTP identification Rknn2" begin
-
-    # load the inputs and outputs data
-    dfout = DataFrame(CSV.File("./data_QTP/data_outputs.csv"))[1:10000, :]
-    dfin = DataFrame(CSV.File("./data_QTP/data_inputs_m3h.csv"))[1:10000, :]
-
-    n_delay = 1
-    normalisation = false
-
-    lower_in = [0.2 0.2 0.2 0.2 0 0]
-    upper_in = [1.2 1.2 1.2 1.2 Inf Inf]
-
-    lower_out = [0.2 0.2 0.2 0.2]
-    upper_out = [1.2 1.2 1.2 1.2]
-
-
-    # Separate data between test and train data
-    DataTrainTest = data_formatting_identification(
-        dfin,
-        dfout,
-        n_delay = n_delay,
-        normalisation = normalisation,
-        data_type = Float32,
-        data_lower_input = lower_in,
-        data_upper_input = upper_in,
-        data_lower_output = lower_out,
-        data_upper_output = upper_out,
-    )
-
-    in_data = (DataTrainTest.TrainDataIn)
-    out_data = (DataTrainTest.TrainDataOut)
-
-    #Customs loss function for multiple neural outputs
-    my_loss = function (yhat, y)
-        loss = mean(abs.(Matrix(hcat(yhat[1], yhat[2], yhat[3], yhat[4])) .- Matrix(y)))
-        return loss
-    end
-
-    sample_time = 5.0
-    nbr_states = 4
-    nbr_inputs = 2
-
-    #fnn definition
-    model_fnn = MLJFlux.MultitargetNeuralNetworkRegressor(
-        builder = Rknn2(neuron = 10, layer = 2, σ = NNlib.relu, sample_time = sample_time),
-        batch_size = 2048,
-        optimiser = Flux.RADAM(),
-        epochs = 10000,
-        loss = Flux.Losses.mae,
-        #acceleration = CUDALibs(),
-    )
-
-    r1 = range(model_fnn, :(builder.neuron), lower = 5, upper = 15)
-    r2 = range(model_fnn, :(builder.layer), lower = 1, upper = 5)
-    r3 = range(model_fnn, :epochs, lower = 100, upper = 500)
-
-    tuned_model_fnn = MLJ.TunedModel(
-        model = model_fnn,
-        tuning = AdaptiveParticleSwarm(rng = StableRNG(0)),
-        #resampling=CV(nfolds=6, rng=StableRNG(1)),
-        range = [r1, r2, r3],
-        measure = my_loss,
-        n = 5,
-        # acceleration = MLJ.CPUProcesses(),
-    )
-
-    iterated_model_fnn = IteratedModel(
-        model = tuned_model_fnn,
-        resampling = nothing,
-        control = [Step(n = 1), TimeLimit(t = Minute(15))],
-        iteration_parameter = :(n),
-    )
-
-    mach_fnn = MLJ.machine(iterated_model_fnn, in_data, out_data)
-
-    MLJ.fit!(mach_fnn)
-
-    fnn_chain_best_model_chain = fitted_params(mach_fnn)[1]
-
-
-
-    #save the train model
-    MLJ.save("./models_saved/fnn_train_result.jls", mach_fnn)
-
-    @test fitted_params(fitted_params(mach_fnn).machine).best_model != 0
-    @test report(fitted_params(mach_fnn).machine).best_history_entry != 0
-    @test report(fitted_params(mach_fnn).machine).history != 0
-
-    fnn_param_best_model = fitted_params(fitted_params(mach_fnn).machine).best_model
-
-    @test fnn_param_best_model.builder.neuron < 16
-    @test fnn_param_best_model.builder.neuron > 4
-
-    @test fnn_param_best_model.builder.layer < 6
-    @test fnn_param_best_model.builder.layer >= 1
-
-    @test fnn_param_best_model.epochs <= 500
-    @test fnn_param_best_model.epochs >= 100
-
-    # MAE with train and test data
-    Train_in_data = (DataTrainTest.TrainDataIn)
-    Train_out_data = (DataTrainTest.TrainDataOut)
-    Test_in_data = (DataTrainTest.TestDataIn)
-    Test_out_data = (DataTrainTest.TestDataOut)
-
-    fnn_chain_best_model_chain =
-        fitted_params(fitted_params(mach_fnn).machine).best_fitted_params.chain
-
-    mae_Train_fnn = Flux.mae(
-        fnn_chain_best_model_chain(Matrix(Train_in_data)'),
-        Matrix(Train_out_data)',
-    )
-    mae_Test_fnn =
-        Flux.mae(fnn_chain_best_model_chain(Matrix(Test_in_data)'), Matrix(Test_out_data)')
-
-    println("mae_Train_fnn $mae_Train_fnn")
-    println("mae_Test_fnn $mae_Test_fnn")
-
-    @test mae_Train_fnn <= 1
-    @test mae_Test_fnn <= 1
-
-end
-
-
-@testset "QTP identification Rknn4" begin
-
-    # load the inputs and outputs data
-    dfout = DataFrame(CSV.File("./data_QTP/data_outputs.csv"))[1:10000, :]
-    dfin = DataFrame(CSV.File("./data_QTP/data_inputs_m3h.csv"))[1:10000, :]
-
-    n_delay = 1
-    normalisation = false
-
-    lower_in = [0.2 0.2 0.2 0.2 0 0]
-    upper_in = [1.2 1.2 1.2 1.2 Inf Inf]
-
-    lower_out = [0.2 0.2 0.2 0.2]
-    upper_out = [1.2 1.2 1.2 1.2]
-
-
-    # Separate data between test and train data
-    DataTrainTest = data_formatting_identification(
-        dfin,
-        dfout,
-        n_delay = n_delay,
-        normalisation = normalisation,
-        data_type = Float32,
-        data_lower_input = lower_in,
-        data_upper_input = upper_in,
-        data_lower_output = lower_out,
-        data_upper_output = upper_out,
-    )
-
-    in_data = (DataTrainTest.TrainDataIn)
-    out_data = (DataTrainTest.TrainDataOut)
-
-    #Customs loss function for multiple neural outputs
-    my_loss = function (yhat, y)
-        loss = mean(abs.(Matrix(hcat(yhat[1], yhat[2], yhat[3], yhat[4])) .- Matrix(y)))
-        return loss
-    end
-
-    sample_time = 5.0
-    nbr_states = 4
-    nbr_inputs = 2
-
-    #fnn definition
-    model_fnn = MLJFlux.MultitargetNeuralNetworkRegressor(
-        builder = Rknn4(neuron = 10, layer = 2, σ = NNlib.relu, sample_time = sample_time),
-        batch_size = 2048,
-        optimiser = Flux.RADAM(),
-        epochs = 10000,
-        loss = Flux.Losses.mae,
-        #acceleration = CUDALibs(),
-    )
-
-    r1 = range(model_fnn, :(builder.neuron), lower = 5, upper = 15)
-    r2 = range(model_fnn, :(builder.layer), lower = 1, upper = 5)
-    r3 = range(model_fnn, :epochs, lower = 100, upper = 500)
-
-    tuned_model_fnn = MLJ.TunedModel(
-        model = model_fnn,
-        tuning = AdaptiveParticleSwarm(rng = StableRNG(0)),
-        #resampling=CV(nfolds=6, rng=StableRNG(1)),
-        range = [r1, r2, r3],
-        measure = my_loss,
-        n = 5,
-        # acceleration = MLJ.CPUProcesses(),
-    )
-
-    iterated_model_fnn = IteratedModel(
-        model = tuned_model_fnn,
-        resampling = nothing,
-        control = [Step(n = 1), TimeLimit(t = Minute(60))],
-        iteration_parameter = :(n),
-    )
-
-    mach_fnn = MLJ.machine(model_fnn, in_data, out_data)
-
-    MLJ.fit!(mach_fnn)
-
-    fnn_chain_best_model_chain = fitted_params(mach_fnn)[1]
-
-
-
-    #save the train model
-    MLJ.save("./models_saved/fnn_train_result.jls", mach_fnn)
-
-    @test fitted_params(fitted_params(mach_fnn).machine).best_model != 0
-    @test report(fitted_params(mach_fnn).machine).best_history_entry != 0
-    @test report(fitted_params(mach_fnn).machine).history != 0
-
-    fnn_param_best_model = fitted_params(fitted_params(mach_fnn).machine).best_model
-
-    @test fnn_param_best_model.builder.neuron < 16
-    @test fnn_param_best_model.builder.neuron > 4
-
-    @test fnn_param_best_model.builder.layer < 6
-    @test fnn_param_best_model.builder.layer >= 1
-
-    @test fnn_param_best_model.epochs <= 500
-    @test fnn_param_best_model.epochs >= 100
-
-    # MAE with train and test data
-    Train_in_data = (DataTrainTest.TrainDataIn)
-    Train_out_data = (DataTrainTest.TrainDataOut)
-    Test_in_data = (DataTrainTest.TestDataIn)
-    Test_out_data = (DataTrainTest.TestDataOut)
-
-    fnn_chain_best_model_chain =
-        fitted_params(fitted_params(mach_fnn).machine).best_fitted_params.chain
-
-    mae_Train_fnn = Flux.mae(
-        fnn_chain_best_model_chain(Matrix(Train_in_data)'),
-        Matrix(Train_out_data)',
-    )
-    mae_Test_fnn =
-        Flux.mae(fnn_chain_best_model_chain(Matrix(Test_in_data)'), Matrix(Test_out_data)')
-
-    println("mae_Train_fnn $mae_Train_fnn")
-    println("mae_Test_fnn $mae_Test_fnn")
-
-    @test mae_Train_fnn <= 1
-    @test mae_Test_fnn <= 1
-
-end
-
 
 @testset "QTP identification Fnn" begin
 
@@ -480,7 +109,7 @@ end
     iterated_model_fnn = IteratedModel(
         model = tuned_model_fnn,
         resampling = nothing,
-        control = [Step(n = 1), TimeLimit(t = Minute(60))],
+        control = [Step(n = 1), TimeLimit(t = Minute(120))],
         iteration_parameter = :(n),
     )
 
@@ -595,7 +224,7 @@ end
     iterated_model_resenet = IteratedModel(
         model = tuned_model_resnet,
         resampling = nothing,
-        control = [Step(n = 1), TimeLimit(t = Minute(60))],
+        control = [Step(n = 1), TimeLimit(t = Minute(120))],
     )
 
     mach_resnet = MLJ.machine(iterated_model_resenet, in_data, out_data)
@@ -712,7 +341,7 @@ end
     iterated_model_resenet = IteratedModel(
         model = tuned_model_polynet,
         resampling = nothing,
-        control = [Step(n = 1), TimeLimit(t = Minute(60))],
+        control = [Step(n = 1), TimeLimit(t = Minute(120))],
     )
 
     mach_polynet = MLJ.machine(iterated_model_resenet, in_data, out_data)
@@ -829,7 +458,7 @@ end
     iterated_model_densenet = IteratedModel(
         model = tuned_model_densenet,
         resampling = nothing,
-        control = [Step(n = 1), TimeLimit(t = Minute(60))],
+        control = [Step(n = 1), TimeLimit(t = Minute(120))],
     )
 
     mach_densenet = MLJ.machine(iterated_model_densenet, in_data, out_data)
@@ -946,7 +575,7 @@ end
     iterated_model_icnn = IteratedModel(
         model = tuned_model_icnn,
         resampling = nothing,
-        control = [Step(n = 1), TimeLimit(t = Minute(60))],
+        control = [Step(n = 1), TimeLimit(t = Minute(120))],
     )
 
     mach_icnn = MLJ.machine(iterated_model_icnn, in_data, out_data)
@@ -994,125 +623,7 @@ end
 
 end
 
-@testset "QTP identification NeuralNetODE type 1" begin
-
-    # load the inputs and outputs data
-    dfout = DataFrame(CSV.File("./data_QTP/data_outputs.csv"))[1:100000, :]
-    dfin = DataFrame(CSV.File("./data_QTP/data_inputs_m3h.csv"))[1:100000, :]
-
-    n_delay = 1
-    normalisation = false
-
-    lower_in = [0.2 0.2 0.2 0.2 0 0]
-    upper_in = [1.2 1.2 1.2 1.2 Inf Inf]
-
-    lower_out = [0.2 0.2 0.2 0.2]
-    upper_out = [1.2 1.2 1.2 1.2]
-
-
-    # Separate data between test and train data
-    DataTrainTest = data_formatting_identification(
-        dfin,
-        dfout,
-        n_delay = n_delay,
-        normalisation = normalisation,
-        data_type = Float32,
-        data_lower_input = lower_in,
-        data_upper_input = upper_in,
-        data_lower_output = lower_out,
-        data_upper_output = upper_out,
-    )
-
-    in_data = (DataTrainTest.TrainDataIn)
-    out_data = (DataTrainTest.TrainDataOut)
-
-    # Customs loss function for multiple neural outputs
-    my_loss = function (yhat, y)
-        loss = mean(abs.(Matrix(hcat(yhat[1], yhat[2], yhat[3], yhat[4])) .- Matrix(y)))
-        return loss
-    end
-
-    # NeuralNetODE definition
-    model_neural_netODE = MLJFlux.MultitargetNeuralNetworkRegressor(
-        builder = NeuralNetODE_type1(neuron = 5, layer = 2, σ = NNlib.relu),
-        batch_size = 2048,
-        optimiser = Flux.RADAM(),
-        epochs = 100,
-        loss = Flux.Losses.mae,
-        # acceleration = CUDALibs(),
-    )
-
-    r1 = range(model_neural_netODE, :(builder.neuron), lower = 5, upper = 15)
-    r2 = range(model_neural_netODE, :(builder.layer), lower = 1, upper = 5)
-    r3 = range(model_neural_netODE, :epochs, lower = 100, upper = 500)
-
-    tuned_model_neural_netODE = MLJ.TunedModel(
-        model = model_neural_netODE,
-        tuning = AdaptiveParticleSwarm(rng = StableRNG(0)),
-        #resampling = CV(nfolds = 6, rng = StableRNG(1)),
-        range = [r1, r2, r3],
-        measure = my_loss,
-        n = 5,
-        #acceleration = MLJ.CPUProcesses(),
-    )
-
-    iterated_model_neural_netODE = IteratedModel(
-        model = tuned_model_neural_netODE,
-        resampling = nothing,
-        control = [Step(n = 1), TimeLimit(t = Minute(30))],
-    )
-
-    mach_neural_netODE = MLJ.machine(iterated_model_neural_netODE, in_data, out_data)
-
-    MLJ.fit!(mach_neural_netODE)
-
-    #save the model and optimisation results
-    MLJ.save("./models_saved/neuralnetODE_type1_train_result.jls", mach_neural_netODE)
-
-    @test fitted_params(fitted_params(mach_neural_netODE).machine).best_model != 0
-    @test report(fitted_params(mach_neural_netODE).machine).best_history_entry != 0
-    @test report(fitted_params(mach_neural_netODE).machine).history != 0
-
-    neuralnetode_param_best_model =
-        fitted_params(fitted_params(mach_neural_netODE).machine).best_model
-
-    @test neuralnetode_param_best_model.builder.neuron < 16
-    @test neuralnetode_param_best_model.builder.neuron > 4
-
-    @test neuralnetode_param_best_model.builder.layer < 6
-    @test neuralnetode_param_best_model.builder.layer >= 1
-
-    @test neuralnetode_param_best_model.epochs <= 500
-    @test neuralnetode_param_best_model.epochs >= 100
-
-    # MAE with train and test data
-    Train_in_data = (DataTrainTest.TrainDataIn)
-    Train_out_data = (DataTrainTest.TrainDataOut)
-    Test_in_data = (DataTrainTest.TestDataIn)
-    Test_out_data = (DataTrainTest.TestDataOut)
-
-    neuralnet_chain_best_model_chain =
-        fitted_params(fitted_params(mach_neural_netODE).machine).best_fitted_params.chain
-
-    mae_Train_neuralnet = Flux.mae(
-        neuralnet_chain_best_model_chain(Matrix(Train_in_data)'),
-        Matrix(Train_out_data)',
-    )
-    mae_Test_neuralnet = Flux.mae(
-        neuralnet_chain_best_model_chain(Matrix(Test_in_data)'),
-        Matrix(Test_out_data)',
-    )
-
-    println("mae_Train_neuralnet $mae_Train_neuralnet")
-    println("mae_Test_neuralnet $mae_Test_neuralnet")
-
-    @test mae_Train_neuralnet <= 1
-    @test mae_Test_neuralnet <= 1
-
-end
-
-
-@testset "QTP identification NeuralNetODE_type2" begin
+@testset "QTP identification NeuralODE" begin
 
     # load the inputs and outputs data
     dfout = DataFrame(CSV.File("./data_QTP/data_outputs.csv"))[1:50000, :]
@@ -1153,7 +664,7 @@ end
 
     # NeuralNetODE_type2 definition
     model_neural_netODE = MLJFlux.MultitargetNeuralNetworkRegressor(
-        builder = NeuralNetODE_type2(
+        builder = NeuralODE(
             neuron = 5,
             layer = 2,
             σ = NNlib.relu,
@@ -1183,17 +694,15 @@ end
     iterated_model_neural_netODE = IteratedModel(
         model = tuned_model_neural_netODE,
         resampling = nothing,
-        control = [Step(n = 1), TimeLimit(t = Minute(30))],
+        control = [Step(n = 1), TimeLimit(t = Minute(120))],
     )
 
-    mach_neural_netODE = MLJ.machine(model_neural_netODE, in_data, out_data)
+    mach_neural_netODE = MLJ.machine(iterated_model_neural_netODE, in_data, out_data)
 
     MLJ.fit!(mach_neural_netODE)
 
-    neuralnet_chain_best_model_chain = fitted_params(mach_neural_netODE)[1]
-
     #save the model and optimisation results
-    MLJ.save("./models_saved/NeuralNetODE_type2_train_result.jls", mach_neural_netODE)
+    MLJ.save("./models_saved/NeuralODE_train_result.jls", mach_neural_netODE)
 
     @test fitted_params(fitted_params(mach_neural_netODE).machine).best_model != 0
     @test report(fitted_params(mach_neural_netODE).machine).best_history_entry != 0
@@ -1414,7 +923,7 @@ end
     iterated_model_rnn = IteratedModel(
         model = tuned_model_rnn,
         resampling = nothing,
-        control = [Step(n = 1), TimeLimit(t = Minute(60))],
+        control = [Step(n = 1), TimeLimit(t = Minute(120))],
         iteration_parameter = :(n),
     )
 
@@ -1521,7 +1030,7 @@ end
     iterated_model_lstm = IteratedModel(
         model = tuned_model_lstm,
         resampling = nothing,
-        control = [Step(n = 1), TimeLimit(t = Minute(10))],
+        control = [Step(n = 1), TimeLimit(t = Minute(120))],
         iteration_parameter = :(n),
     )
 
@@ -1622,7 +1131,7 @@ end
     iterated_model_gru = IteratedModel(
         model = tuned_model_gru,
         resampling = nothing,
-        control = [Step(n = 1), TimeLimit(t = Minute(10))],
+        control = [Step(n = 1), TimeLimit(t = Minute(120))],
         iteration_parameter = :(n),
     )
 
@@ -1656,5 +1165,367 @@ end
     @test mae_Train_gru <= 1
 
 end
+
+
+@testset "QTP identification Rknn1" begin
+
+    # load the inputs and outputs data
+    dfout = DataFrame(CSV.File("./data_QTP/data_outputs.csv"))[1:10000, :]
+    dfin = DataFrame(CSV.File("./data_QTP/data_inputs_m3h.csv"))[1:10000, :]
+
+    n_delay = 1
+    normalisation = false
+
+    lower_in = [0.2 0.2 0.2 0.2 0 0]
+    upper_in = [1.2 1.2 1.2 1.2 Inf Inf]
+
+    lower_out = [0.2 0.2 0.2 0.2]
+    upper_out = [1.2 1.2 1.2 1.2]
+
+
+    # Separate data between test and train data
+    DataTrainTest = data_formatting_identification(
+        dfin,
+        dfout,
+        n_delay = n_delay,
+        normalisation = normalisation,
+        data_type = Float32,
+        data_lower_input = lower_in,
+        data_upper_input = upper_in,
+        data_lower_output = lower_out,
+        data_upper_output = upper_out,
+    )
+
+    in_data = (DataTrainTest.TrainDataIn)
+    out_data = (DataTrainTest.TrainDataOut)
+
+    #Customs loss function for multiple neural outputs
+    my_loss = function (yhat, y)
+        loss = mean(abs.(Matrix(hcat(yhat[1], yhat[2], yhat[3], yhat[4])) .- Matrix(y)))
+        return loss
+    end
+
+    sample_time = 5.0
+    nbr_states = 4
+    nbr_inputs = 2
+
+    #fnn definition
+    model_rknn1 = MLJFlux.MultitargetNeuralNetworkRegressor(
+        builder = Rknn1(neuron = 10, layer = 2, σ = NNlib.relu, sample_time = sample_time),
+        batch_size = 2048,
+        optimiser = Flux.RADAM(),
+        epochs = 10000,
+        loss = Flux.Losses.mae,
+        #acceleration = CUDALibs(),
+    )
+
+    r1 = range(model_rknn1, :(builder.neuron), lower = 5, upper = 15)
+    r2 = range(model_rknn1, :(builder.layer), lower = 1, upper = 5)
+    r3 = range(model_rknn1, :epochs, lower = 100, upper = 500)
+
+    tuned_model_rknn1 = MLJ.TunedModel(
+        model = model_rknn1,
+        tuning = AdaptiveParticleSwarm(rng = StableRNG(0)),
+        #resampling=CV(nfolds=6, rng=StableRNG(1)),
+        range = [r1, r2, r3],
+        measure = my_loss,
+        n = 5,
+        # acceleration = MLJ.CPUProcesses(),
+    )
+
+    iterated_model_rknn1 = IteratedModel(
+        model = tuned_model_rknn1,
+        resampling = nothing,
+        control = [Step(n = 1), TimeLimit(t = Minute(120))],
+        iteration_parameter = :(n),
+    )
+
+    mach_rknn1 = MLJ.machine(iterated_model_rknn1, in_data, out_data)
+
+    MLJ.fit!(mach_rknn1)
+
+    #save the train model
+    MLJ.save("./models_saved/rknn1_train_result.jls", mach_rknn1)
+
+    @test fitted_params(fitted_params(mach_rknn1).machine).best_model != 0
+    @test report(fitted_params(mach_rknn1).machine).best_history_entry != 0
+    @test report(fitted_params(mach_rknn1).machine).history != 0
+
+    rknn_param_best_model = fitted_params(fitted_params(mach_rknn1).machine).best_model
+
+    @test rknn_param_best_model.builder.neuron < 16
+    @test rknn_param_best_model.builder.neuron > 4
+
+    @test rknn_param_best_model.builder.layer < 6
+    @test rknn_param_best_model.builder.layer >= 1
+
+    @test rknn_param_best_model.epochs <= 500
+    @test rknn_param_best_model.epochs >= 100
+
+    # MAE with train and test data
+    Train_in_data = (DataTrainTest.TrainDataIn)
+    Train_out_data = (DataTrainTest.TrainDataOut)
+    Test_in_data = (DataTrainTest.TestDataIn)
+    Test_out_data = (DataTrainTest.TestDataOut)
+
+    rknn_chain_best_model_chain =
+        fitted_params(fitted_params(mach_rknn1).machine).best_fitted_params.chain
+
+    mae_Train_rknn = Flux.mae(
+        rknn_chain_best_model_chain(Matrix(Train_in_data)'),
+        Matrix(Train_out_data)',
+    )
+    mae_Test_rknn =
+        Flux.mae(rknn_chain_best_model_chain(Matrix(Test_in_data)'), Matrix(Test_out_data)')
+
+    println("mae_Train_rknn 1 $mae_Train_rknn")
+    println("mae_Test_rknn 1 $mae_Test_rknn")
+
+    @test mae_Train_rknn <= 1
+    @test mae_Test_rknn <= 1
+
+end
+
+
+@testset "QTP identification Rknn2" begin
+
+    # load the inputs and outputs data
+    dfout = DataFrame(CSV.File("./data_QTP/data_outputs.csv"))[1:10000, :]
+    dfin = DataFrame(CSV.File("./data_QTP/data_inputs_m3h.csv"))[1:10000, :]
+
+    n_delay = 1
+    normalisation = false
+
+    lower_in = [0.2 0.2 0.2 0.2 0 0]
+    upper_in = [1.2 1.2 1.2 1.2 Inf Inf]
+
+    lower_out = [0.2 0.2 0.2 0.2]
+    upper_out = [1.2 1.2 1.2 1.2]
+
+
+    # Separate data between test and train data
+    DataTrainTest = data_formatting_identification(
+        dfin,
+        dfout,
+        n_delay = n_delay,
+        normalisation = normalisation,
+        data_type = Float32,
+        data_lower_input = lower_in,
+        data_upper_input = upper_in,
+        data_lower_output = lower_out,
+        data_upper_output = upper_out,
+    )
+
+    in_data = (DataTrainTest.TrainDataIn)
+    out_data = (DataTrainTest.TrainDataOut)
+
+    #Customs loss function for multiple neural outputs
+    my_loss = function (yhat, y)
+        loss = mean(abs.(Matrix(hcat(yhat[1], yhat[2], yhat[3], yhat[4])) .- Matrix(y)))
+        return loss
+    end
+
+    sample_time = 5.0
+    nbr_states = 4
+    nbr_inputs = 2
+
+    #fnn definition
+    model_rknn2 = MLJFlux.MultitargetNeuralNetworkRegressor(
+        builder = Rknn2(neuron = 10, layer = 2, σ = NNlib.relu, sample_time = sample_time),
+        batch_size = 2048,
+        optimiser = Flux.RADAM(),
+        epochs = 10000,
+        loss = Flux.Losses.mae,
+        #acceleration = CUDALibs(),
+    )
+
+    r1 = range(model_rknn2, :(builder.neuron), lower = 5, upper = 15)
+    r2 = range(model_rknn2, :(builder.layer), lower = 1, upper = 5)
+    r3 = range(model_rknn2, :epochs, lower = 100, upper = 500)
+
+    tuned_model_rknn2 = MLJ.TunedModel(
+        model = model_rknn2,
+        tuning = AdaptiveParticleSwarm(rng = StableRNG(0)),
+        #resampling=CV(nfolds=6, rng=StableRNG(1)),
+        range = [r1, r2, r3],
+        measure = my_loss,
+        n = 5,
+        # acceleration = MLJ.CPUProcesses(),
+    )
+
+    iterated_model_rknn2 = IteratedModel(
+        model = tuned_model_rknn2,
+        resampling = nothing,
+        control = [Step(n = 1), TimeLimit(t = Minute(120))],
+        iteration_parameter = :(n),
+    )
+
+    mach_rknn2 = MLJ.machine(iterated_model_rknn2, in_data, out_data)
+
+    MLJ.fit!(mach_rknn2)
+
+    #save the train model
+    MLJ.save("./models_saved/rknn2_train_result.jls", mach_rknn2)
+
+    @test fitted_params(fitted_params(mach_rknn2).machine).best_model != 0
+    @test report(fitted_params(mach_rknn2).machine).best_history_entry != 0
+    @test report(fitted_params(mach_rknn2).machine).history != 0
+
+    rknn_param_best_model = fitted_params(fitted_params(mach_rknn2).machine).best_model
+
+    @test rknn_param_best_model.builder.neuron < 16
+    @test rknn_param_best_model.builder.neuron > 4
+
+    @test rknn_param_best_model.builder.layer < 6
+    @test rknn_param_best_model.builder.layer >= 1
+
+    @test rknn_param_best_model.epochs <= 500
+    @test rknn_param_best_model.epochs >= 100
+
+    # MAE with train and test data
+    Train_in_data = (DataTrainTest.TrainDataIn)
+    Train_out_data = (DataTrainTest.TrainDataOut)
+    Test_in_data = (DataTrainTest.TestDataIn)
+    Test_out_data = (DataTrainTest.TestDataOut)
+
+    rknn_chain_best_model_chain =
+        fitted_params(fitted_params(mach_rknn2).machine).best_fitted_params.chain
+
+    mae_Train_rknn = Flux.mae(
+        rknn_chain_best_model_chain(Matrix(Train_in_data)'),
+        Matrix(Train_out_data)',
+    )
+    mae_Test_rknn =
+        Flux.mae(rknn_chain_best_model_chain(Matrix(Test_in_data)'), Matrix(Test_out_data)')
+
+    println("mae_Train_rknn 2 $mae_Train_rknn")
+    println("mae_Test_rknn 2 $mae_Test_rknn")
+
+    @test mae_Train_rknn <= 1
+    @test mae_Test_rknn <= 1
+
+end
+
+
+@testset "QTP identification Rknn4" begin
+
+    # load the inputs and outputs data
+    dfout = DataFrame(CSV.File("./data_QTP/data_outputs.csv"))[1:10000, :]
+    dfin = DataFrame(CSV.File("./data_QTP/data_inputs_m3h.csv"))[1:10000, :]
+
+    n_delay = 1
+    normalisation = false
+
+    lower_in = [0.2 0.2 0.2 0.2 0 0]
+    upper_in = [1.2 1.2 1.2 1.2 Inf Inf]
+
+    lower_out = [0.2 0.2 0.2 0.2]
+    upper_out = [1.2 1.2 1.2 1.2]
+
+
+    # Separate data between test and train data
+    DataTrainTest = data_formatting_identification(
+        dfin,
+        dfout,
+        n_delay = n_delay,
+        normalisation = normalisation,
+        data_type = Float32,
+        data_lower_input = lower_in,
+        data_upper_input = upper_in,
+        data_lower_output = lower_out,
+        data_upper_output = upper_out,
+    )
+
+    in_data = (DataTrainTest.TrainDataIn)
+    out_data = (DataTrainTest.TrainDataOut)
+
+    #Customs loss function for multiple neural outputs
+    my_loss = function (yhat, y)
+        loss = mean(abs.(Matrix(hcat(yhat[1], yhat[2], yhat[3], yhat[4])) .- Matrix(y)))
+        return loss
+    end
+
+    sample_time = 5.0
+    nbr_states = 4
+    nbr_inputs = 2
+
+    #rknn4 definition
+    model_rknn4 = MLJFlux.MultitargetNeuralNetworkRegressor(
+        builder = Rknn4(neuron = 10, layer = 2, σ = NNlib.relu, sample_time = sample_time),
+        batch_size = 2048,
+        optimiser = Flux.RADAM(),
+        epochs = 10000,
+        loss = Flux.Losses.mae,
+        #acceleration = CUDALibs(),
+    )
+
+    r1 = range(model_rknn4, :(builder.neuron), lower = 5, upper = 15)
+    r2 = range(model_rknn4, :(builder.layer), lower = 1, upper = 5)
+    r3 = range(model_rknn4, :epochs, lower = 100, upper = 500)
+
+    tuned_model_rknn4 = MLJ.TunedModel(
+        model = model_rknn4,
+        tuning = AdaptiveParticleSwarm(rng = StableRNG(0)),
+        #resampling=CV(nfolds=6, rng=StableRNG(1)),
+        range = [r1, r2, r3],
+        measure = my_loss,
+        n = 5,
+        # acceleration = MLJ.CPUProcesses(),
+    )
+
+    iterated_model_rknn4 = IteratedModel(
+        model = tuned_model_rknn4,
+        resampling = nothing,
+        control = [Step(n = 1), TimeLimit(t = Minute(120))],
+        iteration_parameter = :(n),
+    )
+
+    mach_rknn4 = MLJ.machine(iterated_model_rknn4, in_data, out_data)
+
+    MLJ.fit!(mach_rknn4)
+
+
+    #save the train model
+    MLJ.save("./models_saved/rknn4_train_result.jls", mach_rknn4)
+
+    @test fitted_params(fitted_params(mach_rknn4).machine).best_model != 0
+    @test report(fitted_params(mach_rknn4).machine).best_history_entry != 0
+    @test report(fitted_params(mach_rknn4).machine).history != 0
+
+    rknn4_param_best_model = fitted_params(fitted_params(mach_rknn4).machine).best_model
+
+    @test rknn4_param_best_model.builder.neuron < 16
+    @test rknn4_param_best_model.builder.neuron > 4
+
+    @test rknn4_param_best_model.builder.layer < 6
+    @test rknn4_param_best_model.builder.layer >= 1
+
+    @test rknn4_param_best_model.epochs <= 500
+    @test rknn4_param_best_model.epochs >= 100
+
+    # MAE with train and test data
+    Train_in_data = (DataTrainTest.TrainDataIn)
+    Train_out_data = (DataTrainTest.TrainDataOut)
+    Test_in_data = (DataTrainTest.TestDataIn)
+    Test_out_data = (DataTrainTest.TestDataOut)
+
+    rknn_chain_best_model_chain =
+        fitted_params(fitted_params(mach_rknn4).machine).best_fitted_params.chain
+
+    mae_Train_rknn = Flux.mae(
+        rknn_chain_best_model_chain(Matrix(Train_in_data)'),
+        Matrix(Train_out_data)',
+    )
+    mae_Test_rknn =
+        Flux.mae(rknn_chain_best_model_chain(Matrix(Test_in_data)'), Matrix(Test_out_data)')
+
+    println("mae_Train_rknn 4 $mae_Train_rknn")
+    println("mae_Test_rknn 4 $mae_Test_rknn")
+
+    @test mae_Train_rknn <= 1
+    @test mae_Test_rknn <= 1
+
+end
+
 
 #end

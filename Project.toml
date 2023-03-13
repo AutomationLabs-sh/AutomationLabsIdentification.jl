@@ -1,7 +1,7 @@
 name = "AutomationLabsIdentification"
 uuid = "48ff5a6f-d08b-4053-9585-6a9e3e078386"
 authors = ["Pierre Blaud and contributors"]
-version = "0.2.4"
+version = "0.2.5"
 
 [deps]
 CUDA = "052768ef-5323-5732-b1bb-66c8b64840ba"
