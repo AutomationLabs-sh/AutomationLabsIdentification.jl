@@ -24,11 +24,16 @@ import AutomationLabsIdentification: Rbf
 import AutomationLabsIdentification: ResNet
 import AutomationLabsIdentification: PolyNet
 import AutomationLabsIdentification: DenseNet
-import AutomationLabsIdentification: NeuralNetODE_type1
-import AutomationLabsIdentification: NeuralNetODE_type2
+import AutomationLabsIdentification: NeuralODE
+import AutomationLabsIdentification: Rknn1
+import AutomationLabsIdentification: Rknn2
+import AutomationLabsIdentification: Rknn4
 import AutomationLabsIdentification: Rnn
 import AutomationLabsIdentification: Lstm
 import AutomationLabsIdentification: Gru
+
+import AutomationLabsIdentification: DenseSampleTime
+
 
 @testset "Fnn" begin
 
@@ -129,7 +134,7 @@ end
     #test rbf
     @test size.(Flux.params(model_rbf_trained)) == [(5, 1), (5, 5), (1, 5)]
     @test model_rbf_trained[1].σ == identity
-    #@test typeof(model_rbf_trained[2].σ) == Identification.var"#gaussian#3"
+    @test model_rbf_trained[2].layers[1].σ == AutomationLabsIdentification.gaussian
     @test model_rbf_trained[3].σ == identity
 
 end
@@ -224,48 +229,10 @@ end
 
 end
 
-@testset "NeuralNetODE_type1" begin
+@testset "NeuralODE" begin
 
     #data
-    in_ = repeat(1:0.001:10, 1)[:, :]
-    in1 = MLJ.table(in_)
-
-    out1 = vec(sin.(in_))
-
-    #neural ode definition
-    model_neural_ode = MLJFlux.NeuralNetworkRegressor(
-        builder = NeuralNetODE_type1(neuron = 5, layer = 2, σ = NNlib.relu),
-        batch_size = 1024,
-        optimiser = Flux.RADAM(),
-        epochs = 100,
-    )
-
-    mach_neural_ode = MLJ.machine(model_neural_ode, in1, out1)
-
-    MLJ.fit!(mach_neural_ode)
-
-    model_neural_ode_trained = fitted_params(mach_neural_ode).chain
-
-    #test neural Ode
-    @test size.(Flux.params(model_neural_ode_trained)) == [(5, 1), (60,), (1, 5)]
-    @test model_neural_ode_trained[1].σ == identity
-    @test size.(Flux.params(model_neural_ode_trained[2].model)) ==
-          [(5, 5), (5,), (5, 5), (5,)]
-    @test model_neural_ode_trained[2].tspan == (0.0f0, 1.0f0)
-    @test model_neural_ode_trained[2].args == (DifferentialEquations.BS3(),)
-    @test values(model_neural_ode_trained[2].kwargs) ==
-          (save_everystep = false, reltol = 1e-6, abstol = 1e-6, save_start = false)
-
-    #@test typeof(model_neural_ode_trained[3]) ==
-    #      Identification.var"#DiffEqArray_to_Array#13" # to do DiffEqArray should be added with a struct and closure
-    @test model_neural_ode_trained[4].σ == identity
-
-end
-
-@testset "NeuralNetODE_type2" begin
-
-    #data
-    in_ = repeat(1:0.001:10, 1)[:, :]
+    in_ = Float32.(repeat(1:0.001:10, 1)[:, :])
     in1 = MLJ.table(in_)
 
     out1 = vec(sin.(in_))
@@ -275,7 +242,7 @@ end
     #neural ode definition
 
     model_neural_ode = MLJFlux.NeuralNetworkRegressor(
-        builder = NeuralNetODE_type2(
+        builder = NeuralODE(
             neuron = 5,
             layer = 2,
             σ = Flux.relu,
@@ -296,12 +263,161 @@ end
     #test neural Ode
     @test size.(Flux.params(model_neural_ode_trained)) == [(70,)]
     @test size.(Flux.params(inner_chain)) == [(5, 1), (5, 5), (5,), (5, 5), (5,), (1, 5)]
-    @test model_neural_ode_trained[1].tspan == (0, 0.001)# (0.0f0, 0.001f0)
+    @test model_neural_ode_trained[1].tspan == (0.0f0, 0.001f0)
     @test model_neural_ode_trained[1].args == (DifferentialEquations.BS3(),)
     @test values(model_neural_ode_trained[1].kwargs) ==
           (save_everystep = false, reltol = 1e-6, abstol = 1e-6, save_start = false)
 
 end
+
+@testset "Rknn1" begin
+
+    #data
+    in_ = repeat(1:0.001:10, 1)[:, :]
+    in1 = MLJ.table(in_)
+
+    out1 = vec(sin.(in_))
+
+    sample_time = 0.001
+
+    #neural ode definition
+
+    model_rknn1 = MLJFlux.NeuralNetworkRegressor(
+        builder = Rknn1(neuron = 5, layer = 2, σ = Flux.relu, sample_time = sample_time),
+        batch_size = 1024,
+        optimiser = Flux.ADAM(),
+        epochs = 100,
+    )
+
+    mach_rknn1 = MLJ.machine(model_rknn1, in1, out1)
+
+    MLJ.fit!(mach_rknn1)
+
+    model_rknn1_trained = fitted_params(mach_rknn1).chain
+
+    #test Rknn1
+    @test size.(Flux.params(model_rknn1_trained)) ==
+          [(5, 1), (5, 5), (5,), (5, 5), (5,), (1, 5)]
+
+    @test typeof(model_rknn1_trained[1]) == AutomationLabsIdentification.DenseIdentityOut
+    @test typeof(model_rknn1_trained[2][1]) == AutomationLabsIdentification.DenseSampleTime
+    @test typeof(model_rknn1_trained[2][2]) == Chain{
+        Tuple{
+            Dense{typeof(identity),Matrix{Float32},Bool},
+            Chain{
+                Tuple{
+                    Dense{typeof(relu),Matrix{Float32},Vector{Float32}},
+                    Dense{typeof(relu),Matrix{Float32},Vector{Float32}},
+                },
+            },
+            Dense{typeof(identity),Matrix{Float32},Bool},
+        },
+    }
+
+end
+
+@testset "Rknn2" begin
+
+    #data
+    in_ = repeat(1:0.001:10, 1)[:, :]
+    in1 = MLJ.table(in_)
+
+    out1 = vec(sin.(in_))
+
+    sample_time = 0.001
+
+    #neural ode definition
+
+    model_rknn2 = MLJFlux.NeuralNetworkRegressor(
+        builder = Rknn2(neuron = 5, layer = 2, σ = Flux.relu, sample_time = sample_time),
+        batch_size = 1024,
+        optimiser = Flux.ADAM(),
+        epochs = 100,
+    )
+
+    mach_rknn2 = MLJ.machine(model_rknn2, in1, out1)
+
+    MLJ.fit!(mach_rknn2)
+
+    model_rknn2_trained = fitted_params(mach_rknn2).chain
+
+    #test Rknn1
+    @test size.(Flux.params(model_rknn2_trained)) ==
+          [(5, 1), (5, 5), (5,), (5, 5), (5,), (1, 5)]
+
+    @test typeof(model_rknn2_trained[1]) == AutomationLabsIdentification.DenseIdentityOut
+    @test typeof(model_rknn2_trained[2][1]) == AutomationLabsIdentification.Dense_over_z
+    @test typeof(model_rknn2_trained[2][2]) == Chain{
+        Tuple{
+            DenseSampleTime,
+            Chain{
+                Tuple{
+                    Dense{typeof(identity),Matrix{Float32},Bool},
+                    Chain{
+                        Tuple{
+                            Dense{typeof(relu),Matrix{Float32},Vector{Float32}},
+                            Dense{typeof(relu),Matrix{Float32},Vector{Float32}},
+                        },
+                    },
+                    Dense{typeof(identity),Matrix{Float32},Bool},
+                },
+            },
+        },
+    }
+
+end
+
+@testset "Rknn4" begin
+
+    #data
+    in_ = repeat(1:0.001:10, 1)[:, :]
+    in1 = MLJ.table(in_)
+
+    out1 = vec(sin.(in_))
+
+    sample_time = 0.001
+
+    #neural ode definition
+
+    model_rknn4 = MLJFlux.NeuralNetworkRegressor(
+        builder = Rknn4(neuron = 5, layer = 2, σ = Flux.relu, sample_time = sample_time),
+        batch_size = 1024,
+        optimiser = Flux.ADAM(),
+        epochs = 100,
+    )
+
+    mach_rknn4 = MLJ.machine(model_rknn4, in1, out1)
+
+    MLJ.fit!(mach_rknn4)
+
+    model_rknn4_trained = fitted_params(mach_rknn4).chain
+
+    #test Rknn4
+    @test size.(Flux.params(model_rknn4_trained)) ==
+          [(5, 1), (5, 5), (5,), (5, 5), (5,), (1, 5)]
+
+    @test typeof(model_rknn4_trained[1]) == AutomationLabsIdentification.DenseIdentityOut
+    @test typeof(model_rknn4_trained[2][2]) == Chain{
+        Tuple{
+            AutomationLabsIdentification.DenseSampleTime,
+            Chain{
+                Tuple{
+                    Dense{typeof(identity),Matrix{Float32},Bool},
+                    Chain{
+                        Tuple{
+                            Dense{typeof(relu),Matrix{Float32},Vector{Float32}},
+                            Dense{typeof(relu),Matrix{Float32},Vector{Float32}},
+                        },
+                    },
+                    Dense{typeof(identity),Matrix{Float32},Bool},
+                },
+            },
+        },
+    }
+
+end
+
+
 
 @testset "Rnn" begin
 

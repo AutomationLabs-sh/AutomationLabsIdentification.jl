@@ -6,10 +6,10 @@
 # You can obtain one at https://mozilla.org/MPL/2.0/.  #
 ########################################################
 
-#### neuralnetODE_type1 ####
+#### neuralODE ####
 """
     _neural_network_builder(
-    nn::neuralnetODE_type1,
+    nn::neuralODE,
     processor::MLJ.CPUProcesses,
     algorithm::Adam,
     max_time::Dates.TimePeriod;
@@ -23,13 +23,14 @@ The following variables are mendatories:
 * `processor`: a processor selection for training.
 * `algorithm`: an algorithm selection for neural network training. 
 * `max_time` : a maximum time for training.
+* `sample_time`: a sample time for discretization in kws.
 
 The following variables are optinals:
 * `kws_...`: optional variables.
 
 """
 function _neural_network_builder(
-    nn::neuralnetODE_type1,
+    nn::neuralODE,
     processor::MLJ.CPUProcesses,
     algorithm::Adam,
     max_time::Dates.TimePeriod;
@@ -61,6 +62,14 @@ function _neural_network_builder(
         get(kws, :neuralnet_maximum_neuron, NEURALNET_DEFAULT_PARAMETERS.maximum_neuron)
     batch_size = get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
+    if haskey(kws, :sample_time) == true
+        sample_time = kws[:sample_time]
+    else
+        @error "sample time is mandatory with neuralODE"
+        @info "sample time is set to 1.0s"
+        sample_time = 1.0
+    end
+
     loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
         get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
@@ -71,12 +80,17 @@ function _neural_network_builder(
 
     #Design the neural network DenseNet
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
-        builder = NeuralNetODE_type1(neuron = 10, layer = 2, σ = activation_function),
+        builder = NeuralODE(
+            neuron = 10,
+            layer = 2,
+            σ = activation_function,
+            sample_time = sample_time,
+        ),
         batch_size = batch_size,
         optimiser = Flux.ADAM(),
         epochs = 1000,
         loss = loss_fct,
-        #acceleration = MLJ.CUDALibs(),  #without due to issue with DiffEqArray_to_Array
+        #acceleration = MLJ.CUDALibs(),
     )
 
     #Hyperparameters range
@@ -109,7 +123,7 @@ function _neural_network_builder(
 end
 
 function _neural_network_builder(
-    nn::neuralnetODE_type1,
+    nn::neuralODE,
     processor::MLJ.CPUProcesses,
     algorithm::Radam,
     max_time::Dates.TimePeriod;
@@ -141,6 +155,14 @@ function _neural_network_builder(
         get(kws, :neuralnet_maximum_neuron, NEURALNET_DEFAULT_PARAMETERS.maximum_neuron)
     batch_size = get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
+    if haskey(kws, :sample_time) == true
+        sample_time = kws[:sample_time]
+    else
+        @error "sample time is mandatory with neuralODE"
+        @info "sample time is set to 1.0s"
+        sample_time = 1.0
+    end
+
     loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
         get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
@@ -151,12 +173,17 @@ function _neural_network_builder(
 
     #Design the neural network DenseNet
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
-        builder = NeuralNetODE_type1(neuron = 10, layer = 2, σ = activation_function),
+        builder = NeuralODE(
+            neuron = 10,
+            layer = 2,
+            σ = activation_function,
+            sample_time = sample_time,
+        ),
         batch_size = batch_size,
         optimiser = Flux.RADAM(),
         epochs = 1000,
         loss = loss_fct,
-        #acceleration = MLJ.CUDALibs(),  ##without due to issue with DiffEqArray_to_Array,
+        #acceleration = MLJ.CUDALibs(),
     )
 
     #Hyperparameters range
@@ -189,7 +216,7 @@ function _neural_network_builder(
 end
 
 function _neural_network_builder(
-    nn::neuralnetODE_type1,
+    nn::neuralODE,
     processor::MLJ.CPUProcesses,
     algorithm::Nadam,
     max_time::Dates.TimePeriod;
@@ -221,6 +248,14 @@ function _neural_network_builder(
         get(kws, :neuralnet_maximum_neuron, NEURALNET_DEFAULT_PARAMETERS.maximum_neuron)
     batch_size = get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
+    if haskey(kws, :sample_time) == true
+        sample_time = kws[:sample_time]
+    else
+        @error "sample time is mandatory with neuralODE"
+        @info "sample time is set to 1.0s"
+        sample_time = 1.0
+    end
+
     loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
         get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
@@ -231,12 +266,17 @@ function _neural_network_builder(
 
     #Design the neural network DenseNet
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
-        builder = NeuralNetODE_type1(neuron = 10, layer = 2, σ = activation_function),
+        builder = NeuralODE(
+            neuron = 10,
+            layer = 2,
+            σ = activation_function,
+            sample_time = sample_time,
+        ),
         batch_size = batch_size,
         optimiser = Flux.NADAM(),
         epochs = 1000,
         loss = loss_fct,
-        #acceleration = MLJ.CUDALibs(),  #without due to issue with DiffEqArray_to_Array,
+        #acceleration = MLJ.CUDALibs(),
     )
 
     #Hyperparameters range
@@ -269,7 +309,7 @@ function _neural_network_builder(
 end
 
 function _neural_network_builder(
-    nn::neuralnetODE_type1,
+    nn::neuralODE,
     processor::MLJ.CPUProcesses,
     algorithm::Oadam,
     max_time::Dates.TimePeriod;
@@ -301,6 +341,14 @@ function _neural_network_builder(
         get(kws, :neuralnet_maximum_neuron, NEURALNET_DEFAULT_PARAMETERS.maximum_neuron)
     batch_size = get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
+    if haskey(kws, :sample_time) == true
+        sample_time = kws[:sample_time]
+    else
+        @error "sample time is mandatory with neuralODE"
+        @info "sample time is set to 1.0s"
+        sample_time = 1.0
+    end
+
     loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
         get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
@@ -311,12 +359,17 @@ function _neural_network_builder(
 
     #Design the neural network DenseNet
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
-        builder = NeuralNetODE_type1(neuron = 10, layer = 2, σ = activation_function),
+        builder = NeuralODE(
+            neuron = 10,
+            layer = 2,
+            σ = activation_function,
+            sample_time = sample_time,
+        ),
         batch_size = batch_size,
         optimiser = Flux.OADAM(),
         epochs = 1000,
         loss = loss_fct,
-        #acceleration = MLJ.CUDALibs(),  #without due to issue with DiffEqArray_to_Array,
+        #acceleration = MLJ.CUDALibs(),
     )
 
     #Hyperparameters range
@@ -350,7 +403,7 @@ end
 
 ### others solvers ###
 function _neural_network_builder(
-    nn::neuralnetODE_type1,
+    nn::neuralODE,
     processor::MLJ.CPUProcesses,
     algorithm::Lbfgs,
     max_time::Dates.TimePeriod;
@@ -382,6 +435,14 @@ function _neural_network_builder(
         get(kws, :neuralnet_maximum_neuron, NEURALNET_DEFAULT_PARAMETERS.maximum_neuron)
     batch_size = get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
+    if haskey(kws, :sample_time) == true
+        sample_time = kws[:sample_time]
+    else
+        @error "sample time is mandatory with neuralODE"
+        @info "sample time is set to 1.0s"
+        sample_time = 1.0
+    end
+
     loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
         get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
@@ -390,9 +451,14 @@ function _neural_network_builder(
         get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
 
-    #Design the neural network neuralnetODE_type1
+    #Design the neural network neuralODE
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
-        builder = NeuralNetODE_type1(neuron = 10, layer = 2, σ = activation_function),
+        builder = NeuralODE(
+            neuron = 10,
+            layer = 2,
+            σ = activation_function,
+            sample_time = sample_time,
+        ),
         batch_size = batch_size,
         optimiser = Optim.LBFGS(),
         epochs = 1000,
@@ -429,7 +495,7 @@ function _neural_network_builder(
 end
 
 function _neural_network_builder(
-    nn::neuralnetODE_type1,
+    nn::neuralODE,
     processor::MLJ.CPUProcesses,
     algorithm::Pso,
     max_time::Dates.TimePeriod;
@@ -461,6 +527,14 @@ function _neural_network_builder(
         get(kws, :neuralnet_maximum_neuron, NEURALNET_DEFAULT_PARAMETERS.maximum_neuron)
     batch_size = get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
+    if haskey(kws, :sample_time) == true
+        sample_time = kws[:sample_time]
+    else
+        @error "sample time is mandatory with neuralODE"
+        @info "sample time is set to 1.0s"
+        sample_time = 1.0
+    end
+
     loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
         get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
@@ -469,9 +543,14 @@ function _neural_network_builder(
         get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
 
-    #Design the neural network neuralnetODE_type1
+    #Design the neural network neuralODE
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
-        builder = NeuralNetODE_type1(neuron = 10, layer = 2, σ = activation_function),
+        builder = NeuralODE(
+            neuron = 10,
+            layer = 2,
+            σ = activation_function,
+            sample_time = sample_time,
+        ),
         batch_size = batch_size,
         optimiser = Optim.ParticleSwarm(),
         epochs = 1000,
@@ -508,7 +587,7 @@ function _neural_network_builder(
 end
 
 function _neural_network_builder(
-    nn::neuralnetODE_type1,
+    nn::neuralODE,
     processor::MLJ.CPUProcesses,
     algorithm::Oaccel,
     max_time::Dates.TimePeriod;
@@ -540,6 +619,14 @@ function _neural_network_builder(
         get(kws, :neuralnet_maximum_neuron, NEURALNET_DEFAULT_PARAMETERS.maximum_neuron)
     batch_size = get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
+    if haskey(kws, :sample_time) == true
+        sample_time = kws[:sample_time]
+    else
+        @error "sample time is mandatory with neuralODE"
+        @info "sample time is set to 1.0s"
+        sample_time = 1.0
+    end
+
     loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
         get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
@@ -548,9 +635,14 @@ function _neural_network_builder(
         get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
 
-    #Design the neural network neuralnetODE_type1
+    #Design the neural network neuralODE
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
-        builder = NeuralNetODE_type1(neuron = 10, layer = 2, σ = activation_function),
+        builder = NeuralODE(
+            neuron = 10,
+            layer = 2,
+            σ = activation_function,
+            sample_time = sample_time,
+        ),
         batch_size = batch_size,
         optimiser = Optim.OACCEL(),
         epochs = 1000,
@@ -583,13 +675,12 @@ function _neural_network_builder(
     )
 
     return iterated_nn
-
 end
 
 ### CPU Threads ### 
 
 function _neural_network_builder(
-    nn::neuralnetODE_type1,
+    nn::neuralODE,
     processor::MLJ.CPUThreads,
     algorithm::Adam,
     max_time::Dates.TimePeriod;
@@ -621,6 +712,14 @@ function _neural_network_builder(
         get(kws, :neuralnet_maximum_neuron, NEURALNET_DEFAULT_PARAMETERS.maximum_neuron)
     batch_size = get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
+    if haskey(kws, :sample_time) == true
+        sample_time = kws[:sample_time]
+    else
+        @error "sample time is mandatory with neuralODE"
+        @info "sample time is set to 1.0s"
+        sample_time = 1.0
+    end
+
     loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
         get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
@@ -631,12 +730,17 @@ function _neural_network_builder(
 
     #Design the neural network DenseNet
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
-        builder = NeuralNetODE_type1(neuron = 10, layer = 2, σ = activation_function),
+        builder = NeuralODE(
+            neuron = 10,
+            layer = 2,
+            σ = activation_function,
+            sample_time = sample_time,
+        ),
         batch_size = batch_size,
         optimiser = Flux.ADAM(),
         epochs = 1000,
         loss = loss_fct,
-        #acceleration = MLJ.CUDALibs(),  #without due to issue with DiffEqArray_to_Array,
+        #acceleration = MLJ.CUDALibs(),
     )
 
     #Hyperparameters range
@@ -669,7 +773,7 @@ function _neural_network_builder(
 end
 
 function _neural_network_builder(
-    nn::neuralnetODE_type1,
+    nn::neuralODE,
     processor::MLJ.CPUThreads,
     algorithm::Radam,
     max_time::Dates.TimePeriod;
@@ -701,6 +805,14 @@ function _neural_network_builder(
         get(kws, :neuralnet_maximum_neuron, NEURALNET_DEFAULT_PARAMETERS.maximum_neuron)
     batch_size = get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
+    if haskey(kws, :sample_time) == true
+        sample_time = kws[:sample_time]
+    else
+        @error "sample time is mandatory with neuralODE"
+        @info "sample time is set to 1.0s"
+        sample_time = 1.0
+    end
+
     loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
         get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
@@ -711,12 +823,17 @@ function _neural_network_builder(
 
     #Design the neural network DenseNet
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
-        builder = NeuralNetODE_type1(neuron = 10, layer = 2, σ = activation_function),
+        builder = NeuralODE(
+            neuron = 10,
+            layer = 2,
+            σ = activation_function,
+            sample_time = sample_time,
+        ),
         batch_size = batch_size,
         optimiser = Flux.RADAM(),
         epochs = 1000,
         loss = loss_fct,
-        #acceleration = MLJ.CUDALibs(),  #without due to issue with DiffEqArray_to_Array,
+        #acceleration = MLJ.CUDALibs(),
     )
 
     #Hyperparameters range
@@ -749,7 +866,7 @@ function _neural_network_builder(
 end
 
 function _neural_network_builder(
-    nn::neuralnetODE_type1,
+    nn::neuralODE,
     processor::MLJ.CPUThreads,
     algorithm::Nadam,
     max_time::Dates.TimePeriod;
@@ -781,6 +898,14 @@ function _neural_network_builder(
         get(kws, :neuralnet_maximum_neuron, NEURALNET_DEFAULT_PARAMETERS.maximum_neuron)
     batch_size = get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
+    if haskey(kws, :sample_time) == true
+        sample_time = kws[:sample_time]
+    else
+        @error "sample time is mandatory with neuralODE"
+        @info "sample time is set to 1.0s"
+        sample_time = 1.0
+    end
+
     loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
         get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
@@ -791,12 +916,17 @@ function _neural_network_builder(
 
     #Design the neural network DenseNet
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
-        builder = NeuralNetODE_type1(neuron = 10, layer = 2, σ = activation_function),
+        builder = NeuralODE(
+            neuron = 10,
+            layer = 2,
+            σ = activation_function,
+            sample_time = sample_time,
+        ),
         batch_size = batch_size,
         optimiser = Flux.NADAM(),
         epochs = 1000,
         loss = loss_fct,
-        #acceleration = MLJ.CUDALibs(),  #without due to issue with DiffEqArray_to_Array,
+        #acceleration = MLJ.CUDALibs(),
     )
 
     #Hyperparameters range
@@ -829,7 +959,7 @@ function _neural_network_builder(
 end
 
 function _neural_network_builder(
-    nn::neuralnetODE_type1,
+    nn::neuralODE,
     processor::MLJ.CPUThreads,
     algorithm::Oadam,
     max_time::Dates.TimePeriod;
@@ -861,6 +991,14 @@ function _neural_network_builder(
         get(kws, :neuralnet_maximum_neuron, NEURALNET_DEFAULT_PARAMETERS.maximum_neuron)
     batch_size = get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
+    if haskey(kws, :sample_time) == true
+        sample_time = kws[:sample_time]
+    else
+        @error "sample time is mandatory with neuralODE"
+        @info "sample time is set to 1.0s"
+        sample_time = 1.0
+    end
+
     loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
         get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
@@ -871,12 +1009,17 @@ function _neural_network_builder(
 
     #Design the neural network DenseNet
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
-        builder = NeuralNetODE_type1(neuron = 10, layer = 2, σ = activation_function),
+        builder = NeuralODE(
+            neuron = 10,
+            layer = 2,
+            σ = activation_function,
+            sample_time = sample_time,
+        ),
         batch_size = batch_size,
         optimiser = Flux.OADAM(),
         epochs = 1000,
         loss = loss_fct,
-        #acceleration = MLJ.CUDALibs(),  #without due to issue with DiffEqArray_to_Array,
+        #acceleration = MLJ.CUDALibs(),
     )
 
     #Hyperparameters range
@@ -910,7 +1053,7 @@ end
 
 ### others solvers ###
 function _neural_network_builder(
-    nn::neuralnetODE_type1,
+    nn::neuralODE,
     processor::MLJ.CPUThreads,
     algorithm::Lbfgs,
     max_time::Dates.TimePeriod;
@@ -942,6 +1085,14 @@ function _neural_network_builder(
         get(kws, :neuralnet_maximum_neuron, NEURALNET_DEFAULT_PARAMETERS.maximum_neuron)
     batch_size = get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
+    if haskey(kws, :sample_time) == true
+        sample_time = kws[:sample_time]
+    else
+        @error "sample time is mandatory with neuralODE"
+        @info "sample time is set to 1.0s"
+        sample_time = 1.0
+    end
+
     loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
         get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
@@ -950,9 +1101,14 @@ function _neural_network_builder(
         get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
 
-    #Design the neural network neuralnetODE_type1
+    #Design the neural network neuralODE
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
-        builder = NeuralNetODE_type1(neuron = 10, layer = 2, σ = activation_function),
+        builder = NeuralODE(
+            neuron = 10,
+            layer = 2,
+            σ = activation_function,
+            sample_time = sample_time,
+        ),
         batch_size = batch_size,
         optimiser = Optim.LBFGS(),
         epochs = 1000,
@@ -989,7 +1145,7 @@ function _neural_network_builder(
 end
 
 function _neural_network_builder(
-    nn::neuralnetODE_type1,
+    nn::neuralODE,
     processor::MLJ.CPUThreads,
     algorithm::Pso,
     max_time::Dates.TimePeriod;
@@ -1021,6 +1177,14 @@ function _neural_network_builder(
         get(kws, :neuralnet_maximum_neuron, NEURALNET_DEFAULT_PARAMETERS.maximum_neuron)
     batch_size = get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
+    if haskey(kws, :sample_time) == true
+        sample_time = kws[:sample_time]
+    else
+        @error "sample time is mandatory with neuralODE"
+        @info "sample time is set to 1.0s"
+        sample_time = 1.0
+    end
+
     loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
         get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
@@ -1029,9 +1193,14 @@ function _neural_network_builder(
         get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
 
-    #Design the neural network neuralnetODE_type1
+    #Design the neural network neuralODE
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
-        builder = NeuralNetODE_type1(neuron = 10, layer = 2, σ = activation_function),
+        builder = NeuralODE(
+            neuron = 10,
+            layer = 2,
+            σ = activation_function,
+            sample_time = sample_time,
+        ),
         batch_size = batch_size,
         optimiser = Optim.ParticleSwarm(),
         epochs = 1000,
@@ -1068,7 +1237,7 @@ function _neural_network_builder(
 end
 
 function _neural_network_builder(
-    nn::neuralnetODE_type1,
+    nn::neuralODE,
     processor::MLJ.CPUThreads,
     algorithm::Oaccel,
     max_time::Dates.TimePeriod;
@@ -1100,6 +1269,14 @@ function _neural_network_builder(
         get(kws, :neuralnet_maximum_neuron, NEURALNET_DEFAULT_PARAMETERS.maximum_neuron)
     batch_size = get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
+    if haskey(kws, :sample_time) == true
+        sample_time = kws[:sample_time]
+    else
+        @error "sample time is mandatory with neuralODE"
+        @info "sample time is set to 1.0s"
+        sample_time = 1.0
+    end
+
     loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
         get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
@@ -1108,9 +1285,14 @@ function _neural_network_builder(
         get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
 
-    #Design the neural network neuralnetODE_type1
+    #Design the neural network neuralODE
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
-        builder = NeuralNetODE_type1(neuron = 10, layer = 2, σ = activation_function),
+        builder = NeuralODE(
+            neuron = 10,
+            layer = 2,
+            σ = activation_function,
+            sample_time = sample_time,
+        ),
         batch_size = batch_size,
         optimiser = Optim.OACCEL(),
         epochs = 1000,
@@ -1143,13 +1325,11 @@ function _neural_network_builder(
     )
 
     return iterated_nn
-
 end
 
-### MLJ CPU1 ### 
-
+### CPU1 ### 
 function _neural_network_builder(
-    nn::neuralnetODE_type1,
+    nn::neuralODE,
     processor::MLJ.CPU1,
     algorithm::Adam,
     max_time::Dates.TimePeriod;
@@ -1181,6 +1361,14 @@ function _neural_network_builder(
         get(kws, :neuralnet_maximum_neuron, NEURALNET_DEFAULT_PARAMETERS.maximum_neuron)
     batch_size = get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
+    if haskey(kws, :sample_time) == true
+        sample_time = kws[:sample_time]
+    else
+        @error "sample time is mandatory with neuralODE"
+        @info "sample time is set to 1.0s"
+        sample_time = 1.0
+    end
+
     loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
         get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
@@ -1191,12 +1379,17 @@ function _neural_network_builder(
 
     #Design the neural network DenseNet
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
-        builder = NeuralNetODE_type1(neuron = 10, layer = 2, σ = activation_function),
+        builder = NeuralODE(
+            neuron = 10,
+            layer = 2,
+            σ = activation_function,
+            sample_time = sample_time,
+        ),
         batch_size = batch_size,
         optimiser = Flux.ADAM(),
         epochs = 1000,
         loss = loss_fct,
-        #acceleration = MLJ.CUDALibs(),  #without due to issue with DiffEqArray_to_Array_gpu and gpu
+        #acceleration = MLJ.CUDALibs(),
     )
 
     #Hyperparameters range
@@ -1229,7 +1422,7 @@ function _neural_network_builder(
 end
 
 function _neural_network_builder(
-    nn::neuralnetODE_type1,
+    nn::neuralODE,
     processor::MLJ.CPU1,
     algorithm::Radam,
     max_time::Dates.TimePeriod;
@@ -1261,6 +1454,14 @@ function _neural_network_builder(
         get(kws, :neuralnet_maximum_neuron, NEURALNET_DEFAULT_PARAMETERS.maximum_neuron)
     batch_size = get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
+    if haskey(kws, :sample_time) == true
+        sample_time = kws[:sample_time]
+    else
+        @error "sample time is mandatory with neuralODE"
+        @info "sample time is set to 1.0s"
+        sample_time = 1.0
+    end
+
     loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
         get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
@@ -1271,12 +1472,17 @@ function _neural_network_builder(
 
     #Design the neural network DenseNet
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
-        builder = NeuralNetODE_type1(neuron = 10, layer = 2, σ = activation_function),
+        builder = NeuralODE(
+            neuron = 10,
+            layer = 2,
+            σ = activation_function,
+            sample_time = sample_time,
+        ),
         batch_size = batch_size,
         optimiser = Flux.RADAM(),
         epochs = 1000,
         loss = loss_fct,
-        #acceleration = MLJ.CUDALibs(),  #without due to issue with DiffEqArray_to_Array,
+        #acceleration = MLJ.CUDALibs(),
     )
 
     #Hyperparameters range
@@ -1309,7 +1515,7 @@ function _neural_network_builder(
 end
 
 function _neural_network_builder(
-    nn::neuralnetODE_type1,
+    nn::neuralODE,
     processor::MLJ.CPU1,
     algorithm::Nadam,
     max_time::Dates.TimePeriod;
@@ -1341,6 +1547,14 @@ function _neural_network_builder(
         get(kws, :neuralnet_maximum_neuron, NEURALNET_DEFAULT_PARAMETERS.maximum_neuron)
     batch_size = get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
+    if haskey(kws, :sample_time) == true
+        sample_time = kws[:sample_time]
+    else
+        @error "sample time is mandatory with neuralODE"
+        @info "sample time is set to 1.0s"
+        sample_time = 1.0
+    end
+
     loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
         get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
@@ -1351,12 +1565,17 @@ function _neural_network_builder(
 
     #Design the neural network DenseNet
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
-        builder = NeuralNetODE_type1(neuron = 10, layer = 2, σ = activation_function),
+        builder = NeuralODE(
+            neuron = 10,
+            layer = 2,
+            σ = activation_function,
+            sample_time = sample_time,
+        ),
         batch_size = batch_size,
         optimiser = Flux.NADAM(),
         epochs = 1000,
         loss = loss_fct,
-        #acceleration = MLJ.CUDALibs(),  #without due to issue with DiffEqArray_to_Array,
+        #acceleration = MLJ.CUDALibs(),
     )
 
     #Hyperparameters range
@@ -1389,7 +1608,7 @@ function _neural_network_builder(
 end
 
 function _neural_network_builder(
-    nn::neuralnetODE_type1,
+    nn::neuralODE,
     processor::MLJ.CPU1,
     algorithm::Oadam,
     max_time::Dates.TimePeriod;
@@ -1421,6 +1640,14 @@ function _neural_network_builder(
         get(kws, :neuralnet_maximum_neuron, NEURALNET_DEFAULT_PARAMETERS.maximum_neuron)
     batch_size = get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
+    if haskey(kws, :sample_time) == true
+        sample_time = kws[:sample_time]
+    else
+        @error "sample time is mandatory with neuralODE"
+        @info "sample time is set to 1.0s"
+        sample_time = 1.0
+    end
+
     loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
         get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
@@ -1431,12 +1658,17 @@ function _neural_network_builder(
 
     #Design the neural network DenseNet
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
-        builder = NeuralNetODE_type1(neuron = 10, layer = 2, σ = activation_function),
+        builder = NeuralODE(
+            neuron = 10,
+            layer = 2,
+            σ = activation_function,
+            sample_time = sample_time,
+        ),
         batch_size = batch_size,
         optimiser = Flux.OADAM(),
         epochs = 1000,
         loss = loss_fct,
-        #acceleration = MLJ.CUDALibs(),  #without due to issue with DiffEqArray_to_Array,
+        #acceleration = MLJ.CUDALibs(),
     )
 
     #Hyperparameters range
@@ -1470,7 +1702,7 @@ end
 
 ### others solvers ###
 function _neural_network_builder(
-    nn::neuralnetODE_type1,
+    nn::neuralODE,
     processor::MLJ.CPU1,
     algorithm::Lbfgs,
     max_time::Dates.TimePeriod;
@@ -1502,6 +1734,14 @@ function _neural_network_builder(
         get(kws, :neuralnet_maximum_neuron, NEURALNET_DEFAULT_PARAMETERS.maximum_neuron)
     batch_size = get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
+    if haskey(kws, :sample_time) == true
+        sample_time = kws[:sample_time]
+    else
+        @error "sample time is mandatory with neuralODE"
+        @info "sample time is set to 1.0s"
+        sample_time = 1.0
+    end
+
     loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
         get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
@@ -1510,9 +1750,14 @@ function _neural_network_builder(
         get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
 
-    #Design the neural network neuralnetODE_type1
+    #Design the neural network neuralODE
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
-        builder = NeuralNetODE_type1(neuron = 10, layer = 2, σ = activation_function),
+        builder = NeuralODE(
+            neuron = 10,
+            layer = 2,
+            σ = activation_function,
+            sample_time = sample_time,
+        ),
         batch_size = batch_size,
         optimiser = Optim.LBFGS(),
         epochs = 1000,
@@ -1549,7 +1794,7 @@ function _neural_network_builder(
 end
 
 function _neural_network_builder(
-    nn::neuralnetODE_type1,
+    nn::neuralODE,
     processor::MLJ.CPU1,
     algorithm::Pso,
     max_time::Dates.TimePeriod;
@@ -1581,6 +1826,14 @@ function _neural_network_builder(
         get(kws, :neuralnet_maximum_neuron, NEURALNET_DEFAULT_PARAMETERS.maximum_neuron)
     batch_size = get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
+    if haskey(kws, :sample_time) == true
+        sample_time = kws[:sample_time]
+    else
+        @error "sample time is mandatory with neuralODE"
+        @info "sample time is set to 1.0s"
+        sample_time = 1.0
+    end
+
     loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
         get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
@@ -1589,9 +1842,14 @@ function _neural_network_builder(
         get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
 
-    #Design the neural network neuralnetODE_type1
+    #Design the neural network neuralODE
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
-        builder = NeuralNetODE_type1(neuron = 10, layer = 2, σ = activation_function),
+        builder = NeuralODE(
+            neuron = 10,
+            layer = 2,
+            σ = activation_function,
+            sample_time = sample_time,
+        ),
         batch_size = batch_size,
         optimiser = Optim.ParticleSwarm(),
         epochs = 1000,
@@ -1628,7 +1886,7 @@ function _neural_network_builder(
 end
 
 function _neural_network_builder(
-    nn::neuralnetODE_type1,
+    nn::neuralODE,
     processor::MLJ.CPU1,
     algorithm::Oaccel,
     max_time::Dates.TimePeriod;
@@ -1660,6 +1918,14 @@ function _neural_network_builder(
         get(kws, :neuralnet_maximum_neuron, NEURALNET_DEFAULT_PARAMETERS.maximum_neuron)
     batch_size = get(kws, :neuralnet_batch_size, NEURALNET_DEFAULT_PARAMETERS.batch_size)
 
+    if haskey(kws, :sample_time) == true
+        sample_time = kws[:sample_time]
+    else
+        @error "sample time is mandatory with neuralODE"
+        @info "sample time is set to 1.0s"
+        sample_time = 1.0
+    end
+
     loss_fct_multi = LOSS_FUNCTION_MULTI_LIST[Symbol(
         get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
@@ -1668,9 +1934,14 @@ function _neural_network_builder(
         get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
 
-    #Design the neural network neuralnetODE_type1
+    #Design the neural network neuralODE
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
-        builder = NeuralNetODE_type1(neuron = 10, layer = 2, σ = activation_function),
+        builder = NeuralODE(
+            neuron = 10,
+            layer = 2,
+            σ = activation_function,
+            sample_time = sample_time,
+        ),
         batch_size = batch_size,
         optimiser = Optim.OACCEL(),
         epochs = 1000,
@@ -1703,5 +1974,4 @@ function _neural_network_builder(
     )
 
     return iterated_nn
-
 end

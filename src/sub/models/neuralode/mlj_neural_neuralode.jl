@@ -7,26 +7,26 @@
 ########################################################
 
 """
-NeuralNetODE_type2(; neuron=2, layer=10, σ=Flux.relu, rng=GLOBAL_RNG, sample_time=1.0)
+NeuralODE(; neuron=2, layer=10, σ=Flux.relu, rng=GLOBAL_RNG, sample_time=1.0)
 MLJFlux like builder that constructs a neural network ODE with sample time, ten-layers and two neurons
 using `layer` nodes in the hidden layer and the specified `neuron`. An activation function `σ` is applied between the
 hidden and final layers. Each layers are initialized using `Flux.glorot_uniform(rng)`. If
 `rng` is an integer, it is instead used as the seed for a `MersenneTwister`.
 """
-mutable struct NeuralNetODE_type2 <: MLJFlux.Builder
+mutable struct NeuralODE <: MLJFlux.Builder
     neuron::Int
     layer::Int
     σ::Function
     sample_time::Float64
 end
 
-NeuralNetODE_type2(; neuron = 2, layer = 10, σ = Flux.relu, sample_time = 1.0) =
-    NeuralNetODE_type2(neuron, layer, σ, sample_time)
+NeuralODE(; neuron = 2, layer = 10, σ = Flux.relu, sample_time = 1.0) =
+    NeuralODE(neuron, layer, σ, sample_time)
 
-function Base.show(io::IO, l::NeuralNetODE_type2)
+function Base.show(io::IO, l::NeuralODE)
     print(
         io,
-        "Neural ordinary differential equations type 2 (layer: ",
+        "Neural ordinary differential equations (layer: ",
         l.layer,
         ", neuron: ",
         l.neuron,
@@ -35,7 +35,7 @@ function Base.show(io::IO, l::NeuralNetODE_type2)
     print(io, ")")
 end
 
-function MLJFlux.build(nn::NeuralNetODE_type2, rng, n_in, n_out)
+function MLJFlux.build(nn::NeuralODE, rng, n_in, n_out)
 
     #First declare a Fnn
     init = Flux.glorot_uniform(rng)
@@ -58,12 +58,6 @@ function MLJFlux.build(nn::NeuralNetODE_type2, rng, n_in, n_out)
     #Then discretised the Fnn at the sample time
     tspan = (0.0f0, Float32.(nn.sample_time)) #(0, nn.sample_time)# (0.0f0, Float32.(nn.sample_time))
 
-    function DiffEqArray_to_Array_cpu(x)
-        xarr = Array(x)# gpu(x)#Array(x) #to do deal with cpu
-        rslt = reshape(xarr, size(xarr)[1:2])
-        return rslt[1:n_out, :]
-    end
-
     inner_ode = DiffEqFlux.NeuralODE(
         inner_layer,
         tspan,
@@ -74,6 +68,24 @@ function MLJFlux.build(nn::NeuralNetODE_type2, rng, n_in, n_out)
         save_start = false,
     )
     #to do mettre un guard if NaN
-    return Flux.Chain(inner_ode, DiffEqArray_to_Array_cpu)
+    return Flux.Chain(inner_ode, DenseDiffEqFlux(n_out))
+end
 
+### Declaration de Identity 
+struct DenseDiffEqFlux
+    n_out::Integer
+end
+
+function (a::DenseDiffEqFlux)(x)#::Union{AbstractVecOrMat, AbstractArray})
+    xarr = Array(x)# gpu(x)#Array(x) #to do deal with cpu
+    rslt = reshape(xarr, size(xarr)[1:2])
+    return rslt[1:a.n_out, :]
+end
+#=
+(a::DenseDiffEqFlux)(x::AbstractArray) =
+    reshape(a(reshape(x, size(x, 1), :)), :, size(x)[2:end]...)
+=#
+function Base.show(io::IO, l::DenseDiffEqFlux)
+    print(io, "DenseDiffEqFlux(", l.n_out, "")
+    print(io, ")")
 end

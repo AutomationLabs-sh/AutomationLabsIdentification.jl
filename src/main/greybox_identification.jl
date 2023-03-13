@@ -202,28 +202,3 @@ function greybox_identification(
     return mach_nn
 
 end
-
-#struct for physics-informed
-"""
-    AbstractPhysicsInformedArchitecture
-An abstract type that should be subtyped for physics informed.
-"""
-abstract type AbstractPhysicsInformedArchitecture end
-
-"""
-    physicsinformed
-An physics informed architecture type for dynamical system identification problem [ref].
-"""
-struct physicsinformed <: AbstractNeuralArchitecture end
-
-"""
-    physics_informed_oracle
-An physics informed oracle architecture type for dynamical system identification problem [ref].
-"""
-struct physicsinformedoracle <: AbstractNeuralArchitecture end
-
-#NamedTuple definition
-PHYSICS_INFORMED_LIST = (
-    physics_informed = physicsinformed(),
-    physics_informed_oracle = physicsinformedoracle(),
-)

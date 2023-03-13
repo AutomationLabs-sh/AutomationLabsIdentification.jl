@@ -27,8 +27,8 @@ import AutomationLabsIdentification: Fnn
 @testset "PhysicsInformed" begin
 
     # load the inputs and outputs data
-    dfout = DataFrame(CSV.File("./data_QTP/data_outputs.csv"))[1:5000, :]
-    dfin = DataFrame(CSV.File("./data_QTP/data_inputs_m3h.csv"))[1:5000, :]
+    dfout = DataFrame(CSV.File("./data_QTP/data_outputs.csv"))[1:500, :]
+    dfin = DataFrame(CSV.File("./data_QTP/data_inputs_m3h.csv"))[1:500, :]
 
     n_delay = 1
     normalisation = false
@@ -128,7 +128,7 @@ import AutomationLabsIdentification: Fnn
 
     mach_qtp = MLJ.machine(model_qtp, in_data, out_data)
 
-    MLJ.fit!(mach_qtp, verbosity = 0)
+    MLJ.fit!(mach_qtp, verbosity = 5)
 
     #save the model and optimisation results
     MLJ.save("./models_saved/qtp_physics_oracle_train_result.jls", mach_qtp)

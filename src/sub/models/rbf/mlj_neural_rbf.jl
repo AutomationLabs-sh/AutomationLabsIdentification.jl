@@ -27,7 +27,6 @@ end
 function MLJFlux.build(nn::Rbf, rng, n_in, n_out)
 
     init = Flux.glorot_uniform(rng) #weight initialisation
-    gaussian(x) = exp(-x^2) #activiation fct
 
     return Flux.Chain(
         Flux.Dense(n_in, nn.neuron, bias = false, init = init),
@@ -35,3 +34,5 @@ function MLJFlux.build(nn::Rbf, rng, n_in, n_out)
         Flux.Dense(nn.neuron, n_out, bias = false, init = init),
     )
 end
+
+gaussian(x) = exp(-x^2) #activiation fct

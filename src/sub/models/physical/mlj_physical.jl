@@ -92,6 +92,7 @@ function (m::PhysicsInformed)(in::AbstractVecOrMat)
 
     #return reshape(reduce(hcat, reduce(hcat, sol_element)')', (m.nbr_state + m.nbr_input), :)[1:m.nbr_state,:]
     #return reshape(reduce(vcat,reduce(vcat, sol_element)), (m.nbr_state + m.nbr_input) ,:)[1:m.nbr_state,:]
+
     return hcat(reduce(vcat, sol_element)...)[1:m.nbr_state, :]
 
 end

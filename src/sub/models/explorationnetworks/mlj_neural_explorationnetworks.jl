@@ -33,14 +33,17 @@ const ExplorationOfNetworksList = (
     ResNet = ResNet(),
     PolyNet = PolyNet(),
     DenseNet = DenseNet(),
-    NeuralNetODE_type1 = NeuralNetODE_type1(),
-    NeuralNetODE_type2 = NeuralNetODE_type2(),
+    NeuralODE = NeuralODE(),
+    Rknn1 = Rknn1(),
+    Rknn2 = Rknn2(),
+    Rknn4 = Rknn4(),
     Rnn = Rnn(),
     Lstm = Lstm(),
     Gru = Gru(),
 )
 
-const DEFAULT_EXPLORATION_NETWORKS = ["Fnn", "Rbf", "Icnn", "ResNet", "PolyNet", "DenseNet"]
+const DEFAULT_EXPLORATION_NETWORKS =
+    ["Fnn", "Rbf", "Icnn", "ResNet", "PolyNet", "DenseNet", "NeuralODE", "Rknn1", "Rknn2", "Rknn4"]
 
 function MLJFlux.build(nn_mtn::ExplorationOfNetworks, rng, n_in, n_out)
 

@@ -6,10 +6,10 @@
 # You can obtain one at https://mozilla.org/MPL/2.0/.  #
 ########################################################
 
-#### neuralnetODE_type2 ####
+##### Rknn1 #####
 """
     _neural_network_builder(
-    nn::neuralnetODE_type2,
+    nn::rknn1,
     processor::MLJ.CPUProcesses,
     algorithm::Adam,
     max_time::Dates.TimePeriod;
@@ -23,14 +23,13 @@ The following variables are mendatories:
 * `processor`: a processor selection for training.
 * `algorithm`: an algorithm selection for neural network training. 
 * `max_time` : a maximum time for training.
-* `sample_time`: a sample time for discretization in kws.
 
 The following variables are optinals:
 * `kws_...`: optional variables.
 
 """
 function _neural_network_builder(
-    nn::neuralnetODE_type2,
+    nn::rknn1,
     processor::MLJ.CPUProcesses,
     algorithm::Adam,
     max_time::Dates.TimePeriod;
@@ -78,9 +77,9 @@ function _neural_network_builder(
         get(kws, :neuralnet_loss_function, NEURALNET_DEFAULT_PARAMETERS.loss_function),
     )]
 
-    #Design the neural network DenseNet
+    #Design the neural network Rknn1
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
-        builder = NeuralNetODE_type2(
+        builder = Rknn1(
             neuron = 10,
             layer = 2,
             σ = activation_function,
@@ -90,7 +89,7 @@ function _neural_network_builder(
         optimiser = Flux.ADAM(),
         epochs = 1000,
         loss = loss_fct,
-        #acceleration = MLJ.CUDALibs(),
+        acceleration = MLJ.CUDALibs(),
     )
 
     #Hyperparameters range
@@ -119,11 +118,10 @@ function _neural_network_builder(
     )
 
     return iterated_nn
-
 end
 
 function _neural_network_builder(
-    nn::neuralnetODE_type2,
+    nn::rknn1,
     processor::MLJ.CPUProcesses,
     algorithm::Radam,
     max_time::Dates.TimePeriod;
@@ -173,7 +171,7 @@ function _neural_network_builder(
 
     #Design the neural network DenseNet
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
-        builder = NeuralNetODE_type2(
+        builder = Rknn1(
             neuron = 10,
             layer = 2,
             σ = activation_function,
@@ -216,7 +214,7 @@ function _neural_network_builder(
 end
 
 function _neural_network_builder(
-    nn::neuralnetODE_type2,
+    nn::rknn1,
     processor::MLJ.CPUProcesses,
     algorithm::Nadam,
     max_time::Dates.TimePeriod;
@@ -266,7 +264,7 @@ function _neural_network_builder(
 
     #Design the neural network DenseNet
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
-        builder = NeuralNetODE_type2(
+        builder = Rknn1(
             neuron = 10,
             layer = 2,
             σ = activation_function,
@@ -309,7 +307,7 @@ function _neural_network_builder(
 end
 
 function _neural_network_builder(
-    nn::neuralnetODE_type2,
+    nn::rknn1,
     processor::MLJ.CPUProcesses,
     algorithm::Oadam,
     max_time::Dates.TimePeriod;
@@ -359,7 +357,7 @@ function _neural_network_builder(
 
     #Design the neural network DenseNet
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
-        builder = NeuralNetODE_type2(
+        builder = Rknn1(
             neuron = 10,
             layer = 2,
             σ = activation_function,
@@ -403,7 +401,7 @@ end
 
 ### others solvers ###
 function _neural_network_builder(
-    nn::neuralnetODE_type2,
+    nn::rknn1,
     processor::MLJ.CPUProcesses,
     algorithm::Lbfgs,
     max_time::Dates.TimePeriod;
@@ -453,7 +451,7 @@ function _neural_network_builder(
 
     #Design the neural network neuralnetODE_type2
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
-        builder = NeuralNetODE_type2(
+        builder = Rknn1(
             neuron = 10,
             layer = 2,
             σ = activation_function,
@@ -495,7 +493,7 @@ function _neural_network_builder(
 end
 
 function _neural_network_builder(
-    nn::neuralnetODE_type2,
+    nn::rknn1,
     processor::MLJ.CPUProcesses,
     algorithm::Pso,
     max_time::Dates.TimePeriod;
@@ -545,7 +543,7 @@ function _neural_network_builder(
 
     #Design the neural network neuralnetODE_type2
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
-        builder = NeuralNetODE_type2(
+        builder = Rknn1(
             neuron = 10,
             layer = 2,
             σ = activation_function,
@@ -587,7 +585,7 @@ function _neural_network_builder(
 end
 
 function _neural_network_builder(
-    nn::neuralnetODE_type2,
+    nn::rknn1,
     processor::MLJ.CPUProcesses,
     algorithm::Oaccel,
     max_time::Dates.TimePeriod;
@@ -637,7 +635,7 @@ function _neural_network_builder(
 
     #Design the neural network neuralnetODE_type2
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
-        builder = NeuralNetODE_type2(
+        builder = Rknn1(
             neuron = 10,
             layer = 2,
             σ = activation_function,
@@ -680,7 +678,7 @@ end
 ### CPU Threads ### 
 
 function _neural_network_builder(
-    nn::neuralnetODE_type2,
+    nn::rknn1,
     processor::MLJ.CPUThreads,
     algorithm::Adam,
     max_time::Dates.TimePeriod;
@@ -730,7 +728,7 @@ function _neural_network_builder(
 
     #Design the neural network DenseNet
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
-        builder = NeuralNetODE_type2(
+        builder = Rknn1(
             neuron = 10,
             layer = 2,
             σ = activation_function,
@@ -773,7 +771,7 @@ function _neural_network_builder(
 end
 
 function _neural_network_builder(
-    nn::neuralnetODE_type2,
+    nn::rknn1,
     processor::MLJ.CPUThreads,
     algorithm::Radam,
     max_time::Dates.TimePeriod;
@@ -823,7 +821,7 @@ function _neural_network_builder(
 
     #Design the neural network DenseNet
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
-        builder = NeuralNetODE_type2(
+        builder = Rknn1(
             neuron = 10,
             layer = 2,
             σ = activation_function,
@@ -866,7 +864,7 @@ function _neural_network_builder(
 end
 
 function _neural_network_builder(
-    nn::neuralnetODE_type2,
+    nn::rknn1,
     processor::MLJ.CPUThreads,
     algorithm::Nadam,
     max_time::Dates.TimePeriod;
@@ -916,7 +914,7 @@ function _neural_network_builder(
 
     #Design the neural network DenseNet
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
-        builder = NeuralNetODE_type2(
+        builder = Rknn1(
             neuron = 10,
             layer = 2,
             σ = activation_function,
@@ -959,7 +957,7 @@ function _neural_network_builder(
 end
 
 function _neural_network_builder(
-    nn::neuralnetODE_type2,
+    nn::rknn1,
     processor::MLJ.CPUThreads,
     algorithm::Oadam,
     max_time::Dates.TimePeriod;
@@ -1009,7 +1007,7 @@ function _neural_network_builder(
 
     #Design the neural network DenseNet
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
-        builder = NeuralNetODE_type2(
+        builder = Rknn1(
             neuron = 10,
             layer = 2,
             σ = activation_function,
@@ -1053,7 +1051,7 @@ end
 
 ### others solvers ###
 function _neural_network_builder(
-    nn::neuralnetODE_type2,
+    nn::rknn1,
     processor::MLJ.CPUThreads,
     algorithm::Lbfgs,
     max_time::Dates.TimePeriod;
@@ -1103,7 +1101,7 @@ function _neural_network_builder(
 
     #Design the neural network neuralnetODE_type2
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
-        builder = NeuralNetODE_type2(
+        builder = Rknn1(
             neuron = 10,
             layer = 2,
             σ = activation_function,
@@ -1145,7 +1143,7 @@ function _neural_network_builder(
 end
 
 function _neural_network_builder(
-    nn::neuralnetODE_type2,
+    nn::rknn1,
     processor::MLJ.CPUThreads,
     algorithm::Pso,
     max_time::Dates.TimePeriod;
@@ -1195,7 +1193,7 @@ function _neural_network_builder(
 
     #Design the neural network neuralnetODE_type2
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
-        builder = NeuralNetODE_type2(
+        builder = Rknn1(
             neuron = 10,
             layer = 2,
             σ = activation_function,
@@ -1237,7 +1235,7 @@ function _neural_network_builder(
 end
 
 function _neural_network_builder(
-    nn::neuralnetODE_type2,
+    nn::rknn1,
     processor::MLJ.CPUThreads,
     algorithm::Oaccel,
     max_time::Dates.TimePeriod;
@@ -1287,7 +1285,7 @@ function _neural_network_builder(
 
     #Design the neural network neuralnetODE_type2
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
-        builder = NeuralNetODE_type2(
+        builder = Rknn1(
             neuron = 10,
             layer = 2,
             σ = activation_function,
@@ -1329,7 +1327,7 @@ end
 
 ### CPU1 ### 
 function _neural_network_builder(
-    nn::neuralnetODE_type2,
+    nn::rknn1,
     processor::MLJ.CPU1,
     algorithm::Adam,
     max_time::Dates.TimePeriod;
@@ -1379,7 +1377,7 @@ function _neural_network_builder(
 
     #Design the neural network DenseNet
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
-        builder = NeuralNetODE_type2(
+        builder = Rknn1(
             neuron = 10,
             layer = 2,
             σ = activation_function,
@@ -1422,7 +1420,7 @@ function _neural_network_builder(
 end
 
 function _neural_network_builder(
-    nn::neuralnetODE_type2,
+    nn::rknn1,
     processor::MLJ.CPU1,
     algorithm::Radam,
     max_time::Dates.TimePeriod;
@@ -1472,7 +1470,7 @@ function _neural_network_builder(
 
     #Design the neural network DenseNet
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
-        builder = NeuralNetODE_type2(
+        builder = Rknn1(
             neuron = 10,
             layer = 2,
             σ = activation_function,
@@ -1515,7 +1513,7 @@ function _neural_network_builder(
 end
 
 function _neural_network_builder(
-    nn::neuralnetODE_type2,
+    nn::rknn1,
     processor::MLJ.CPU1,
     algorithm::Nadam,
     max_time::Dates.TimePeriod;
@@ -1565,7 +1563,7 @@ function _neural_network_builder(
 
     #Design the neural network DenseNet
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
-        builder = NeuralNetODE_type2(
+        builder = Rknn1(
             neuron = 10,
             layer = 2,
             σ = activation_function,
@@ -1608,7 +1606,7 @@ function _neural_network_builder(
 end
 
 function _neural_network_builder(
-    nn::neuralnetODE_type2,
+    nn::rknn1,
     processor::MLJ.CPU1,
     algorithm::Oadam,
     max_time::Dates.TimePeriod;
@@ -1658,7 +1656,7 @@ function _neural_network_builder(
 
     #Design the neural network DenseNet
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
-        builder = NeuralNetODE_type2(
+        builder = Rknn1(
             neuron = 10,
             layer = 2,
             σ = activation_function,
@@ -1702,7 +1700,7 @@ end
 
 ### others solvers ###
 function _neural_network_builder(
-    nn::neuralnetODE_type2,
+    nn::rknn1,
     processor::MLJ.CPU1,
     algorithm::Lbfgs,
     max_time::Dates.TimePeriod;
@@ -1752,7 +1750,7 @@ function _neural_network_builder(
 
     #Design the neural network neuralnetODE_type2
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
-        builder = NeuralNetODE_type2(
+        builder = Rknn1(
             neuron = 10,
             layer = 2,
             σ = activation_function,
@@ -1794,7 +1792,7 @@ function _neural_network_builder(
 end
 
 function _neural_network_builder(
-    nn::neuralnetODE_type2,
+    nn::rknn1,
     processor::MLJ.CPU1,
     algorithm::Pso,
     max_time::Dates.TimePeriod;
@@ -1844,7 +1842,7 @@ function _neural_network_builder(
 
     #Design the neural network neuralnetODE_type2
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
-        builder = NeuralNetODE_type2(
+        builder = Rknn1(
             neuron = 10,
             layer = 2,
             σ = activation_function,
@@ -1886,7 +1884,7 @@ function _neural_network_builder(
 end
 
 function _neural_network_builder(
-    nn::neuralnetODE_type2,
+    nn::rknn1,
     processor::MLJ.CPU1,
     algorithm::Oaccel,
     max_time::Dates.TimePeriod;
@@ -1936,7 +1934,7 @@ function _neural_network_builder(
 
     #Design the neural network neuralnetODE_type2
     model = MLJFlux.MultitargetNeuralNetworkRegressor(
-        builder = NeuralNetODE_type2(
+        builder = Rknn1(
             neuron = 10,
             layer = 2,
             σ = activation_function,

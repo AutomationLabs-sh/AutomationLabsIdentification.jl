@@ -815,9 +815,12 @@ end
         #acceleration = MLJ.CPUProcesses(), #no acceleration too much memory usage
     )
 
-    mach_NeuralNetODE = MLJ.machine(tuned_model_NeuralNetODE, in_data, out_data)
+    mach_NeuralNetODE = MLJ.machine(model_NeuralNetODE, in_data, out_data)
 
     MLJ.fit!(mach_NeuralNetODE, verbosity = 5)
+
+    neuralnet_chain_best_model_chain = fitted_params(mach_NeuralNetODE)[1]
+
 
     @test fitted_params(mach_NeuralNetODE).best_model != 0
     @test report(mach_NeuralNetODE).best_history_entry != 0

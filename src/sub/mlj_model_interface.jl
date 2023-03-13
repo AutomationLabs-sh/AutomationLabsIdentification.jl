@@ -42,6 +42,8 @@ function MLJFlux.fit!(
     y,
 )
 
+    println("gogogo")
+
     # Gradient required methods
 
     # Initialize and start progress meter:
@@ -89,23 +91,23 @@ function MLJFlux.fit!(
 
                losses = (losses_recurrent(X[i], y[i]) +
                          penalty(parameters)/n_batches for i in 1:n_batches)=#
+    #=
+        function losses_(X, y)
+            #for i in 1 : 1 : length(chain[2])
+            #    chain[2][i].state = chain[2][i].cell.state0
+            #end
+            reset!(chain)
+            l = Statistics.mean(
+                loss(chain(X[i]), y[i]) + penalty(parameters) for i = 1:n_batches
+            )
+            return l
+        end
 
-    function losses_(X, y)
-        #for i in 1 : 1 : length(chain[2])
-        #    chain[2][i].state = chain[2][i].cell.state0
-        #end
-        reset!(chain)
-        l = Statistics.mean(
-            loss(chain(X[i]), y[i]) + penalty(parameters) for i = 1:n_batches
-        )
-        return l
-    end
-
-    losses() = losses_(X, y) #closure
-
+        losses() = losses_(X, y) #closure
+    =#
     # Declare the function loss fonctionnne:
-    #losses() =
-    #    Statistics.mean(loss(chain(X[i]), y[i]) + penalty(parameters) for i = 1:n_batches)
+    losses() =
+        Statistics.mean(loss(chain(X[i]), y[i]) + penalty(parameters) for i = 1:n_batches)
 
     # Get gradiant
     lossfun, gradfun, fg!, p0 = FluxOptTools.optfuns(losses, parameters)
