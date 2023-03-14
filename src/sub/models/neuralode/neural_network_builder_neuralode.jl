@@ -9,7 +9,7 @@
 #### neuralODE ####
 """
     _neural_network_builder(
-    nn::neuralODE,
+    nn::neuralode,
     processor::MLJ.CPUProcesses,
     algorithm::Adam,
     max_time::Dates.TimePeriod;
@@ -30,7 +30,7 @@ The following variables are optinals:
 
 """
 function _neural_network_builder(
-    nn::neuralODE,
+    nn::neuralode,
     processor::MLJ.CPUProcesses,
     algorithm::Adam,
     max_time::Dates.TimePeriod;
@@ -123,7 +123,7 @@ function _neural_network_builder(
 end
 
 function _neural_network_builder(
-    nn::neuralODE,
+    nn::neuralode,
     processor::MLJ.CPUProcesses,
     algorithm::Radam,
     max_time::Dates.TimePeriod;
@@ -216,7 +216,7 @@ function _neural_network_builder(
 end
 
 function _neural_network_builder(
-    nn::neuralODE,
+    nn::neuralode,
     processor::MLJ.CPUProcesses,
     algorithm::Nadam,
     max_time::Dates.TimePeriod;
@@ -309,7 +309,7 @@ function _neural_network_builder(
 end
 
 function _neural_network_builder(
-    nn::neuralODE,
+    nn::neuralode,
     processor::MLJ.CPUProcesses,
     algorithm::Oadam,
     max_time::Dates.TimePeriod;
@@ -403,7 +403,7 @@ end
 
 ### others solvers ###
 function _neural_network_builder(
-    nn::neuralODE,
+    nn::neuralode,
     processor::MLJ.CPUProcesses,
     algorithm::Lbfgs,
     max_time::Dates.TimePeriod;
@@ -495,7 +495,7 @@ function _neural_network_builder(
 end
 
 function _neural_network_builder(
-    nn::neuralODE,
+    nn::neuralode,
     processor::MLJ.CPUProcesses,
     algorithm::Pso,
     max_time::Dates.TimePeriod;
@@ -587,7 +587,7 @@ function _neural_network_builder(
 end
 
 function _neural_network_builder(
-    nn::neuralODE,
+    nn::neuralode,
     processor::MLJ.CPUProcesses,
     algorithm::Oaccel,
     max_time::Dates.TimePeriod;
@@ -680,7 +680,7 @@ end
 ### CPU Threads ### 
 
 function _neural_network_builder(
-    nn::neuralODE,
+    nn::neuralode,
     processor::MLJ.CPUThreads,
     algorithm::Adam,
     max_time::Dates.TimePeriod;
@@ -773,7 +773,7 @@ function _neural_network_builder(
 end
 
 function _neural_network_builder(
-    nn::neuralODE,
+    nn::neuralode,
     processor::MLJ.CPUThreads,
     algorithm::Radam,
     max_time::Dates.TimePeriod;
@@ -866,7 +866,7 @@ function _neural_network_builder(
 end
 
 function _neural_network_builder(
-    nn::neuralODE,
+    nn::neuralode,
     processor::MLJ.CPUThreads,
     algorithm::Nadam,
     max_time::Dates.TimePeriod;
@@ -959,7 +959,7 @@ function _neural_network_builder(
 end
 
 function _neural_network_builder(
-    nn::neuralODE,
+    nn::neuralode,
     processor::MLJ.CPUThreads,
     algorithm::Oadam,
     max_time::Dates.TimePeriod;
@@ -1053,7 +1053,7 @@ end
 
 ### others solvers ###
 function _neural_network_builder(
-    nn::neuralODE,
+    nn::neuralode,
     processor::MLJ.CPUThreads,
     algorithm::Lbfgs,
     max_time::Dates.TimePeriod;
@@ -1145,7 +1145,7 @@ function _neural_network_builder(
 end
 
 function _neural_network_builder(
-    nn::neuralODE,
+    nn::neuralode,
     processor::MLJ.CPUThreads,
     algorithm::Pso,
     max_time::Dates.TimePeriod;
@@ -1237,7 +1237,7 @@ function _neural_network_builder(
 end
 
 function _neural_network_builder(
-    nn::neuralODE,
+    nn::neuralode,
     processor::MLJ.CPUThreads,
     algorithm::Oaccel,
     max_time::Dates.TimePeriod;
@@ -1329,7 +1329,7 @@ end
 
 ### CPU1 ### 
 function _neural_network_builder(
-    nn::neuralODE,
+    nn::neuralode,
     processor::MLJ.CPU1,
     algorithm::Adam,
     max_time::Dates.TimePeriod;
@@ -1422,7 +1422,7 @@ function _neural_network_builder(
 end
 
 function _neural_network_builder(
-    nn::neuralODE,
+    nn::neuralode,
     processor::MLJ.CPU1,
     algorithm::Radam,
     max_time::Dates.TimePeriod;
@@ -1515,7 +1515,7 @@ function _neural_network_builder(
 end
 
 function _neural_network_builder(
-    nn::neuralODE,
+    nn::neuralode,
     processor::MLJ.CPU1,
     algorithm::Nadam,
     max_time::Dates.TimePeriod;
@@ -1608,7 +1608,7 @@ function _neural_network_builder(
 end
 
 function _neural_network_builder(
-    nn::neuralODE,
+    nn::neuralode,
     processor::MLJ.CPU1,
     algorithm::Oadam,
     max_time::Dates.TimePeriod;
@@ -1702,7 +1702,7 @@ end
 
 ### others solvers ###
 function _neural_network_builder(
-    nn::neuralODE,
+    nn::neuralode,
     processor::MLJ.CPU1,
     algorithm::Lbfgs,
     max_time::Dates.TimePeriod;
@@ -1794,7 +1794,7 @@ function _neural_network_builder(
 end
 
 function _neural_network_builder(
-    nn::neuralODE,
+    nn::neuralode,
     processor::MLJ.CPU1,
     algorithm::Pso,
     max_time::Dates.TimePeriod;
@@ -1886,7 +1886,7 @@ function _neural_network_builder(
 end
 
 function _neural_network_builder(
-    nn::neuralODE,
+    nn::neuralode,
     processor::MLJ.CPU1,
     algorithm::Oaccel,
     max_time::Dates.TimePeriod;

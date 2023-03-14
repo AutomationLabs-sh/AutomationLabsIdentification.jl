@@ -50,10 +50,10 @@ An densely connected network architecture type for dynamical system identificati
 struct densenet <: AbstractNeuralArchitecture end
 
 """
-    neuralnetODE_type1
+    neuralode
 An neural neural network ODE architecture type for dynamical system identification problem [ref].
 """
-struct neuralODE <: AbstractNeuralArchitecture end
+struct neuralode <: AbstractNeuralArchitecture end
 
 """
     rknn1
@@ -167,7 +167,7 @@ const ARCHITECTURE_LIST = (
     resnet = resnet(),
     polynet = polynet(),
     densenet = densenet(),
-    neuralode = neuralODE(),
+    neuralode = neuralode(),
     rknn1 = rknn1(),
     rknn2 = rknn2(),
     rknn4 = rknn4(),

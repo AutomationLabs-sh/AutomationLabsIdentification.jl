@@ -32,8 +32,7 @@ import AutomationLabsIdentification: Rbf
 import AutomationLabsIdentification: ResNet
 import AutomationLabsIdentification: DenseNet
 import AutomationLabsIdentification: PolyNet
-import AutomationLabsIdentification: NeuralNetODE_type1
-import AutomationLabsIdentification: NeuralNetODE_type2
+import AutomationLabsIdentification: NeuralODE
 import AutomationLabsIdentification: ExplorationOfNetworks
 import AutomationLabsIdentification: Rnn
 import AutomationLabsIdentification: Lstm

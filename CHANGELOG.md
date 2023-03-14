@@ -1,5 +1,10 @@
 # AutomationLabsIdentification Changelog
 
+## v0.2.6
+
+* Type neuralode modification.
+* Tests improvement.
+
 ## v0.2.5
 
 * Add ComputationalResources on test neural_network_builder_test.jl.

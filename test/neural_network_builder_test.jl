@@ -2,11 +2,10 @@
 ########################################################
 # This Source Code Form is subject to the terms of the #
 # Mozilla Public License, v. 2.0. If a copy of the MPL #
-# was not distributed with this file,  				   #
+# was not distributed with this file,  		       #
 # You can obtain one at https://mozilla.org/MPL/2.0/.  #
 ########################################################
-import Pkg; 
-Pkg.add("ComputationalResources")
+
 module NeulralNetworkBuilderTests
 
 using Test
@@ -301,95 +300,95 @@ end
 
     # Processors verification
     @test tuned_model_fnn_0.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_fnn_1.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_fnn_2.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_fnn_3.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_fnn_4.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_fnn_5.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_fnn_6.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     @test tuned_model_fnn_7.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_fnn_8.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_fnn_9.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_fnn_10.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_fnn_11.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_fnn_12.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_fnn_13.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     @test tuned_model_fnn_14.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_fnn_15.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_fnn_16.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_fnn_17.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_fnn_18.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_fnn_19.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_fnn_20.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     n = Threads.nthreads()
     @test tuned_model_fnn_0.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_fnn_1.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_fnn_2.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_fnn_3.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_fnn_4.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_fnn_5.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_fnn_6.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     @test tuned_model_fnn_7.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_fnn_8.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_fnn_9.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_fnn_10.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_fnn_11.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_fnn_12.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_fnn_13.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
 
     @test tuned_model_fnn_14.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_fnn_15.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_fnn_16.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_fnn_17.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_fnn_18.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_fnn_19.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_fnn_20.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
 
 
     # Hyperparameters values verification
@@ -843,95 +842,95 @@ end
 
     # Processors verification
     @test tuned_model_icnn_0.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_icnn_1.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_icnn_2.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_icnn_3.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_icnn_4.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_icnn_5.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_icnn_6.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     @test tuned_model_icnn_7.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_icnn_8.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_icnn_9.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_icnn_10.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_icnn_11.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_icnn_12.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_icnn_13.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     @test tuned_model_icnn_14.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_icnn_15.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_icnn_16.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_icnn_17.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_icnn_18.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_icnn_19.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_icnn_20.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     n = Threads.nthreads()
     @test tuned_model_icnn_0.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_icnn_1.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_icnn_2.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_icnn_3.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_icnn_4.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_icnn_5.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_icnn_6.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     @test tuned_model_icnn_7.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_icnn_8.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_icnn_9.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_icnn_10.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_icnn_11.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_icnn_12.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_icnn_13.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
 
     @test tuned_model_icnn_14.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_icnn_15.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_icnn_16.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_icnn_17.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_icnn_18.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_icnn_19.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_icnn_20.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
 
 
     # Hyperparameters values verification
@@ -1385,95 +1384,95 @@ end
 
     # Processors verification
     @test tuned_model_resnet_0.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_resnet_1.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_resnet_2.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_resnet_3.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_resnet_4.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_resnet_5.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_resnet_6.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     @test tuned_model_resnet_7.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_resnet_8.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_resnet_9.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_resnet_10.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_resnet_11.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_resnet_12.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_resnet_13.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     @test tuned_model_resnet_14.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_resnet_15.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_resnet_16.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_resnet_17.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_resnet_18.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_resnet_19.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_resnet_20.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     n = Threads.nthreads()
     @test tuned_model_resnet_0.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_resnet_1.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_resnet_2.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_resnet_3.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_resnet_4.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_resnet_5.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_resnet_6.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     @test tuned_model_resnet_7.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_resnet_8.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_resnet_9.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_resnet_10.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_resnet_11.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_resnet_12.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_resnet_13.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
 
     @test tuned_model_resnet_14.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_resnet_15.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_resnet_16.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_resnet_17.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_resnet_18.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_resnet_19.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_resnet_20.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
 
 
     # Hyperparameters values verification
@@ -1927,95 +1926,95 @@ end
 
     # Processors verification
     @test tuned_model_densenet_0.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_densenet_1.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_densenet_2.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_densenet_3.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_densenet_4.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_densenet_5.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_densenet_6.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     @test tuned_model_densenet_7.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_densenet_8.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_densenet_9.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_densenet_10.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_densenet_11.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_densenet_12.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_densenet_13.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     @test tuned_model_densenet_14.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_densenet_15.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_densenet_16.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_densenet_17.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_densenet_18.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_densenet_19.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_densenet_20.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     n = Threads.nthreads()
     @test tuned_model_densenet_0.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_densenet_1.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_densenet_2.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_densenet_3.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_densenet_4.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_densenet_5.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_densenet_6.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     @test tuned_model_densenet_7.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_densenet_8.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_densenet_9.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_densenet_10.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_densenet_11.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_densenet_12.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_densenet_13.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
 
     @test tuned_model_densenet_14.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_densenet_15.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_densenet_16.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_densenet_17.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_densenet_18.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_densenet_19.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_densenet_20.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
 
 
     # Hyperparameters values verification
@@ -2470,95 +2469,95 @@ end
 
     # Processors verification
     @test tuned_model_polynet_0.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_polynet_1.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_polynet_2.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_polynet_3.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_polynet_4.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_polynet_5.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_polynet_6.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     @test tuned_model_polynet_7.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_polynet_8.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_polynet_9.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_polynet_10.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_polynet_11.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_polynet_12.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_polynet_13.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     @test tuned_model_polynet_14.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_polynet_15.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_polynet_16.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_polynet_17.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_polynet_18.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_polynet_19.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_polynet_20.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     n = Threads.nthreads()
     @test tuned_model_polynet_0.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_polynet_1.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_polynet_2.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_polynet_3.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_polynet_4.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_polynet_5.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_polynet_6.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     @test tuned_model_polynet_7.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_polynet_8.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_polynet_9.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_polynet_10.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_polynet_11.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_polynet_12.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_polynet_13.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
 
     @test tuned_model_polynet_14.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_polynet_15.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_polynet_16.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_polynet_17.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_polynet_18.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_polynet_19.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_polynet_20.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
 
 
     # Hyperparameters values verification
@@ -3016,106 +3015,106 @@ end
     # Processors verification
     @test tuned_model_neuralnetODE_0.model.model.acceleration == CPU1{Nothing}(nothing) ||
           CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_neuralnetODE_1.model.model.acceleration == CPU1{Nothing}(nothing) ||
           CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_neuralnetODE_2.model.model.acceleration == CPU1{Nothing}(nothing) ||
           CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_neuralnetODE_3.model.model.acceleration == CPU1{Nothing}(nothing) ||
           CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_neuralnetODE_4.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_neuralnetODE_5.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_neuralnetODE_6.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     @test tuned_model_neuralnetODE_7.model.model.acceleration == CPU1{Nothing}(nothing) ||
           CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_neuralnetODE_8.model.model.acceleration == CPU1{Nothing}(nothing) ||
           CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_neuralnetODE_9.model.model.acceleration == CPU1{Nothing}(nothing) ||
           CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_neuralnetODE_10.model.model.acceleration == CPU1{Nothing}(nothing) ||
           CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_neuralnetODE_11.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_neuralnetODE_12.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_neuralnetODE_13.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     @test tuned_model_neuralnetODE_14.model.model.acceleration == CPU1{Nothing}(nothing) ||
           CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_neuralnetODE_15.model.model.acceleration == CPU1{Nothing}(nothing) ||
           CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_neuralnetODE_16.model.model.acceleration == CPU1{Nothing}(nothing) ||
           CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_neuralnetODE_17.model.model.acceleration == CPU1{Nothing}(nothing) ||
           CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_neuralnetODE_18.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_neuralnetODE_19.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_neuralnetODE_20.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     n = Threads.nthreads()
     @test tuned_model_neuralnetODE_0.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_neuralnetODE_1.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_neuralnetODE_2.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_neuralnetODE_3.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_neuralnetODE_4.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_neuralnetODE_5.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_neuralnetODE_6.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     @test tuned_model_neuralnetODE_7.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_neuralnetODE_8.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_neuralnetODE_9.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_neuralnetODE_10.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_neuralnetODE_11.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_neuralnetODE_12.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_neuralnetODE_13.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
 
     @test tuned_model_neuralnetODE_14.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_neuralnetODE_15.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_neuralnetODE_16.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_neuralnetODE_17.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_neuralnetODE_18.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_neuralnetODE_19.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_neuralnetODE_20.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
 
     # Hyperparameters values verification
     @test tuned_model_neuralnetODE_0.model.range[1].lower == 3
@@ -3567,95 +3566,95 @@ end
 
     # Processors verification
     @test tuned_model_rbf_0.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rbf_1.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rbf_2.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rbf_3.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rbf_4.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rbf_5.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rbf_6.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     @test tuned_model_rbf_7.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rbf_8.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rbf_9.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rbf_10.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rbf_11.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rbf_12.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rbf_13.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     @test tuned_model_rbf_14.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rbf_15.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rbf_16.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rbf_17.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rbf_18.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rbf_19.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rbf_20.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     n = Threads.nthreads()
     @test tuned_model_rbf_0.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rbf_1.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rbf_2.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rbf_3.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rbf_4.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rbf_5.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rbf_6.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     @test tuned_model_rbf_7.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_rbf_8.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_rbf_9.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_rbf_10.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_rbf_11.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_rbf_12.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_rbf_13.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
 
     @test tuned_model_rbf_14.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_rbf_15.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_rbf_16.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_rbf_17.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_rbf_18.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_rbf_19.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_rbf_20.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
 
 
     # Hyperparameters values verification
@@ -4067,95 +4066,95 @@ end
 
     # Processors verification
     @test tuned_model_rnn_0.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rnn_1.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rnn_2.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rnn_3.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rnn_4.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rnn_5.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rnn_6.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     @test tuned_model_rnn_7.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rnn_8.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rnn_9.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rnn_10.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rnn_11.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rnn_12.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rnn_13.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     @test tuned_model_rnn_14.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rnn_15.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rnn_16.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rnn_17.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rnn_18.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rnn_19.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rnn_20.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     n = Threads.nthreads()
     @test tuned_model_rnn_0.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rnn_1.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rnn_2.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rnn_3.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rnn_4.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rnn_5.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rnn_6.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     @test tuned_model_rnn_7.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_rnn_8.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_rnn_9.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_rnn_10.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_rnn_11.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_rnn_12.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_rnn_13.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
 
     @test tuned_model_rnn_14.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_rnn_15.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_rnn_16.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_rnn_17.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_rnn_18.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_rnn_19.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_rnn_20.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
 
 
     # Hyperparameters values verification
@@ -4630,95 +4629,95 @@ end
 
     # Processors verification
     @test tuned_model_lstm_0.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_lstm_1.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_lstm_2.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_lstm_3.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_lstm_4.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_lstm_5.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_lstm_6.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     @test tuned_model_lstm_7.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_lstm_8.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_lstm_9.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_lstm_10.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_lstm_11.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_lstm_12.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_lstm_13.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     @test tuned_model_lstm_14.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_lstm_15.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_lstm_16.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_lstm_17.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_lstm_18.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_lstm_19.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_lstm_20.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     n = Threads.nthreads()
     @test tuned_model_lstm_0.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_lstm_1.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_lstm_2.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_lstm_3.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_lstm_4.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_lstm_5.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_lstm_6.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     @test tuned_model_lstm_7.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_lstm_8.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_lstm_9.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_lstm_10.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_lstm_11.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_lstm_12.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_lstm_13.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
 
     @test tuned_model_lstm_14.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_lstm_15.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_lstm_16.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_lstm_17.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_lstm_18.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_lstm_19.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_lstm_20.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
 
 
     # Hyperparameters values verification
@@ -5193,95 +5192,95 @@ end
 
     # Processors verification
     @test tuned_model_gru_0.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_gru_1.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_gru_2.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_gru_3.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_gru_4.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_gru_5.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_gru_6.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     @test tuned_model_gru_7.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_gru_8.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_gru_9.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_gru_10.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_gru_11.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_gru_12.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_gru_13.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     @test tuned_model_gru_14.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_gru_15.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_gru_16.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_gru_17.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_gru_18.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_gru_19.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_gru_20.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     n = Threads.nthreads()
     @test tuned_model_gru_0.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_gru_1.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_gru_2.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_gru_3.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_gru_4.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_gru_5.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_gru_6.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     @test tuned_model_gru_7.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_gru_8.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_gru_9.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_gru_10.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_gru_11.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_gru_12.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_gru_13.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
 
     @test tuned_model_gru_14.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_gru_15.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_gru_16.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_gru_17.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_gru_18.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_gru_19.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_gru_20.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
 
 
     # Hyperparameters values verification
@@ -5736,95 +5735,95 @@ end
 
     # Processors verification
     @test tuned_model_expn_0.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_expn_1.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_expn_2.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_expn_3.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_expn_4.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_expn_5.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_expn_6.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     @test tuned_model_expn_7.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_expn_8.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_expn_9.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_expn_10.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_expn_11.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_expn_12.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_expn_13.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     @test tuned_model_expn_14.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_expn_15.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_expn_16.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_expn_17.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_expn_18.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_expn_19.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_expn_20.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     n = Threads.nthreads()
     @test tuned_model_expn_0.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_expn_1.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_expn_2.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_expn_3.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_expn_4.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_expn_5.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_expn_6.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     @test tuned_model_expn_7.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_expn_8.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_expn_9.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_expn_10.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_expn_11.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_expn_12.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_expn_13.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
 
     @test tuned_model_expn_14.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_expn_15.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_expn_16.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_expn_17.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_expn_18.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_expn_19.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_expn_20.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
 
 
     # Hyperparameters values verification
@@ -6541,95 +6540,95 @@ end
 
     # Processors verification
     @test tuned_model_fnn_0.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_fnn_1.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_fnn_2.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_fnn_3.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_fnn_4.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_fnn_5.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_fnn_6.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     @test tuned_model_fnn_7.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_fnn_8.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_fnn_9.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_fnn_10.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_fnn_11.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_fnn_12.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_fnn_13.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     @test tuned_model_fnn_14.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_fnn_15.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_fnn_16.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_fnn_17.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_fnn_18.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_fnn_19.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_fnn_20.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     n = Threads.nthreads()
     @test tuned_model_fnn_0.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_fnn_1.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_fnn_2.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_fnn_3.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_fnn_4.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_fnn_5.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_fnn_6.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     @test tuned_model_fnn_7.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_fnn_8.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_fnn_9.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_fnn_10.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_fnn_11.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_fnn_12.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_fnn_13.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
 
     @test tuned_model_fnn_14.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_fnn_15.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_fnn_16.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_fnn_17.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_fnn_18.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_fnn_19.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_fnn_20.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
 
 
     # Hyperparameters values verification
@@ -7278,95 +7277,95 @@ end
 
     # Processors verification
     @test tuned_model_icnn_0.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_icnn_1.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_icnn_2.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_icnn_3.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_icnn_4.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_icnn_5.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_icnn_6.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     @test tuned_model_icnn_7.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_icnn_8.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_icnn_9.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_icnn_10.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_icnn_11.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_icnn_12.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_icnn_13.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     @test tuned_model_icnn_14.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_icnn_15.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_icnn_16.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_icnn_17.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_icnn_18.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_icnn_19.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_icnn_20.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     n = Threads.nthreads()
     @test tuned_model_icnn_0.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_icnn_1.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_icnn_2.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_icnn_3.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_icnn_4.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_icnn_5.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_icnn_6.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     @test tuned_model_icnn_7.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_icnn_8.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_icnn_9.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_icnn_10.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_icnn_11.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_icnn_12.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_icnn_13.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
 
     @test tuned_model_icnn_14.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_icnn_15.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_icnn_16.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_icnn_17.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_icnn_18.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_icnn_19.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_icnn_20.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
 
 
     # Hyperparameters values verification
@@ -8015,95 +8014,95 @@ end
 
     # Processors verification
     @test tuned_model_resnet_0.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_resnet_1.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_resnet_2.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_resnet_3.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_resnet_4.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_resnet_5.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_resnet_6.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     @test tuned_model_resnet_7.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_resnet_8.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_resnet_9.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_resnet_10.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_resnet_11.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_resnet_12.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_resnet_13.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     @test tuned_model_resnet_14.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_resnet_15.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_resnet_16.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_resnet_17.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_resnet_18.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_resnet_19.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_resnet_20.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     n = Threads.nthreads()
     @test tuned_model_resnet_0.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_resnet_1.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_resnet_2.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_resnet_3.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_resnet_4.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_resnet_5.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_resnet_6.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     @test tuned_model_resnet_7.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_resnet_8.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_resnet_9.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_resnet_10.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_resnet_11.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_resnet_12.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_resnet_13.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
 
     @test tuned_model_resnet_14.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_resnet_15.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_resnet_16.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_resnet_17.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_resnet_18.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_resnet_19.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_resnet_20.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
 
 
     # Hyperparameters values verification
@@ -8752,95 +8751,95 @@ end
 
     # Processors verification
     @test tuned_model_densenet_0.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_densenet_1.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_densenet_2.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_densenet_3.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_densenet_4.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_densenet_5.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_densenet_6.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     @test tuned_model_densenet_7.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_densenet_8.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_densenet_9.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_densenet_10.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_densenet_11.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_densenet_12.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_densenet_13.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     @test tuned_model_densenet_14.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_densenet_15.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_densenet_16.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_densenet_17.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_densenet_18.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_densenet_19.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_densenet_20.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     n = Threads.nthreads()
     @test tuned_model_densenet_0.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_densenet_1.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_densenet_2.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_densenet_3.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_densenet_4.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_densenet_5.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_densenet_6.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     @test tuned_model_densenet_7.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_densenet_8.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_densenet_9.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_densenet_10.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_densenet_11.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_densenet_12.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_densenet_13.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
 
     @test tuned_model_densenet_14.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_densenet_15.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_densenet_16.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_densenet_17.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_densenet_18.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_densenet_19.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_densenet_20.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
 
 
     # Hyperparameters values verification
@@ -9489,95 +9488,95 @@ end
 
     # Processors verification
     @test tuned_model_polynet_0.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_polynet_1.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_polynet_2.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_polynet_3.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_polynet_4.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_polynet_5.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_polynet_6.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     @test tuned_model_polynet_7.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_polynet_8.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_polynet_9.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_polynet_10.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_polynet_11.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_polynet_12.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_polynet_13.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     @test tuned_model_polynet_14.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_polynet_15.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_polynet_16.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_polynet_17.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_polynet_18.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_polynet_19.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_polynet_20.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     n = Threads.nthreads()
     @test tuned_model_polynet_0.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_polynet_1.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_polynet_2.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_polynet_3.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_polynet_4.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_polynet_5.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_polynet_6.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     @test tuned_model_polynet_7.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_polynet_8.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_polynet_9.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_polynet_10.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_polynet_11.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_polynet_12.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_polynet_13.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
 
     @test tuned_model_polynet_14.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_polynet_15.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_polynet_16.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_polynet_17.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_polynet_18.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_polynet_19.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_polynet_20.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
 
 
     # Hyperparameters values verification
@@ -10230,106 +10229,106 @@ end
     # Processors verification
     @test tuned_model_neuralnetODE_0.model.model.acceleration == CPU1{Nothing}(nothing) ||
           CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_neuralnetODE_1.model.model.acceleration == CPU1{Nothing}(nothing) ||
           CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_neuralnetODE_2.model.model.acceleration == CPU1{Nothing}(nothing) ||
           CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_neuralnetODE_3.model.model.acceleration == CPU1{Nothing}(nothing) ||
           CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_neuralnetODE_4.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_neuralnetODE_5.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_neuralnetODE_6.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     @test tuned_model_neuralnetODE_7.model.model.acceleration == CPU1{Nothing}(nothing) ||
           CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_neuralnetODE_8.model.model.acceleration == CPU1{Nothing}(nothing) ||
           CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_neuralnetODE_9.model.model.acceleration == CPU1{Nothing}(nothing) ||
           CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_neuralnetODE_10.model.model.acceleration == CPU1{Nothing}(nothing) ||
           CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_neuralnetODE_11.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_neuralnetODE_12.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_neuralnetODE_13.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     @test tuned_model_neuralnetODE_14.model.model.acceleration == CPU1{Nothing}(nothing) ||
           CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_neuralnetODE_15.model.model.acceleration == CPU1{Nothing}(nothing) ||
           CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_neuralnetODE_16.model.model.acceleration == CPU1{Nothing}(nothing) ||
           CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_neuralnetODE_17.model.model.acceleration == CPU1{Nothing}(nothing) ||
           CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_neuralnetODE_18.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_neuralnetODE_19.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_neuralnetODE_20.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     n = Threads.nthreads()
     @test tuned_model_neuralnetODE_0.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_neuralnetODE_1.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_neuralnetODE_2.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_neuralnetODE_3.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_neuralnetODE_4.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_neuralnetODE_5.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_neuralnetODE_6.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     @test tuned_model_neuralnetODE_7.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_neuralnetODE_8.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_neuralnetODE_9.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_neuralnetODE_10.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_neuralnetODE_11.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_neuralnetODE_12.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_neuralnetODE_13.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
 
     @test tuned_model_neuralnetODE_14.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_neuralnetODE_15.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_neuralnetODE_16.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_neuralnetODE_17.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_neuralnetODE_18.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_neuralnetODE_19.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_neuralnetODE_20.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
 
 
     # Hyperparameters values verification
@@ -10896,95 +10895,95 @@ end
 
     # Processors verification
     @test tuned_model_rbf_0.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rbf_1.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rbf_2.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rbf_3.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rbf_4.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rbf_5.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rbf_6.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     @test tuned_model_rbf_7.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rbf_8.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rbf_9.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rbf_10.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rbf_11.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rbf_12.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rbf_13.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     @test tuned_model_rbf_14.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rbf_15.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rbf_16.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rbf_17.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rbf_18.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rbf_19.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rbf_20.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     n = Threads.nthreads()
     @test tuned_model_rbf_0.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rbf_1.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rbf_2.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rbf_3.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rbf_4.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rbf_5.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rbf_6.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     @test tuned_model_rbf_7.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_rbf_8.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_rbf_9.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_rbf_10.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_rbf_11.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_rbf_12.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_rbf_13.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
 
     @test tuned_model_rbf_14.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_rbf_15.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_rbf_16.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_rbf_17.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_rbf_18.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_rbf_19.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_rbf_20.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
 
     # Hyperparameters values verification
     @test tuned_model_rbf_0.model.range[1].lower == minimum_neuron
@@ -11588,95 +11587,95 @@ end
 
     # Processors verification
     @test tuned_model_rnn_0.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rnn_1.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rnn_2.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rnn_3.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rnn_4.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rnn_5.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rnn_6.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     @test tuned_model_rnn_7.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rnn_8.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rnn_9.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rnn_10.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rnn_11.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rnn_12.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rnn_13.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     @test tuned_model_rnn_14.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rnn_15.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rnn_16.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rnn_17.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rnn_18.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rnn_19.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rnn_20.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     n = Threads.nthreads()
     @test tuned_model_rnn_0.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rnn_1.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rnn_2.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rnn_3.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rnn_4.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rnn_5.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_rnn_6.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     @test tuned_model_rnn_7.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_rnn_8.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_rnn_9.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_rnn_10.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_rnn_11.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_rnn_12.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_rnn_13.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
 
     @test tuned_model_rnn_14.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_rnn_15.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_rnn_16.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_rnn_17.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_rnn_18.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_rnn_19.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_rnn_20.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
 
 
     # Hyperparameters values verification
@@ -12345,95 +12344,95 @@ end
 
     # Processors verification
     @test tuned_model_lstm_0.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_lstm_1.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_lstm_2.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_lstm_3.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_lstm_4.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_lstm_5.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_lstm_6.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     @test tuned_model_lstm_7.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_lstm_8.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_lstm_9.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_lstm_10.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_lstm_11.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_lstm_12.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_lstm_13.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     @test tuned_model_lstm_14.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_lstm_15.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_lstm_16.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_lstm_17.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_lstm_18.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_lstm_19.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_lstm_20.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     n = Threads.nthreads()
     @test tuned_model_lstm_0.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_lstm_1.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_lstm_2.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_lstm_3.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_lstm_4.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_lstm_5.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_lstm_6.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     @test tuned_model_lstm_7.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_lstm_8.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_lstm_9.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_lstm_10.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_lstm_11.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_lstm_12.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_lstm_13.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
 
     @test tuned_model_lstm_14.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_lstm_15.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_lstm_16.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_lstm_17.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_lstm_18.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_lstm_19.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_lstm_20.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
 
 
     # Hyperparameters values verification
@@ -13101,95 +13100,95 @@ end
 
     # Processors verification
     @test tuned_model_gru_0.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_gru_1.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_gru_2.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_gru_3.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_gru_4.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_gru_5.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_gru_6.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     @test tuned_model_gru_7.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_gru_8.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_gru_9.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_gru_10.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_gru_11.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_gru_12.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_gru_13.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     @test tuned_model_gru_14.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_gru_15.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_gru_16.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_gru_17.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_gru_18.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_gru_19.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_gru_20.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     n = Threads.nthreads()
     @test tuned_model_gru_0.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_gru_1.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_gru_2.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_gru_3.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_gru_4.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_gru_5.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_gru_6.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     @test tuned_model_gru_7.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_gru_8.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_gru_9.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_gru_10.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_gru_11.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_gru_12.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_gru_13.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
 
     @test tuned_model_gru_14.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_gru_15.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_gru_16.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_gru_17.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_gru_18.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_gru_19.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_gru_20.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
 
 
     # Hyperparameters values verification
@@ -13862,95 +13861,95 @@ end
 
     # Processors verification
     @test tuned_model_expn_0.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_expn_1.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_expn_2.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_expn_3.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_expn_4.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_expn_5.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_expn_6.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     @test tuned_model_expn_7.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_expn_8.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_expn_9.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_expn_10.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_expn_11.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_expn_12.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_expn_13.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     @test tuned_model_expn_14.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_expn_15.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_expn_16.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_expn_17.model.model.acceleration == CUDALibs{Nothing}(nothing) ||
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_expn_18.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_expn_19.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_expn_20.model.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     n = Threads.nthreads()
     @test tuned_model_expn_0.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_expn_1.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_expn_2.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_expn_3.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_expn_4.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_expn_5.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
     @test tuned_model_expn_6.model.acceleration ==
-          ComputationalResources.CPU1{Nothing}(nothing)
+          CPU1{Nothing}(nothing)
 
     @test tuned_model_expn_7.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_expn_8.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_expn_9.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_expn_10.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_expn_11.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_expn_12.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
     @test tuned_model_expn_13.model.acceleration ==
-          ComputationalResources.CPUThreads{Int64}(n)
+          CPUThreads{Int64}(n)
 
     @test tuned_model_expn_14.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_expn_15.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_expn_16.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_expn_17.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_expn_18.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_expn_19.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
     @test tuned_model_expn_20.model.acceleration ==
-          ComputationalResources.CPUProcesses{Nothing}(nothing)
+          CPUProcesses{Nothing}(nothing)
 
 
     # Hyperparameters values verification
