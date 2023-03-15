@@ -13,7 +13,7 @@ using Dates
 using Flux
 using Optim
 #using ComputationalResources
-using LineSearches
+#using LineSearches
 using MLJMultivariateStatsInterface
 
 using AutomationLabsIdentification
