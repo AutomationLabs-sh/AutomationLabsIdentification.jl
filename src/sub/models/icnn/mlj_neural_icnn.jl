@@ -41,11 +41,13 @@ function MLJFlux.build(nn::Icnn, rng, n_in, n_out)
         inner_layer[i, 1] = DenseIcnn(nn.neuron, nn.neuron, nn.σ, init = init) #only relu as activation fct
     end
 
-    return Flux.Chain(
-        DenseIcnn(n_in, nn.neuron, identity, bias = false, init = init),
-        Flux.Chain(inner_layer...),
-        DenseIcnn(nn.neuron, n_out, identity, bias = false, init = init),
+    y =  Flux.Chain(
+        icnn_input = DenseIcnn(n_in, nn.neuron, identity, bias = false, init = init),
+        icnn_inner = Flux.Chain(inner_layer...),
+        icnn_output = DenseIcnn(nn.neuron, n_out, identity, bias = false, init = init),
     )
+
+    return y
 end
 
 ### Declaration de ICNN 

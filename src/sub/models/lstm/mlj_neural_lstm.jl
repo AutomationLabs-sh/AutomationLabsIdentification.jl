@@ -43,9 +43,10 @@ function MLJFlux.build(nn::Lstm, rng, n_in, n_out)
         inner_layer[i, 1] = Flux.LSTM(nn.neuron, nn.neuron, init = init)
     end
 
-    return Flux.Chain(
-        Flux.Dense(n_in, nn.neuron, bias = false, init = init),
-        Flux.Chain(inner_layer...),
-        Flux.Dense(nn.neuron, n_out, bias = false, init = init),
+    y = Flux.Chain(
+        lstm_input = Flux.Dense(n_in, nn.neuron, bias = false, init = init),
+        lstm_inner = Flux.Chain(inner_layer...),
+        lstm_output = Flux.Dense(nn.neuron, n_out, bias = false, init = init),
     )
+    return y
 end

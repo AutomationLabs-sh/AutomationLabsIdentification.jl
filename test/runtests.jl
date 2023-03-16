@@ -11,10 +11,6 @@ print("Testing Architectures...")
 took_seconds = @elapsed include("./architectures_neural_test.jl");
 println("done (took ", took_seconds, " seconds)")
 
-print("Testing modification algorithm...")
-took_seconds = @elapsed include("./neural_network_builder_test.jl");
-println("done (took ", took_seconds, " seconds)")
-
 #=
 ### Extra test for CI without GPUs ###
 print("Testing Hyperparameters Optimization...")
@@ -43,6 +39,11 @@ println("done (took ", took_seconds, " seconds)")
 
 
 ### Test with GPU not suitable github CI ###
+
+print("Testing modification algorithm...")
+took_seconds = @elapsed include("./neural_network_builder_test.jl");
+println("done (took ", took_seconds, " seconds)")
+
 print("Testing QTP identification with Back-Propagation algorithm...")
 took_seconds = @elapsed include("./qtp_backprop_identification_test.jl");
 println("done (took ", took_seconds, " seconds)")

@@ -3,6 +3,7 @@
 ## v0.2.6
 
 * Type neuralode modification.
+* Add name on neural networks sub-layers.
 * Tests improvement.
 
 ## v0.2.5

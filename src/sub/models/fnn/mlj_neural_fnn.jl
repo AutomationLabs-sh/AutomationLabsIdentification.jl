@@ -39,9 +39,11 @@ function MLJFlux.build(nn::Fnn, rng, n_in, n_out)
         inner_layer[i, 1] = Flux.Dense(nn.neuron, nn.neuron, nn.σ, init = init)
     end
 
-    return Flux.Chain(
-        Flux.Dense(n_in, nn.neuron, bias = false, init = init),
-        Flux.Chain(inner_layer...),
-        Flux.Dense(nn.neuron, n_out, bias = false, init = init),
+    y = Flux.Chain(
+        fnn_input = Flux.Dense(n_in, nn.neuron, bias = false, init = init),
+        fnn_inner = Flux.Chain(inner_layer...),
+        fnn_output = Flux.Dense(nn.neuron, n_out, bias = false, init = init),
     )
+    
+    return y
 end

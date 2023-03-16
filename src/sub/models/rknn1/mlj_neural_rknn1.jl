@@ -58,9 +58,11 @@ function MLJFlux.build(nn::Rknn1, rng, n_in, n_out)
 
     deltaT = DenseSampleTime(nn.sample_time)
     inner_euler = Flux.Chain(deltaT, fnn_inner)
-    ident = DenseIdentityOut(n_out)
 
-    y = Flux.Parallel(+, ident, inner_euler)
+    y = Flux.Parallel(
+        +, 
+        rknn1_identity = DenseIdentityOut(n_out), 
+        rknn1_k1 = inner_euler)
 
     return y
 end

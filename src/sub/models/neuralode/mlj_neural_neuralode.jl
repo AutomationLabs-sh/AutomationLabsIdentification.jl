@@ -68,7 +68,12 @@ function MLJFlux.build(nn::NeuralODE, rng, n_in, n_out)
         save_start = false,
     )
     #to do mettre un guard if NaN
-    return Flux.Chain(inner_ode, DenseDiffEqFlux(n_out))
+    y = Flux.Chain(
+        neuralode_inner = inner_ode, 
+        neuralode_output = DenseDiffEqFlux(n_out),
+    )
+
+    return y
 end
 
 ### Declaration de Identity 

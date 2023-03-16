@@ -12,8 +12,8 @@ using Test
 using Dates
 using Flux
 using Optim
-#using ComputationalResources
-#using LineSearches
+using ComputationalResources
+using LineSearches
 using MLJMultivariateStatsInterface
 
 using AutomationLabsIdentification

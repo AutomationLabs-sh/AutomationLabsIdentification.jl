@@ -28,11 +28,14 @@ function MLJFlux.build(nn::Rbf, rng, n_in, n_out)
 
     init = Flux.glorot_uniform(rng) #weight initialisation
 
-    return Flux.Chain(
-        Flux.Dense(n_in, nn.neuron, bias = false, init = init),
-        Flux.Chain(Flux.Dense(nn.neuron, nn.neuron, gaussian, init = init, bias = false)),
-        Flux.Dense(nn.neuron, n_out, bias = false, init = init),
+    y = Flux.Chain(
+        rbf_input = Flux.Dense(n_in, nn.neuron, bias = false, init = init),
+        rbf_inner = Flux.Chain(Flux.Dense(nn.neuron, nn.neuron, gaussian, init = init, bias = false)),
+        rbf_output = Flux.Dense(nn.neuron, n_out, bias = false, init = init),
     )
+
+    return y
 end
 
+# Activation function for rbf
 gaussian(x) = exp(-x^2) #activiation fct

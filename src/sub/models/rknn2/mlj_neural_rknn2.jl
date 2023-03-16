@@ -71,7 +71,11 @@ function MLJFlux.build(nn::Rknn2, rng, n_in, n_out)
 
     k2h = Flux.Chain(Dense_over_z(2), k20)
 
-    y = Flux.Parallel(+, DenseIdentityOut(n_out), k1h, k2h)
+    y = Flux.Parallel(
+        +, 
+        rknn2_identity = DenseIdentityOut(n_out), 
+        rknn2_k1 = k1h, 
+        rknn2_k2 = k2h)
 
     return y
 end
