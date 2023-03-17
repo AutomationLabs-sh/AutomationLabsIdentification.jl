@@ -1,5 +1,9 @@
 # AutomationLabsIdentification Changelog
 
+## v0.2.7
+
+* Modification of DenseNet neural networks sub-layers name.
+
 ## v0.2.6
 
 * Type neuralode modification.
