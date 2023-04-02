@@ -37,6 +37,9 @@ export blackbox_identification
 export greybox_identification
 export proceed_identification
 
+export extract_model_from_machine
+export get_mlj_model_type
+
 # Include julia files
 
 # Types 
@@ -115,5 +118,7 @@ include("sub/models/explorationnetworks/neural_network_builder_exploration_netwo
 # sub function physics informed
 include("sub/models/physical/physics_informed_builder_oracle.jl")
 include("sub/models/physical/physics_informed_builder_physics.jl")
+
+include("sub/extract_models.jl")
 
 end

@@ -1,5 +1,9 @@
 # AutomationLabsIdentification Changelog
 
+## v0.2.8
+
+* Add extract_models.jl with get_mlj_model_type and extract_model_from_machine methods.
+
 ## v0.2.7
 
 * Modification of DenseNet neural networks sub-layers name.
